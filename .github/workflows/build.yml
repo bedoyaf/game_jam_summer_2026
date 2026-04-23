@@ -32,21 +32,24 @@ jobs:
           mkdir -p build
           ./godot --headless --export-release "${{ matrix.platform }}" build/${{ matrix.platform }}
 
+      - name: Deploy to GitHub Pages
+        if: matrix.platform == 'Web'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/Web
+
+      - name: Upload to Itch
+        if: matrix.platform == 'Web'
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: "your-game"
+          ITCH_USER: "your-name"
+          PACKAGE: build/Web
+
       - uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.platform }}
           path: build/${{ matrix.platform }}
-- name: Deploy to GitHub Pages
-  if: matrix.platform == 'Web'
-  uses: JamesIves/github-pages-deploy-action@v4
-  with:
-    branch: gh-pages
-    folder: build/Web
-- name: Upload to Itch
-  uses: manleydev/butler-publish-itchio-action@master
-  env:
-    BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
-    CHANNEL: html5
-    ITCH_GAME: "your-game"
-    ITCH_USER: "your-name"
-    PACKAGE: build/Web
