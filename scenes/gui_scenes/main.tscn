@@ -2,14 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://bkwhkmgjm4cnj" path="res://scenes/gui_scenes/tent.tscn" id="1_kl0ni"]
 [ext_resource type="PackedScene" uid="uid://btpinixngv50" path="res://scenes/gui_scenes/dream_world.tscn" id="2_katdl"]
-[ext_resource type="Shader" uid="uid://cp1g35tudynhg" path="res://assets/shaders/dream_world_2.gdshader" id="2_vlhxr"]
+[ext_resource type="Shader" uid="uid://bfjp2fu6vpha8" path="res://assets/shaders/dream_world_perlin_absolute.gdshader" id="2_vlhxr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vlhxr"]
+noise_type = 3
+frequency = 0.0018
+offset = Vector3(-231.79, 2000, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cuat5"]
+noise = SubResource("FastNoiseLite_vlhxr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cuat5"]
 shader = ExtResource("2_vlhxr")
-shader_parameter/speed = 2.0
-shader_parameter/frequency = 10.0
-shader_parameter/amplitude = 0.02
-shader_parameter/my_alpha = 0.7
+shader_parameter/speed = 6.085
+shader_parameter/frequency = 13.775
+shader_parameter/amplitude = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_cuat5")
 
 [node name="Main" type="Node2D" unique_id=870238760]
 
@@ -20,13 +28,15 @@ position = Vector2(352, 198)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1211497977]
 material = SubResource("ShaderMaterial_cuat5")
-offset_right = 637.0
-offset_bottom = 450.0
+offset_left = 637.0
+offset_top = -2.0
+offset_right = 1153.0
+offset_bottom = 385.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1926404120]
 handle_input_locally = false
-size = Vector2i(637, 450)
+size = Vector2i(516, 387)
 render_target_update_mode = 4
 
 [node name="DreamWorld" parent="SubViewportContainer/SubViewport" unique_id=1887006701 instance=ExtResource("2_katdl")]

@@ -8,7 +8,7 @@ uniform float wave_width = 0.005;
 
 void fragment() {
 	vec4 current_color = COLOR;
-	current_color.a = my_alpha;
+	d
 	
 	// Output the final color
 	COLOR = current_color;
