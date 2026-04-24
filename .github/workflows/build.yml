@@ -30,9 +30,9 @@ jobs:
 
       - name: Export
         run: |
-          mkdir -p build
-          ./godot --headless --export-release "${{ matrix.platform }}" build/${{ matrix.platform }}
-
+          mkdir -p build/${{ matrix.platform }}
+          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.platform }}/index.html"
+      
       - name: Deploy to GitHub Pages
         if: matrix.platform == 'Web'
         uses: JamesIves/github-pages-deploy-action@v4
