@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c01ae23u8dh7h" path="res://martin/icon2.svg" id="3_aq2xh"]
 
 [sub_resource type="Gradient" id="Gradient_dxfef"]
-colors = PackedColorArray(1, 0.19215687, 0.16078432, 1, 1, 0.19215687, 0.16078432, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_aq2xh"]
 gradient = SubResource("Gradient_dxfef")
@@ -17,8 +17,8 @@ shader_alpha = 0.065
 position = Vector2(575, 323)
 
 [node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1030988024]
-position = Vector2(570.5, 325.49997)
-scale = Vector2(4.6289063, 675)
+position = Vector2(471.49963, 277.00006)
+scale = Vector2(19.800781, 3377.9998)
 texture = SubResource("GradientTexture1D_aq2xh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1962584093]

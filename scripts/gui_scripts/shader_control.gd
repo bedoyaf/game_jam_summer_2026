@@ -7,8 +7,8 @@ extends Node
 
 
 func _process(delta):
-	print(shader_alpha)
-	set_shader_alpha(shader_alpha)
+	#print(shader_alpha)
+	#set_shader_alpha(shader_alpha)
 	move_stuff(delta)
 		
 func set_shader_alpha(my_shader_alpha: float):
