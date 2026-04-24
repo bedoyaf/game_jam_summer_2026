@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        platform: ["Windows Desktop", "Linux", "Web"]
+        include:
+          - platform: "Windows Desktop"
+            out: windows
+          - platform: "Linux/X11"
+            out: linux
+          - platform: "Web"
+            out: web
 
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +37,8 @@ jobs:
 
       - name: Export
         run: |
-          mkdir -p build/${{ matrix.platform }}
-          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.platform }}/index.html"
+          mkdir -p build/${{ matrix.out }}
+          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/index.html"
       
       - name: Deploy to GitHub Pages
         if: matrix.platform == 'Web'
