@@ -3,13 +3,37 @@
 [ext_resource type="Theme" uid="uid://dec4ehymd5ad1" path="res://assets/themes/button_main_menu.tres" id="1_cu28x"]
 [ext_resource type="Script" uid="uid://blngbbtdptnqb" path="res://scripts/gui_scripts/main_menu.gd" id="1_ksp4i"]
 [ext_resource type="Theme" uid="uid://bh0bdmimjqt4m" path="res://assets/themes/main_menu_title.tres" id="3_ervn5"]
-[ext_resource type="Shader" uid="uid://crsdqlofc0y14" path="res://assets/shaders/main_menu_waves.gdshader" id="4_20lew"]
+
+[sub_resource type="Shader" id="Shader_ervn5"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+uniform float wave_speed = 3.0;
+uniform float wave_freq = 10.0;
+uniform float wave_width = 0.05;
+
+void fragment() {
+	// Get the screen UV coordinates
+	vec2 uv = SCREEN_UV;
+	
+	// Create the \"Underwater\" distortion using Sine and Cosine
+	// We shift the X position based on Y and Time, and vice versa
+	float diff_x = sin(uv.y * wave_freq + TIME * wave_speed) * wave_width;
+	float diff_y = cos(uv.x * wave_freq + TIME * wave_speed) * wave_width;
+	
+	vec2 distorted_uv = uv + vec2(diff_x, diff_y);
+	
+	COLOR = texture(SCREEN_TEXTURE, distorted_uv);
+	
+	//COLOR.rgb *= vec3(1.0, 0.3, 0.25);
+}"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kbut"]
-shader = ExtResource("4_20lew")
-shader_parameter/wave_speed = 3.0
-shader_parameter/wave_freq = 10.0
-shader_parameter/wave_width = 0.005
+shader = SubResource("Shader_ervn5")
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_freq = 12.0
+shader_parameter/wave_width = 0.05
 
 [node name="MainMenu" type="Control" unique_id=1515886381]
 layout_mode = 3
