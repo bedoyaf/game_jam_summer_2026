@@ -55,7 +55,7 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
           # Dynamický kanál: pro web bude 'html5', pro ostatní 'windows' nebo 'linux'
           CHANNEL: ${{ matrix.out == 'web' && 'html5' || matrix.out }}
-          ITCH_GAME: "over_the_top"
+          ITCH_GAME: "over-the-top"
           ITCH_USER: "bedoyaf"
           PACKAGE: build/${{ matrix.out }}
 
