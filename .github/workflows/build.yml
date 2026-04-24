@@ -1,31 +1,23 @@
 name: Build Godot
+
 on:
   push:
     branches: [ main, master ]
 
-env:
-  # Tímto umlčíš varování o Node.js 20 a vynutíš Node 24
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       fail-fast: false
       matrix:
         include:
           - platform: "Windows Desktop"
             out: windows
-            file: game.exe
-            itch_channel: windows
           - platform: "Linux"
             out: linux
-            file: game.x86_64
-            itch_channel: linux
           - platform: "Web"
             out: web
-            file: index.html
-            itch_channel: html5
 
     steps:
       - uses: actions/checkout@v4
@@ -46,20 +38,26 @@ jobs:
       - name: Export
         run: |
           mkdir -p build/${{ matrix.out }}
-          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/${{ matrix.file }}"
+          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/index.html"
+      
+      - name: Deploy to GitHub Pages
+        if: matrix.platform == 'Web'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/web
 
-      # Nahrání na itch.io (nyní pro všechny platformy automaticky)
-      - name: Upload to Itch.io
+      - name: Upload to Itch
+        if: matrix.platform == 'Web'
         uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
-          CHANNEL: ${{ matrix.itch_channel }}
-          ITCH_GAME: "tvoje-jmeno-hry"   # <--- TADY DOPLŇ URL NÁZEV HRY
-          ITCH_USER: "tvoje-itch-jmeno" # <--- TADY DOPLŇ SVOJE ITCH JMÉNO
-          PACKAGE: build/${{ matrix.out }}
+          CHANNEL: html5
+          ITCH_GAME: "your-game"
+          ITCH_USER: "your-name"
+          PACKAGE: build/web
 
-      # Artefakty pro GitHub (pro kontrolu)
       - uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.out }}
-          path: build/${{ matrix.out }}
+          name: build-${{ matrix.out }}  # Použije např. "build-windows" (zabrání mezerám)
+          path: build/${{ matrix.out }}  # Bude hledat ve správné složce (např. "build/windows")
