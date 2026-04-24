@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bt1lnnhum50u2"]
+
+[ext_resource type="Script" uid="uid://c1vrwa5jflgmj" path="res://rolloj/PaperWorkPhase.gd" id="1_8p8ey"]
+[ext_resource type="Texture2D" uid="uid://cprbs0jol666w" path="res://assets/sprites/table.png" id="2_o4aeo"]
+[ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="2_p3dgq"]
+
+[node name="PaperWorkPhase" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups")]
+script = ExtResource("1_8p8ey")
+paper_groups = [NodePath("Papers/PaperWork1/SinglePaper"), NodePath("Papers/PaperWork2/SinglePaper2")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850718065]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=307909017]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o4aeo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Papers" type="Node2D" parent="." unique_id=2145772059]
+position = Vector2(144, 144)
+scale = Vector2(0.6379365, 0.6379365)
+
+[node name="PaperWork2" type="Node2D" parent="Papers" unique_id=1326795328]
+
+[node name="SinglePaper2" parent="Papers/PaperWork2" unique_id=236530852 instance=ExtResource("2_p3dgq")]
+position = Vector2(720, 280)
+rotation = 0.7814909
+paper_index = 1
+
+[node name="PaperWork1" type="Node2D" parent="Papers" unique_id=1526460663]
+
+[node name="SinglePaper" parent="Papers/PaperWork1" unique_id=407088929 instance=ExtResource("2_p3dgq")]
+position = Vector2(416, 320)
+rotation = -0.7794564

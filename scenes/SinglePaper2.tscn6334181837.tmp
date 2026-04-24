@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://km55tvof2gvh"]
+
+[ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_qd4jl"]
+[ext_resource type="Texture2D" uid="uid://ur4qg7r27i33" path="res://rolloj/paperPlaceholder2.jpeg" id="2_qd4jl"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://rolloj/StampGoal.tscn" id="3_s0w1f"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
+viewport_path = NodePath("SubViewport")
+
+[node name="SinglePaper" type="Node2D" unique_id=407088929]
+script = ExtResource("1_qd4jl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342278904]
+texture = ExtResource("2_qd4jl")
+
+[node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_s0w1f")]
+position = Vector2(-96, 160)
+target_id = "paper_0_yes"
+
+[node name="No" parent="." unique_id=1759699427 instance=ExtResource("3_s0w1f")]
+position = Vector2(88, 160)
+target_id = "paper_0_no"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2071659622]
+visible = false
+skew = -0.30543262
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D" unique_id=1867897728]
+modulate = Color(0, 0, 0, 1)
+offset_left = -48.940235
+offset_top = -209.70583
+offset_right = 151.05977
+offset_bottom = 70.294174
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex magna, maximus et leo id, venenatis finibus magna. Curabitur blandit ac nunc volutpat blandit. Mauris et dolor convallis, imperdiet nisl sit amet, mollis lectus."
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1069628792]
+transparent_bg = true
+size = Vector2i(363, 500)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport" unique_id=444308852]
+modulate = Color(0, 0, 0, 1)
+offset_left = -48.940235
+offset_top = -209.70583
+offset_right = 151.05977
+offset_bottom = 70.294174
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex magna, maximus et leo id, venenatis finibus magna. Curabitur blandit ac nunc volutpat blandit. Mauris et dolor convallis, imperdiet nisl sit amet, mollis lectus."
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1579105938]
+position = Vector2(367.26355, -88.84097)
+texture = SubResource("ViewportTexture_da8e4")
+polygon = PackedVector2Array(-479.26355, -159.15903, -551.26355, 280.84097, -551.26355, 328.84097, -551.26355, 336.84097, -183.26355, 344.84097, -183.26355, 176.84097, -271.26355, -159.15903)
