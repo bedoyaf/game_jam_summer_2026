@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://drlmt55gr6hqf"]
+
+[ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_n8xtm"]
+[ext_resource type="Texture2D" uid="uid://ur4qg7r27i33" path="res://rolloj/paperPlaceholder2.jpeg" id="2_yo5pt"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://rolloj/StampGoal.tscn" id="3_qc2sd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
+viewport_path = NodePath("SubViewport2")
+
+[node name="SinglePaper" type="Node2D" unique_id=407088929]
+script = ExtResource("1_n8xtm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342278904]
+texture = ExtResource("2_yo5pt")
+
+[node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_qc2sd")]
+position = Vector2(-96, 160)
+target_id = "paper_0_yes"
+
+[node name="No" parent="." unique_id=1759699427 instance=ExtResource("3_qc2sd")]
+position = Vector2(88, 160)
+target_id = "paper_0_no"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2071659622]
+visible = false
+skew = -0.30543262
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D" unique_id=1867897728]
+modulate = Color(0, 0, 0, 1)
+offset_left = -48.940235
+offset_top = -209.70583
+offset_right = 151.05977
+offset_bottom = 70.294174
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ex magna, maximus et leo id, venenatis finibus magna. Curabitur blandit ac nunc volutpat blandit. Mauris et dolor convallis, imperdiet nisl sit amet, mollis lectus."
+
+[node name="SubViewport2" type="SubViewport" parent="." unique_id=1234049101]
+transparent_bg = true
+
+[node name="Node3D" type="Node3D" parent="SubViewport2" unique_id=479149260]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport2/Node3D" unique_id=307116655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.72714365)
+
+[node name="Label3D" type="Label3D" parent="SubViewport2/Node3D" unique_id=562579402]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 0, 0)
+pixel_size = 0.002
+text = "Ahoj zmrdi
+POMSTA BUDE 
+SLADKA JA jsem 
+hanibal swagger
+
+
+	
+HAWK TUAH"
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1828836065]
+position = Vector2(4, -58)
+scale = Vector2(1.2184701, 1.3232765)
+texture = SubResource("ViewportTexture_da8e4")

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kg88vrepg7lu"
-path.s3tc="res://.godot/imported/icon2.svg-2a7a0d3511b500d2ceb3c7ea4da2d235.s3tc.ctex"
+uid="uid://y85cend3xmfw"
+path.s3tc="res://.godot/imported/paperPlaceholder.jpeg-09cfcdf653709cadeaffcecd25386a4e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprites/icon2.svg"
-dest_files=["res://.godot/imported/icon2.svg-2a7a0d3511b500d2ceb3c7ea4da2d235.s3tc.ctex"]
+source_file="res://rolloj/paperPlaceholder.jpeg"
+dest_files=["res://.godot/imported/paperPlaceholder.jpeg-09cfcdf653709cadeaffcecd25386a4e.s3tc.ctex"]
 
 [params]
 
@@ -39,6 +39,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
