@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://v0lv3wr1vfpp"]
+
+[ext_resource type="Script" uid="uid://b5p61ncmw6bsj" path="res://scripts/stamp/stampSpot.gd" id="1_g4nx1"]
+[ext_resource type="Texture2D" uid="uid://b5bfva4h5g7vf" path="res://scripts/icon2.svg" id="2_x0ufx"]
+[ext_resource type="Texture2D" uid="uid://c5rt1srmon0qf" path="res://filip/placeholdry/stamp_placeholder.png" id="3_5bf1e"]
+[ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="4_slyid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nt8u"]
+size = Vector2(125, 123)
+
+[node name="StampSpot" type="StaticBody2D" unique_id=186753513]
+script = ExtResource("1_g4nx1")
+default_texture = ExtResource("2_x0ufx")
+stamped_texture = ExtResource("3_5bf1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634932465]
+texture = ExtResource("4_slyid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711293656]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_5nt8u")

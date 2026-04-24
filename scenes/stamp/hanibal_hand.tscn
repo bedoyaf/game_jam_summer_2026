@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbhqo1mai432k"]
+
+[ext_resource type="Script" uid="uid://i2b0mwb22iky" path="res://scripts/stamp/stampHand.gd" id="1_6hvuf"]
+[ext_resource type="Texture2D" uid="uid://cnb0ibsanym5t" path="res://filip/placeholdry/hand.png" id="2_nffnw"]
+
+[node name="HanibalHand" type="Node2D" unique_id=1568772530]
+script = ExtResource("1_6hvuf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1291040752]
+position = Vector2(68.000015, 230.99997)
+scale = Vector2(1.2096344, 1.0055554)
+texture = ExtResource("2_nffnw")

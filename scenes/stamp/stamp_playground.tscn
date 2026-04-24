@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bp13legi6bxkm"]
+
+[ext_resource type="PackedScene" uid="uid://v0lv3wr1vfpp" path="res://scenes/stamp/stamp_spot.tscn" id="1_d0ih3"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="2_5nt8u"]
+
+[node name="StampPlayground" type="Node2D" unique_id=631869499]
+
+[node name="StampSpot" parent="." unique_id=303319414 instance=ExtResource("1_d0ih3")]
+position = Vector2(468, 273)
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("2_5nt8u")]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ugdxoekclc7k"]
+
+[ext_resource type="Script" uid="uid://tfwcgt1p08ca" path="res://scripts/walking_around/decision_manager.gd" id="1_xyfs2"]
+[ext_resource type="PackedScene" uid="uid://v0lv3wr1vfpp" path="res://scenes/stamp/stamp_spot.tscn" id="2_sps4q"]
+[ext_resource type="Script" uid="uid://b5pp6fmnt1lr7" path="res://scripts/walking_around/teleportation.gd" id="3_4d2pf"]
+[ext_resource type="Script" uid="uid://cc3qew7f0nhaa" path="res://scripts/walking_around/path_block.gd" id="4_s4ftt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sihyj"]
+size = Vector2(114, 136)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sihyj"]
+a = Vector2(-14, -71)
+b = Vector2(-18, 68)
+
+[node name="Decision1" type="Node2D" unique_id=2124449466 node_paths=PackedStringArray("decision1", "decision2")]
+script = ExtResource("1_xyfs2")
+decision1 = NodePath("StampSpot")
+decision2 = NodePath("StampSpot2")
+
+[node name="StampSpot" parent="." unique_id=186753513 instance=ExtResource("2_sps4q")]
+position = Vector2(827, 1421)
+
+[node name="StampSpot2" parent="." unique_id=1307131334 instance=ExtResource("2_sps4q")]
+position = Vector2(1056, 1561)
+
+[node name="TeleportAway" type="Area2D" parent="." unique_id=1610338566 node_paths=PackedStringArray("teleport_target_node")]
+position = Vector2(-26, 7)
+script = ExtResource("3_4d2pf")
+teleport_target_node = NodePath("Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportAway" unique_id=1433428994]
+position = Vector2(1506, 1032)
+shape = SubResource("RectangleShape2D_sihyj")
+
+[node name="Node2D" type="Node2D" parent="TeleportAway" unique_id=1301403710]
+position = Vector2(1766, 1497)
+
+[node name="PathBlock" type="Area2D" parent="." unique_id=1539802998 node_paths=PackedStringArray("blocker")]
+position = Vector2(240, 463)
+script = ExtResource("4_s4ftt")
+blocker = NodePath("Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathBlock" unique_id=143898464]
+position = Vector2(1506, 1032)
+shape = SubResource("RectangleShape2D_sihyj")
+
+[node name="Node2D" type="StaticBody2D" parent="PathBlock" unique_id=885546493]
+position = Vector2(1529, 1497)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathBlock/Node2D" unique_id=1777616702]
+position = Vector2(-174, -475)
+shape = SubResource("SegmentShape2D_sihyj")

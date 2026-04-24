@@ -3,53 +3,63 @@ name: Build Godot
 on:
   push:
     branches: [ main, master ]
-
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        platform: ["Windows Desktop", "Linux", "Web"]
+        include:
+          - platform: "Windows Desktop"
+            out: windows
+          - platform: "Linux"
+            out: linux
+          - platform: "Web"
+            out: web
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Download Godot
         run: |
-          wget https://downloads.tuxfamily.org/godotengine/4.2.2/Godot_v4.2.2-stable_linux.x86_64.zip
+          wget https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_linux.x86_64.zip
           unzip Godot_v4.2.2-stable_linux.x86_64.zip
           mv Godot_v4.2.2-stable_linux.x86_64 godot
 
       - name: Setup export templates
         run: |
           mkdir -p ~/.local/share/godot/export_templates/4.2.2.stable
-          wget https://downloads.tuxfamily.org/godotengine/4.2.2/Godot_v4.2.2-stable_export_templates.tpz
-          unzip Godot_v4.2.2-stable_export_templates.tpz -d ~/.local/share/godot/export_templates/4.2.2.stable
+          wget https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_export_templates.tpz
+          unzip Godot_v4.2.2-stable_export_templates.tpz
+          mv templates/* ~/.local/share/godot/export_templates/4.2.2.stable/
 
       - name: Export
         run: |
-          mkdir -p build
-          ./godot --headless --export-release "${{ matrix.platform }}" build/${{ matrix.platform }}
-
-      - name: Deploy to GitHub Pages
-        if: matrix.platform == 'Web'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: build/Web
-
+          mkdir -p build/${{ matrix.out }}
+          # Dynamická koncovka: Web potřebuje index.html, ostatní ne
+          if [ "${{ matrix.out }}" == "web" ]; then
+            ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/index.html"
+          else
+            # Pro Windows/Linux vytvoříme název podle platformy (např. game.exe)
+            ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/game"
+          fi
+      
       - name: Upload to Itch
-        if: matrix.platform == 'Web'
+        # ODSTRANĚNO 'if: matrix.platform == Web', aby to nahrálo všechno
         uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
-          CHANNEL: html5
-          ITCH_GAME: "your-game"
-          ITCH_USER: "your-name"
-          PACKAGE: build/Web
+          # Dynamický kanál: pro web bude 'html5', pro ostatní 'windows' nebo 'linux'
+          CHANNEL: ${{ matrix.out == 'web' && 'html5' || matrix.out }}
+          ITCH_GAME: "over-the-top"
+          ITCH_USER: "bedoyaf"
+          PACKAGE: build/${{ matrix.out }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.platform }}
-          path: build/${{ matrix.platform }}
+          name: build-${{ matrix.out }}  # Použije např. "build-windows" (zabrání mezerám)
+          path: build/${{ matrix.out }}  # Bude hledat ve správné složce (např. "build/windows")
