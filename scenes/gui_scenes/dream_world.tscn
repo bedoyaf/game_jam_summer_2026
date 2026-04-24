@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://btpinixngv50"]
+
+[ext_resource type="Script" uid="uid://dkx1gowhwuogb" path="res://scripts/gui_scripts/shader_control.gd" id="1_dxfef"]
+[ext_resource type="Texture2D" uid="uid://c01ae23u8dh7h" path="res://martin/icon2.svg" id="3_aq2xh"]
+
+[sub_resource type="Gradient" id="Gradient_dxfef"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.19215687, 0.16078432, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aq2xh"]
+gradient = SubResource("Gradient_dxfef")
+
+[node name="DreamWorld" type="Node2D" unique_id=980472881]
+script = ExtResource("1_dxfef")
+shader_alpha = 0.065
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=346384355]
+position = Vector2(575, 323)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1030988024]
+position = Vector2(570.5, 325.49997)
+scale = Vector2(4.6289063, 675)
+texture = SubResource("GradientTexture1D_aq2xh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1962584093]
+position = Vector2(158, 215)
+texture = ExtResource("3_aq2xh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1515381697]
+position = Vector2(365, 451)
+texture = ExtResource("3_aq2xh")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1720569066]
+position = Vector2(643, 171)
+texture = ExtResource("3_aq2xh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=313891708]
+position = Vector2(845, 495)
+texture = ExtResource("3_aq2xh")

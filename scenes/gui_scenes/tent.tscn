@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bkwhkmgjm4cnj"]
+
+[ext_resource type="Texture2D" uid="uid://bhkywrpfwhfa2" path="res://assets/sprites/ai_references_images/table-top.png" id="1_w2hdg"]
+
+[node name="Tent" type="Node2D" unique_id=87496578]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1775965400]
+position = Vector2(615.00006, 345.00003)
+scale = Vector2(1.3707514, 1.3707514)
+texture = ExtResource("1_w2hdg")

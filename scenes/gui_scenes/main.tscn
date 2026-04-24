@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://h1fwxmdtgxu0"]
+
+[ext_resource type="PackedScene" uid="uid://bkwhkmgjm4cnj" path="res://scenes/gui_scenes/tent.tscn" id="1_kl0ni"]
+[ext_resource type="PackedScene" uid="uid://btpinixngv50" path="res://scenes/gui_scenes/dream_world.tscn" id="2_katdl"]
+[ext_resource type="Shader" uid="uid://cp1g35tudynhg" path="res://assets/shaders/dream_world_2.gdshader" id="2_vlhxr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuat5"]
+shader = ExtResource("2_vlhxr")
+shader_parameter/speed = 2.0
+shader_parameter/frequency = 10.0
+shader_parameter/amplitude = 0.02
+shader_parameter/my_alpha = 0.7
+
+[node name="Main" type="Node2D" unique_id=870238760]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1103229919]
+position = Vector2(352, 198)
+
+[node name="Tent" parent="." unique_id=87496578 instance=ExtResource("1_kl0ni")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1211497977]
+material = SubResource("ShaderMaterial_cuat5")
+offset_right = 637.0
+offset_bottom = 450.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1926404120]
+handle_input_locally = false
+size = Vector2i(637, 450)
+render_target_update_mode = 4
+
+[node name="DreamWorld" parent="SubViewportContainer/SubViewport" unique_id=1887006701 instance=ExtResource("2_katdl")]
+shader_alpha = -0.205
+
+[node name="Camera2D" parent="SubViewportContainer/SubViewport/DreamWorld" index="0" unique_id=346384355]
+position = Vector2(500, 323)
+
+[editable path="SubViewportContainer/SubViewport/DreamWorld"]
