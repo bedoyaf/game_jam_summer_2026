@@ -3,7 +3,9 @@ name: Build Godot
 on:
   push:
     branches: [ main, master ]
-
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,24 +40,24 @@ jobs:
       - name: Export
         run: |
           mkdir -p build/${{ matrix.out }}
-          ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/index.html"
+          # Dynamická koncovka: Web potřebuje index.html, ostatní ne
+          if [ "${{ matrix.out }}" == "web" ]; then
+            ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/index.html"
+          else
+            # Pro Windows/Linux vytvoříme název podle platformy (např. game.exe)
+            ./godot --headless --export-release "${{ matrix.platform }}" "build/${{ matrix.out }}/game"
+          fi
       
-      - name: Deploy to GitHub Pages
-        if: matrix.platform == 'Web'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: build/web
-
       - name: Upload to Itch
-        if: matrix.platform == 'Web'
+        # ODSTRANĚNO 'if: matrix.platform == Web', aby to nahrálo všechno
         uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_CREDENTIALS }}
-          CHANNEL: html5
-          ITCH_GAME: "your-game"
-          ITCH_USER: "your-name"
-          PACKAGE: build/web
+          # Dynamický kanál: pro web bude 'html5', pro ostatní 'windows' nebo 'linux'
+          CHANNEL: ${{ matrix.out == 'web' && 'html5' || matrix.out }}
+          ITCH_GAME: "over_the_top"
+          ITCH_USER: "bedoyaf"
+          PACKAGE: build/${{ matrix.out }}
 
       - uses: actions/upload-artifact@v4
         with:
