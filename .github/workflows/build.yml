@@ -14,7 +14,7 @@ jobs:
         include:
           - platform: "Windows Desktop"
             out: windows
-          - platform: "Linux/X11"
+          - platform: "Linux"
             out: linux
           - platform: "Web"
             out: web
@@ -45,7 +45,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/Web
+          folder: build/web
 
       - name: Upload to Itch
         if: matrix.platform == 'Web'
@@ -55,7 +55,7 @@ jobs:
           CHANNEL: html5
           ITCH_GAME: "your-game"
           ITCH_USER: "your-name"
-          PACKAGE: build/Web
+          PACKAGE: build/web
 
       - uses: actions/upload-artifact@v4
         with:
