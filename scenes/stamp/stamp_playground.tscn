@@ -1,36 +1,11 @@
 [gd_scene format=3 uid="uid://bp13legi6bxkm"]
 
-[ext_resource type="Script" uid="uid://b5p61ncmw6bsj" path="res://scripts/stamp/stampSpot.gd" id="1_5nt8u"]
-[ext_resource type="Texture2D" uid="uid://b5bfva4h5g7vf" path="res://scripts/icon2.svg" id="2_clsae"]
-[ext_resource type="Script" uid="uid://i2b0mwb22iky" path="res://scripts/stamp/stampHand.gd" id="2_pemoa"]
-[ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="3_clsae"]
-[ext_resource type="Texture2D" uid="uid://c5rt1srmon0qf" path="res://filip/placeholdry/stamp_placeholder.png" id="3_qryhw"]
-[ext_resource type="Texture2D" uid="uid://cnb0ibsanym5t" path="res://filip/placeholdry/hand.png" id="6_qryhw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nt8u"]
-size = Vector2(125, 123)
+[ext_resource type="PackedScene" uid="uid://v0lv3wr1vfpp" path="res://scenes/stamp/stamp_spot.tscn" id="1_d0ih3"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="2_5nt8u"]
 
 [node name="StampPlayground" type="Node2D" unique_id=631869499]
 
-[node name="StampSpot" type="Node2D" parent="." unique_id=1623370097]
+[node name="StampSpot" parent="." unique_id=303319414 instance=ExtResource("1_d0ih3")]
 position = Vector2(468, 273)
-script = ExtResource("1_5nt8u")
-default_texture = ExtResource("2_clsae")
-stamped_texture = ExtResource("3_qryhw")
 
-[node name="Sprite2D" type="Sprite2D" parent="StampSpot" unique_id=1604066398]
-texture = ExtResource("3_clsae")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="StampSpot" unique_id=1181472037]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StampSpot/StaticBody2D" unique_id=1415252810]
-position = Vector2(-2, -2)
-shape = SubResource("RectangleShape2D_5nt8u")
-
-[node name="HanibalHand" type="Node2D" parent="." unique_id=1113081599]
-script = ExtResource("2_pemoa")
-
-[node name="Sprite2D" type="Sprite2D" parent="HanibalHand" unique_id=455498704]
-position = Vector2(68.000015, 230.99997)
-scale = Vector2(1.2096344, 1.0055554)
-texture = ExtResource("6_qryhw")
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("2_5nt8u")]

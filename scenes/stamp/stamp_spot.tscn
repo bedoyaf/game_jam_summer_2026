@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nt8u"]
 size = Vector2(125, 123)
 
-[node name="StampSpot" type="Node2D" unique_id=303319414]
+[node name="StampSpot" type="StaticBody2D" unique_id=186753513]
 script = ExtResource("1_g4nx1")
 default_texture = ExtResource("2_x0ufx")
 stamped_texture = ExtResource("3_5bf1e")
@@ -16,8 +16,6 @@ stamped_texture = ExtResource("3_5bf1e")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1634932465]
 texture = ExtResource("4_slyid")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2029598712]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=711293656]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711293656]
 position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_5nt8u")

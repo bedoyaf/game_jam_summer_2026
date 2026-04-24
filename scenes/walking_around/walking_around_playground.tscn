@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://day5yriymaa7w"]
+
+[ext_resource type="Texture2D" uid="uid://b61fkvu0d676r" path="res://filip/placeholdry/map.png" id="1_ljmvd"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="1_wryhr"]
+[ext_resource type="Script" uid="uid://cq3q2rjflpnme" path="res://scripts/walking_around/collision_generator.gd" id="2_eqdu6"]
+[ext_resource type="Script" uid="uid://dft2rvvy35w08" path="res://scripts/walking_around/player.gd" id="3_i02n7"]
+[ext_resource type="PackedScene" uid="uid://ugdxoekclc7k" path="res://scenes/walking_around/decision.tscn" id="3_wryhr"]
+[ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="4_wryhr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sihyj"]
+
+[node name="WalkingAroundPlayground" type="Node2D" unique_id=1492379574]
+
+[node name="WalkingAround" type="Node2D" parent="." unique_id=1781742553]
+
+[node name="Background" type="Sprite2D" parent="WalkingAround" unique_id=468636422]
+position = Vector2(3011, 1142)
+texture = ExtResource("1_ljmvd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WalkingAround/Background" unique_id=521710537]
+script = ExtResource("2_eqdu6")
+mask = ExtResource("1_ljmvd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WalkingAround/Background/StaticBody2D" unique_id=320147830]
+position = Vector2(-2551, -155)
+build_mode = 1
+polygon = PackedVector2Array(-331, 728, 160, 728, 147, 621, 246, 497, 487, -23, 1532, -23, 1522, 112, 613, 112, 417, 536, 452, 572, 889, 426, 1873, 436, 1868, 326, 1974, 200, 2237, -307, 3262, -312, 3249, -162, 2330, -169, 2128, 252, 2174, 287, 2631, 134, 3607, 141, 3592, 46, 3703, -92, 3941, -607, 4973, -605, 4973, -459, 4054, -467, 3856, -42, 3886, -12, 4335, -160, 5297, -153, 5289, -17, 4215, -5, 3959, 71, 3888, 161, 3673, 204, 3607, 264, 2492, 287, 2246, 367, 2159, 455, 1945, 490, 1877, 563, 768, 575, 514, 653, 454, 744, 233, 789, 157, 852, -352, 849)
+
+[node name="Decision1" parent="WalkingAround" unique_id=2124449466 instance=ExtResource("3_wryhr")]
+
+[node name="Player" type="CharacterBody2D" parent="WalkingAround" unique_id=2000745845]
+position = Vector2(191, 1771)
+scale = Vector2(2.1200001, 2.1200001)
+script = ExtResource("3_i02n7")
+squash_amount = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="WalkingAround/Player" unique_id=977378075]
+scale = Vector2(0.13085939, 0.18945314)
+texture = ExtResource("4_wryhr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkingAround/Player" unique_id=2068263917]
+shape = SubResource("CapsuleShape2D_sihyj")
+
+[node name="Camera2D" type="Camera2D" parent="WalkingAround/Player" unique_id=332822898]
+scale = Vector2(1.7547166, 1.7547166)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("1_wryhr")]
