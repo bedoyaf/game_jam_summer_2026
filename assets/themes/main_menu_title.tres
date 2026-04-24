@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://bh0bdmimjqt4m"]
+
+[ext_resource type="FontFile" uid="uid://biay1l4hxhgnw" path="res://assets/fonts/JetBrainsMonoNL-Regular.ttf" id="1_armot"]
+
+[resource]
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_armot")

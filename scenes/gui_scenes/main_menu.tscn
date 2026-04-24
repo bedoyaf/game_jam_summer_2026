@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://b54wjtpdbhcfn"]
 
+[ext_resource type="Theme" uid="uid://dec4ehymd5ad1" path="res://assets/themes/button_main_menu.tres" id="1_cu28x"]
 [ext_resource type="Script" uid="uid://blngbbtdptnqb" path="res://scripts/gui_scripts/main_menu.gd" id="1_ksp4i"]
+[ext_resource type="Theme" uid="uid://bh0bdmimjqt4m" path="res://assets/themes/main_menu_title.tres" id="3_ervn5"]
+[ext_resource type="Shader" uid="uid://crsdqlofc0y14" path="res://assets/shaders/main_menu_waves.gdshader" id="4_20lew"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kbut"]
+shader = ExtResource("4_20lew")
+shader_parameter/wave_speed = 3.0
+shader_parameter/wave_freq = 10.0
+shader_parameter/wave_width = 0.005
 
 [node name="MainMenu" type="Control" unique_id=1515886381]
 layout_mode = 3
@@ -9,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_cu28x")
 script = ExtResource("1_ksp4i")
 game_scene_path = "res://scenes/sample_scene.tscn"
 options_scene_path = "res://scenes/gui_scenes/options.tscn"
@@ -27,19 +37,33 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1253943942]
 layout_mode = 2
+theme = ExtResource("3_ervn5")
 text = "Moldus II"
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=868410094]
 layout_mode = 2
+theme = ExtResource("1_cu28x")
 text = "start"
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1616670794]
 layout_mode = 2
+theme = ExtResource("1_cu28x")
 text = "options"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=445283710]
 layout_mode = 2
+theme = ExtResource("1_cu28x")
 text = "quit"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=370312465]
+material = SubResource("ShaderMaterial_0kbut")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
