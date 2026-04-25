@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c5wnxqgfs084e"]
 
+[ext_resource type="Script" uid="uid://csigw66644ru7" path="res://scenes/gui_scenes/dream_level_control.gd" id="1_gjshj"]
+
 [node name="DreamLevelControl" type="Control" unique_id=595804779]
 z_index = 10
 layout_mode = 3
@@ -7,9 +9,14 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
+script = ExtResource("1_gjshj")
 
 [node name="HSlider" type="HSlider" parent="." unique_id=1192258322]
 layout_mode = 0
 offset_left = -46.0
 offset_right = 145.0
 offset_bottom = 44.0
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="HSlider" to="." method="emit_signal_change_dream_level"]
