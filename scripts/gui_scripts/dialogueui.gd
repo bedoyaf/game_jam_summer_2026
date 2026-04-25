@@ -16,11 +16,15 @@ func _ready():
 	panel.hide()
 
 func show_dialogue(text: Array[String]):
-	dialogue_run_id += 1
-	lines = text
-	current_line_index = 0
-	panel.show()
-	_show_next_line()
+	if panel.visible:
+		# Pokud už zrovna mluvíme, jednoduše ty texty přidáme do fronty za sebe!
+		lines.append_array(text)
+	else:
+		dialogue_run_id += 1
+		lines = text
+		current_line_index = 0
+		panel.show()
+		_show_next_line()
 
 func _show_next_line():
 	if current_line_index >= lines.size():
@@ -40,6 +44,9 @@ func _type_line(line: String, run_id: int) -> void:
 	skip_requested = false
 	
 	for i in line.length():
+		if run_id != dialogue_run_id:
+			return # Zombie loop abort!
+			
 		if skip_requested:
 			label.text = line
 			break

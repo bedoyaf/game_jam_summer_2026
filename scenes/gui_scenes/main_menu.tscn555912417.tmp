@@ -2,7 +2,6 @@
 
 [ext_resource type="Theme" uid="uid://dec4ehymd5ad1" path="res://assets/themes/button_main_menu.tres" id="1_cu28x"]
 [ext_resource type="Script" uid="uid://cr4g18j5gpujg" path="res://rolloj/MainMenu/main_menu.gd" id="2_dpk4b"]
-[ext_resource type="Texture2D" uid="uid://chiw63tw88mdn" path="res://assets/sprites/stamp.png" id="3_7b07g"]
 [ext_resource type="Shader" uid="uid://bc411qbagujpq" path="res://scenes/gui_scenes/paper_distortion.gdshader" id="3_bd0xb"]
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="4_20lew"]
 [ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="4_qcihl"]
@@ -38,9 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cu28x")
 script = ExtResource("2_dpk4b")
-stamp_texture = ExtResource("3_7b07g")
-
-[node name="StampContainer" type="Node2D" parent="." unique_id=2097844519]
 
 [node name="FloatingPapersContainer" type="Node2D" parent="." unique_id=2008587514]
 
@@ -1548,6 +1544,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("4_20lew")]
+position = Vector2(1071, 179)
+
 [node name="Timer" type="Timer" parent="." unique_id=2006861487]
 
 [node name="Button Manager" type="Control" parent="." unique_id=2028338739]
@@ -1629,29 +1628,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7b07g")
 text = "Quit
 "
 
-[node name="WholePaperArea" type="Area2D" parent="." unique_id=1715053442]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=1219850533]
-polygon = PackedVector2Array(1528, -264, -360, -168, -416, 816, 1632, 784)
-
-[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("4_20lew")]
-position = Vector2(1071, 179)
-
 [node name="FadeTransition" parent="." unique_id=1883376167 instance=ExtResource("10_7b07g")]
 visible = false
-top_level = true
-z_index = 25
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 1240.0
 offset_bottom = 728.0
-mouse_filter = 2
 
 [node name="FadeTimer" type="Timer" parent="FadeTransition" unique_id=213391065]
+
+[node name="StampContainer" type="Node2D" parent="." unique_id=2097844519]
+
+[node name="WholePaperArea" type="Area2D" parent="." unique_id=1715053442]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=1219850533]
+polygon = PackedVector2Array(1528, -264, -360, -168, -416, 816, 1632, 784)
 
 [connection signal="pressed" from="Button Manager/Control/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Manager/Control/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Button Manager/Control/Quit" to="." method="_on_quit_pressed"]
-[connection signal="input_event" from="WholePaperArea" to="." method="_on_paper_input"]
 [connection signal="timeout" from="FadeTransition/FadeTimer" to="." method="_on_fade_timer_timeout"]

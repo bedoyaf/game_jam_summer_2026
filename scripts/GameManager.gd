@@ -171,6 +171,9 @@ func _update_current_task() -> void:
 	task_updated.emit(task["id"], task["desc"])
 	stamp_target_activated.emit(task["target_group"])
 	print("Nový úkol: ", task["desc"])
+	
+	# Pokusí se zahrát úvodní text k tomuto konkrétnímu tasku (pokud existuje v JSONu)
+	trigger_dialogue(task["id"] + "_beginning")
 
 func register_stamp_hit(target_group: String) -> void:
 
