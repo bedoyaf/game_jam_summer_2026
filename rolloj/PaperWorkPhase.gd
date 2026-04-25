@@ -3,31 +3,57 @@ extends Node2D
 @export var paper_groups: Array[Node2D]
 var current_paper_index: int = 0
 
+@export var dream_controller: Node 
+
+@export var dream_progression: Dictionary = {
+	3: 0.1, 
+
+	4: 0.2, 
+
+	5: 0.99  
+
+}
+
 func _ready() -> void:
+
+	if dream_controller:
+		dream_controller.dream_level = 0.0
+
 	GameManager.stamp_placed.connect(_on_stamp_placed)
 	activate_current_paper()
 
 func activate_current_paper() -> void:
+
+	if dream_controller and dream_progression.has(current_paper_index):
+		var target_level = dream_progression[current_paper_index]
+
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.set_trans(Tween.TRANS_SINE)
+
+		tween.tween_property(dream_controller, "dream_level", target_level, 3.0)
+		print("Postup do snu: Úroveň mlhy se zvyšuje na ", target_level)
+
 	if current_paper_index < paper_groups.size():
 		var targets = "paper_" + str(current_paper_index) + "_yes,paper_" + str(current_paper_index) + "_no"
 		GameManager.stamp_target_activated.emit(targets)
-		
+
 		GameManager.trigger_dialogue("dialog_paper_" + str(current_paper_index))
 	else:
 		print("Všechny papíry orazítkovány! Přechod do snu...")
+
 		GameManager.change_state(GameManager.GameState.TRANSITION)
 
 func _on_stamp_placed(target_id: String) -> void:
 	var expected_prefix = "paper_" + str(current_paper_index)
-	
+
 	if target_id.begins_with(expected_prefix):
 		var paper = paper_groups[current_paper_index]
-		
-		# Místo schování zavoláme animaci odletu
+
 		if paper.has_method("fly_away"):
 			paper.fly_away()
 		else:
-			paper.hide() # Pojistka pro případ, že funkce neexistuje
-		
+			paper.hide() 
+
 		current_paper_index += 1
 		activate_current_paper()

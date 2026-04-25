@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bt1lnnhum50u2"]
 
-[ext_resource type="Script" uid="uid://c1vrwa5jflgmj" path="res://rolloj/PaperWorkPhase.gd" id="1_8p8ey"]
-[ext_resource type="Texture2D" uid="uid://dkodjvsy65nmo" path="res://assets/sprites/table.png" id="2_o4aeo"]
-[ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="2_p3dgq"]
-[ext_resource type="PackedScene" uid="uid://drlmt55gr6hqf" path="res://scenes/SinglePaper3.tscn" id="3_54dln"]
-[ext_resource type="PackedScene" uid="uid://km55tvof2gvh" path="res://scenes/SinglePaper2.tscn" id="3_o4aeo"]
-[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="6_6synq"]
-[ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="7_h2kjf"]
+[ext_resource type="Script" uid="uid://c1vrwa5jflgmj" path="res://rolloj/PaperWorkPhase.gd" id="1_u1u68"]
+[ext_resource type="Texture2D" uid="uid://dkodjvsy65nmo" path="res://assets/sprites/table.png" id="2_x537r"]
+[ext_resource type="PackedScene" uid="uid://drlmt55gr6hqf" path="res://scenes/SinglePaper3.tscn" id="3_cfq0f"]
+[ext_resource type="PackedScene" uid="uid://km55tvof2gvh" path="res://scenes/SinglePaper2.tscn" id="4_pjux3"]
+[ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="5_o3jky"]
+[ext_resource type="PackedScene" uid="uid://h1fwxmdtgxu0" path="res://scenes/gui_scenes/main.tscn" id="6_kp0ql"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="7_08o8g"]
+[ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="8_0cxu4"]
 
-[node name="PaperWorkPhase" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups")]
-script = ExtResource("1_8p8ey")
-paper_groups = [NodePath("Papers/PaperWork1/SinglePaper"), NodePath("Papers/PaperWork2/SinglePaper2"), NodePath("Papers/PaperWork3/SinglePaper"), NodePath("Papers/PaperWork4/SinglePaper"), NodePath("Papers/PaperWork5/SinglePaper")]
+[node name="MainScene" type="Node2D" unique_id=1970157443]
+script = ExtResource("1_u1u68")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850718065]
 layer = -1
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_o4aeo")
+texture = ExtResource("2_x537r")
 expand_mode = 1
 stretch_mode = 5
 
@@ -31,7 +31,7 @@ scale = Vector2(0.72, 0.72)
 
 [node name="PaperWork5" type="Node2D" parent="Papers" unique_id=1996219562]
 
-[node name="SinglePaper" parent="Papers/PaperWork5" unique_id=407088929 instance=ExtResource("3_54dln")]
+[node name="SinglePaper" parent="Papers/PaperWork5" unique_id=407088929 instance=ExtResource("3_cfq0f")]
 position = Vector2(199.99997, 599.99994)
 rotation = 0.1912134
 scale = Vector2(0.7815126, 0.7815126)
@@ -39,7 +39,7 @@ paper_index = 4
 
 [node name="PaperWork4" type="Node2D" parent="Papers" unique_id=116741996]
 
-[node name="SinglePaper" parent="Papers/PaperWork4" unique_id=190484181 instance=ExtResource("3_54dln")]
+[node name="SinglePaper" parent="Papers/PaperWork4" unique_id=190484181 instance=ExtResource("3_cfq0f")]
 position = Vector2(277.77777, 300)
 rotation = -0.07251805
 scale = Vector2(0.7815126, 0.7815126)
@@ -48,7 +48,7 @@ paper_index = 3
 [node name="PaperWork3" type="Node2D" parent="Papers" unique_id=1292973852]
 position = Vector2(137.94478, -451.45563)
 
-[node name="SinglePaper" parent="Papers/PaperWork3" unique_id=1912096283 instance=ExtResource("3_o4aeo")]
+[node name="SinglePaper" parent="Papers/PaperWork3" unique_id=1912096283 instance=ExtResource("4_pjux3")]
 position = Vector2(939.8328, 484.78897)
 scale = Vector2(0.67298394, 0.67298394)
 content_text = "Ojojojoj
@@ -59,7 +59,7 @@ paper_index = 2
 position = Vector2(551.7791, 112.86391)
 scale = Vector2(0.6152129, 0.6152129)
 
-[node name="SinglePaper2" parent="Papers/PaperWork2" unique_id=236530852 instance=ExtResource("2_p3dgq")]
+[node name="SinglePaper2" parent="Papers/PaperWork2" unique_id=236530852 instance=ExtResource("5_o3jky")]
 position = Vector2(403.47137, 575.08984)
 rotation = 0.25181222
 content_text = "Ja jsem
@@ -71,7 +71,7 @@ paper_index = 1
 position = Vector2(238.26825, 175.56607)
 scale = Vector2(0.6152129, 0.6152129)
 
-[node name="SinglePaper" parent="Papers/PaperWork1" unique_id=623173552 instance=ExtResource("2_p3dgq")]
+[node name="SinglePaper" parent="Papers/PaperWork1" unique_id=623173552 instance=ExtResource("5_o3jky")]
 position = Vector2(563.1447, 190.97359)
 rotation = -0.19300777
 content_text = "The soldiers are
@@ -82,7 +82,10 @@ sacrifice one
 of our elephants
 ?"
 
-[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("6_6synq")]
+[node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
+visible = false
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
 position = Vector2(1128, 464)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=294300650]
@@ -90,4 +93,4 @@ limit_left = 0
 limit_top = 0
 limit_right = 1152
 limit_bottom = 648
-script = ExtResource("7_h2kjf")
+script = ExtResource("8_0cxu4")
