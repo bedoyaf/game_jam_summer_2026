@@ -10,12 +10,14 @@ var orbit_center: Vector2 = Vector2.ZERO
 var current_angle: float = 0.0
 var dodges_left: int
 var dodge_timer: float = 0.0
+var base_scale: Vector2 = Vector2.ONE
 
 @onready var sprite = $Sprite2D
 @onready var stamp_goal = $StampGoal
 
 func _ready() -> void:
 	dodges_left = max_dodges
+	base_scale = scale
 	
 	# Use the initial placement in your scene as the center of the orbit!
 	orbit_center = global_position 
@@ -55,6 +57,10 @@ func _update_orbit(delta: float) -> void:
 	global_position = target_pos
 
 func _check_dodge() -> void:
+	# Only dodge if the eagle task is actually the CURRENT active task!
+	if stamp_goal and not stamp_goal.is_active:
+		return
+		
 	# `get_global_mouse_position()` inside the Eagle script pulls the correctly projected
 	# coordinate of the mouse in the Dream World! (Completely avoids Subviewport issues!)
 	var mouse_pos = get_global_mouse_position()
@@ -81,9 +87,9 @@ func _trigger_dodge() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", new_pos, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
-	# "Juice": Stretch the eagle during the dash
-	scale = Vector2(1.5, 0.5)
-	tween.parallel().tween_property(self, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_BOUNCE)
+	# "Juice": Stretch the eagle dynamically based on its original size!
+	scale = Vector2(base_scale.x * 1.5, base_scale.y * 0.5)
+	tween.parallel().tween_property(self, "scale", base_scale, 0.45).set_trans(Tween.TRANS_BOUNCE)
 	
 	if dodges_left <= 0:
 		print("Eagle Exhausted! Ready for Stamping!")
@@ -96,7 +102,7 @@ func _on_eagle_defeated() -> void:
 	var tween = create_tween()
 	# Fall out of the sky and spin
 	tween.tween_property(self, "position:y", position.y + 400, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	tween.parallel().tween_property(self, "rotation", rotation + PI*3, 0.5)
+	tween.parallel().tween_property(self, "rotation", rotation + PI*3, 1.0)
 	tween.tween_callback(self.queue_free)
 	
 	# TODO: Spawn your food dropping logic here or use a GameManager task!

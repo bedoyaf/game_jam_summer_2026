@@ -8,7 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://d1d0qj7lf51be" path="res://assets/sprites/terrain/onerock.png" id="5_ku1nk"]
 [ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_yheev"]
 [ext_resource type="Script" uid="uid://cc3qew7f0nhaa" path="res://scripts/walking_around/path_block.gd" id="6_bkyfo"]
+[ext_resource type="PackedScene" uid="uid://b4j2fuf8kwou0" path="res://rolloj/blockingObject.tscn" id="6_q3go6"]
+[ext_resource type="PackedScene" uid="uid://bscf8ml23lsyl" path="res://rolloj/bridge.tscn" id="7_2b4uk"]
+[ext_resource type="PackedScene" uid="uid://corqp025kynn8" path="res://rolloj/Eagle.tscn" id="8_83sk2"]
 [ext_resource type="Texture2D" uid="uid://dpcbae3xqenq5" path="res://assets/sprites/characters/hannibal/standforward.png" id="8_aemco"]
+[ext_resource type="PackedScene" uid="uid://bdj1vwql230w2" path="res://rolloj/DecisionGate.tscn" id="9_nyrub"]
+[ext_resource type="Texture2D" uid="uid://ct2yo8g08ytrk" path="res://assets/sprites/characters/hannibal/walkforward.png" id="9_q3go6"]
 [ext_resource type="Texture2D" uid="uid://cmyhyhgyrbtul" path="res://assets/sprites/characters/hannibal/walkforward2.png" id="10_2b4uk"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
 [ext_resource type="Texture2D" uid="uid://cymxjyhabt441" path="res://assets/sprites/characters/hannibal/walkback.png" id="12_nyrub"]
@@ -1072,22 +1077,84 @@ shape = SubResource("RectangleShape2D_yheev")
 position = Vector2(-403, -1718)
 
 [node name="boulder" type="Node2D" parent="Background/Events" unique_id=1175955134]
-position = Vector2(-756, 1396)
+position = Vector2(-1261, 1654)
+
+[node name="BlockingObject" parent="Background/Events/boulder" unique_id=1824987023 instance=ExtResource("6_q3go6")]
+scale = Vector2(2.7644353, 2.7644353)
 
 [node name="decisionElephant" type="Node2D" parent="Background/Events" unique_id=1309633687]
 position = Vector2(479, 999)
 
+[node name="DecisionGate" parent="Background/Events/decisionElephant" unique_id=1795052714 instance=ExtResource("9_nyrub")]
+position = Vector2(-145, -34)
+rotation = -0.44549268
+scale = Vector2(8.151424, 8.151424)
+
+[node name="StampGoal" parent="Background/Events/decisionElephant/DecisionGate" index="2" unique_id=1065439230]
+target_id = "path_A_1"
+
+[node name="StampGoal2" parent="Background/Events/decisionElephant/DecisionGate" index="3" unique_id=961468286]
+target_id = "path_B_1"
+
 [node name="River" type="Node2D" parent="Background/Events" unique_id=916231898]
 position = Vector2(1555, 305)
 
-[node name="DecisionGauls" type="Node2D" parent="Background/Events" unique_id=1848309217]
-position = Vector2(3090, -278)
+[node name="Bridge" parent="Background/Events/River" unique_id=1935920774 instance=ExtResource("7_2b4uk")]
+position = Vector2(210, -45)
+rotation = -0.514694
+scale = Vector2(1.5705163, 1.5705163)
 
 [node name="eagle" type="Node2D" parent="Background/Events" unique_id=107362967]
 position = Vector2(4530, -1183)
 
+[node name="Eagle" parent="Background/Events/eagle" unique_id=1197796079 instance=ExtResource("8_83sk2")]
+position = Vector2(20, -6)
+scale = Vector2(2.2922974, 2.2922974)
+orbit_radius = 500.0
+orbit_speed = 4.0
+dodge_distance = 120.0
+
+[node name="Sprite2D" parent="Background/Events/eagle/Eagle" index="0" unique_id=45350424]
+z_index = 8
+
+[node name="StampGoal" parent="Background/Events/eagle/Eagle" index="1" unique_id=1065439230]
+target_id = "eagle"
+
 [node name="GaulFortress" type="Node2D" parent="Background/Events" unique_id=2142076716]
 position = Vector2(5600, -1697)
+
+[node name="BlockingObject" parent="Background/Events/GaulFortress" unique_id=1712811 instance=ExtResource("6_q3go6")]
+position = Vector2(-100.999985, 125.99999)
+scale = Vector2(4.189172, 4.189172)
+
+[node name="StampGoal" parent="Background/Events/GaulFortress/BlockingObject" index="2" unique_id=1065439230]
+target_id = "obstacle2"
+
+[node name="DecisionGauls" type="Node2D" parent="Background/Events" unique_id=1848309217]
+position = Vector2(3090, -278)
+
+[node name="DecisionGate" parent="Background/Events/DecisionGauls" unique_id=1472148977 instance=ExtResource("9_nyrub")]
+position = Vector2(4209, -2142.0002)
+rotation = -0.5552314
+scale = Vector2(12.540083, 12.540083)
+
+[node name="CollisionShape2D" parent="Background/Events/DecisionGauls/DecisionGate" index="0" unique_id=1631215411]
+position = Vector2(-8.625265, -33.596676)
+scale = Vector2(2.9945903, 2.9945903)
+
+[node name="CollisionShape2D2" parent="Background/Events/DecisionGauls/DecisionGate" index="1" unique_id=808481819]
+position = Vector2(-1.1068611, 37.78833)
+scale = Vector2(1.9086516, 1.9086516)
+
+[node name="StampGoal" parent="Background/Events/DecisionGauls/DecisionGate" index="2" unique_id=1065439230]
+position = Vector2(-8.625265, -33.596676)
+scale = Vector2(0.35987085, 0.35987085)
+target_id = "path_A_2"
+
+[node name="StampGoal2" parent="Background/Events/DecisionGauls/DecisionGate" index="3" unique_id=961468286]
+position = Vector2(-1.1068611, 37.788326)
+scale = Vector2(0.23871458, 0.23871458)
+target_id = "path_B_2"
 
 [node name="GaulPursuit" type="Node2D" parent="Background/Events" unique_id=1198718798]
 position = Vector2(6373, -2000)
@@ -1136,3 +1203,10 @@ shape = SubResource("CapsuleShape2D_sihyj")
 scale = Vector2(1.7547166, 1.7547166)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[editable path="Background/Events/boulder/BlockingObject"]
+[editable path="Background/Events/decisionElephant/DecisionGate"]
+[editable path="Background/Events/River/Bridge"]
+[editable path="Background/Events/eagle/Eagle"]
+[editable path="Background/Events/GaulFortress/BlockingObject"]
+[editable path="Background/Events/DecisionGauls/DecisionGate"]

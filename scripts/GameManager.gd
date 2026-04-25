@@ -27,32 +27,58 @@ signal hand_clicked()
 var current_task_index: int = 0
 var task_list: Array[Dictionary] = [
 	{
-		"id": "intro_cave",
-		"desc": "Prozkoumej snovou jeskyni.",
-		"target_group": "obstacle1,obstacle2,obstacle3,bridge_stamps",
+		"id": "tree_blocking",
+		"desc": "Cestu blokuje strom. Zbav se ho razítkem.",
+		"target_group": "obstacle1",
 		"required_stamps": 3,
 		"current_stamps": 0
 	},
 	{
-		"id": "build_bridge",
-		"desc": "Cesta je stržená. Postav most pomocí razítek (Ano/Ne).",
-		"target_group": "bridge_stamps", 
-
-		"required_stamps": 4,            
-
-		"current_stamps": 0
-	},
-	{
-		"id": "feed_army",
-		"desc": "Vojáci hladoví. Orazítkuj slona pro 'přerozdělení' zásob.",
-		"target_group": "elephant_stamp",
+		"id": "elephant_decisions",
+		"desc": "Vyber si cestu: Zleva nebo zprava?",
+		"target_group": "path_A_1,path_B_1",
 		"required_stamps": 1,
 		"current_stamps": 0
 	},
 	{
-		"id": "defeat_romans",
-		"desc": "Zasněžená hlídka! Rozrazítkuj protivníky.",
-		"target_group": "enemy_stamps",
+		"id": "river_bridge",
+		"desc": "Cesta je stržená. Postav most.",
+		"target_group": "bridge_stamps",
+		"required_stamps": 4,
+		"current_stamps": 0
+	},
+	{
+		"id": "food_eagle",
+		"desc": "Chyť kroužícího orla se zásobami!",
+		"target_group": "eagle",
+		"required_stamps": 1,
+		"current_stamps": 0
+	},
+	{
+		"id": "galic_blockade",
+		"desc": "Galové bourají blokádu. Orazítkuj ji pryč.",
+		"target_group": "obstacle2",
+		"required_stamps": 3,
+		"current_stamps": 0
+	},
+	{
+		"id": "gauls_decision",
+		"desc": "Křižovatka před Galy. Zvol postup.",
+		"target_group": "path_A_2,path_B_2",
+		"required_stamps": 1,
+		"current_stamps": 0
+	},
+	{
+		"id": "ambush_from_behind",
+		"desc": "Léčka zezadu! Zbav se útočníků.",
+		"target_group": "ambush",
+		"required_stamps": 1,
+		"current_stamps": 0
+	},
+	{
+		"id": "final_battle",
+		"desc": "Finální útok: Potlač odpor Římanů!",
+		"target_group": "battle",
 		"required_stamps": 3,
 		"current_stamps": 0
 	}
@@ -62,6 +88,10 @@ var task_list: Array[Dictionary] = [
 var last_stamp_msec: int = 0
 var stamp_cooldown_msec: int = 350 
 var current_stamp_rotation: float = 0.0 # NOVÉ: Sem si uložíme rotaci pro daný klik
+
+# --- AUDIO ZVUKY RAZÍTEK ---
+var stamp_sounds: Array[AudioStream] = []
+var stamp_audio_player: AudioStreamPlayer
 
 func is_stamp_allowed() -> bool:
 	var now = Time.get_ticks_msec()
@@ -81,9 +111,20 @@ func record_stamp() -> void:
 		current_stamp_rotation = randf_range(-0.3, 0.3)
 		camera_shake.emit(25.0)
 		
+		if stamp_sounds.size() > 0:
+			stamp_audio_player.stream = stamp_sounds.pick_random()
+			stamp_audio_player.play()
+		
 	last_stamp_msec = now
 
 func _ready() -> void:
+	# Inicializace zvukového přehrávače
+	stamp_audio_player = AudioStreamPlayer.new()
+	add_child(stamp_audio_player)
+	
+	# Načtení 6 zvukových souborů
+	for i in range(1, 7):
+		stamp_sounds.append(load("res://assets/sounds/Stamps/stamp%d.wav" % i))
 
 	change_state(GameState.PAPERWORK)
 
@@ -140,7 +181,8 @@ func register_stamp_hit(target_group: String) -> void:
 
 	var current_task = task_list[current_task_index]
 
-	if current_task["target_group"] == target_group:
+	# Důležité: Split(',') povoluje kombo jako "path_A_1,path_B_1"
+	if target_group in current_task["target_group"].split(","):
 		current_task["current_stamps"] += 1
 		print("Razítko položeno! (", current_task["current_stamps"], "/", current_task["required_stamps"], ")")
 

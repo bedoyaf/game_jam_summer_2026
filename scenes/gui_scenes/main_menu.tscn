@@ -3,12 +3,13 @@
 [ext_resource type="Theme" uid="uid://dec4ehymd5ad1" path="res://assets/themes/button_main_menu.tres" id="1_cu28x"]
 [ext_resource type="Script" uid="uid://blngbbtdptnqb" path="res://scripts/gui_scripts/main_menu.gd" id="1_ksp4i"]
 [ext_resource type="Shader" uid="uid://bc411qbagujpq" path="res://scenes/gui_scenes/paper_distortion.gdshader" id="3_bd0xb"]
-[ext_resource type="Theme" uid="uid://bh0bdmimjqt4m" path="res://assets/themes/main_menu_title.tres" id="3_ervn5"]
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="4_20lew"]
 [ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="4_qcihl"]
 [ext_resource type="Texture2D" uid="uid://c43jpbnwo6rjw" path="res://assets/sprites/paper2.png" id="5_dpk4b"]
 [ext_resource type="Texture2D" uid="uid://ccm5wqamwclot" path="res://assets/sprites/paper3.png" id="6_7b07g"]
 [ext_resource type="Shader" uid="uid://ctsjpdvtecisj" path="res://scenes/gui_scenes/blur.gdshader" id="7_qcihl"]
+[ext_resource type="FontFile" uid="uid://shcov8h7agto" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="9_dpk4b"]
+[ext_resource type="PackedScene" path="res://rolloj/MainMenu/fade_transition.tscn" id="10_7b07g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6nxrb"]
 shader = ExtResource("3_bd0xb")
@@ -20,6 +21,12 @@ shader_parameter/wave_width = 0.005
 shader = ExtResource("7_qcihl")
 shader_parameter/blur_strength = 4.0
 shader_parameter/blur_iterations = 2.0000000475
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b07g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpk4b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainMenu" type="Control" unique_id=1515886381]
 layout_mode = 3
@@ -1540,56 +1547,92 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="FloatingPaperMain" type="Node2D" parent="." unique_id=1775707995]
-visible = false
-position = Vector2(676.99994, 299)
-rotation = 3.118475
-scale = Vector2(2.418193, 2.418193)
-
-[node name="Sprite2D" type="Sprite2D" parent="FloatingPaperMain" unique_id=461808350]
-scale = Vector2(0.30833334, 0.30833334)
-texture = ExtResource("4_qcihl")
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=913735320]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=375073688]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1253943942]
-layout_mode = 2
-theme = ExtResource("3_ervn5")
-text = "Over
-the Alps"
-horizontal_alignment = 1
-
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=868410094]
-layout_mode = 2
-theme = ExtResource("1_cu28x")
-text = "start"
-
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1616670794]
-layout_mode = 2
-theme = ExtResource("1_cu28x")
-text = "options"
-
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=445283710]
-layout_mode = 2
-theme = ExtResource("1_cu28x")
-text = "quit"
-
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("4_20lew")]
 position = Vector2(1071, 179)
 
 [node name="Timer" type="Timer" parent="." unique_id=2006861487]
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="Button Manager" type="Control" parent="." unique_id=2028338739]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="Button Manager" unique_id=758671704]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -66.0
+offset_right = 773.0
+offset_bottom = 97.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_dpk4b")
+theme_override_font_sizes/font_size = 100
+text = "Hannibal"
+
+[node name="Control" type="Control" parent="Button Manager" unique_id=1463010789]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -132.0
+offset_bottom = 148.00012
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Button Manager/Control" unique_id=561629844]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.5
+offset_right = 121.5
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7b07g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dpk4b")
+text = "Start"
+
+[node name="Options" type="Button" parent="Button Manager/Control" unique_id=338240485]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -33.5
+offset_right = 121.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7b07g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7b07g")
+text = "Options"
+
+[node name="Quit" type="Button" parent="Button Manager/Control" unique_id=1558486052]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.5
+offset_top = -67.0
+offset_right = 121.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7b07g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7b07g")
+text = "Quit
+"
+
+[node name="FadeTransition2" parent="." unique_id=1883376167 instance=ExtResource("10_7b07g")]
+visible = false
+layout_mode = 0
+
+[node name="FadeTimer" type="Timer" parent="FadeTransition2" unique_id=213391065]
