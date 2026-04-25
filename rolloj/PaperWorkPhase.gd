@@ -18,15 +18,16 @@ func activate_current_paper() -> void:
 		GameManager.change_state(GameManager.GameState.TRANSITION)
 
 func _on_stamp_placed(target_id: String) -> void:
-	# Zkontrolujeme, jestli razítko, které právě padlo, patřilo k aktuálnímu papíru
 	var expected_prefix = "paper_" + str(current_paper_index)
 	
 	if target_id.begins_with(expected_prefix):
-		print("Papír " + str(current_paper_index) + " vyřešen!")
+		var paper = paper_groups[current_paper_index]
 		
-		# Schováme odrazítkovaný papír (nebo ho můžeš smazat pomocí queue_free())
-		paper_groups[current_paper_index].hide()
+		# Místo schování zavoláme animaci odletu
+		if paper.has_method("fly_away"):
+			paper.fly_away()
+		else:
+			paper.hide() # Pojistka pro případ, že funkce neexistuje
 		
-		# Jdeme na další
 		current_paper_index += 1
 		activate_current_paper()

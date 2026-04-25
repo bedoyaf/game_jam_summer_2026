@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_qd4jl"]
 [ext_resource type="Texture2D" uid="uid://c43jpbnwo6rjw" path="res://assets/sprites/paper2.png" id="2_da8e4"]
-[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://rolloj/StampGoal.tscn" id="3_s0w1f"]
+[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="2_s0w1f"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_s0w1f"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="4_s0w1f"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
@@ -10,10 +11,26 @@ viewport_path = NodePath("SubViewport2")
 
 [node name="SinglePaper" type="Node2D" unique_id=407088929]
 script = ExtResource("1_qd4jl")
+stamp_texture = ExtResource("2_s0w1f")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342278904]
+[node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]
+clip_children = 2
 position = Vector2(-120, 0)
 texture = ExtResource("2_da8e4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
+position = Vector2(404, -4.9999924)
+rotation = 0.35762757
+scale = Vector2(1.1311156, 1.2284082)
+skew = 0.076794505
+texture = SubResource("ViewportTexture_da8e4")
+
+[node name="StampContainer" type="Node2D" parent="PaperSprite" unique_id=522150222]
+
+[node name="WholePaperArea" type="Area2D" parent="." unique_id=374693915]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=880626576]
+polygon = PackedVector2Array(207, -295, -175, 234, 264, 423, 521, -251)
 
 [node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_s0w1f")]
 position = Vector2(-29, 202)
@@ -43,10 +60,3 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
 pixel_size = 0.0017
 autowrap_trim_flags = 64
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1828836065]
-position = Vector2(284, -4.9999924)
-rotation = 0.35762757
-scale = Vector2(1.1311156, 1.2284082)
-skew = 0.07679449
-texture = SubResource("ViewportTexture_da8e4")

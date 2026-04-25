@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dmcpcrtcwmkw7"]
+
+[ext_resource type="Script" uid="uid://sifl3vt4m87q" path="res://scripts/stamp_goal.gd" id="1_dgtxa"]
+[ext_resource type="Texture2D" uid="uid://blxygr7upb4xb" path="res://mira/icon.svg" id="2_4lsh0"]
+[ext_resource type="Texture2D" uid="uid://c5rt1srmon0qf" path="res://filip/placeholdry/stamp_placeholder.png" id="3_h6s18"]
+[ext_resource type="Texture2D" uid="uid://dyqm5bjm5iica" path="res://rolloj/indicator.png" id="4_gopf1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cu48"]
+
+[node name="StampGoal" type="Area2D" unique_id=1065439230]
+script = ExtResource("1_dgtxa")
+default_texture = ExtResource("2_4lsh0")
+stamped_texture = ExtResource("3_h6s18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1051562106]
+scale = Vector2(6.445, 6.445)
+shape = SubResource("CircleShape2D_6cu48")
+
+[node name="Indicator" type="Sprite2D" parent="." unique_id=927250942]
+position = Vector2(-5, 1)
+scale = Vector2(0.79999846, 0.79999846)
+texture = ExtResource("4_gopf1")

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://drlmt55gr6hqf"]
 
 [ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_n8xtm"]
+[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="2_qc2sd"]
 [ext_resource type="Texture2D" uid="uid://ccm5wqamwclot" path="res://assets/sprites/paper3.png" id="2_yo5pt"]
-[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://rolloj/StampGoal.tscn" id="3_qc2sd"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_qc2sd"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="4_qc2sd"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
@@ -10,10 +11,26 @@ viewport_path = NodePath("SubViewport3")
 
 [node name="SinglePaper" type="Node2D" unique_id=407088929]
 script = ExtResource("1_n8xtm")
+stamp_texture = ExtResource("2_qc2sd")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342278904]
+[node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]
+clip_children = 2
 position = Vector2(-120, 0)
 texture = ExtResource("2_yo5pt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
+position = Vector2(-280.00003, -207.99998)
+rotation = -0.34592462
+scale = Vector2(1.2184701, 1.3232766)
+skew = -0.05235994
+texture = SubResource("ViewportTexture_da8e4")
+
+[node name="StampContainer" type="Node2D" parent="PaperSprite" unique_id=1885132113]
+
+[node name="WholePaperArea" type="Area2D" parent="." unique_id=490507422]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=1358190111]
+polygon = PackedVector2Array(-632, -320, -392, 248, 48, 56, -288, -448)
 
 [node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_qc2sd")]
 position = Vector2(-344, 112)
@@ -52,10 +69,3 @@ HAWK TUAH
 Polib mi prdel
 zmrde"
 autowrap_trim_flags = 64
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1828836065]
-position = Vector2(-400.00003, -207.99998)
-rotation = -0.34592462
-scale = Vector2(1.2184701, 1.3232765)
-skew = -0.05235988
-texture = SubResource("ViewportTexture_da8e4")

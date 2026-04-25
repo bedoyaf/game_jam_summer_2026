@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="2_p3dgq"]
 [ext_resource type="PackedScene" uid="uid://drlmt55gr6hqf" path="res://scenes/SinglePaper3.tscn" id="3_54dln"]
 [ext_resource type="PackedScene" uid="uid://km55tvof2gvh" path="res://scenes/SinglePaper2.tscn" id="3_o4aeo"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="6_6synq"]
 
 [node name="PaperWorkPhase" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups")]
 script = ExtResource("1_8p8ey")
@@ -68,3 +69,6 @@ scale = Vector2(0.6152129, 0.6152129)
 position = Vector2(550.3651, 428.06174)
 rotation = -0.19300777
 content_text = "Amogus"
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("6_6synq")]
+position = Vector2(1128, 464)
