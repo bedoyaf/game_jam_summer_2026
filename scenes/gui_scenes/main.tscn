@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ufq1fi25rnlj" path="res://scenes/gui_scenes/dream_controller_script.tscn" id="1_vlhxr"]
 [ext_resource type="Shader" uid="uid://bfjp2fu6vpha8" path="res://assets/shaders/dream_world_perlin_absolute.gdshader" id="2_vlhxr"]
-[ext_resource type="PackedScene" uid="uid://cdqrx5blwkbn2" path="res://scenes/walking_around/walking_around_martin.tscn" id="5_mx5fj"]
+[ext_resource type="PackedScene" uid="uid://5wllco1gdak3" path="res://scenes/walking_around/walking_around.tscn" id="3_vlhxr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vlhxr"]
 noise_type = 3
@@ -47,4 +47,5 @@ handle_input_locally = false
 size = Vector2i(1300, 723)
 render_target_update_mode = 4
 
-[node name="WalkingAround" parent="SubViewportContainer/SubViewport" unique_id=158276549 instance=ExtResource("5_mx5fj")]
+[node name="WalkingAround" parent="SubViewportContainer/SubViewport" unique_id=1958117219 instance=ExtResource("3_vlhxr")]
+position = Vector2(-86, -29)
