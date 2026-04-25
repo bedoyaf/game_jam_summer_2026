@@ -1,6 +1,30 @@
+@tool
+
 extends Node
 
-@onready var sub_viewport_container: SubViewportContainer = $"../SubViewportContainer"
+#@onready var sub_viewport_container: SubViewportContainer = $"../SubViewportContainer"
+
+@export_category("Mist Parameters")
+@export_range(-2.0, 2.0) var noise_offset_speed_x: float = 0.5
+@export_range(-2.0, 2.0) var noise_offset_speed_y: float = 0.1
+@export_range(-5.0, 5.0) var add_alpha_shader: float = 0.1
+@export_range(0.8, 0.999) var max_alpha_shader: float = 0.8
+@export_range(0.0, 1.0) var alpha_threshold_shader: float = 0.1
+@export_range(0.0, 5.0) var speed_shader: float = 2.0
+@export_range(0.0, 20.0) var frequency_shader: float = 10.0
+@export_range(0.001, 0.05) var amplitude_shader: float = 10.0
+@export_range(0.05, 0.7) var edge_softness_shader: float = 0.4
+
+@export_category("Assignables")
+@export var sub_viewport_container: SubViewportContainer:
+	set(value):
+		sub_viewport_container = value
+		# Trigger an update or check logic here
+		if sub_viewport_container:
+			print("Container found!")
+			
+			
+
 
 var my_material: Material = null
 var my_perlin_noise: FastNoiseLite = null
@@ -14,21 +38,33 @@ var container_minimum_y: int = 1
 var container_maximum_x: int = 1200
 var container_maximum_y: int = 800
 
+
+
 func _ready():
 	
 	my_material = sub_viewport_container.material
 	var noise_tex = my_material.get_shader_parameter("noise_texture") as NoiseTexture2D
-
-	
 	noise = noise_tex.noise
 		
 
 func _process(delta):
-	#print("no")
 	offset_noise()
 	handle_percentage(delta)
 	handle_viewport_size()
+	set_shader_params()
 	
+	
+
+func set_shader_params():
+	my_material.set_shader_parameter("alpha_addition_threshold", alpha_threshold_shader)
+	my_material.set_shader_parameter("max_alpha", max_alpha_shader)
+	my_material.set_shader_parameter("add_alpha", add_alpha_shader)
+	my_material.set_shader_parameter("speed", speed_shader)
+	my_material.set_shader_parameter("frequency", frequency_shader)
+	my_material.set_shader_parameter("amplitude", amplitude_shader)
+	my_material.set_shader_parameter("edge_softness", edge_softness_shader)
+
+
 func handle_percentage(delta):
 	if Input.is_action_pressed("ui_right"):
 		percentage += delta * percentage_speed
@@ -42,8 +78,9 @@ func handle_percentage(delta):
 
 func offset_noise():
 	if noise:
-		noise.offset += Vector3(0.5, 0.1, 0.0)
+		noise.offset += Vector3(noise_offset_speed_x, noise_offset_speed_y, 0.0)
 		
 func handle_viewport_size():
+
 	sub_viewport_container.custom_minimum_size.x = 1 + int(container_maximum_x * percentage)
 	sub_viewport_container.custom_minimum_size.y = 1 + int(container_maximum_y * percentage)
