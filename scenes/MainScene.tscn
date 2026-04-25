@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="7_08o8g"]
 [ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="8_0cxu4"]
 [ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="12_o3jky"]
+[ext_resource type="PackedScene" uid="uid://83l3bjlh1upp" path="res://rolloj/MainMenu/fade_transition.tscn" id="13_kp0ql"]
 
 [node name="MainScene" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups", "dream_controller")]
 script = ExtResource("1_u1u68")
@@ -190,6 +191,16 @@ script = ExtResource("8_0cxu4")
 
 [node name="Dialogue" parent="." unique_id=401222758 instance=ExtResource("12_o3jky")]
 z_index = 40
+
+[node name="FadeTransition" parent="." unique_id=1883376167 instance=ExtResource("13_kp0ql")]
+top_level = true
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1240.0
+offset_bottom = 728.0
+mouse_filter = 2
+
+[node name="FadeTimer" type="Timer" parent="FadeTransition" unique_id=1383105577]
 
 [editable path="DreamCore"]
 [editable path="Dialogue"]

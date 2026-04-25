@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://caxuexhnejeg0"]
 
-[ext_resource type="PackedScene" path="res://rolloj/MainMenu/fade_transition.tscn" id="1_kn7us"]
+[ext_resource type="PackedScene" uid="uid://83l3bjlh1upp" path="res://rolloj/MainMenu/fade_transition.tscn" id="1_kn7us"]
 
 [node name="Main Menu" type="Node2D" unique_id=1159030830]
 

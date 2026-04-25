@@ -15,6 +15,8 @@ var current_paper_index: int = 0
 }
 
 func _ready() -> void:
+		
+	$FadeTransition/AnimationPlayer.play("fade_out")
 
 	if dream_controller:
 		dream_controller.dream_level = 0.0
@@ -37,13 +39,25 @@ func activate_current_paper() -> void:
 	if current_paper_index < paper_groups.size():
 		var targets = "paper_" + str(current_paper_index) + "_yes,paper_" + str(current_paper_index) + "_no"
 		GameManager.stamp_target_activated.emit(targets)
-		GameManager.trigger_dialogue("dialog_paper_" + str(current_paper_index))
+		
+		# Vlastní hardcoded spouštěče pro předpřipravené texty
+		if current_paper_index == 0:
+			GameManager.trigger_dialogue("beginning_beginning")
+		elif current_paper_index == 2:
+			GameManager.trigger_dialogue("stamped_just_table_beginning")
+		elif current_paper_index >= paper_groups.size() - 1:
+			GameManager.trigger_dialogue("last_real_stamp_beginning")
+			
 	else:
 		print("Všechny papíry orazítkovány! Přechod do snu...")
+		
+		GameManager.trigger_dialogue("dream_fade_beginning")
+		await get_tree().create_timer(2.0).timeout
 		
 		# 1. Přepneme do přechodu (shadery už ti jedou z předchozího Tweenu)
 		GameManager.change_state(GameManager.GameState.TRANSITION)
 		
+		GameManager.trigger_dialogue("dream_fade_completed")
 		# 2. Počkáme například 2 sekundy (aby měl hráč čas vstřebat vizuál)
 		await get_tree().create_timer(1.0).timeout
 		
@@ -60,6 +74,12 @@ func _on_stamp_placed(target_id: String) -> void:
 			paper.fly_away()
 		else:
 			paper.hide() 
+			
+		# Spouštěče pro chvíli KDY se papír označí razítkem!
+		if current_paper_index == 2:
+			GameManager.trigger_dialogue("stamped_just_table_completed")
+		elif current_paper_index >= paper_groups.size() - 1:
+			GameManager.trigger_dialogue("last_real_stamp_completed")
 
 		current_paper_index += 1
 		activate_current_paper()
