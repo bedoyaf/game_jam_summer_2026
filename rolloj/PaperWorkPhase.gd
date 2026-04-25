@@ -37,13 +37,19 @@ func activate_current_paper() -> void:
 	if current_paper_index < paper_groups.size():
 		var targets = "paper_" + str(current_paper_index) + "_yes,paper_" + str(current_paper_index) + "_no"
 		GameManager.stamp_target_activated.emit(targets)
-
 		GameManager.trigger_dialogue("dialog_paper_" + str(current_paper_index))
 	else:
 		print("Všechny papíry orazítkovány! Přechod do snu...")
-
+		
+		# 1. Přepneme do přechodu (shadery už ti jedou z předchozího Tweenu)
 		GameManager.change_state(GameManager.GameState.TRANSITION)
-
+		
+		# 2. Počkáme například 2 sekundy (aby měl hráč čas vstřebat vizuál)
+		await get_tree().create_timer(1.0).timeout
+		
+		# 3. ODSTARTUJEME SEN! (Tohle probudí GameManager a pošle první úkol)
+		GameManager.change_state(GameManager.GameState.DREAM_WORLD)
+		
 func _on_stamp_placed(target_id: String) -> void:
 	var expected_prefix = "paper_" + str(current_paper_index)
 

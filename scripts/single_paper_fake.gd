@@ -25,11 +25,13 @@ func _update_label() -> void:
 		label_3d.text = content_text
 
 func _on_paper_input(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	# NOVÉ: Pokud už nejsme ve fázi papírování (např. jsme ve snu), ignoruj kliknutí!
+	if GameManager.current_state != GameManager.GameState.PAPERWORK:
+		return
 
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if GameManager.is_stamp_allowed():
 			GameManager.record_stamp()
-
 			var click_pos = get_local_mouse_position()
 			create_visual_stamp(click_pos)
 

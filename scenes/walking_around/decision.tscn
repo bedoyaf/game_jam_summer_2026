@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ugdxoekclc7k"]
 
-[ext_resource type="Script" uid="uid://tfwcgt1p08ca" path="res://scripts/walking_around/decision_manager.gd" id="1_xyfs2"]
 [ext_resource type="PackedScene" uid="uid://v0lv3wr1vfpp" path="res://scenes/stamp/stamp_spot.tscn" id="2_sps4q"]
 [ext_resource type="Script" uid="uid://b5pp6fmnt1lr7" path="res://scripts/walking_around/teleportation.gd" id="3_4d2pf"]
 [ext_resource type="Script" uid="uid://cc3qew7f0nhaa" path="res://scripts/walking_around/path_block.gd" id="4_s4ftt"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="4_xyfs2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sihyj"]
 size = Vector2(114, 136)
@@ -12,10 +12,7 @@ size = Vector2(114, 136)
 a = Vector2(-14, -71)
 b = Vector2(-18, 68)
 
-[node name="Decision1" type="Node2D" unique_id=2124449466 node_paths=PackedStringArray("decision1", "decision2")]
-script = ExtResource("1_xyfs2")
-decision1 = NodePath("StampSpot")
-decision2 = NodePath("StampSpot2")
+[node name="Decision1" type="Node2D" unique_id=2124449466]
 
 [node name="StampSpot" parent="." unique_id=186753513 instance=ExtResource("2_sps4q")]
 position = Vector2(827, 1421)
@@ -39,6 +36,7 @@ position = Vector2(1766, 1497)
 position = Vector2(240, 463)
 script = ExtResource("4_s4ftt")
 blocker = NodePath("Node2D")
+target_id_to_activate = "obstacle2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathBlock" unique_id=143898464]
 position = Vector2(1506, 1032)
@@ -50,3 +48,13 @@ position = Vector2(1529, 1497)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathBlock/Node2D" unique_id=1777616702]
 position = Vector2(-174, -475)
 shape = SubResource("SegmentShape2D_sihyj")
+
+[node name="StampGoal" parent="." unique_id=1065439230 instance=ExtResource("4_xyfs2")]
+position = Vector2(824, 1424)
+target_id = "obstacle1"
+required_hits = 3
+
+[node name="StampGoal2" parent="." unique_id=1308342401 instance=ExtResource("4_xyfs2")]
+position = Vector2(1056, 1560)
+target_id = "obstacle2"
+required_hits = 3
