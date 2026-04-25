@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bscf8ml23lsyl"]
+
+[ext_resource type="Script" uid="uid://wjgmac53of0i" path="res://scripts/bridge.gd" id="1_07qk7"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="2_0alt6"]
+[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="3_c7o7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0alt6"]
+size = Vector2(172.7157, 35.593437)
+
+[node name="Bridge" type="StaticBody2D" unique_id=1935920774]
+script = ExtResource("1_07qk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1778295773]
+position = Vector2(27.000011, -2)
+scale = Vector2(3.4275982, 3.4275982)
+shape = SubResource("RectangleShape2D_0alt6")
+
+[node name="StampGoal" parent="." unique_id=1065439230 instance=ExtResource("2_0alt6")]
+position = Vector2(-192, 0)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("3_c7o7c")
+
+[node name="StampGoal2" parent="." unique_id=559376554 instance=ExtResource("2_0alt6")]
+position = Vector2(-48, 0)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("3_c7o7c")
+
+[node name="StampGoal3" parent="." unique_id=786555554 instance=ExtResource("2_0alt6")]
+position = Vector2(96, 0)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("3_c7o7c")
+
+[node name="StampGoal4" parent="." unique_id=1530741937 instance=ExtResource("2_0alt6")]
+position = Vector2(240, 0)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("3_c7o7c")

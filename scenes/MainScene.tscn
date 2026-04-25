@@ -198,3 +198,4 @@ script = ExtResource("8_0cxu4")
 [editable path="DreamCore"]
 [editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround"]
 [editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1"]
+[editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1/BlockingObject"]

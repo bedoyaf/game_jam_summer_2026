@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b4j2fuf8kwou0"]
+
+[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="1_il5je"]
+[ext_resource type="Script" uid="uid://ccgqjngbu00g4" path="res://rolloj/blocking_object.gd" id="1_n8qfl"]
+[ext_resource type="Texture2D" uid="uid://dyqm5bjm5iica" path="res://rolloj/indicator_placeholder.png" id="2_hguld"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_hguld"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_il5je"]
+radius = 90.02222
+
+[node name="BlockingObject" type="StaticBody2D" unique_id=1824987023]
+script = ExtResource("1_n8qfl")
+destroyed_texture = ExtResource("2_hguld")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=612463695]
+texture = ExtResource("1_il5je")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=244491055]
+position = Vector2(7, -6)
+shape = SubResource("CircleShape2D_il5je")
+
+[node name="StampGoal" parent="." unique_id=1065439230 instance=ExtResource("3_hguld")]
+target_id = "obstacle1"
+required_hits = 3
+
+[connection signal="completed" from="StampGoal" to="." method="_on_obstacle_destroyed"]
+[connection signal="stamped" from="StampGoal" to="." method="_on_rock_hit"]

@@ -20,6 +20,7 @@ signal stamp_target_activated(target_group: String)
 
 signal stamp_placed(target_id: String)
 signal camera_shake(intensity: float)
+signal hand_clicked()
 
 # SYSTÉM ÚKOLŮ (Tasks)
 
@@ -28,7 +29,7 @@ var task_list: Array[Dictionary] = [
 	{
 		"id": "intro_cave",
 		"desc": "Prozkoumej snovou jeskyni.",
-		"target_group": "obstacle1,obstacle2",
+		"target_group": "obstacle1,obstacle2,obstacle3,bridge_stamps",
 		"required_stamps": 3,
 		"current_stamps": 0
 	},
