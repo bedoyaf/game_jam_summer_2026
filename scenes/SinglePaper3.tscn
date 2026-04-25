@@ -1,29 +1,40 @@
 [gd_scene format=3 uid="uid://drlmt55gr6hqf"]
 
 [ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_n8xtm"]
-[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="2_qc2sd"]
+[ext_resource type="Texture2D" uid="uid://chiw63tw88mdn" path="res://assets/sprites/stamp.png" id="2_qlmj2"]
 [ext_resource type="Texture2D" uid="uid://ccm5wqamwclot" path="res://assets/sprites/paper3.png" id="2_yo5pt"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_qc2sd"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="4_qc2sd"]
+[ext_resource type="FontFile" uid="uid://shcov8h7agto" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="6_qlmj2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
-viewport_path = NodePath("SubViewport3")
+viewport_path = NodePath("MainText3Dscene")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fdwtm"]
+viewport_path = NodePath("YesNo3DScene")
 
 [node name="SinglePaper" type="Node2D" unique_id=407088929]
 script = ExtResource("1_n8xtm")
-stamp_texture = ExtResource("2_qc2sd")
+stamp_texture = ExtResource("2_qlmj2")
 
 [node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]
 clip_children = 2
 position = Vector2(-120, 0)
 texture = ExtResource("2_yo5pt")
 
-[node name="Sprite2D2" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
-position = Vector2(-280.00003, -207.99998)
+[node name="MainText" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
+position = Vector2(-328, -288)
 rotation = -0.34592462
 scale = Vector2(1.2184701, 1.3232766)
 skew = -0.05235994
 texture = SubResource("ViewportTexture_da8e4")
+
+[node name="YesNoText" type="Sprite2D" parent="PaperSprite" unique_id=1497540519]
+position = Vector2(-184.00002, -56)
+rotation = -0.34524593
+scale = Vector2(0.8957612, 0.97281)
+skew = -0.05235994
+texture = SubResource("ViewportTexture_fdwtm")
 
 [node name="StampContainer" type="Node2D" parent="PaperSprite" unique_id=1885132113]
 
@@ -33,39 +44,62 @@ texture = SubResource("ViewportTexture_da8e4")
 polygon = PackedVector2Array(-632, -320, -392, 248, 48, 56, -288, -448)
 
 [node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_qc2sd")]
-position = Vector2(-344, 112)
+position = Vector2(-352.00003, 128.00002)
+rotation = -0.47650924
 scale = Vector2(0.81579316, 0.81579316)
+skew = 0.057595864
 target_id = "paper_0_yes"
 
 [node name="No" parent="." unique_id=1759699427 instance=ExtResource("3_qc2sd")]
-position = Vector2(-88, 16)
+position = Vector2(-72, 16.000004)
+rotation = -0.4803987
 scale = Vector2(0.8286643, 0.8286643)
+skew = -0.09250245
 target_id = "paper_0_no"
 
-[node name="SubViewport3" type="SubViewport" parent="." unique_id=1234049101]
+[node name="MainText3Dscene" type="SubViewport" parent="." unique_id=1234049101]
 own_world_3d = true
 transparent_bg = true
 size = Vector2i(587, 750)
 
-[node name="Node3D" type="Node3D" parent="SubViewport3" unique_id=479149260]
+[node name="Node3D" type="Node3D" parent="MainText3Dscene" unique_id=479149260]
 
-[node name="Sprite3D" type="Sprite3D" parent="SubViewport3/Node3D" unique_id=2114441493]
+[node name="Sprite3D" type="Sprite3D" parent="MainText3Dscene/Node3D" unique_id=2114441493]
 transform = Transform3D(0.19, 0, 0, 0, 0.18815093, 0.026442893, 0, -0.026442893, 0.18815093, 0, 0, -0.008358151)
 visible = false
 texture = ExtResource("4_qc2sd")
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport3/Node3D" unique_id=307116655]
+[node name="Camera3D" type="Camera3D" parent="MainText3Dscene/Node3D" unique_id=307116655]
 transform = Transform3D(0.99342364, 0.055616558, -0.100080594, -0.05863291, 0.99790204, -0.027452266, 0.09834385, 0.033139747, 0.9946004, -0.16386926, 0.14089757, 0.9482705)
 
-[node name="Label3D" type="Label3D" parent="SubViewport3/Node3D" unique_id=562579402]
+[node name="Label3D" type="Label3D" parent="MainText3Dscene/Node3D" unique_id=562579402]
 transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
 pixel_size = 0.0017
-text = "Ahoj zmrdi
-POMSTA BUDE 
-SLADKA JA jsem 
-hanibal swagger
-	
-HAWK TUAH
-Polib mi prdel
-zmrde"
+modulate = Color(0.25150964, 0.14603567, 0.0077009923, 1)
+font = ExtResource("6_qlmj2")
+outline_size = 0
+autowrap_trim_flags = 64
+
+[node name="YesNo3DScene" type="SubViewport" parent="." unique_id=1220080897]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(587, 750)
+
+[node name="Node3D" type="Node3D" parent="YesNo3DScene" unique_id=957897909]
+
+[node name="Sprite3D" type="Sprite3D" parent="YesNo3DScene/Node3D" unique_id=1334146558]
+transform = Transform3D(0.19, 0, 0, 0, 0.18815093, 0.026442893, 0, -0.026442893, 0.18815093, 0, 0, -0.008358151)
+visible = false
+texture = ExtResource("4_qc2sd")
+
+[node name="Camera3D" type="Camera3D" parent="YesNo3DScene/Node3D" unique_id=657592193]
+transform = Transform3D(0.99342364, 0.055616558, -0.100080594, -0.05863291, 0.99790204, -0.027452266, 0.09834385, 0.033139747, 0.9946004, -0.16386926, 0.14089757, 0.9482705)
+
+[node name="Label3D" type="Label3D" parent="YesNo3DScene/Node3D" unique_id=399717956]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
+pixel_size = 0.0017
+modulate = Color(0.25150964, 0.14603567, 0.0077009923, 1)
+text = "Yes                                           No"
+font = ExtResource("6_qlmj2")
+outline_size = 0
 autowrap_trim_flags = 64

@@ -14,6 +14,7 @@ signal task_updated(task_id: String, description: String)
 signal dialogue_triggered(dialogue_id: String)
 signal stamp_target_activated(target_group: String) # Aktivuje hitboxy pro razítko
 signal stamp_placed(target_id: String)
+signal camera_shake(intensity: float)
 
 ## SYSTÉM ÚKOLŮ (Tasks)
 var current_task_index: int = 0
@@ -48,6 +49,29 @@ var task_list: Array[Dictionary] = [
 	}
 ]
 
+# --- GLOBÁLNÍ COOLDOWN RAZÍTKA ---
+var last_stamp_msec: int = 0
+var stamp_cooldown_msec: int = 350 # 0.35 sekund cooldown
+
+func is_stamp_allowed() -> bool:
+	var now = Time.get_ticks_msec()
+	
+	# 1. Je to to samé kliknutí? 
+	# (Pokud se další skript ptá do 50 ms od prvního, propustíme ho)
+	if now - last_stamp_msec <= 50:
+		return true 
+		
+	# 2. Uběhl už celý cooldown pro další kliknutí?
+	if now - last_stamp_msec >= stamp_cooldown_msec:
+		return true
+		
+	# Jinak kliknutí zablokujeme (hráč spamuje příliš rychle)
+	return false
+
+func record_stamp() -> void:
+	last_stamp_msec = Time.get_ticks_msec()
+
+	
 func _ready() -> void:
 	# Při startu hry nastavíme výchozí stav
 	change_state(GameState.PAPERWORK)

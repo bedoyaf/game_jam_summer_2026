@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://bt1lnnhum50u2"]
 
 [ext_resource type="Script" uid="uid://c1vrwa5jflgmj" path="res://rolloj/PaperWorkPhase.gd" id="1_8p8ey"]
-[ext_resource type="Texture2D" uid="uid://dkodjvsy65nmo" path="res://assets/sprites/table.png" id="2_o4aeo"]
+[ext_resource type="Texture2D" uid="uid://cprbs0jol666w" path="res://assets/sprites/table_old.png" id="2_o4aeo"]
 [ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="2_p3dgq"]
 [ext_resource type="PackedScene" uid="uid://drlmt55gr6hqf" path="res://scenes/SinglePaper3.tscn" id="3_54dln"]
 [ext_resource type="PackedScene" uid="uid://km55tvof2gvh" path="res://scenes/SinglePaper2.tscn" id="3_o4aeo"]
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="6_6synq"]
-[ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="7_h2kjf"]
 
 [node name="PaperWorkPhase" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups")]
 script = ExtResource("1_8p8ey")
@@ -51,8 +50,6 @@ position = Vector2(137.94478, -451.45563)
 [node name="SinglePaper" parent="Papers/PaperWork3" unique_id=1912096283 instance=ExtResource("3_o4aeo")]
 position = Vector2(939.8328, 484.78897)
 scale = Vector2(0.67298394, 0.67298394)
-content_text = "Ojojojoj
-bude sex?"
 paper_index = 2
 
 [node name="PaperWork2" type="Node2D" parent="Papers" unique_id=1326795328]
@@ -62,9 +59,6 @@ scale = Vector2(0.6152129, 0.6152129)
 [node name="SinglePaper2" parent="Papers/PaperWork2" unique_id=236530852 instance=ExtResource("2_p3dgq")]
 position = Vector2(403.47137, 575.08984)
 rotation = 0.25181222
-content_text = "Ja jsem
-hannibal
-swagger"
 paper_index = 1
 
 [node name="PaperWork1" type="Node2D" parent="Papers" unique_id=1526460663]
@@ -72,22 +66,9 @@ position = Vector2(238.26825, 175.56607)
 scale = Vector2(0.6152129, 0.6152129)
 
 [node name="SinglePaper" parent="Papers/PaperWork1" unique_id=623173552 instance=ExtResource("2_p3dgq")]
-position = Vector2(563.1447, 190.97359)
+position = Vector2(550.3651, 428.06174)
 rotation = -0.19300777
-content_text = "The soldiers are
-hungry, sir
-
-Should we
-sacrifice one 
-of our elephants
-?"
+content_text = "Amogus"
 
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("6_6synq")]
 position = Vector2(1128, 464)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=294300650]
-limit_left = 0
-limit_top = 0
-limit_right = 1152
-limit_bottom = 648
-script = ExtResource("7_h2kjf")

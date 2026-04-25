@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://dbhqo1mai432k"]
 
 [ext_resource type="Script" uid="uid://i2b0mwb22iky" path="res://scripts/stamp/stampHand.gd" id="1_6hvuf"]
-[ext_resource type="Texture2D" uid="uid://dt4bsrf17nqp2" path="res://assets/sprites/hand.png" id="2_6hvuf"]
+[ext_resource type="Texture2D" uid="uid://daa7lf6aei5xo" path="res://assets/sprites/hand_1.png" id="2_6hvuf"]
+[ext_resource type="Texture2D" uid="uid://cnmkxtoqx7grh" path="res://assets/sprites/hand_2.png" id="3_nffnw"]
 
-[node name="HanibalHand" type="Node2D" unique_id=1568772530]
+[node name="HanibalHand" type="Node2D" unique_id=1568772530 node_paths=PackedStringArray("idle_sprite", "stamp_sprite")]
 script = ExtResource("1_6hvuf")
+idle_sprite = NodePath("IdleSprite")
+stamp_sprite = NodePath("StampSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1291040752]
-position = Vector2(360, -8.000002)
-scale = Vector2(0.8699136, 0.7231493)
+[node name="IdleSprite" type="Sprite2D" parent="." unique_id=1291040752]
+position = Vector2(-96, -40.000004)
+scale = Vector2(0.7662798, 0.6369997)
 texture = ExtResource("2_6hvuf")
+
+[node name="StampSprite" type="Sprite2D" parent="." unique_id=1288274653]
+position = Vector2(328, 0)
+scale = Vector2(0.8036566, 0.6680706)
+texture = ExtResource("3_nffnw")

@@ -7,7 +7,7 @@ extends Node2D
 		if is_node_ready():
 			_update_label()
 
-@onready var label_3d = $SubViewport2/Node3D/Label3D
+@onready var label_3d = $MainText3Dscene/Node3D/Label3D
 
 
 # --- 2. PROMĚNNÉ PRO RAZÍTKOVÁNÍ A ÚKOLY ---
@@ -37,29 +37,30 @@ func _update_label() -> void:
 
 # --- FUNKCE PRO RAZÍTKOVÁNÍ ---
 func _on_paper_input(_viewport, event, _shape_idx):
-	# Zkontrolujeme, jestli šlo o stisknutí levého tlačítka myši
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		# Získáme lokální pozici myši vůči papíru
-		var click_pos = get_local_mouse_position()
-		
-		# Vyrobíme nový obrázek razítka
-		create_visual_stamp(click_pos)
-		
-		# Ověříme, jestli jsme se trefili i do ANO/NE políčka
-		check_goals(event)
+		# Zeptáme se GameManageru, jestli nejsme na cooldownu
+		if GameManager.is_stamp_allowed():
+			GameManager.record_stamp()
+			
+			var click_pos = get_local_mouse_position()
+			create_visual_stamp(click_pos)
+			check_goals(event)
 
 func create_visual_stamp(pos: Vector2):
 	if not stamp_texture:
-		push_warning("Papír nemá přiřazenou 'stamp_texture'!")
+		push_warning("Papír nemá přiřazenou 'stamp_texture' v Inspectoru!")
 		return
 		
 	var stamp = Sprite2D.new()
 	stamp.texture = stamp_texture
 	stamp_container.add_child(stamp)
-	
-	# Pozice
 	stamp.position = stamp_container.to_local(get_global_mouse_position())
 	stamp.rotation = randf_range(-0.3, 0.3)
+	
+	# --- ZDE PŘIDÁME OTŘES KAMERY ---
+	# 20.0 je síla otřesu v pixelech. Můžeš zkusit 10.0 pro jemnější, nebo 50.0 pro absolutní chaos!
+	GameManager.camera_shake.emit(25.0) 
+	
 	
 	# --- LOGIKA MIZENÍ (FADE OUT) ---
 	var tween = create_tween()

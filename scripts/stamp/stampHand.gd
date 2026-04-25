@@ -1,41 +1,63 @@
 extends Node2D
 
-@export var follow_speed: float = 15.0   # jak rychle dohání myš (vyšší = méně smooth)
-@export var click_scale: float = 0.85    # "zmáčknutí" při kliknutí
-@export var click_duration: float = 0.08
+@export_group("Visuals")
+@export var idle_sprite: Sprite2D   
+@export var stamp_sprite: Sprite2D  
+
+@export_group("Settings")
+@export var follow_speed: float = 15.0   
+@export var click_scale: float = 0.85    
+@export var click_duration: float = 0.35 # Jak dlouho zůstane razítko "přitisknuté" na stůl (zvýšeno)
+@export var cooldown_time: float = 0.35  # Za jak dlouho po kliknutí může hráč kliknout znovu
 
 var target_pos: Vector2
-var is_clicking := false
 var click_timer := 0.0
+var cooldown_timer := 0.0 # Nový časovač pro blokování spamu
 
 func _ready():
 	target_pos = global_position
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
+	if idle_sprite: idle_sprite.show()
+	if stamp_sprite: stamp_sprite.hide()
 
 func _process(delta: float) -> void:
-	# pozice myši
+	# Pozice myši a smooth pohyb
 	target_pos = get_global_mouse_position()
-	
-	# SMOOTH pohyb (lerp)
 	global_position = global_position.lerp(target_pos, 1.0 - exp(-follow_speed * delta))
 	
-	# klik animace
-	if is_clicking:
+	# Odpočet cooldownu (kdy můžeme znovu kliknout)
+	if cooldown_timer > 0.0:
+		cooldown_timer -= delta
+	
+	# Odpočet vizuálu (kdy se ruka zvedne zpět ze stolu)
+	if click_timer > 0.0:
 		click_timer -= delta
 		if click_timer <= 0.0:
+			# Návrat do původního zvednutého stavu
 			scale = Vector2.ONE
-			is_clicking = false
+			if idle_sprite: idle_sprite.show()
+			if stamp_sprite: stamp_sprite.hide()
 
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
-		_do_click()
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Zkontrolujeme globální cooldown
+		if GameManager.is_stamp_allowed():
+			GameManager.record_stamp() # Oznámíme, že razítko padlo
+			_do_click()
 
 func _do_click():
-	# malá squash animace (razítko efekt)
-	scale = Vector2(click_scale, click_scale)
-	is_clicking = true
+	# Nastartujeme oba časovače
 	click_timer = click_duration
+	cooldown_timer = cooldown_time
 	
-	# tady řešíš interakci
+	# Vizuální squash a výměna za bouchnutou ruku
+	scale = Vector2(click_scale, click_scale)
+	if idle_sprite: idle_sprite.hide()
+	if stamp_sprite: stamp_sprite.show()
+	
+	# Vyhodnocení kolizí pod razítkem
 	_check_interaction()
 
 func _check_interaction():
@@ -51,7 +73,6 @@ func _check_interaction():
 	for item in results:
 		var collider = item.collider
 		
-		# zkus najít script výš ve stromu
 		var node = collider
 		while node:
 			if node.has_method("on_stamp"):
