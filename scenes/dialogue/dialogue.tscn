@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b66rkd16k8cap"]
+
+[ext_resource type="Script" uid="uid://cjhuiqj41mcff" path="res://scripts/additionals/dialogue_manager.gd" id="1_3n47t"]
+[ext_resource type="Script" uid="uid://71tgcily832e" path="res://scripts/gui_scripts/dialogueui.gd" id="2_esu7l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esu7l"]
+
+[node name="Dialogue" type="Control" unique_id=401222758]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3n47t")
+
+[node name="DialogueUI" type="CanvasLayer" parent="." unique_id=207914384]
+script = ExtResource("2_esu7l")
+
+[node name="Panel" type="Panel" parent="DialogueUI" unique_id=1016471520]
+offset_left = 28.0
+offset_top = 496.0
+offset_right = 1115.0
+offset_bottom = 620.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_esu7l")
+
+[node name="ColorRect" type="ColorRect" parent="DialogueUI/Panel" unique_id=1967320970]
+layout_mode = 0
+offset_right = 1086.0
+offset_bottom = 122.0
+color = Color(0.15294118, 0.14117648, 0.14901961, 0.3372549)
+
+[node name="Label" type="RichTextLabel" parent="DialogueUI/Panel" unique_id=2056385154]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 1069.0
+offset_bottom = 115.0
+theme_override_font_sizes/normal_font_size = 22
+text = "AMOGUS AMOGUS AMOGUS"

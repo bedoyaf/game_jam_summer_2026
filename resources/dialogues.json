@@ -1,0 +1,22 @@
+{
+  "intro_cave_completed": [
+	"Hannibale...",
+	"Ta jeskyně nebyla skutečná.",
+    "Něco tě sleduje."
+  ],
+
+  "build_bridge_completed": [
+	"Most stojí.",
+    "Ale za jakou cenu?"
+  ],
+
+  "feed_army_completed": [
+	"Slon byl označen.",
+    "Vojáci budou jíst."
+  ],
+
+  "defeat_romans_completed": [
+	"Nepřátelé padli.",
+    "Sníh pohltil jejich stopy."
+  ]
+}

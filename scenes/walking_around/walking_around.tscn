@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://5wllco1gdak3"]
+
+[ext_resource type="Texture2D" uid="uid://b61fkvu0d676r" path="res://filip/placeholdry/map.png" id="1_jwrt8"]
+[ext_resource type="Script" uid="uid://cq3q2rjflpnme" path="res://scripts/walking_around/collision_generator.gd" id="2_y51g4"]
+[ext_resource type="PackedScene" uid="uid://ugdxoekclc7k" path="res://scenes/walking_around/decision.tscn" id="3_bne7w"]
+[ext_resource type="Script" uid="uid://dft2rvvy35w08" path="res://scripts/walking_around/player.gd" id="4_bkyfo"]
+[ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_yheev"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sihyj"]
+
+[node name="WalkingAround" type="Node2D" unique_id=1958117219]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1076180066]
+position = Vector2(3011, 1142)
+texture = ExtResource("1_jwrt8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background" unique_id=38203716]
+script = ExtResource("2_y51g4")
+mask = ExtResource("1_jwrt8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/StaticBody2D" unique_id=471078476]
+position = Vector2(-2551, -155)
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 0, 0)
+
+[node name="Decision1" parent="." unique_id=2124449466 instance=ExtResource("3_bne7w")]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1265406013]
+position = Vector2(191, 1771)
+scale = Vector2(2.1200001, 2.1200001)
+script = ExtResource("4_bkyfo")
+squash_amount = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1866983795]
+scale = Vector2(0.13085939, 0.18945314)
+texture = ExtResource("5_yheev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1702397862]
+shape = SubResource("CapsuleShape2D_sihyj")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1776838842]
+scale = Vector2(1.7547166, 1.7547166)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true

@@ -3,6 +3,8 @@ extends StaticBody2D
 @export var default_texture: Texture2D
 @export var stamped_texture: Texture2D
 
+@export var dialogue : String
+
 var is_stamped: bool = false
 var disabled: bool = false
 

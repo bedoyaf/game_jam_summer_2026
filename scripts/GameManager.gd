@@ -52,6 +52,19 @@ func _ready() -> void:
 	# Při startu hry nastavíme výchozí stav
 	change_state(GameState.PAPERWORK)
 
+func _input(event):
+	if event.is_action_pressed("debug_action"):
+		_debug_trigger()
+func _debug_trigger():
+	current_task_index += 1
+	
+	if current_task_index >= task_list.size():
+		current_task_index = 0
+	
+	print("DEBUG: přepínám na task:", task_list[current_task_index]["id"])
+	_update_current_task()
+	complete_current_task()
+
 # --- SPRÁVA STAVŮ HRY ---
 
 func change_state(new_state: GameState) -> void:
@@ -105,6 +118,7 @@ func register_stamp_hit(target_group: String) -> void:
 		if current_task["current_stamps"] >= current_task["required_stamps"]:
 			complete_current_task()
 			
+
 func complete_current_task() -> void:
 	var task_id = task_list[current_task_index]["id"]
 	print("Úkol splněn: ", task_id)
