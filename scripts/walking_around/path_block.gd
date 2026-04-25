@@ -3,7 +3,7 @@ extends Area2D
 @export var blocker: StaticBody2D 
 
 # --- NOVÉ: Propojení s příběhem ---
-@export var dialogue_on_trigger: String = "" 
+#@export var dialogue_on_trigger: String = "" 
 @export var target_id_to_activate: String = ""
 
 func _ready() -> void:
@@ -26,9 +26,9 @@ func activate_blocker() -> void:
 		
 		# --- NOVÉ: Komunikace s hrou ---
 		# Spustíme dialogový text
-		if dialogue_on_trigger != "":
-			GameManager.trigger_dialogue(dialogue_on_trigger)
+	#	if dialogue_on_trigger != "":
+		#	GameManager.trigger_dialogue(dialogue_on_trigger)
 			
 		# Můžeme i ručně zaktivovat ten StampGoal na překážce
-		if target_id_to_activate != "":
-			GameManager.stamp_target_activated.emit(target_id_to_activate)
+	#	if target_id_to_activate != "":
+	#		GameManager.stamp_target_activated.emit(target_id_to_activate)
