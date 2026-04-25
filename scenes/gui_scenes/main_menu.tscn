@@ -2,36 +2,24 @@
 
 [ext_resource type="Theme" uid="uid://dec4ehymd5ad1" path="res://assets/themes/button_main_menu.tres" id="1_cu28x"]
 [ext_resource type="Script" uid="uid://blngbbtdptnqb" path="res://scripts/gui_scripts/main_menu.gd" id="1_ksp4i"]
+[ext_resource type="Shader" uid="uid://bc411qbagujpq" path="res://scenes/gui_scenes/paper_distortion.gdshader" id="3_bd0xb"]
 [ext_resource type="Theme" uid="uid://bh0bdmimjqt4m" path="res://assets/themes/main_menu_title.tres" id="3_ervn5"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="4_20lew"]
+[ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="4_qcihl"]
+[ext_resource type="Texture2D" uid="uid://c43jpbnwo6rjw" path="res://assets/sprites/paper2.png" id="5_dpk4b"]
+[ext_resource type="Texture2D" uid="uid://ccm5wqamwclot" path="res://assets/sprites/paper3.png" id="6_7b07g"]
+[ext_resource type="Shader" uid="uid://ctsjpdvtecisj" path="res://scenes/gui_scenes/blur.gdshader" id="7_qcihl"]
 
-[sub_resource type="Shader" id="Shader_ervn5"]
-code = "shader_type canvas_item;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-
-uniform float wave_speed = 3.0;
-uniform float wave_freq = 10.0;
-uniform float wave_width = 0.05;
-
-void fragment() {
-	// Get the screen UV coordinates
-	vec2 uv = SCREEN_UV;
-	
-	// Create the \"Underwater\" distortion using Sine and Cosine
-	// We shift the X position based on Y and Time, and vice versa
-	float diff_x = sin(uv.y * wave_freq + TIME * wave_speed) * wave_width;
-	float diff_y = cos(uv.x * wave_freq + TIME * wave_speed) * wave_width;
-	
-	vec2 distorted_uv = uv + vec2(diff_x, diff_y);
-	
-	COLOR = texture(SCREEN_TEXTURE, distorted_uv);
-}"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nxrb"]
+shader = ExtResource("3_bd0xb")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_freq = 2.0
+shader_parameter/wave_width = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kbut"]
-shader = SubResource("Shader_ervn5")
-shader_parameter/wave_speed = 3.0
-shader_parameter/wave_freq = 10.0
-shader_parameter/wave_width = 0.05
+shader = ExtResource("7_qcihl")
+shader_parameter/blur_strength = 4.0
+shader_parameter/blur_iterations = 2.0000000475
 
 [node name="MainMenu" type="Control" unique_id=1515886381]
 layout_mode = 3
@@ -44,8 +32,1526 @@ theme = ExtResource("1_cu28x")
 script = ExtResource("1_ksp4i")
 game_scene_path = "res://scenes/sample_scene.tscn"
 options_scene_path = "res://scenes/gui_scenes/options.tscn"
+await_time = 1.0
+
+[node name="FloatingPapersContainer" type="Node2D" parent="." unique_id=2008587514]
+
+[node name="FloatingPaperA" type="Node2D" parent="FloatingPapersContainer" unique_id=575308881]
+position = Vector2(67, 371)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA" unique_id=968466264]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperA7" type="Node2D" parent="FloatingPapersContainer" unique_id=430936131]
+position = Vector2(703.00006, 462.99997)
+rotation = -1.7292358
+scale = Vector2(6.834161, 6.834161)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA7" unique_id=808872031]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB" type="Node2D" parent="FloatingPapersContainer" unique_id=1583400457]
+position = Vector2(218, 104)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB" unique_id=961505443]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB2" type="Node2D" parent="FloatingPapersContainer" unique_id=1830494337]
+position = Vector2(726, 492)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB2" unique_id=1831837569]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB3" type="Node2D" parent="FloatingPapersContainer" unique_id=1499750259]
+position = Vector2(547, 376)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB3" unique_id=1184970053]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB4" type="Node2D" parent="FloatingPapersContainer" unique_id=923996876]
+position = Vector2(50, 91)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB4" unique_id=1053335552]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB5" type="Node2D" parent="FloatingPapersContainer" unique_id=1587416905]
+position = Vector2(946, 547)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB5" unique_id=378018325]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB6" type="Node2D" parent="FloatingPapersContainer" unique_id=637293988]
+position = Vector2(321, 439)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB6" unique_id=1049009051]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB7" type="Node2D" parent="FloatingPapersContainer" unique_id=2031746634]
+position = Vector2(438, 91)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB7" unique_id=1141523813]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB8" type="Node2D" parent="FloatingPapersContainer" unique_id=2108255120]
+position = Vector2(197, 307)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB8" unique_id=3733783]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC" type="Node2D" parent="FloatingPapersContainer" unique_id=1194937497]
+position = Vector2(159, 626)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC" unique_id=772429403]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperB49" type="Node2D" parent="FloatingPapersContainer" unique_id=1003813100]
+position = Vector2(-195, 57)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB49" unique_id=176824942]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB50" type="Node2D" parent="FloatingPapersContainer" unique_id=1293146829]
+position = Vector2(701, 513)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB50" unique_id=363646145]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB51" type="Node2D" parent="FloatingPapersContainer" unique_id=376408943]
+position = Vector2(76, 405)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB51" unique_id=471935452]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB52" type="Node2D" parent="FloatingPapersContainer" unique_id=342591072]
+position = Vector2(193, 57)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB52" unique_id=236449661]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB53" type="Node2D" parent="FloatingPapersContainer" unique_id=1653163001]
+position = Vector2(-48, 273)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB53" unique_id=2123383496]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC31" type="Node2D" parent="FloatingPapersContainer" unique_id=589627667]
+position = Vector2(-86, 592)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC31" unique_id=629837764]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperB54" type="Node2D" parent="FloatingPapersContainer" unique_id=2119780003]
+position = Vector2(-95, 37)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB54" unique_id=1988858037]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB55" type="Node2D" parent="FloatingPapersContainer" unique_id=2016533846]
+position = Vector2(801, 493)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB55" unique_id=1904452815]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB56" type="Node2D" parent="FloatingPapersContainer" unique_id=2108128121]
+position = Vector2(176, 385)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB56" unique_id=2052492805]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB57" type="Node2D" parent="FloatingPapersContainer" unique_id=1828591418]
+position = Vector2(293, 37)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB57" unique_id=276480291]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB58" type="Node2D" parent="FloatingPapersContainer" unique_id=1399731789]
+position = Vector2(52, 253)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB58" unique_id=1535932684]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC32" type="Node2D" parent="FloatingPapersContainer" unique_id=247612815]
+position = Vector2(14, 572)
+rotation = 0.70971376
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC32" unique_id=237550619]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC2" type="Node2D" parent="FloatingPapersContainer" unique_id=17913298]
+position = Vector2(1114, 127)
+rotation = -0.2719199
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC2" unique_id=640946694]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC3" type="Node2D" parent="FloatingPapersContainer" unique_id=1079073131]
+position = Vector2(587, 569)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC3" unique_id=985392708]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC4" type="Node2D" parent="FloatingPapersContainer" unique_id=1402621131]
+position = Vector2(117, 114)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC4" unique_id=1370810865]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC5" type="Node2D" parent="FloatingPapersContainer" unique_id=1078276678]
+position = Vector2(348, 570)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC5" unique_id=2020941052]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA2" type="Node2D" parent="FloatingPapersContainer" unique_id=118956333]
+position = Vector2(241, 199)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA2" unique_id=894083532]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB9" type="Node2D" parent="FloatingPapersContainer" unique_id=1481591588]
+position = Vector2(392, -68)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB9" unique_id=235158909]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB10" type="Node2D" parent="FloatingPapersContainer" unique_id=775340226]
+position = Vector2(900, 320)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB10" unique_id=1178603212]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB11" type="Node2D" parent="FloatingPapersContainer" unique_id=1365693960]
+position = Vector2(721, 204)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB11" unique_id=305203640]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB12" type="Node2D" parent="FloatingPapersContainer" unique_id=886741890]
+position = Vector2(224, -81)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB12" unique_id=26029269]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB13" type="Node2D" parent="FloatingPapersContainer" unique_id=1992068881]
+position = Vector2(1120, 375)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB13" unique_id=533440462]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB14" type="Node2D" parent="FloatingPapersContainer" unique_id=1119618769]
+position = Vector2(495, 267)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB14" unique_id=1507859391]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB15" type="Node2D" parent="FloatingPapersContainer" unique_id=1362627969]
+position = Vector2(612, -81)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB15" unique_id=479003634]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB16" type="Node2D" parent="FloatingPapersContainer" unique_id=1366024798]
+position = Vector2(371, 135)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB16" unique_id=301061345]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC6" type="Node2D" parent="FloatingPapersContainer" unique_id=540559120]
+position = Vector2(333, 454)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC6" unique_id=1278621991]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC7" type="Node2D" parent="FloatingPapersContainer" unique_id=1835116102]
+position = Vector2(1288, -45.000008)
+rotation = 0.71957326
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC7" unique_id=274547992]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC8" type="Node2D" parent="FloatingPapersContainer" unique_id=277058362]
+position = Vector2(761, 397)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC8" unique_id=468548528]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC9" type="Node2D" parent="FloatingPapersContainer" unique_id=1546551968]
+position = Vector2(291, -58)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC9" unique_id=2715597]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC10" type="Node2D" parent="FloatingPapersContainer" unique_id=112260675]
+position = Vector2(522, 398)
+rotation = 0.99149317
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC10" unique_id=1908135973]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA3" type="Node2D" parent="FloatingPapersContainer" unique_id=896178219]
+position = Vector2(607, 215)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA3" unique_id=1256941706]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB17" type="Node2D" parent="FloatingPapersContainer" unique_id=967690]
+position = Vector2(758, -52)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB17" unique_id=1699605117]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB18" type="Node2D" parent="FloatingPapersContainer" unique_id=1197630390]
+position = Vector2(1266, 336)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB18" unique_id=240778543]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB19" type="Node2D" parent="FloatingPapersContainer" unique_id=1858666813]
+position = Vector2(1087, 220)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB19" unique_id=870691776]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB20" type="Node2D" parent="FloatingPapersContainer" unique_id=944993852]
+position = Vector2(590, -65)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB20" unique_id=1175568141]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB21" type="Node2D" parent="FloatingPapersContainer" unique_id=1688001580]
+position = Vector2(1486, 391)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB21" unique_id=571883770]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB22" type="Node2D" parent="FloatingPapersContainer" unique_id=68561009]
+position = Vector2(861, 283)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB22" unique_id=2097115527]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB23" type="Node2D" parent="FloatingPapersContainer" unique_id=1389126947]
+position = Vector2(978, -65)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB23" unique_id=1448144089]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB24" type="Node2D" parent="FloatingPapersContainer" unique_id=1779193250]
+position = Vector2(737, 151)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB24" unique_id=1862285350]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC11" type="Node2D" parent="FloatingPapersContainer" unique_id=1700992149]
+position = Vector2(699, 470)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC11" unique_id=1927090518]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC12" type="Node2D" parent="FloatingPapersContainer" unique_id=1222077369]
+position = Vector2(1654, -29.00002)
+rotation = 2.3387585
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC12" unique_id=963398592]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC13" type="Node2D" parent="FloatingPapersContainer" unique_id=830431603]
+position = Vector2(1127, 413)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC13" unique_id=184504390]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC14" type="Node2D" parent="FloatingPapersContainer" unique_id=337804565]
+position = Vector2(657, -42)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC14" unique_id=1464354491]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC15" type="Node2D" parent="FloatingPapersContainer" unique_id=1453772265]
+position = Vector2(888, 414)
+rotation = 2.6106784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC15" unique_id=1498414948]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA4" type="Node2D" parent="FloatingPapersContainer" unique_id=769966743]
+position = Vector2(373, 376)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA4" unique_id=574738460]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB25" type="Node2D" parent="FloatingPapersContainer" unique_id=406067963]
+position = Vector2(524, 109)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB25" unique_id=1712557766]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB26" type="Node2D" parent="FloatingPapersContainer" unique_id=749481515]
+position = Vector2(1032, 497)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB26" unique_id=1024511756]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB27" type="Node2D" parent="FloatingPapersContainer" unique_id=1167972863]
+position = Vector2(853, 381)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB27" unique_id=865585858]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB28" type="Node2D" parent="FloatingPapersContainer" unique_id=666059526]
+position = Vector2(356, 96)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB28" unique_id=1352433464]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB29" type="Node2D" parent="FloatingPapersContainer" unique_id=1557716382]
+position = Vector2(1252, 552)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB29" unique_id=294524163]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB30" type="Node2D" parent="FloatingPapersContainer" unique_id=861545261]
+position = Vector2(464, 404)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB30" unique_id=1361967042]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB31" type="Node2D" parent="FloatingPapersContainer" unique_id=1454335631]
+position = Vector2(581, 56)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB31" unique_id=1149631733]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB32" type="Node2D" parent="FloatingPapersContainer" unique_id=344403886]
+position = Vector2(340, 272)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB32" unique_id=1356031003]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC16" type="Node2D" parent="FloatingPapersContainer" unique_id=1079317044]
+position = Vector2(302, 591)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC16" unique_id=1528862403]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC17" type="Node2D" parent="FloatingPapersContainer" unique_id=52996402]
+position = Vector2(1257, 92)
+rotation = 2.4208329
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC17" unique_id=1486485770]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC18" type="Node2D" parent="FloatingPapersContainer" unique_id=1906245127]
+position = Vector2(730, 534)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC18" unique_id=789068326]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC19" type="Node2D" parent="FloatingPapersContainer" unique_id=1644707912]
+position = Vector2(260, 79)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC19" unique_id=528285410]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC20" type="Node2D" parent="FloatingPapersContainer" unique_id=329809338]
+position = Vector2(654, 575)
+rotation = 2.6927528
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC20" unique_id=1857840168]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA5" type="Node2D" parent="FloatingPapersContainer" unique_id=1930345419]
+position = Vector2(547, 204)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA5" unique_id=1730703728]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB33" type="Node2D" parent="FloatingPapersContainer" unique_id=329272218]
+position = Vector2(698, -63)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB33" unique_id=328551463]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB34" type="Node2D" parent="FloatingPapersContainer" unique_id=237622329]
+position = Vector2(1206, 325)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB34" unique_id=1340430660]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB35" type="Node2D" parent="FloatingPapersContainer" unique_id=606453486]
+position = Vector2(1027, 209)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB35" unique_id=380843409]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB36" type="Node2D" parent="FloatingPapersContainer" unique_id=1708100862]
+position = Vector2(530, -76)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB36" unique_id=2140902716]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB59" type="Node2D" parent="FloatingPapersContainer" unique_id=1474092251]
+position = Vector2(726, 492)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB59" unique_id=187607796]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB60" type="Node2D" parent="FloatingPapersContainer" unique_id=1758571412]
+position = Vector2(547, 376)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB60" unique_id=1082364310]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB61" type="Node2D" parent="FloatingPapersContainer" unique_id=87083159]
+position = Vector2(50, 91)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB61" unique_id=689412216]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB62" type="Node2D" parent="FloatingPapersContainer" unique_id=1815760779]
+position = Vector2(946, 547)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB62" unique_id=1409974342]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB63" type="Node2D" parent="FloatingPapersContainer" unique_id=798588779]
+position = Vector2(321, 439)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB63" unique_id=709844578]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB64" type="Node2D" parent="FloatingPapersContainer" unique_id=371228207]
+position = Vector2(438, 91)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB64" unique_id=1775732430]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB65" type="Node2D" parent="FloatingPapersContainer" unique_id=1030438859]
+position = Vector2(197, 307)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB65" unique_id=1658926800]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC33" type="Node2D" parent="FloatingPapersContainer" unique_id=1515087460]
+position = Vector2(159, 626)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC33" unique_id=389599099]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperB66" type="Node2D" parent="FloatingPapersContainer" unique_id=210095842]
+position = Vector2(-195, 57)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB66" unique_id=1807267761]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB67" type="Node2D" parent="FloatingPapersContainer" unique_id=945229489]
+position = Vector2(701, 513)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB67" unique_id=906224818]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB68" type="Node2D" parent="FloatingPapersContainer" unique_id=403729017]
+position = Vector2(76, 405)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB68" unique_id=952701915]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB69" type="Node2D" parent="FloatingPapersContainer" unique_id=1862943396]
+position = Vector2(193, 57)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB69" unique_id=2035167758]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB70" type="Node2D" parent="FloatingPapersContainer" unique_id=1962667914]
+position = Vector2(-48, 273)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB70" unique_id=1539617968]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC34" type="Node2D" parent="FloatingPapersContainer" unique_id=807535102]
+position = Vector2(-86, 592)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC34" unique_id=1947005938]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperB71" type="Node2D" parent="FloatingPapersContainer" unique_id=1904224424]
+position = Vector2(-95, 37)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB71" unique_id=269117901]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB72" type="Node2D" parent="FloatingPapersContainer" unique_id=315351131]
+position = Vector2(801, 493)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB72" unique_id=2069493711]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB73" type="Node2D" parent="FloatingPapersContainer" unique_id=1628278970]
+position = Vector2(176, 385)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB73" unique_id=1571483195]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB74" type="Node2D" parent="FloatingPapersContainer" unique_id=472786983]
+position = Vector2(293, 37)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB74" unique_id=1933067987]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB75" type="Node2D" parent="FloatingPapersContainer" unique_id=563178632]
+position = Vector2(52, 253)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB75" unique_id=136397241]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC35" type="Node2D" parent="FloatingPapersContainer" unique_id=422679705]
+position = Vector2(14, 572)
+rotation = 2.9707391
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC35" unique_id=1879778201]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC36" type="Node2D" parent="FloatingPapersContainer" unique_id=838870950]
+position = Vector2(1114, 127)
+rotation = 1.9891055
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC36" unique_id=1226891829]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC37" type="Node2D" parent="FloatingPapersContainer" unique_id=1076629239]
+position = Vector2(587, 569)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC37" unique_id=876283252]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC38" type="Node2D" parent="FloatingPapersContainer" unique_id=584242216]
+position = Vector2(117, 114)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC38" unique_id=756382648]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC39" type="Node2D" parent="FloatingPapersContainer" unique_id=197980723]
+position = Vector2(348, 570)
+rotation = 2.2610254
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC39" unique_id=59345986]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA8" type="Node2D" parent="FloatingPapersContainer" unique_id=1431281659]
+position = Vector2(241, 199)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA8" unique_id=1793195098]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB76" type="Node2D" parent="FloatingPapersContainer" unique_id=594384897]
+position = Vector2(392, -68)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB76" unique_id=1185219574]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB77" type="Node2D" parent="FloatingPapersContainer" unique_id=1922955431]
+position = Vector2(900, 320)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB77" unique_id=2020847291]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB78" type="Node2D" parent="FloatingPapersContainer" unique_id=864370103]
+position = Vector2(721, 204)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB78" unique_id=2000225533]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB79" type="Node2D" parent="FloatingPapersContainer" unique_id=1648640478]
+position = Vector2(224, -81)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB79" unique_id=1690686033]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB80" type="Node2D" parent="FloatingPapersContainer" unique_id=1576879124]
+position = Vector2(1120, 375)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB80" unique_id=1756341936]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB81" type="Node2D" parent="FloatingPapersContainer" unique_id=646234652]
+position = Vector2(495, 267)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB81" unique_id=1354705603]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB82" type="Node2D" parent="FloatingPapersContainer" unique_id=1764278706]
+position = Vector2(612, -81)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB82" unique_id=1684481595]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB83" type="Node2D" parent="FloatingPapersContainer" unique_id=510535879]
+position = Vector2(371, 135)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB83" unique_id=1585902849]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC40" type="Node2D" parent="FloatingPapersContainer" unique_id=296011177]
+position = Vector2(333, 454)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC40" unique_id=1303576960]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC41" type="Node2D" parent="FloatingPapersContainer" unique_id=115411435]
+position = Vector2(1288, -45.000008)
+rotation = 2.9805987
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC41" unique_id=1405751221]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC42" type="Node2D" parent="FloatingPapersContainer" unique_id=1599534156]
+position = Vector2(761, 397)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC42" unique_id=887103204]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC43" type="Node2D" parent="FloatingPapersContainer" unique_id=1635438549]
+position = Vector2(291, -58)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC43" unique_id=466316559]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC44" type="Node2D" parent="FloatingPapersContainer" unique_id=2090238712]
+position = Vector2(522, 398)
+rotation = 3.2525187
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC44" unique_id=1694578770]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA9" type="Node2D" parent="FloatingPapersContainer" unique_id=1169460542]
+position = Vector2(607, 215)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA9" unique_id=347502018]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB84" type="Node2D" parent="FloatingPapersContainer" unique_id=287770146]
+position = Vector2(758, -52)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB84" unique_id=1201005688]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB85" type="Node2D" parent="FloatingPapersContainer" unique_id=15820400]
+position = Vector2(1266, 336)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB85" unique_id=1324138743]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB86" type="Node2D" parent="FloatingPapersContainer" unique_id=2028937399]
+position = Vector2(1087, 220)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB86" unique_id=1676398421]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB87" type="Node2D" parent="FloatingPapersContainer" unique_id=490420728]
+position = Vector2(590, -65)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB87" unique_id=1229443684]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB88" type="Node2D" parent="FloatingPapersContainer" unique_id=1317123197]
+position = Vector2(1486, 391)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB88" unique_id=78813364]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB89" type="Node2D" parent="FloatingPapersContainer" unique_id=353089549]
+position = Vector2(861, 283)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB89" unique_id=584969508]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB90" type="Node2D" parent="FloatingPapersContainer" unique_id=872330647]
+position = Vector2(978, -65)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB90" unique_id=1018705590]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB91" type="Node2D" parent="FloatingPapersContainer" unique_id=1378305942]
+position = Vector2(737, 151)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB91" unique_id=1475976987]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC45" type="Node2D" parent="FloatingPapersContainer" unique_id=234936468]
+position = Vector2(699, 470)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC45" unique_id=791795811]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC46" type="Node2D" parent="FloatingPapersContainer" unique_id=653125277]
+position = Vector2(1654, -29.00002)
+rotation = 4.599784
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC46" unique_id=1798605510]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC47" type="Node2D" parent="FloatingPapersContainer" unique_id=1459607765]
+position = Vector2(1127, 413)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC47" unique_id=2124416893]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC48" type="Node2D" parent="FloatingPapersContainer" unique_id=1791848558]
+position = Vector2(657, -42)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC48" unique_id=96224731]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC49" type="Node2D" parent="FloatingPapersContainer" unique_id=1794722404]
+position = Vector2(888, 414)
+rotation = 4.871704
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC49" unique_id=667685278]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA10" type="Node2D" parent="FloatingPapersContainer" unique_id=744449468]
+position = Vector2(373, 376)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA10" unique_id=762353968]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB92" type="Node2D" parent="FloatingPapersContainer" unique_id=2146870995]
+position = Vector2(524, 109)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB92" unique_id=2018617750]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB93" type="Node2D" parent="FloatingPapersContainer" unique_id=973787007]
+position = Vector2(1032, 497)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB93" unique_id=507017688]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB94" type="Node2D" parent="FloatingPapersContainer" unique_id=1437379819]
+position = Vector2(853, 381)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB94" unique_id=1229035518]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB95" type="Node2D" parent="FloatingPapersContainer" unique_id=2004227147]
+position = Vector2(356, 96)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB95" unique_id=1415181614]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB96" type="Node2D" parent="FloatingPapersContainer" unique_id=1586238987]
+position = Vector2(1252, 552)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB96" unique_id=1422339641]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB97" type="Node2D" parent="FloatingPapersContainer" unique_id=546270242]
+position = Vector2(464, 404)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB97" unique_id=715371192]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB98" type="Node2D" parent="FloatingPapersContainer" unique_id=1403774526]
+position = Vector2(581, 56)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB98" unique_id=1482949003]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB99" type="Node2D" parent="FloatingPapersContainer" unique_id=1110036197]
+position = Vector2(340, 272)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB99" unique_id=996951021]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC50" type="Node2D" parent="FloatingPapersContainer" unique_id=1688362127]
+position = Vector2(302, 591)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC50" unique_id=594403430]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC51" type="Node2D" parent="FloatingPapersContainer" unique_id=567527370]
+position = Vector2(1257, 92)
+rotation = 4.681858
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC51" unique_id=828223524]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC52" type="Node2D" parent="FloatingPapersContainer" unique_id=1585092969]
+position = Vector2(730, 534)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC52" unique_id=265963065]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC53" type="Node2D" parent="FloatingPapersContainer" unique_id=1183591622]
+position = Vector2(260, 79)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC53" unique_id=1203188508]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC54" type="Node2D" parent="FloatingPapersContainer" unique_id=1803797929]
+position = Vector2(654, 575)
+rotation = 4.9537783
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC54" unique_id=1824177118]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA11" type="Node2D" parent="FloatingPapersContainer" unique_id=362842625]
+position = Vector2(547, 204)
+rotation = 5.9452715
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA11" unique_id=1568371535]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB100" type="Node2D" parent="FloatingPapersContainer" unique_id=2050527353]
+position = Vector2(698, -63)
+rotation = 5.9452715
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB100" unique_id=492576755]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB101" type="Node2D" parent="FloatingPapersContainer" unique_id=170995873]
+position = Vector2(1206, 325)
+rotation = 5.9452715
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB101" unique_id=1190369827]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB102" type="Node2D" parent="FloatingPapersContainer" unique_id=1959976603]
+position = Vector2(1027, 209)
+rotation = 5.9452715
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB102" unique_id=1668423686]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB103" type="Node2D" parent="FloatingPapersContainer" unique_id=237508838]
+position = Vector2(530, -76)
+rotation = 5.9452715
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB103" unique_id=1515788951]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB37" type="Node2D" parent="FloatingPapersContainer" unique_id=697439591]
+position = Vector2(1426, 380)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB37" unique_id=1400974855]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB38" type="Node2D" parent="FloatingPapersContainer" unique_id=859803939]
+position = Vector2(801, 272)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB38" unique_id=1856407213]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB39" type="Node2D" parent="FloatingPapersContainer" unique_id=1737334434]
+position = Vector2(918, -76)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB39" unique_id=1001019983]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB40" type="Node2D" parent="FloatingPapersContainer" unique_id=2049999418]
+position = Vector2(677, 140)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB40" unique_id=840923611]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC21" type="Node2D" parent="FloatingPapersContainer" unique_id=761189120]
+position = Vector2(639, 459)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC21" unique_id=542735100]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC22" type="Node2D" parent="FloatingPapersContainer" unique_id=563700025]
+position = Vector2(1594, -40.000008)
+rotation = 3.412326
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC22" unique_id=1778327374]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC23" type="Node2D" parent="FloatingPapersContainer" unique_id=734952139]
+position = Vector2(1067, 402)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC23" unique_id=1771473207]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC24" type="Node2D" parent="FloatingPapersContainer" unique_id=197348694]
+position = Vector2(597, -53)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC24" unique_id=1272790102]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC25" type="Node2D" parent="FloatingPapersContainer" unique_id=1842451601]
+position = Vector2(828, 403)
+rotation = 3.684246
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC25" unique_id=257944345]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperA6" type="Node2D" parent="FloatingPapersContainer" unique_id=1359936681]
+position = Vector2(913, 220)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperA6" unique_id=595434559]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
+
+[node name="FloatingPaperB41" type="Node2D" parent="FloatingPapersContainer" unique_id=856164520]
+position = Vector2(1064, -47)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB41" unique_id=364443040]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB42" type="Node2D" parent="FloatingPapersContainer" unique_id=1274874730]
+position = Vector2(1572, 341)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB42" unique_id=64103295]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB43" type="Node2D" parent="FloatingPapersContainer" unique_id=368567007]
+position = Vector2(1393, 225)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB43" unique_id=429137621]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB44" type="Node2D" parent="FloatingPapersContainer" unique_id=273878613]
+position = Vector2(896, -60)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB44" unique_id=1389425701]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB45" type="Node2D" parent="FloatingPapersContainer" unique_id=225400547]
+position = Vector2(1792, 396)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB45" unique_id=323092596]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB46" type="Node2D" parent="FloatingPapersContainer" unique_id=2010825352]
+position = Vector2(1167, 288)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB46" unique_id=1361764535]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB47" type="Node2D" parent="FloatingPapersContainer" unique_id=810935795]
+position = Vector2(1284, -60)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB47" unique_id=552670154]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperB48" type="Node2D" parent="FloatingPapersContainer" unique_id=2051877433]
+position = Vector2(1043, 156)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperB48" unique_id=1324874117]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("5_dpk4b")
+
+[node name="FloatingPaperC26" type="Node2D" parent="FloatingPapersContainer" unique_id=914186160]
+position = Vector2(1005, 475)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC26" unique_id=762722261]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC27" type="Node2D" parent="FloatingPapersContainer" unique_id=966472889]
+position = Vector2(1960, -24.00002)
+rotation = 5.0315113
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC27" unique_id=1646128206]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC28" type="Node2D" parent="FloatingPapersContainer" unique_id=1951879721]
+position = Vector2(1433, 418)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC28" unique_id=1969787869]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC29" type="Node2D" parent="FloatingPapersContainer" unique_id=1628627268]
+position = Vector2(963, -37)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC29" unique_id=2029093733]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="FloatingPaperC30" type="Node2D" parent="FloatingPapersContainer" unique_id=1734300068]
+position = Vector2(1194, 419)
+rotation = 5.3034315
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPapersContainer/FloatingPaperC30" unique_id=917818942]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("6_7b07g")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=370312465]
+material = SubResource("ShaderMaterial_0kbut")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FloatingPaperMain" type="Node2D" parent="." unique_id=1775707995]
+visible = false
+position = Vector2(676.99994, 299)
+rotation = 3.118475
+scale = Vector2(2.418193, 2.418193)
+
+[node name="Sprite2D" type="Sprite2D" parent="FloatingPaperMain" unique_id=461808350]
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("4_qcihl")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=913735320]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +1566,9 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1253943942]
 layout_mode = 2
 theme = ExtResource("3_ervn5")
-text = "Moldus II"
+text = "Over
+the Alps"
+horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=868410094]
 layout_mode = 2
@@ -77,15 +1585,10 @@ layout_mode = 2
 theme = ExtResource("1_cu28x")
 text = "quit"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=370312465]
-material = SubResource("ShaderMaterial_0kbut")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("4_20lew")]
+position = Vector2(1071, 179)
+
+[node name="Timer" type="Timer" parent="." unique_id=2006861487]
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

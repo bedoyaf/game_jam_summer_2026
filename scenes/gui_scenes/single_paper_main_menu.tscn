@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://djvj8iliyo0hs"]
+
+[ext_resource type="PackedScene" uid="uid://w16bcp4uso4k" path="res://scenes/SinglePaper.tscn" id="1_5s7of"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k45pd"]
+viewport_path = NodePath("MainText3Dscene")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pn7ux"]
+viewport_path = NodePath("YesNo3DScene")
+
+[node name="SinglePaper" unique_id=407088929 instance=ExtResource("1_5s7of")]
+
+[node name="MainText" parent="PaperSprite" parent_id_path=PackedInt32Array(1342278904) index="0" unique_id=1828836065]
+texture = SubResource("ViewportTexture_k45pd")
+
+[node name="YesNoText" parent="PaperSprite" parent_id_path=PackedInt32Array(1342278904) index="1" unique_id=54336034]
+texture = SubResource("ViewportTexture_pn7ux")

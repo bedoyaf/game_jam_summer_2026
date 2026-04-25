@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bf33ojvwp8f4c"]
+
+[ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="1_6nxrb"]
+[ext_resource type="Shader" uid="uid://bc411qbagujpq" path="res://scenes/gui_scenes/paper_distortion.gdshader" id="2_6nxrb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nxrb"]
+shader = ExtResource("2_6nxrb")
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_freq = 2.0
+shader_parameter/wave_width = 0.005
+
+[node name="FloatingPaper" type="Node2D" unique_id=575308881]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=968466264]
+material = SubResource("ShaderMaterial_6nxrb")
+scale = Vector2(0.30833334, 0.30833334)
+texture = ExtResource("1_6nxrb")
