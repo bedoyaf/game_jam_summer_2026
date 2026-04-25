@@ -3,7 +3,12 @@ shader_type canvas_item;
 uniform float speed = 2.0;
 uniform float frequency = 10.0;
 uniform float amplitude = 0.02;
-uniform float edge_softness = 0.4; 
+uniform float edge_softness = 0.4;
+
+uniform float alpha_addition_threshold = 0.0;
+uniform float add_alpha = 0.2;
+uniform float max_alpha = 0.8;
+
 
 uniform sampler2D noise_texture : repeat_enable;
 
@@ -29,11 +34,27 @@ void fragment() {
     vec2 centered_uv = UV * 2.0 - 1.0;
     float dist = max(abs(centered_uv.x), abs(centered_uv.y));
     float edge_mask = smoothstep(1.0, 1.0 - edge_softness, dist);
-    tex_color.a += 0.8;
-    // Final composite
-    tex_color.a *= noise_value * edge_mask;
     
+    // Final composite
+	//if (noise_value <= alpha_addition_threshold) {
+		//tex_color.a += add_alpha;
+    //}
+	
+
+	//if (noise_value <= 1.0) {
+		//tex_color.a += 1.0;
+    //}
+	
+	
+	tex_color.a *= noise_value * edge_mask;
+	tex_color.a += add_alpha;
+	
+	if (tex_color.a >= max_alpha) {
+		tex_color.a = max_alpha;
+	}
 	
     COLOR = tex_color;
+	
+
 	
 }
