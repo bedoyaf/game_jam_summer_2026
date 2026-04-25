@@ -3,6 +3,9 @@ shader_type canvas_item;
 uniform float speed = 2.0;
 uniform float frequency = 10.0;
 uniform float amplitude = 0.02;
+
+uniform float x_threshold = 0.5;
+
 uniform float edge_softness = 0.4;
 
 uniform float alpha_addition_threshold = 0.0;
@@ -29,27 +32,23 @@ void fragment() {
     
     // 5. Sample the Noise
     float noise_value = texture(noise_texture, distorted_noise_uv).r;
+	float fade_x = smoothstep(1.0, x_threshold, UV.x);
+	float fade_y = smoothstep(1.0, x_threshold, UV.y);
+	
     
     // 6. Edge Fading (Using undistorted UV so the "frame" stays stable)
     vec2 centered_uv = UV * 2.0 - 1.0;
     float dist = max(abs(centered_uv.x), abs(centered_uv.y));
-    float edge_mask = smoothstep(1.0, 1.0 - edge_softness, dist);
-    
-    // Final composite
-	//if (noise_value <= alpha_addition_threshold) {
-		//tex_color.a += add_alpha;
-    //}
-	
+    //float edge_mask = smoothstep(1.0, 1.0 - edge_softness, dist);
 
-	//if (noise_value <= 1.0) {
-		//tex_color.a += 1.0;
-    //}
-	
-	
-	tex_color.a *= noise_value * edge_mask;
 	tex_color.a += add_alpha;
 	
-	if (tex_color.a >= max_alpha) {
+
+	
+	float edge_mask = fade_x * fade_y;
+	tex_color.a *= noise_value * edge_mask;
+	
+	if (tex_color.a > max_alpha) {
 		tex_color.a = max_alpha;
 	}
 	

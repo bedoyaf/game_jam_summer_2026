@@ -14,6 +14,9 @@ extends Node
 @export_range(0.0, 20.0) var frequency_shader: float = 10.0
 @export_range(0.001, 0.05) var amplitude_shader: float = 10.0
 @export_range(0.05, 0.7) var edge_softness_shader: float = 0.4
+@export_range(0.01, 0.99) var x_threshold_shader: float = 0.4
+@export_range(0.01, 0.99) var dream_level: float = 0.0
+
 
 @export_category("Assignables")
 @export var sub_viewport_container: SubViewportContainer:
@@ -52,6 +55,12 @@ func _process(delta):
 	handle_percentage(delta)
 	handle_viewport_size()
 	set_shader_params()
+	change_dream_level()
+	
+	
+func change_dream_level():
+	x_threshold_shader = dream_level * 0.80
+	add_alpha_shader = -1 + 3 * dream_level
 	
 	
 
@@ -63,6 +72,7 @@ func set_shader_params():
 	my_material.set_shader_parameter("frequency", frequency_shader)
 	my_material.set_shader_parameter("amplitude", amplitude_shader)
 	my_material.set_shader_parameter("edge_softness", edge_softness_shader)
+	my_material.set_shader_parameter("x_threshold", x_threshold_shader)
 
 
 func handle_percentage(delta):

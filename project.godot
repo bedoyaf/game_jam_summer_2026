@@ -18,6 +18,7 @@ config/icon="res://scenes/icon.svg"
 [autoload]
 
 GameManager="*uid://cfp7sxexf1ght"
+DreamLevelControl="*uid://c5wnxqgfs084e"
 
 [display]
 
