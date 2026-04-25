@@ -9,20 +9,21 @@
 noise_type = 3
 seed = 5
 frequency = 0.0021
-offset = Vector3(72153.4, 54130.355, 0)
+offset = Vector3(131520.73, 54130.355, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cuat5"]
 noise = SubResource("FastNoiseLite_vlhxr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cuat5"]
 shader = ExtResource("2_vlhxr")
-shader_parameter/speed = 0.341
-shader_parameter/frequency = 2.646
-shader_parameter/amplitude = 0.05
-shader_parameter/edge_softness = 0.376
-shader_parameter/alpha_addition_threshold = 0.0
-shader_parameter/add_alpha = 0.4269999999999996
-shader_parameter/max_alpha = 0.9630000000000001
+shader_parameter/speed = 2.668
+shader_parameter/frequency = 0.0
+shader_parameter/amplitude = 0.001
+shader_parameter/x_threshold = 0.792
+shader_parameter/edge_softness = 0.05
+shader_parameter/alpha_addition_threshold = 0.152
+shader_parameter/add_alpha = 1.9699999999999998
+shader_parameter/max_alpha = 0.913
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_cuat5")
 
 [node name="Main" type="Node2D" unique_id=870238760]
@@ -36,27 +37,30 @@ position = Vector2(557, 323)
 script = ExtResource("2_cuat5")
 noise_offset_speed_x = 0.3410000000000002
 noise_offset_speed_y = 0.0
-add_alpha_shader = 0.4269999999999996
-max_alpha_shader = 0.9630000000000001
-alpha_threshold_shader = 0.0
-speed_shader = 0.341
-frequency_shader = 2.646
-amplitude_shader = 0.05
-edge_softness_shader = 0.376
+add_alpha_shader = 1.9699999999999998
+max_alpha_shader = 0.913
+alpha_threshold_shader = 0.152
+speed_shader = 2.668
+frequency_shader = 0.0
+amplitude_shader = 0.001
+edge_softness_shader = 0.05
+x_threshold_shader = 0.792
+dream_level = 0.99
 sub_viewport_container = NodePath("../SubViewportContainer")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1211497977]
 material = SubResource("ShaderMaterial_cuat5")
-custom_minimum_size = Vector2(1, 1)
+custom_minimum_size = Vector2(164, 110)
 offset_left = -86.0
 offset_top = -29.0
-offset_right = 1207.0
-offset_bottom = 683.0
+offset_right = 1091.0
+offset_bottom = 612.0
+mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1926404120]
 handle_input_locally = false
-size = Vector2i(1293, 712)
+size = Vector2i(1177, 641)
 render_target_update_mode = 4
 
 [node name="WalkingAround" parent="SubViewportContainer/SubViewport" unique_id=158276549 instance=ExtResource("5_mx5fj")]
