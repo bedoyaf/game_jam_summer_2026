@@ -70,7 +70,6 @@ func check_goals(event):
 		goal_no._on_input_event(null, event, 0)
 
 func is_mouse_over_area(area: Area2D) -> bool:
-
 	var mouse_pos = get_global_mouse_position()
 	for child in area.get_children():
 		if child is CollisionShape2D and child.shape is RectangleShape2D:
@@ -82,7 +81,6 @@ func is_mouse_over_area(area: Area2D) -> bool:
 	return false
 
 func fly_away():
-
 	var tween = create_tween()
 	tween.tween_interval(1.0) 
 
