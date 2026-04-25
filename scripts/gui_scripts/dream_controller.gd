@@ -44,7 +44,7 @@ var container_maximum_y: int = 800
 
 
 func _ready():
-	
+	DreamLevelControl.connect("change_dream_level", change_dream_level_variable)
 	my_material = sub_viewport_container.material
 	var noise_tex = my_material.get_shader_parameter("noise_texture") as NoiseTexture2D
 	noise = noise_tex.noise
@@ -57,7 +57,10 @@ func _process(delta):
 	set_shader_params()
 	change_dream_level()
 	
-	
+
+func change_dream_level_variable(new_dream_level: float):
+	dream_level = new_dream_level
+
 func change_dream_level():
 	x_threshold_shader = dream_level * 0.80
 	add_alpha_shader = -1 + 3 * dream_level
