@@ -2,18 +2,34 @@
 
 [ext_resource type="Script" uid="uid://bnw11pyx1lp14" path="res://scripts/single_paper.gd" id="1_3rehf"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="1_lej21"]
+[ext_resource type="Texture2D" uid="uid://dvxblccnpnqpv" path="res://rolloj/rolloj_stamp_placeholder.png" id="2_noshv"]
 [ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="2_op5a8"]
-[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://rolloj/StampGoal.tscn" id="3_op5a8"]
+[ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_op5a8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
 viewport_path = NodePath("SubViewport2")
 
 [node name="SinglePaper" type="Node2D" unique_id=407088929]
 script = ExtResource("1_3rehf")
+content_text = "Ahojda"
+stamp_texture = ExtResource("2_noshv")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1342278904]
+[node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]
+clip_children = 2
 position = Vector2(-120, 0)
 texture = ExtResource("2_op5a8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
+position = Vector2(128, -80)
+scale = Vector2(1.2184701, 1.3232765)
+texture = SubResource("ViewportTexture_da8e4")
+
+[node name="StampContainer" type="Node2D" parent="PaperSprite" unique_id=2137878629]
+
+[node name="WholePaperArea" type="Area2D" parent="." unique_id=1299999866]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=1452439968]
+polygon = PackedVector2Array(-216, -456, -296, 304, 288, 304, 248, -440)
 
 [node name="Yes" parent="." unique_id=1065439230 instance=ExtResource("3_op5a8")]
 position = Vector2(-160, 176)
@@ -24,6 +40,7 @@ position = Vector2(152, 184)
 target_id = "paper_0_no"
 
 [node name="SubViewport2" type="SubViewport" parent="." unique_id=1234049101]
+own_world_3d = true
 transparent_bg = true
 size = Vector2i(587, 750)
 
@@ -40,20 +57,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.72714365)
 [node name="Label3D" type="Label3D" parent="SubViewport2/Node3D" unique_id=562579402]
 transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
 pixel_size = 0.0017
-text = "Ahoj zmrdi
-POMSTA BUDE 
-SLADKA JA jsem 
-hanibal swagger
-	
-HAWK TUAH
-Polib mi prdel
-zmrde
-
-
-"
 autowrap_trim_flags = 64
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1828836065]
-position = Vector2(8, -80)
-scale = Vector2(1.2184701, 1.3232765)
-texture = SubResource("ViewportTexture_da8e4")
