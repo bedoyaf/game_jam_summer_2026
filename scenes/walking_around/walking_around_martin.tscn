@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://cdqrx5blwkbn2"]
 
 [ext_resource type="Texture2D" uid="uid://b61fkvu0d676r" path="res://filip/placeholdry/map.png" id="1_82tnx"]
+[ext_resource type="PackedScene" uid="uid://b14jmg358x3vv" path="res://scenes/multimesh_test.tscn" id="1_cium8"]
 [ext_resource type="PackedScene" uid="uid://ugdxoekclc7k" path="res://scenes/walking_around/decision.tscn" id="3_pre12"]
 [ext_resource type="Script" uid="uid://dft2rvvy35w08" path="res://scripts/walking_around/player.gd" id="4_0kfkd"]
 [ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_57t1q"]
+[ext_resource type="Texture2D" uid="uid://oq1dkh8yw4bv" path="res://assets/sprites/snowy-landscape.png" id="5_82tnx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sihyj"]
 
 [node name="WalkingAround" type="Node2D" unique_id=158276549]
 
+[node name="MultimeshTest" parent="." unique_id=327841811 instance=ExtResource("1_cium8")]
+position = Vector2(-162, 1213)
+
 [node name="Background" type="Sprite2D" parent="." unique_id=932771500]
+visible = false
 position = Vector2(3011, 1142)
 texture = ExtResource("1_82tnx")
 
@@ -34,3 +40,8 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643851108]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=306265537]
+position = Vector2(170.99997, 1758)
+scale = Vector2(0.50217396, 0.50217396)
+texture = ExtResource("5_82tnx")

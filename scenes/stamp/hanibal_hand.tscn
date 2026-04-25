@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cnmkxtoqx7grh" path="res://assets/sprites/hand_2.png" id="3_nffnw"]
 
 [node name="HanibalHand" type="Node2D" unique_id=1568772530 node_paths=PackedStringArray("idle_sprite", "stamp_sprite")]
+z_index = 10
 script = ExtResource("1_6hvuf")
 idle_sprite = NodePath("IdleSprite")
 stamp_sprite = NodePath("StampSprite")
