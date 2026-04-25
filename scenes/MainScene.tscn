@@ -148,13 +148,6 @@ of our elephants
 
 [node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
 
-[node name="StampGoal" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="4" unique_id=1065439230]
-dialogue_on_destroy = null
-
-[node name="StampGoal2" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="5" unique_id=1308342401]
-required_hits = null
-dialogue_on_destroy = null
-
 [node name="DreamController" parent="DreamCore" index="0" unique_id=1024621172 node_paths=PackedStringArray("dream_darkness_rect")]
 noise_offset_speed_x = -0.5960000000000001
 noise_offset_speed_y = -0.129
@@ -178,6 +171,13 @@ offset_bottom = 649.0
 [node name="SubViewport" parent="DreamCore/SubViewportContainer" index="0" unique_id=1926404120]
 size = Vector2i(1238, 678)
 
+[node name="StampGoal" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="4" unique_id=1065439230]
+dialogue_on_destroy = null
+
+[node name="StampGoal2" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="5" unique_id=1308342401]
+required_hits = null
+dialogue_on_destroy = null
+
 [node name="DarknessRect" type="ColorRect" parent="DreamCore" unique_id=1627049334]
 offset_left = -63.0
 offset_top = -37.0
@@ -185,10 +185,6 @@ offset_right = 1174.0
 offset_bottom = 679.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.514436)
->>>>>>> origin/martin-4
-
-[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
-position = Vector2(1128, 464)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=294300650]
 limit_left = 0
@@ -196,6 +192,8 @@ limit_top = 0
 limit_right = 1152
 limit_bottom = 648
 script = ExtResource("8_0cxu4")
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
 
 [editable path="DreamCore"]
 [editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround"]
