@@ -24,6 +24,7 @@ position = Vector2(152, 184)
 target_id = "paper_0_no"
 
 [node name="SubViewport2" type="SubViewport" parent="." unique_id=1234049101]
+own_world_3d = true
 transparent_bg = true
 size = Vector2i(587, 750)
 
@@ -40,17 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.72714365)
 [node name="Label3D" type="Label3D" parent="SubViewport2/Node3D" unique_id=562579402]
 transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
 pixel_size = 0.0017
-text = "Ahoj zmrdi
-POMSTA BUDE 
-SLADKA JA jsem 
-hanibal swagger
-	
-HAWK TUAH
-Polib mi prdel
-zmrde
-
-
-"
 autowrap_trim_flags = 64
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1828836065]
