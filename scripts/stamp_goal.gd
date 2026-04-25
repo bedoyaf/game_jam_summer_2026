@@ -1,6 +1,9 @@
 extends CollisionObject2D 
 class_name StampGoal
 
+signal stamped(current: int, required: int)
+signal completed()
+
 # --- LOGIKA ÚKOLU ---
 @export var target_id: String = "" 
 @export var required_hits: int = 1 
@@ -28,6 +31,7 @@ func _ready() -> void:
 		
 	GameManager.stamp_target_activated.connect(_on_target_activated)
 	input_event.connect(_on_input_event)
+	GameManager.hand_clicked.connect(_on_hand_clicked)
 
 func _on_target_activated(activated_ids: String) -> void:
 	if is_destroyed:
@@ -42,21 +46,50 @@ func _on_target_activated(activated_ids: String) -> void:
 		if indicator: 
 			indicator.hide()
 
+func on_stamp() -> void:
+	print("STAMP FROM HAND COMPONENT")
+	_process_stamp()
+
+func _on_hand_clicked() -> void:
+	if not is_active or is_destroyed:
+		return
+	
+	# Because we evaluate from our OWN World2D, this perfectly bypasses SubViewport isolation!
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = get_global_mouse_position()
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	
+	var results = space_state.intersect_point(query)
+	for item in results:
+		var collider = item.collider
+		# Strictly check if the click hit THIS exact component's shape
+		if collider == self:
+			on_stamp()
+			break
+
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print("CLICK FROM INPUT EVENT")
+		_process_stamp()
+
+func _process_stamp() -> void:
 	if not is_active or is_destroyed:
 		return
 		
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if GameManager.is_stamp_allowed():
-			GameManager.record_stamp() 
-			
-			current_hits += 1
-			GameManager.register_stamp_hit(target_id) 
-			
-			_play_hit_animation()
-			
-			if current_hits >= required_hits:
-				_destroy_obstacle()
+	if GameManager.is_stamp_allowed():
+		GameManager.record_stamp() 
+		
+		current_hits += 1
+		stamped.emit(current_hits, required_hits)
+		GameManager.register_stamp_hit(target_id) 
+		
+		_play_hit_animation()
+		
+		if current_hits >= required_hits:
+			completed.emit()
+			_destroy_obstacle()
 
 func _destroy_obstacle() -> void:
 	is_destroyed = true

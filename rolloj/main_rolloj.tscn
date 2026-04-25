@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://de86edg87ghb4"]
+
+[ext_resource type="Script" uid="uid://b6rsl61wb68wg" path="res://scripts/gui_scripts/dream_controller.gd" id="1_03r1i"]
+[ext_resource type="Shader" uid="uid://bfjp2fu6vpha8" path="res://assets/shaders/dream_world_perlin_absolute.gdshader" id="2_60yps"]
+[ext_resource type="PackedScene" uid="uid://cdqrx5blwkbn2" path="res://scenes/walking_around/walking_around_martin.tscn" id="3_qqdwk"]
+[ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="4_ejsn7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vlhxr"]
+noise_type = 3
+seed = 5
+frequency = 0.0021
+offset = Vector3(218480.2, 54130.355, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cuat5"]
+noise = SubResource("FastNoiseLite_vlhxr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cuat5"]
+shader = ExtResource("2_60yps")
+shader_parameter/speed = 2.668
+shader_parameter/frequency = 0.0
+shader_parameter/amplitude = 0.001
+shader_parameter/x_threshold = 0.792
+shader_parameter/edge_softness = 0.05
+shader_parameter/alpha_addition_threshold = 0.152
+shader_parameter/add_alpha = 1.9699999999999998
+shader_parameter/max_alpha = 0.913
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_cuat5")
+
+[node name="Main" type="Node2D" unique_id=870238760]
+
+[node name="DreamController" type="Node" parent="." unique_id=1403487549 node_paths=PackedStringArray("sub_viewport_container")]
+script = ExtResource("1_03r1i")
+noise_offset_speed_x = 0.3410000000000002
+noise_offset_speed_y = 0.0
+add_alpha_shader = 1.9699999999999998
+max_alpha_shader = 0.913
+alpha_threshold_shader = 0.152
+speed_shader = 2.668
+frequency_shader = 0.0
+amplitude_shader = 0.001
+edge_softness_shader = 0.05
+x_threshold_shader = 0.792
+dream_level = 0.99
+sub_viewport_container = NodePath("../SubViewportContainer")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1211497977]
+material = SubResource("ShaderMaterial_cuat5")
+custom_minimum_size = Vector2(1, 1)
+offset_left = -86.0
+offset_top = -29.0
+offset_right = 1091.0
+offset_bottom = 612.0
+mouse_filter = 2
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1926404120]
+handle_input_locally = false
+size = Vector2i(1177, 641)
+render_target_update_mode = 4
+
+[node name="WalkingAround" parent="SubViewportContainer/SubViewport" unique_id=158276549 instance=ExtResource("3_qqdwk")]
+
+[node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("4_ejsn7")]
+
+[editable path="SubViewportContainer/SubViewport/WalkingAround"]
+[editable path="SubViewportContainer/SubViewport/WalkingAround/Decision1"]

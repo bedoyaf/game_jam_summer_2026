@@ -1,0 +1,102 @@
+extends Node2D
+
+@export var orbit_radius: float = 100.0
+@export var orbit_speed: float = 0.8
+@export var dodge_distance: float = 50.0 # How close the mouse can get before a dodge
+@export var max_dodges: int = 3
+@export var sprite_rotation_offset_deg: float = 90.0 # Change to 0 if your sprite naturally points right
+
+var orbit_center: Vector2 = Vector2.ZERO
+var current_angle: float = 0.0
+var dodges_left: int
+var dodge_timer: float = 0.0
+
+@onready var sprite = $Sprite2D
+@onready var stamp_goal = $StampGoal
+
+func _ready() -> void:
+	dodges_left = max_dodges
+	
+	# Use the initial placement in your scene as the center of the orbit!
+	orbit_center = global_position 
+	
+	# The eagle only takes exactly 1 hit to die, but it dodges the hand 3 times first!
+	if stamp_goal:
+		stamp_goal.required_hits = 1
+		stamp_goal.completed.connect(_on_eagle_defeated)
+
+func _process(delta: float) -> void:
+	# If exhausted, circle slowly, waiting for the player to stamp it!
+	if dodges_left <= 0:
+		_update_orbit(delta * 0.4) 
+		return
+
+	# If currently dodging, wait before checking distance again
+	if dodge_timer > 0.0:
+		dodge_timer -= delta
+	else:
+		_update_orbit(delta)
+		_check_dodge()
+
+func _update_orbit(delta: float) -> void:
+	current_angle += orbit_speed * delta
+	
+	# Basic Trigonometry to calculate position on a circle
+	var offset = Vector2(cos(current_angle), sin(current_angle)) * orbit_radius
+	var target_pos = orbit_center + offset
+	
+	# Calculate exact mathematical tangent of the circle so it rotates natively every frame
+	var tangent_angle = current_angle + (PI / 2.0 if orbit_speed > 0 else -PI / 2.0)
+	
+	# Smoothly interpolate rotation so it looks organic when recovering from a dodge
+	var target_rotation = tangent_angle + deg_to_rad(sprite_rotation_offset_deg)
+	rotation = lerp_angle(rotation, target_rotation, 8.0 * delta)
+		
+	global_position = target_pos
+
+func _check_dodge() -> void:
+	# `get_global_mouse_position()` inside the Eagle script pulls the correctly projected
+	# coordinate of the mouse in the Dream World! (Completely avoids Subviewport issues!)
+	var mouse_pos = get_global_mouse_position()
+	
+	if global_position.distance_to(mouse_pos) < dodge_distance:
+		_trigger_dodge()
+
+func _trigger_dodge() -> void:
+	dodges_left -= 1
+	dodge_timer = 0.35 # Quick cooldown so it doesn't double-dodge
+	
+	# Add PI (180 degrees) to instantly jump to the opposite side of its orbit!
+	current_angle += PI 
+	
+	var new_offset = Vector2(cos(current_angle), sin(current_angle)) * orbit_radius
+	var new_pos = orbit_center + new_offset
+	
+	# Snap rotation to face the darting direction!
+	var dash_dir = new_pos - global_position
+	if dash_dir.length_squared() > 1.0:
+		rotation = dash_dir.angle() + deg_to_rad(sprite_rotation_offset_deg)
+	
+	# "Juice": Smooth, fast flight to the new position
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", new_pos, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	
+	# "Juice": Stretch the eagle during the dash
+	scale = Vector2(1.5, 0.5)
+	tween.parallel().tween_property(self, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_BOUNCE)
+	
+	if dodges_left <= 0:
+		print("Eagle Exhausted! Ready for Stamping!")
+		# Make it turn slightly gray/sad so the player knows it gave up
+		modulate = Color(0.7, 0.7, 0.9) 
+
+func _on_eagle_defeated() -> void:
+	print("Eagle caught! Dropping Food!")
+	
+	var tween = create_tween()
+	# Fall out of the sky and spin
+	tween.tween_property(self, "position:y", position.y + 400, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(self, "rotation", rotation + PI*3, 0.5)
+	tween.tween_callback(self.queue_free)
+	
+	# TODO: Spawn your food dropping logic here or use a GameManager task!

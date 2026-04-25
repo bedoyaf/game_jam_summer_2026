@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ugdxoekclc7k" path="res://scenes/walking_around/decision.tscn" id="3_pre12"]
 [ext_resource type="Script" uid="uid://dft2rvvy35w08" path="res://scripts/walking_around/player.gd" id="4_0kfkd"]
 [ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_57t1q"]
+[ext_resource type="PackedScene" uid="uid://corqp025kynn8" path="res://rolloj/Eagle.tscn" id="5_82tnx"]
+[ext_resource type="PackedScene" uid="uid://bscf8ml23lsyl" path="res://rolloj/bridge.tscn" id="6_cium8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sihyj"]
 
@@ -16,6 +18,7 @@ texture = ExtResource("1_82tnx")
 [node name="Decision1" parent="." unique_id=2124449466 instance=ExtResource("3_pre12")]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=189794120]
+z_index = 1
 position = Vector2(191, 1771)
 scale = Vector2(2.1200001, 2.1200001)
 script = ExtResource("4_0kfkd")
@@ -34,3 +37,10 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643851108]
+
+[node name="Eagle" parent="." unique_id=1197796079 instance=ExtResource("5_82tnx")]
+position = Vector2(1442, 1032)
+
+[node name="Bridge" parent="." unique_id=1935920774 instance=ExtResource("6_cium8")]
+position = Vector2(1610, 1484)
+scale = Vector2(0.392971, 0.392971)
