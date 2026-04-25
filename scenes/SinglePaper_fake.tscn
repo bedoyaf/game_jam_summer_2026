@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dpid8klt8s0gb"]
+
+[ext_resource type="Script" uid="uid://b1i6e82ovwrg7" path="res://scripts/single_paper_fake.gd" id="1_yx6in"]
+[ext_resource type="Texture2D" uid="uid://chiw63tw88mdn" path="res://assets/sprites/stamp.png" id="2_ugxsm"]
+[ext_resource type="Texture2D" uid="uid://ddftptjksb7ld" path="res://assets/sprites/paper1.png" id="3_gi61f"]
+[ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="5_iqay2"]
+[ext_resource type="FontFile" uid="uid://shcov8h7agto" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="6_xlnaw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
+viewport_path = NodePath("MainText3Dscene")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m2cdc"]
+viewport_path = NodePath("YesNo3DScene")
+
+[node name="SinglePaper" type="Node2D" unique_id=407088929]
+script = ExtResource("1_yx6in")
+content_text = ""
+paper_index = -1
+stamp_texture = ExtResource("2_ugxsm")
+
+[node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]
+clip_children = 2
+position = Vector2(-120, 0)
+texture = ExtResource("3_gi61f")
+
+[node name="MainText" type="Sprite2D" parent="PaperSprite" unique_id=1828836065]
+position = Vector2(128, -128)
+scale = Vector2(1.2184701, 1.3232765)
+texture = SubResource("ViewportTexture_da8e4")
+
+[node name="YesNoText" type="Sprite2D" parent="PaperSprite" unique_id=54336034]
+position = Vector2(112, 40)
+scale = Vector2(0.8957612, 0.97281003)
+texture = SubResource("ViewportTexture_m2cdc")
+
+[node name="StampContainer" type="Node2D" parent="PaperSprite" unique_id=2137878629]
+
+[node name="WholePaperArea" type="Area2D" parent="." unique_id=1299999866]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WholePaperArea" unique_id=1452439968]
+polygon = PackedVector2Array(-216, -456, -296, 304, 288, 304, 248, -440)
+
+[node name="MainText3Dscene" type="SubViewport" parent="." unique_id=1234049101]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(587, 750)
+
+[node name="Node3D" type="Node3D" parent="MainText3Dscene" unique_id=479149260]
+
+[node name="Sprite3D" type="Sprite3D" parent="MainText3Dscene/Node3D" unique_id=2114441493]
+transform = Transform3D(0.19, 0, 0, 0, 0.18815093, 0.026442893, 0, -0.026442893, 0.18815093, 0, 0, -0.008358151)
+visible = false
+texture = ExtResource("5_iqay2")
+
+[node name="Camera3D" type="Camera3D" parent="MainText3Dscene/Node3D" unique_id=307116655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.72714365)
+
+[node name="Label3D" type="Label3D" parent="MainText3Dscene/Node3D" unique_id=562579402]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
+pixel_size = 0.0017
+modulate = Color(0.2509804, 0.14509805, 0.007843138, 0.32156864)
+text = "Lorem ipsum
+dolorsit amet,
+consectetur
+adipiscing elit."
+font = ExtResource("6_xlnaw")
+outline_size = 0
+autowrap_trim_flags = 64
+
+[node name="YesNo3DScene" type="SubViewport" parent="." unique_id=23778788]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(587, 750)
+
+[node name="Node3D" type="Node3D" parent="YesNo3DScene" unique_id=547668770]
+
+[node name="Sprite3D" type="Sprite3D" parent="YesNo3DScene/Node3D" unique_id=1489728984]
+transform = Transform3D(0.19, 0, 0, 0, 0.18815093, 0.026442893, 0, -0.026442893, 0.18815093, 0, 0, -0.008358151)
+visible = false
+texture = ExtResource("5_iqay2")
+
+[node name="Label3D" type="Label3D" parent="YesNo3DScene/Node3D" unique_id=135525175]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
+pixel_size = 0.0017
+modulate = Color(0.25150964, 0.14603567, 0.0077009923, 1)
+text = "                                   "
+font = ExtResource("6_xlnaw")
+outline_size = 0
+autowrap_trim_flags = 64
+
+[node name="Camera3D" type="Camera3D" parent="YesNo3DScene/Node3D" unique_id=775511090]
+transform = Transform3D(1, 0, 0, 0, 0.99152213, -0.12993784, 0, 0.12993784, 0.99152213, 0, 0, 0.72714365)

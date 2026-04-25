@@ -13,13 +13,8 @@ extends Node2D
 
 @onready var stamp_container = $PaperSprite/StampContainer
 @onready var paper_area = $WholePaperArea
-@onready var goal_yes = $Yes
-@onready var goal_no = $No
 
 func _ready() -> void:
-
-	goal_yes.target_id = "paper_" + str(paper_index) + "_yes"
-	goal_no.target_id = "paper_" + str(paper_index) + "_no"
 
 	_update_label()
 
@@ -37,7 +32,6 @@ func _on_paper_input(_viewport, event, _shape_idx):
 
 			var click_pos = get_local_mouse_position()
 			create_visual_stamp(click_pos)
-			check_goals(event)
 
 func create_visual_stamp(pos: Vector2):
 	if not stamp_texture:
@@ -60,12 +54,6 @@ func create_visual_stamp(pos: Vector2):
 
 	tween.tween_callback(stamp.queue_free)
 
-func check_goals(event):
-
-	if goal_yes.is_active and is_mouse_over_area(goal_yes):
-		goal_yes._on_input_event(null, event, 0)
-	elif goal_no.is_active and is_mouse_over_area(goal_no):
-		goal_no._on_input_event(null, event, 0)
 
 func is_mouse_over_area(area: Area2D) -> bool:
 
