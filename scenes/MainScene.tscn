@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://h1fwxmdtgxu0" path="res://scenes/gui_scenes/main.tscn" id="6_kp0ql"]
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="7_08o8g"]
 [ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="8_0cxu4"]
+[ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="12_o3jky"]
 
 [node name="MainScene" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups", "dream_controller")]
 script = ExtResource("1_u1u68")
@@ -188,4 +189,8 @@ script = ExtResource("8_0cxu4")
 
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
 
+[node name="Dialogue" parent="." unique_id=401222758 instance=ExtResource("12_o3jky")]
+z_index = 40
+
 [editable path="DreamCore"]
+[editable path="Dialogue"]

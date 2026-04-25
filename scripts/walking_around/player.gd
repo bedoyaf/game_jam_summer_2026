@@ -14,6 +14,8 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite2D # Ujisti se, že se tvůj Sprite jmenuje přesně takto
 
+var last_facing_up: bool = false
+
 var time: float = 0.0
 
 var original_scale_x  : float = 0
@@ -30,21 +32,31 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * speed
 		time += delta * step_frequency
 		
-		var is_moving_up = direction.y < 0
-		
-		# Rozhodneme, který frame chůze použít na základě sinu (střídání nohou)
+		# --- JEDNODUCHÁ LOGIKA SMĚRU ---
+		# Priorita Y: Pokud se hýbe nahoru, jsou to záda. Pokud dolů, je to předek.
+		if direction.y < 0: # Jde nahoru (W) -> teď nastaveno na Forward
+			last_facing_up = false
+		elif direction.y > 0: # Jde dolů (S) -> teď nastaveno na Back
+			last_facing_up = true
+		else:
+			# Osa X zůstává tak, jak ti fungovala:
+			# Doleva (A) -> Záda, Doprava (D) -> Předek
+			if direction.x < 0:
+				last_facing_up = true
+			elif direction.x > 0:
+				last_facing_up = false
+			
 		var walk_frame = 1 if sin(time) > 0 else 2
 		
-		if is_moving_up:
+		# Nastavení textury podle last_facing_up
+		if last_facing_up:
 			sprite.texture = tex_walk_b1 if walk_frame == 1 else tex_walk_b2
 		else:
 			sprite.texture = tex_walk_f1 if walk_frame == 1 else tex_walk_f2
 			
-		# Otočení spritu doleva/doprava (mirroring)
-		if direction.x != 0:
-			sprite.flip_h = direction.x < 0
+		sprite.flip_h = false 
 
-		# --- TVŮJ SQUASH A STRETCH ---
+		# --- SQUASH AND STRETCH (Tvůj efekt) ---
 		var squash_factor = abs(sin(time))
 		sprite.scale.y = original_scale_y - (squash_factor * (squash_amount * original_scale_y))
 		sprite.scale.x = original_scale_x + (squash_factor * (squash_amount * 0.5 * original_scale_x))
@@ -53,9 +65,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		
-		# --- IDLE STAV (Stání) ---
-		# Podle toho, kam se díval naposled (můžeme sledovat y velocity)
-		if velocity.y < -0.1:
+		# IDLE STAV - Používáme správné IDLE textury
+		if last_facing_up:
 			sprite.texture = tex_stand_back
 		else:
 			sprite.texture = tex_stand_forward

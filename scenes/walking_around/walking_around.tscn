@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_yheev"]
 [ext_resource type="Script" uid="uid://cc3qew7f0nhaa" path="res://scripts/walking_around/path_block.gd" id="6_bkyfo"]
 [ext_resource type="Texture2D" uid="uid://dpcbae3xqenq5" path="res://assets/sprites/characters/hannibal/standforward.png" id="8_aemco"]
-[ext_resource type="Texture2D" uid="uid://ct2yo8g08ytrk" path="res://assets/sprites/characters/hannibal/walkforward.png" id="9_q3go6"]
 [ext_resource type="Texture2D" uid="uid://cmyhyhgyrbtul" path="res://assets/sprites/characters/hannibal/walkforward2.png" id="10_2b4uk"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
 [ext_resource type="Texture2D" uid="uid://cymxjyhabt441" path="res://assets/sprites/characters/hannibal/walkback.png" id="12_nyrub"]
@@ -1121,7 +1120,7 @@ script = ExtResource("4_bkyfo")
 speed = 400.0
 squash_amount = 0.05
 tex_stand_forward = ExtResource("8_aemco")
-tex_walk_f1 = ExtResource("9_q3go6")
+tex_walk_f1 = ExtResource("8_aemco")
 tex_walk_f2 = ExtResource("10_2b4uk")
 tex_stand_back = ExtResource("11_83sk2")
 tex_walk_b1 = ExtResource("12_nyrub")

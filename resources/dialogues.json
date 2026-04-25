@@ -1,22 +1,38 @@
 {
-  "intro_cave_completed": [
-	"Hannibale...",
-	"Ta jeskyně nebyla skutečná.",
-    "Něco tě sleduje."
+  "beginning_beginning": [
+	"Supplies ran out two days ago",
+	"The men started eating our horses",
   ],
-
-  "build_bridge_completed": [
-	"Most stojí.",
-    "Ale za jakou cenu?"
+ "stamped_just_table_beginning": [
+	"More and more orders and requests from the men",
+	"I cant stand these decisions anymore",
+	"But supplies from Carthage will come any day now.",
   ],
-
-  "feed_army_completed": [
-	"Slon byl označen.",
-    "Vojáci budou jíst."
+  "stamped_just_table_completed": [
+	"Orders Orders Orders",
+    "They cant think for themselfs."
   ],
-
-  "defeat_romans_completed": [
-	"Nepřátelé padli.",
-    "Sníh pohltil jejich stopy."
-  ]
+  "last_real_stamp_beginning": [
+	"More and more orders and decisions",
+  ],
+  "last_real_stamp_completed": [
+	"We have been weeks in these mountains",
+    "Trying to surmount these peaks."
+  	],
+	"dream_fade_beginning": [
+		"PLACEHOLDER, AMOGUS"
+  	],
+	"dream_fade_completed": [
+	"PLACEHOLDER, AMOGUS AMOGUS"
+  	],
+	"block_tree_completed": [
+	"Theres no force capable of stoping my revenge upon Rome itself"
+  	],
+	"decision_elephant_beginning":[
+		"We were hungry"
+	],
+	"eagle_beginning":[
+		"The enemy taunts as on the way.",
+		"They will tremble when reinforcements arrive."
+	]
 }
