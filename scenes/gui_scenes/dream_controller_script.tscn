@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ufq1fi25rnlj"]
+
+[ext_resource type="Script" uid="uid://b6rsl61wb68wg" path="res://scripts/gui_scripts/dream_controller.gd" id="1_hbnva"]
+
+[node name="DreamController" type="Node" unique_id=1024621172]
+script = ExtResource("1_hbnva")
+noise_offset_speed_x = 0.3410000000000002
+noise_offset_speed_y = 0.0
+add_alpha_shader = -5.0
+alpha_threshold_shader = 0.152
+speed_shader = 2.668
+frequency_shader = 0.0
+amplitude_shader = 0.001
+edge_softness_shader = 0.05
+x_threshold_shader = 0.891
+dream_level = 0.99
+max_dream_darkness = 0.6

@@ -1,4 +1,4 @@
-@tool
+
 
 extends Node
 
@@ -16,17 +16,21 @@ extends Node
 @export_range(0.05, 0.7) var edge_softness_shader: float = 0.4
 @export_range(0.01, 0.99) var x_threshold_shader: float = 0.4
 @export_range(0.01, 0.99) var dream_level: float = 0.0
+@export_range(0.00, 1.00) var dream_darkness: float = 0.0
 
+@export_range(0.00, 1.00) var max_dream_darkness: float = 0.9
+@export_range(0.00, 1.00) var max_x_threshold: float = 0.9
 
 @export_category("Assignables")
 @export var sub_viewport_container: SubViewportContainer:
 	set(value):
 		sub_viewport_container = value
-		# Trigger an update or check logic here
-		if sub_viewport_container:
-			print("Container found!")
-			
-			
+
+@export var dream_darkness_rect: ColorRect:
+	set(value):
+		dream_darkness_rect = value
+
+
 
 
 var my_material: Material = null
@@ -52,18 +56,21 @@ func _ready():
 
 func _process(delta):
 	offset_noise()
-	handle_percentage(delta)
+	#handle_percentage(delta)
 	handle_viewport_size()
 	set_shader_params()
 	change_dream_level()
 	
 
+
 func change_dream_level_variable(new_dream_level: float):
 	dream_level = new_dream_level
+	print(new_dream_level)
 
 func change_dream_level():
-	x_threshold_shader = dream_level * 0.80
+	x_threshold_shader = dream_level * max_x_threshold
 	add_alpha_shader = -1 + 3 * dream_level
+	dream_darkness_rect.color.a = dream_level * max_dream_darkness
 	
 	
 
@@ -78,15 +85,6 @@ func set_shader_params():
 	my_material.set_shader_parameter("x_threshold", x_threshold_shader)
 
 
-func handle_percentage(delta):
-	if Input.is_action_pressed("ui_right"):
-		percentage += delta * percentage_speed
-		if percentage > 1:
-			percentage = 1
-	if Input.is_action_pressed("ui_left"):
-		percentage -= delta * percentage_speed
-		if percentage < 0:
-			percentage = 0
 	
 
 func offset_noise():

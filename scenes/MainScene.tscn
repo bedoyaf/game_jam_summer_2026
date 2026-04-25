@@ -148,6 +148,37 @@ of our elephants
 
 [node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
 
+[node name="DreamController" parent="DreamCore" index="0" unique_id=1024621172 node_paths=PackedStringArray("dream_darkness_rect")]
+noise_offset_speed_x = -0.5960000000000001
+noise_offset_speed_y = -0.129
+add_alpha_shader = 1.283
+max_alpha_shader = 0.8420000000000001
+speed_shader = 0.1
+frequency_shader = 6.0
+amplitude_shader = 0.02
+x_threshold_shader = 0.75339
+dream_level = 0.761
+dream_darkness = 1.0
+max_dream_darkness = 0.676
+max_x_threshold = 0.99
+dream_darkness_rect = NodePath("../DarknessRect")
+
+[node name="SubViewportContainer" parent="DreamCore" index="1" unique_id=1211497977]
+z_index = 1
+offset_right = 1152.0
+offset_bottom = 649.0
+
+[node name="SubViewport" parent="DreamCore/SubViewportContainer" index="0" unique_id=1926404120]
+size = Vector2i(1238, 678)
+
+[node name="DarknessRect" type="ColorRect" parent="DreamCore" unique_id=1627049334]
+offset_left = -63.0
+offset_top = -37.0
+offset_right = 1174.0
+offset_bottom = 679.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.514436)
+
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
 position = Vector2(1128, 464)
 
