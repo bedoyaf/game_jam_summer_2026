@@ -26,6 +26,8 @@ func _ready() -> void:
 	original_scale_y   = sprite.scale.y
 
 func _physics_process(delta: float) -> void:
+	GameManager.dream_character_position = position
+	#print(GameManager.dream_character_position)
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if direction != Vector2.ZERO:

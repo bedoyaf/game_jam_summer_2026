@@ -7,8 +7,9 @@ extends Node
 @export_category("Mist Parameters")
 @export_range(-2.0, 2.0) var noise_offset_speed_x: float = 0.5
 @export_range(-2.0, 2.0) var noise_offset_speed_y: float = 0.1
-@export_range(-5.0, 5.0) var add_alpha_shader: float = 0.1
-@export_range(0.8, 0.999) var max_alpha_shader: float = 0.8
+var add_alpha_shader: float = 0.1
+@export_range(-1.0, 0.999) var min_alpha_shader: float = -0.5
+@export_range(0.2, 0.999) var max_alpha_shader: float = 0.8
 @export_range(0.0, 1.0) var alpha_threshold_shader: float = 0.1
 @export_range(0.0, 5.0) var speed_shader: float = 2.0
 @export_range(0.0, 20.0) var frequency_shader: float = 10.0
@@ -19,6 +20,7 @@ extends Node
 @export_range(0.00, 1.00) var dream_darkness: float = 0.0
 
 @export_range(0.00, 1.00) var max_dream_darkness: float = 0.9
+
 @export_range(0.00, 1.00) var max_x_threshold: float = 0.9
 
 @export_category("Assignables")
@@ -69,7 +71,8 @@ func change_dream_level_variable(new_dream_level: float):
 
 func change_dream_level():
 	x_threshold_shader = dream_level * max_x_threshold
-	add_alpha_shader = -1 + 3 * dream_level
+	#add_alpha_shader = -1 + 3 * dream_level
+	add_alpha_shader = min_alpha_shader + dream_level * (max_alpha_shader - min_alpha_shader)
 	dream_darkness_rect.color.a = dream_level * max_dream_darkness
 	
 	
@@ -83,7 +86,8 @@ func set_shader_params():
 	my_material.set_shader_parameter("amplitude", amplitude_shader)
 	my_material.set_shader_parameter("edge_softness", edge_softness_shader)
 	my_material.set_shader_parameter("x_threshold", x_threshold_shader)
-
+	my_material.set_shader_parameter("character_world_pos", GameManager.dream_character_position)
+	
 
 	
 

@@ -1538,6 +1538,7 @@ scale = Vector2(0.30833334, 0.30833334)
 texture = ExtResource("6_7b07g")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=370312465]
+visible = false
 material = SubResource("ShaderMaterial_0kbut")
 layout_mode = 1
 anchors_preset = 15

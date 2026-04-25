@@ -24,6 +24,7 @@ signal hand_clicked()
 
 # SYSTÉM ÚKOLŮ (Tasks)
 
+var dream_character_position: Vector2 = Vector2(0, 0)
 var current_task_index: int = 0
 var task_list: Array[Dictionary] = [
 	{
