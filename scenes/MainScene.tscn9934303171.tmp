@@ -148,13 +148,6 @@ of our elephants
 
 [node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
 
-[node name="StampGoal" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="4" unique_id=1065439230]
-dialogue_on_destroy = null
-
-[node name="StampGoal2" parent="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1" parent_id_path=PackedInt32Array(870238760, 158276549, 2124449466) index="5" unique_id=1308342401]
-required_hits = null
-dialogue_on_destroy = null
-
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
 position = Vector2(1128, 464)
 
@@ -166,5 +159,3 @@ limit_bottom = 648
 script = ExtResource("8_0cxu4")
 
 [editable path="DreamCore"]
-[editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround"]
-[editable path="DreamCore/SubViewportContainer/SubViewport/WalkingAround/Decision1"]

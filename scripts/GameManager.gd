@@ -28,8 +28,8 @@ var task_list: Array[Dictionary] = [
 	{
 		"id": "intro_cave",
 		"desc": "Prozkoumej snovou jeskyni.",
-		"target_group": "none",
-		"required_stamps": 0,
+		"target_group": "obstacle1,obstacle2",
+		"required_stamps": 3,
 		"current_stamps": 0
 	},
 	{
@@ -57,22 +57,30 @@ var task_list: Array[Dictionary] = [
 	}
 ]
 
+# --- GLOBÁLNÍ COOLDOWN A SDÍLENÉ RAZÍTKO ---
 var last_stamp_msec: int = 0
 var stamp_cooldown_msec: int = 350 
+var current_stamp_rotation: float = 0.0 # NOVÉ: Sem si uložíme rotaci pro daný klik
 
 func is_stamp_allowed() -> bool:
 	var now = Time.get_ticks_msec()
-
 	if now - last_stamp_msec <= 50:
 		return true 
-
 	if now - last_stamp_msec >= stamp_cooldown_msec:
 		return true
-
 	return false
 
 func record_stamp() -> void:
-	last_stamp_msec = Time.get_ticks_msec()
+	var now = Time.get_ticks_msec()
+	
+	# Zkontrolujeme, jestli je to opravdu nové kliknutí 
+	# (a ne jen ten samý klik, co se ve zlomku milisekundy propadl na druhý papír)
+	if now - last_stamp_msec > 50:
+		# Vygenerujeme rotaci a zatřeseme kamerou POUZE JEDNOU!
+		current_stamp_rotation = randf_range(-0.3, 0.3)
+		camera_shake.emit(25.0)
+		
+	last_stamp_msec = now
 
 func _ready() -> void:
 
