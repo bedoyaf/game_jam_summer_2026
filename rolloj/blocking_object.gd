@@ -5,12 +5,16 @@ extends StaticBody2D
 @onready var main_sprite = $Sprite2D
 @onready var main_collision = $CollisionShape2D
 
+var base_scale: Vector2 = Vector2.ONE
+
+func _ready() -> void:
+	base_scale = scale
 
 func _on_rock_hit(current_hits: int, required_hits: int) -> void:
-	# Create a small tween shrink/grow effect on the whole rock!
+	# Create a small tween shrink/grow effect on the whole rock based on its original size!
 	var tween = create_tween()
-	scale = Vector2(0.9, 0.9)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+	scale = Vector2(base_scale.x * 0.9, base_scale.y * 0.9)
+	tween.tween_property(self, "scale", base_scale, 0.15).set_trans(Tween.TRANS_BOUNCE)
 
 func _on_obstacle_destroyed() -> void:
 	print("Obstacle Destroyed! Disabling physical walls...")

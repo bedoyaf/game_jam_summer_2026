@@ -12,6 +12,8 @@ signal completed()
 @export_group("Visuals & Physics")
 @export var default_texture: Texture2D
 @export var stamped_texture: Texture2D 
+@export var rejected_texture: Texture2D
+@export var linked_barricade: CollisionShape2D
 @export var dialogue_on_destroy: String = "" 
 
 @onready var indicator = get_node_or_null("Indicator")
@@ -103,8 +105,23 @@ func _destroy_obstacle() -> void:
 	if collision_shape:
 		collision_shape.set_deferred("disabled", true)
 		
+	if linked_barricade:
+		linked_barricade.set_deferred("disabled", true)
+		
 	if dialogue_on_destroy != "":
 		GameManager.trigger_dialogue(dialogue_on_destroy)
+
+func lock_as_rejected() -> void:
+	is_destroyed = true
+	is_active = false
+	if indicator: 
+		indicator.hide() 
+	
+	if sprite and rejected_texture:
+		sprite.texture = rejected_texture
+		
+	if collision_shape:
+		collision_shape.set_deferred("disabled", true)
 
 func _play_hit_animation() -> void:
 	var tween = create_tween()
