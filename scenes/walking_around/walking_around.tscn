@@ -2552,6 +2552,10 @@ scale = Vector2(0.4676819, 0.4676819)
 target_id = "bridge_stamps"
 stamped_texture = ExtResource("17_16ijy")
 
+[node name="CollisionShape2D" parent="Background/Events/River/Bridge/StampGoal" index="0" unique_id=1051562106]
+position = Vector2(-24.702377, -10.603428)
+scale = Vector2(12.683018, 12.683018)
+
 [node name="Indicator" parent="Background/Events/River/Bridge/StampGoal" index="2" unique_id=927250942]
 position = Vector2(-22.342743, -22.367973)
 scale = Vector2(1.5336063, 1.5336063)
@@ -2563,6 +2567,9 @@ rotation = 0.5141232
 scale = Vector2(0.4676819, 0.4676819)
 target_id = "bridge_stamps"
 stamped_texture = ExtResource("17_16ijy")
+
+[node name="CollisionShape2D" parent="Background/Events/River/Bridge/StampGoal1" index="0" unique_id=1051562106]
+scale = Vector2(12.502268, 12.502268)
 
 [node name="Indicator" parent="Background/Events/River/Bridge/StampGoal1" index="2" unique_id=927250942]
 position = Vector2(0.011154175, -20.00203)
@@ -2576,6 +2583,9 @@ scale = Vector2(0.4676819, 0.4676819)
 target_id = "bridge_stamps"
 stamped_texture = ExtResource("17_16ijy")
 
+[node name="CollisionShape2D" parent="Background/Events/River/Bridge/StampGoal2" index="0" unique_id=1051562106]
+scale = Vector2(13.314721, 13.314721)
+
 [node name="Indicator" parent="Background/Events/River/Bridge/StampGoal2" index="2" unique_id=927250942]
 position = Vector2(1.1796837, -5.882263)
 scale = Vector2(1.7418212, 1.7418212)
@@ -2587,6 +2597,9 @@ rotation = 0.5141232
 scale = Vector2(0.46768194, 0.46768194)
 target_id = "bridge_stamps"
 stamped_texture = ExtResource("17_16ijy")
+
+[node name="CollisionShape2D" parent="Background/Events/River/Bridge/StampGoal3" index="0" unique_id=1051562106]
+scale = Vector2(11.828889, 11.828889)
 
 [node name="Sprite2D" parent="Background/Events/River/Bridge/StampGoal3" index="1" unique_id=419037605]
 position = Vector2(-12.807103, -5.7296944)
@@ -2762,7 +2775,9 @@ shape = SubResource("RectangleShape2D_2vg4x")
 scale = Vector2(0.8657105, 0.8657105)
 
 [node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal3" index="2" unique_id=927250942]
-position = Vector2(42.41699, -118.03437)
+position = Vector2(-83.03133, -199.44415)
+rotation = -0.5564976
+scale = Vector2(1.1513296, 1.1513296)
 
 [node name="StampGoal" parent="Background/Events/GaulPursuit/wall" unique_id=1810459006 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
 position = Vector2(-33.965538, -1.459478)
@@ -2781,7 +2796,9 @@ shape = SubResource("RectangleShape2D_2vg4x")
 scale = Vector2(0.78253955, 0.78253955)
 
 [node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal" index="2" unique_id=927250942]
-position = Vector2(38.26751, -120.849075)
+position = Vector2(142.82402, -160.7425)
+rotation = 0.30524755
+scale = Vector2(1.1658812, 1.1658812)
 
 [node name="StampGoal2" parent="Background/Events/GaulPursuit/wall" unique_id=2137602048 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
 position = Vector2(-9.022095, 24.14746)
@@ -2801,7 +2818,8 @@ position = Vector2(27.003092, -7.3952274)
 scale = Vector2(0.82073724, 0.82073724)
 
 [node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="2" unique_id=927250942]
-position = Vector2(42.41699, -118.03437)
+position = Vector2(82.46007, -222.44463)
+scale = Vector2(1.3322742, 1.3322742)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/GaulPursuit/wall" unique_id=73175]
 scale = Vector2(1.0000001, 1.0000001)

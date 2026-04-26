@@ -237,6 +237,7 @@ func start_end_dream_transition():
 	change_state(GameState.TRANSITION)
 
 func finish_end_dream():
+	await get_tree().create_timer(3.0).timeout
 	change_state(GameState.PAPERWORK)
 	reset_tasks()
 func reset_tasks():
