@@ -7,6 +7,7 @@ signal completed()
 # --- LOGIKA ÚKOLU ---
 @export var target_id: String = "" 
 @export var required_hits: int = 1 
+@export var always_active: bool = false # Skvělé pro trash-moby, které můžeš rozbít kdykoliv!
 
 # --- VIZUÁL A FYZIKA ---
 @export_group("Visuals & Physics")
@@ -14,6 +15,7 @@ signal completed()
 @export var stamped_texture: Texture2D 
 @export var rejected_texture: Texture2D
 @export var linked_barricade: CollisionShape2D
+@export var enables_barricade_instead: bool = false # Toggles if this STAMP builds a physical wall instead of breaking one!
 @export var dialogue_on_destroy: String = "" 
 
 @onready var indicator = get_node_or_null("Indicator")
@@ -25,18 +27,25 @@ var current_hits: int = 0
 var is_destroyed: bool = false
 
 func _ready() -> void:
-	if indicator: 
+	if always_active:
+		is_active = true
+		
+	if indicator and not always_active: 
 		indicator.hide()
 	
 	if sprite and default_texture:
 		sprite.texture = default_texture
+		
+	# If this is a building component, the barricade must start completely disabled!
+	if linked_barricade and enables_barricade_instead:
+		linked_barricade.set_deferred("disabled", true)
 		
 	GameManager.stamp_target_activated.connect(_on_target_activated)
 	input_event.connect(_on_input_event)
 	GameManager.hand_clicked.connect(_on_hand_clicked)
 
 func _on_target_activated(activated_ids: String) -> void:
-	if is_destroyed:
+	if is_destroyed or always_active:
 		return
 		
 	if target_id in activated_ids.split(","):
@@ -85,7 +94,10 @@ func _process_stamp() -> void:
 		
 		current_hits += 1
 		stamped.emit(current_hits, required_hits)
-		GameManager.register_stamp_hit(target_id) 
+		
+		# Trash-mob units should NEVER progress the main story sequence even if they have an ID!
+		if not always_active:
+			GameManager.register_stamp_hit(target_id) 
 		
 		_play_hit_animation()
 		
@@ -106,7 +118,10 @@ func _destroy_obstacle() -> void:
 		collision_shape.set_deferred("disabled", true)
 		
 	if linked_barricade:
-		linked_barricade.set_deferred("disabled", true)
+		if enables_barricade_instead:
+			linked_barricade.set_deferred("disabled", false)
+		else:
+			linked_barricade.set_deferred("disabled", true)
 		
 	if dialogue_on_destroy != "":
 		GameManager.trigger_dialogue(dialogue_on_destroy)

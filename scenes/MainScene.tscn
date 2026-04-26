@@ -19,19 +19,6 @@ script = ExtResource("1_u1u68")
 paper_groups = [NodePath("Papers/PaperWork1/SinglePaper"), NodePath("Papers/PaperWork2/SinglePaper2"), NodePath("Papers/PaperWork3/SinglePaper"), NodePath("Papers/PaperWork4/SinglePaper"), NodePath("Papers/PaperWork5/SinglePaper")]
 dream_controller = NodePath("DreamCore/DreamController")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850718065]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=307909017]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_x537r")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="Papers" type="Node2D" parent="." unique_id=2145772059]
 position = Vector2(144, 144)
 scale = Vector2(0.72, 0.72)
@@ -148,6 +135,21 @@ sacrifice one
 of our elephants
 ?"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850718065]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=307909017]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_x537r")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
 
 [node name="DreamController" parent="DreamCore" index="0" unique_id=1024621172 node_paths=PackedStringArray("dream_darkness_rect")]
@@ -188,9 +190,20 @@ limit_bottom = 648
 script = ExtResource("8_0cxu4")
 
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
+position = Vector2(1121, 642)
 
 [node name="Dialogue" parent="." unique_id=401222758 instance=ExtResource("12_o3jky")]
 z_index = 40
+mouse_filter = 2
+
+[node name="Panel" parent="Dialogue/DialogueUI" parent_id_path=PackedInt32Array(401222758, 207914384) index="0" unique_id=1016471520]
+mouse_filter = 2
+
+[node name="ColorRect" parent="Dialogue/DialogueUI/Panel" index="0" unique_id=1967320970]
+mouse_filter = 2
+
+[node name="Label" parent="Dialogue/DialogueUI/Panel" index="1" unique_id=2056385154]
+mouse_filter = 2
 
 [node name="FadeTransition" parent="." unique_id=1883376167 instance=ExtResource("13_kp0ql")]
 top_level = true

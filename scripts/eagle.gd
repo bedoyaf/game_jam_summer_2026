@@ -70,7 +70,7 @@ func _check_dodge() -> void:
 
 func _trigger_dodge() -> void:
 	dodges_left -= 1
-	dodge_timer = 0.35 # Quick cooldown so it doesn't double-dodge
+	dodge_timer = 0.45 # Quick cooldown so it doesn't double-dodge
 	
 	# Add PI (180 degrees) to instantly jump to the opposite side of its orbit!
 	current_angle += PI 
@@ -85,7 +85,7 @@ func _trigger_dodge() -> void:
 	
 	# "Juice": Smooth, fast flight to the new position
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", new_pos, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "global_position", new_pos, 0.35).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
 	# "Juice": Stretch the eagle dynamically based on its original size!
 	scale = Vector2(base_scale.x * 1.5, base_scale.y * 0.5)

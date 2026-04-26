@@ -21,9 +21,18 @@ var time: float = 0.0
 var original_scale_x  : float = 0
 var original_scale_y  : float =0
 
+@export_group("Audio Interaction")
+@export var stamp_sound: AudioStream
+var audio_player: AudioStreamPlayer
+
 func _ready() -> void:
 	original_scale_x   = sprite.scale.x
 	original_scale_y   = sprite.scale.y
+	
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
+	GameManager.hand_clicked.connect(_on_hand_clicked)
 
 func _physics_process(delta: float) -> void:
 	GameManager.dream_character_position = position
@@ -78,3 +87,21 @@ func _physics_process(delta: float) -> void:
 		sprite.position.y = move_toward(sprite.position.y, 0, delta * 50.0)
 
 	move_and_slide()
+
+func _on_hand_clicked() -> void:
+	var mouse_pos = get_global_mouse_position()
+	
+	# Převedeme myš do lokálních souřadnic samotného Spritu
+	var local_mouse = sprite.get_global_transform().affine_inverse() * mouse_pos
+	
+	# Zkontrolujeme, jestli myš kliknula fyzicky do prostoru samotného obrázku!
+	if sprite.get_rect().has_point(local_mouse):
+		if stamp_sound:
+			print("playing")
+			audio_player.stream = stamp_sound
+			audio_player.play()
+			
+		# Juiciness bonus: Splácnutí hráče pod razítkem!
+		var tween = create_tween()
+		sprite.scale = Vector2(original_scale_x * 1.5, original_scale_y * 0.5)
+		tween.tween_property(sprite, "scale", Vector2(original_scale_x, original_scale_y), 0.25).set_trans(Tween.TRANS_BOUNCE)

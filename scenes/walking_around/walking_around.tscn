@@ -16,14 +16,17 @@
 [ext_resource type="Texture2D" uid="uid://cu3saildmds77" path="res://assets/sprites/obstacles/tree.png" id="8_j3ed3"]
 [ext_resource type="PackedScene" uid="uid://bdj1vwql230w2" path="res://rolloj/DecisionGate.tscn" id="9_nyrub"]
 [ext_resource type="Texture2D" uid="uid://cmyhyhgyrbtul" path="res://assets/sprites/characters/hannibal/walkforward2.png" id="10_2b4uk"]
+[ext_resource type="Texture2D" uid="uid://bbqjocrmotmnn" path="res://assets/sprites/obstacles/elephant_alive.png" id="10_82ks6"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
-[ext_resource type="Texture2D" uid="uid://duso66ra4nm0" path="res://assets/sprites/characters/romans/romans_alive.png" id="11_nyrub"]
-[ext_resource type="Script" uid="uid://lo6vngrq5xai" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
+[ext_resource type="Texture2D" uid="uid://cnrmsrm7oru0d" path="res://assets/sprites/obstacles/elephant_dead.png" id="11_obb0e"]
+[ext_resource type="Script" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="11_tt35e"]
 [ext_resource type="Texture2D" uid="uid://bdcrdsly80wkx" path="res://assets/sprites/obstacles/eagle.png" id="12_82ks6"]
 [ext_resource type="Texture2D" uid="uid://cymxjyhabt441" path="res://assets/sprites/characters/hannibal/walkback.png" id="12_nyrub"]
 [ext_resource type="Texture2D" uid="uid://51io441b81wt" path="res://assets/sprites/characters/hannibal/walkback2.png" id="13_l1c8q"]
-[ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="13_qb5eg"]
+[ext_resource type="PackedScene" uid="uid://2m0rk0ce0olv" path="res://scenes/soldiers.tscn" id="15_obb0e"]
+[ext_resource type="Script" uid="uid://wjgmac53of0i" path="res://scripts/bridge.gd" id="16_2vg4x"]
+[ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -31,6 +34,21 @@ size = Vector2(2769.8325, 163.05215)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku1nk"]
 radius = 123.58093
 height = 510.02637
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mcjt"]
+size = Vector2(500.1659, 163.98212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3ed3"]
+size = Vector2(27.699173, 51.949806)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obb0e"]
+height = 50.629227
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqppi"]
+size = Vector2(16.265259, 28.240509)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vg4x"]
+size = Vector2(18.516602, 30.506851)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppy7o"]
 size = Vector2(1254.0123, 178.09393)
@@ -1476,14 +1494,26 @@ shape = SubResource("RectangleShape2D_yheev")
 position = Vector2(-403, -1718)
 
 [node name="boulder" type="Node2D" parent="Background/Events" unique_id=1175955134]
-position = Vector2(-1261, 1654)
+position = Vector2(-1006, 1626)
+scale = Vector2(0.85114866, 0.85114866)
 
 [node name="BlockingObject" parent="Background/Events/boulder" unique_id=1824987023 instance=ExtResource("6_q3go6")]
-scale = Vector2(2.7644353, 2.7644353)
+scale = Vector2(1.1835089, 1.1835089)
 destroyed_texture = ExtResource("7_4mcjt")
 
 [node name="Sprite2D" parent="Background/Events/boulder/BlockingObject" index="0" unique_id=612463695]
 texture = ExtResource("8_j3ed3")
+
+[node name="CollisionShape2D" parent="Background/Events/boulder/BlockingObject" index="1" unique_id=244491055]
+position = Vector2(-47.42639, -61.692932)
+rotation = 0.89733166
+scale = Vector2(0.9999994, 0.9999994)
+shape = SubResource("RectangleShape2D_4mcjt")
+
+[node name="CollisionShape2D" parent="Background/Events/boulder/BlockingObject/StampGoal" parent_id_path=PackedInt32Array(1824987023, 1065439230) index="0" unique_id=1051562106]
+position = Vector2(-13.216309, -26.460632)
+rotation = -0.67257106
+shape = SubResource("RectangleShape2D_j3ed3")
 
 [node name="decisionElephant" type="Node2D" parent="Background/Events" unique_id=1309633687]
 position = Vector2(479, 999)
@@ -1493,10 +1523,32 @@ position = Vector2(-145, -34)
 rotation = -0.44549268
 scale = Vector2(8.151424, 8.151424)
 
+[node name="CollisionShape2D" parent="Background/Events/decisionElephant/DecisionGate" index="0" unique_id=1631215411]
+position = Vector2(-0.06970012, 35.44876)
+
+[node name="CollisionShape2D2" parent="Background/Events/decisionElephant/DecisionGate" index="1" unique_id=808481819]
+position = Vector2(-6.461859, -38.567627)
+
 [node name="StampGoal" parent="Background/Events/decisionElephant/DecisionGate" index="2" unique_id=1065439230]
+position = Vector2(-0.06970203, 35.44877)
 target_id = "path_A_1"
+default_texture = ExtResource("10_82ks6")
+stamped_texture = ExtResource("11_obb0e")
+rejected_texture = ExtResource("10_82ks6")
+
+[node name="Sprite2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="1" unique_id=419037605]
+position = Vector2(-1.339154, 16.091671)
+rotation = 0.5717817
+scale = Vector2(0.15116283, 0.15116283)
+texture = ExtResource("10_82ks6")
+
+[node name="Indicator" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="2" unique_id=927250942]
+modulate = Color(1, 1, 1, 0.5176471)
+position = Vector2(65.91889, -102.76605)
+scale = Vector2(0.599, 0.599)
 
 [node name="StampGoal2" parent="Background/Events/decisionElephant/DecisionGate" index="3" unique_id=961468286]
+position = Vector2(-6.461859, -38.567635)
 target_id = "path_B_1"
 
 [node name="River" type="Node2D" parent="Background/Events" unique_id=916231898]
@@ -1506,6 +1558,24 @@ position = Vector2(1555, 305)
 position = Vector2(210, -45)
 rotation = -0.514694
 scale = Vector2(1.5705163, 1.5705163)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/River" unique_id=1207126841]
+position = Vector2(-66, -151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D" unique_id=1366499635]
+position = Vector2(87.99999, -203)
+rotation = -0.46683717
+scale = Vector2(10.78, 10.78)
+shape = SubResource("CapsuleShape2D_obb0e")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/River" unique_id=764864936]
+position = Vector2(289, 456)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D2" unique_id=976564092]
+position = Vector2(87.99999, -203)
+rotation = -0.46683717
+scale = Vector2(10.78, 10.78)
+shape = SubResource("CapsuleShape2D_obb0e")
 
 [node name="eagle" type="Node2D" parent="Background/Events" unique_id=107362967]
 position = Vector2(4530, -1183)
@@ -1565,8 +1635,523 @@ target_id = "path_B_2"
 [node name="GaulPursuit" type="Node2D" parent="Background/Events" unique_id=1198718798]
 position = Vector2(6373, -2000)
 
-[node name="end" type="Node2D" parent="Background/Events" unique_id=1736402306]
-position = Vector2(6968, -2241)
+[node name="Ambush" parent="Background/Events/GaulPursuit" unique_id=1445342002 instance=ExtResource("15_obb0e")]
+position = Vector2(5238, -2786)
+
+[node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" index="2" unique_id=1065439230]
+target_id = "ambush"
+
+[node name="wall" type="StaticBody2D" parent="Background/Events/GaulPursuit" unique_id=223845795]
+position = Vector2(4470, -2351)
+scale = Vector2(7.5370407, 7.5370407)
+script = ExtResource("16_2vg4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/GaulPursuit/wall" unique_id=938349862]
+position = Vector2(-29.719923, -0.13264686)
+rotation = -0.62290865
+shape = SubResource("RectangleShape2D_hqppi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/Events/GaulPursuit/wall" unique_id=1629318284]
+position = Vector2(-6.3685803, 25.47416)
+rotation = -0.93678516
+shape = SubResource("RectangleShape2D_hqppi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/Events/GaulPursuit/wall" unique_id=1077773872]
+position = Vector2(22.289885, 43.518375)
+rotation = -1.1184279
+shape = SubResource("RectangleShape2D_hqppi")
+
+[node name="StampGoal" parent="Background/Events/GaulPursuit/wall" unique_id=1810459006 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+position = Vector2(-32.24077, -2.7862394)
+rotation = -0.5824718
+scale = Vector2(0.11530368, 0.11530368)
+target_id = "ambush"
+linked_barricade = NodePath("../CollisionShape2D")
+enables_barricade_instead = true
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal" index="0" unique_id=1051562106]
+position = Vector2(5.935547, 25.678223)
+shape = SubResource("RectangleShape2D_2vg4x")
+
+[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal" index="2" unique_id=927250942]
+position = Vector2(38.26751, -120.849075)
+
+[node name="StampGoal2" parent="Background/Events/GaulPursuit/wall" unique_id=2137602048 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+position = Vector2(-9.022107, 24.147408)
+rotation = -0.9279033
+scale = Vector2(0.11530368, 0.11530368)
+target_id = "ambush"
+linked_barricade = NodePath("../CollisionShape2D2")
+enables_barricade_instead = true
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="0" unique_id=1051562106]
+position = Vector2(5.935547, 25.678223)
+shape = SubResource("RectangleShape2D_2vg4x")
+
+[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="2" unique_id=927250942]
+position = Vector2(42.41699, -118.03437)
+
+[node name="StampGoal3" parent="Background/Events/GaulPursuit/wall" unique_id=1673483201 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+position = Vector2(19.370998, 42.987694)
+rotation = -1.1302618
+scale = Vector2(0.11530368, 0.11530368)
+target_id = "ambush"
+linked_barricade = NodePath("../CollisionShape2D3")
+enables_barricade_instead = true
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal3" index="0" unique_id=1051562106]
+position = Vector2(5.935547, 25.678223)
+shape = SubResource("RectangleShape2D_2vg4x")
+
+[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal3" index="2" unique_id=927250942]
+position = Vector2(42.41699, -118.03437)
+
+[node name="FinalRomanBattle" type="Node2D" parent="Background/Events" unique_id=426251693]
+position = Vector2(16248, 1620)
+
+[node name="OneSquad7" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=368733622]
+position = Vector2(369, -2434)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=547589739 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1073877928 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1672584340 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1517094750 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=17498542 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=119071602 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1445063495 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=2000068300 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=417677975 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1207572633 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1331763832 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=216045595 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad7" unique_id=1718173925 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad8" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1781150565]
+position = Vector2(1171, -1766)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1547033309 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=2134602331 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1919848991 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=478886117 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=2121221566 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=969448750 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=382386886 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1474351827 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1465294216 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1939494154 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1100306975 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1018568 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=978774650 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=984963412 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=1301486733 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=578199843 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad9" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=915422944]
+position = Vector2(2012, -1117)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1878678892 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1202552707 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=720873251 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1608040409 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1468159209 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1984069232 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=271895435 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1776939272 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=10832040 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=391178048 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=1408029160 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad9" unique_id=966346440 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="OneSquad4" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=280829558]
+position = Vector2(-694, -1945)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=241598653 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=126243267 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1434878321 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1321234645 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=868196702 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1067436129 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1741158522 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=2087991992 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=918570732 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1773376686 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=516220305 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=737421386 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=841805204 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=777629659 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1984440191 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad4" unique_id=1741200770 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad5" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1167660917]
+position = Vector2(108, -1277)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1490337926 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=667792713 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=899317535 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=524793288 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1320220729 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1949704554 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1222742550 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=468941607 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=108939898 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1480112257 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1341862889 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=142993600 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1049409033 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1466823290 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1578946127 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad5" unique_id=1294147804 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad6" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1993584370]
+position = Vector2(949, -628)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=624299681 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=717136343 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1728776488 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1360581674 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1693508140 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1081301309 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1912057155 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1662922773 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=713598043 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=318980774 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1340600333 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1736875290 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1959601770 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1826477996 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1796079681 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad6" unique_id=1328307460 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad3" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=2031327714]
+position = Vector2(-1643, -1317)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=1700200627 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=757995179 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=515617218 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=172886800 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=786028364 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=842228753 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=1702904847 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=1225011836 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=54720315 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=1367711608 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=1186203801 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=915745633 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=289851567 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=298147730 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=694643916 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad3" unique_id=533735488 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad2" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1914769646]
+position = Vector2(-841, -649)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=775265198 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=968032503 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1681413841 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1525739871 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=40885260 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1539594950 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1782719914 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=482236492 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=316140766 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=986517807 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=765928810 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=2067550666 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=262764513 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=101851167 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1196484312 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad2" unique_id=1104126014 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1453216681]
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=729145971 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=206777286 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=595178522 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=409458275 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=876323709 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=949639648 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=2129378570 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=1501683772 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=472408295 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=808895447 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=1009309753 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=1548596565 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=1031475465 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=897519826 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=1304061703 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad" unique_id=2120874671 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="General" parent="Background/Events/FinalRomanBattle" unique_id=1297766461 instance=ExtResource("15_obb0e")]
+position = Vector2(4363, -2589)
+
+[node name="StampGoal" parent="Background/Events/FinalRomanBattle/General" index="2" unique_id=1065439230]
+required_hits = 3
+always_active = false
 
 [node name="Blockers" type="Node2D" parent="Background" unique_id=978678743]
 position = Vector2(1112, -796)
@@ -1598,992 +2183,14 @@ player_path = NodePath("../../../Player")
 camera_path = NodePath("../../../Player/Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FinalRomanBattle/teleport" unique_id=1793730152]
-position = Vector2(-324, 111)
+position = Vector2(-2827, 931)
 shape = SubResource("RectangleShape2D_l1c8q")
 
 [node name="target" type="Node2D" parent="Background/FinalRomanBattle/teleport" unique_id=1771497740]
-position = Vector2(-898, 8215)
-
-[node name="Soldiers" type="Node2D" parent="Background/FinalRomanBattle" unique_id=1685561281]
-
-[node name="Soldiers71" parent="Background/FinalRomanBattle/Soldiers" unique_id=751328755 instance=ExtResource("11_tt35e")]
-position = Vector2(1807, -2798)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers71" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers72" parent="Background/FinalRomanBattle/Soldiers" unique_id=108404602 instance=ExtResource("11_tt35e")]
-position = Vector2(1428, -2769)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers72" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers73" parent="Background/FinalRomanBattle/Soldiers" unique_id=1038336666 instance=ExtResource("11_tt35e")]
-position = Vector2(1653, -2624)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers73" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers75" parent="Background/FinalRomanBattle/Soldiers" unique_id=1655757173 instance=ExtResource("11_tt35e")]
-position = Vector2(2611, -2845)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers75" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers76" parent="Background/FinalRomanBattle/Soldiers" unique_id=362786043 instance=ExtResource("11_tt35e")]
-position = Vector2(2189, -2815)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers76" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers77" parent="Background/FinalRomanBattle/Soldiers" unique_id=1131277564 instance=ExtResource("11_tt35e")]
-position = Vector2(2414, -2670)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers77" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers78" parent="Background/FinalRomanBattle/Soldiers" unique_id=1265219077 instance=ExtResource("11_tt35e")]
-position = Vector2(2012, -2641)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers78" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers79" parent="Background/FinalRomanBattle/Soldiers" unique_id=2004917049 instance=ExtResource("11_tt35e")]
-position = Vector2(2237, -2496)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers79" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers80" parent="Background/FinalRomanBattle/Soldiers" unique_id=1340493794 instance=ExtResource("11_tt35e")]
-position = Vector2(1858, -2467)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers80" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers81" parent="Background/FinalRomanBattle/Soldiers" unique_id=553931517 instance=ExtResource("11_tt35e")]
-position = Vector2(2083, -2322)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers81" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers82" parent="Background/FinalRomanBattle/Soldiers" unique_id=254138077 instance=ExtResource("11_tt35e")]
-position = Vector2(1266, -2594)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers82" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers83" parent="Background/FinalRomanBattle/Soldiers" unique_id=1760585299 instance=ExtResource("11_tt35e")]
-position = Vector2(1491, -2449)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers83" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers84" parent="Background/FinalRomanBattle/Soldiers" unique_id=83042203 instance=ExtResource("11_tt35e")]
-position = Vector2(1069, -2419)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers84" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers85" parent="Background/FinalRomanBattle/Soldiers" unique_id=1046269269 instance=ExtResource("11_tt35e")]
-position = Vector2(1294, -2274)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers85" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers86" parent="Background/FinalRomanBattle/Soldiers" unique_id=1476260360 instance=ExtResource("11_tt35e")]
-position = Vector2(892, -2245)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers86" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers87" parent="Background/FinalRomanBattle/Soldiers" unique_id=209539495 instance=ExtResource("11_tt35e")]
-position = Vector2(1117, -2100)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers87" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers88" parent="Background/FinalRomanBattle/Soldiers" unique_id=1788515628 instance=ExtResource("11_tt35e")]
-position = Vector2(738, -2071)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers88" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers89" parent="Background/FinalRomanBattle/Soldiers" unique_id=2092460915 instance=ExtResource("11_tt35e")]
-position = Vector2(963, -1926)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers89" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers90" parent="Background/FinalRomanBattle/Soldiers" unique_id=1466318010 instance=ExtResource("11_tt35e")]
-position = Vector2(1696, -2292)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers90" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers91" parent="Background/FinalRomanBattle/Soldiers" unique_id=1784463430 instance=ExtResource("11_tt35e")]
-position = Vector2(1921, -2147)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers91" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers92" parent="Background/FinalRomanBattle/Soldiers" unique_id=1028285548 instance=ExtResource("11_tt35e")]
-position = Vector2(1499, -2117)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers92" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers93" parent="Background/FinalRomanBattle/Soldiers" unique_id=718216165 instance=ExtResource("11_tt35e")]
-position = Vector2(1724, -1972)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers93" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers94" parent="Background/FinalRomanBattle/Soldiers" unique_id=2071966614 instance=ExtResource("11_tt35e")]
-position = Vector2(1322, -1943)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers94" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers95" parent="Background/FinalRomanBattle/Soldiers" unique_id=2118843275 instance=ExtResource("11_tt35e")]
-position = Vector2(1547, -1798)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers95" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers96" parent="Background/FinalRomanBattle/Soldiers" unique_id=1819761731 instance=ExtResource("11_tt35e")]
-position = Vector2(1168, -1769)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers96" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers97" parent="Background/FinalRomanBattle/Soldiers" unique_id=505857315 instance=ExtResource("11_tt35e")]
-position = Vector2(1393, -1624)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers97" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers98" parent="Background/FinalRomanBattle/Soldiers" unique_id=1890844319 instance=ExtResource("11_tt35e")]
-position = Vector2(586, -1939)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers98" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers99" parent="Background/FinalRomanBattle/Soldiers" unique_id=1946618840 instance=ExtResource("11_tt35e")]
-position = Vector2(811, -1794)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers99" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers100" parent="Background/FinalRomanBattle/Soldiers" unique_id=1248487169 instance=ExtResource("11_tt35e")]
-position = Vector2(389, -1764)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers100" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers101" parent="Background/FinalRomanBattle/Soldiers" unique_id=205772648 instance=ExtResource("11_tt35e")]
-position = Vector2(614, -1619)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers101" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers102" parent="Background/FinalRomanBattle/Soldiers" unique_id=910514045 instance=ExtResource("11_tt35e")]
-position = Vector2(212, -1590)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers102" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers103" parent="Background/FinalRomanBattle/Soldiers" unique_id=1732919140 instance=ExtResource("11_tt35e")]
-position = Vector2(437, -1445)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers103" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers104" parent="Background/FinalRomanBattle/Soldiers" unique_id=446153748 instance=ExtResource("11_tt35e")]
-position = Vector2(58, -1416)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers104" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers105" parent="Background/FinalRomanBattle/Soldiers" unique_id=658462189 instance=ExtResource("11_tt35e")]
-position = Vector2(283, -1271)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers105" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers106" parent="Background/FinalRomanBattle/Soldiers" unique_id=730241848 instance=ExtResource("11_tt35e")]
-position = Vector2(1016, -1637)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers106" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers107" parent="Background/FinalRomanBattle/Soldiers" unique_id=447455982 instance=ExtResource("11_tt35e")]
-position = Vector2(1241, -1492)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers107" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers108" parent="Background/FinalRomanBattle/Soldiers" unique_id=672781054 instance=ExtResource("11_tt35e")]
-position = Vector2(819, -1462)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers108" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers109" parent="Background/FinalRomanBattle/Soldiers" unique_id=819248072 instance=ExtResource("11_tt35e")]
-position = Vector2(1044, -1317)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers109" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers110" parent="Background/FinalRomanBattle/Soldiers" unique_id=1655217139 instance=ExtResource("11_tt35e")]
-position = Vector2(642, -1288)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers110" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers111" parent="Background/FinalRomanBattle/Soldiers" unique_id=517421019 instance=ExtResource("11_tt35e")]
-position = Vector2(867, -1143)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers111" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers112" parent="Background/FinalRomanBattle/Soldiers" unique_id=481672229 instance=ExtResource("11_tt35e")]
-position = Vector2(488, -1114)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers112" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers113" parent="Background/FinalRomanBattle/Soldiers" unique_id=1555742684 instance=ExtResource("11_tt35e")]
-position = Vector2(713, -969)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers113" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers114" parent="Background/FinalRomanBattle/Soldiers" unique_id=924275132 instance=ExtResource("11_tt35e")]
-position = Vector2(-97, -1249)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers114" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers115" parent="Background/FinalRomanBattle/Soldiers" unique_id=1725303378 instance=ExtResource("11_tt35e")]
-position = Vector2(128, -1104)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers115" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers116" parent="Background/FinalRomanBattle/Soldiers" unique_id=2057169894 instance=ExtResource("11_tt35e")]
-position = Vector2(-294, -1074)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers116" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers117" parent="Background/FinalRomanBattle/Soldiers" unique_id=1289241292 instance=ExtResource("11_tt35e")]
-position = Vector2(-69, -929)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers117" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers118" parent="Background/FinalRomanBattle/Soldiers" unique_id=1798379325 instance=ExtResource("11_tt35e")]
-position = Vector2(-471, -900)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers118" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers119" parent="Background/FinalRomanBattle/Soldiers" unique_id=1534262944 instance=ExtResource("11_tt35e")]
-position = Vector2(-246, -755)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers119" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers120" parent="Background/FinalRomanBattle/Soldiers" unique_id=2056096487 instance=ExtResource("11_tt35e")]
-position = Vector2(-625, -726)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers120" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers121" parent="Background/FinalRomanBattle/Soldiers" unique_id=243381939 instance=ExtResource("11_tt35e")]
-position = Vector2(-400, -581)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers121" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers122" parent="Background/FinalRomanBattle/Soldiers" unique_id=1706605039 instance=ExtResource("11_tt35e")]
-position = Vector2(333, -947)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers122" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers123" parent="Background/FinalRomanBattle/Soldiers" unique_id=1728344240 instance=ExtResource("11_tt35e")]
-position = Vector2(558, -802)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers123" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers124" parent="Background/FinalRomanBattle/Soldiers" unique_id=1055085869 instance=ExtResource("11_tt35e")]
-position = Vector2(136, -772)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers124" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers125" parent="Background/FinalRomanBattle/Soldiers" unique_id=1471280750 instance=ExtResource("11_tt35e")]
-position = Vector2(361, -627)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers125" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers126" parent="Background/FinalRomanBattle/Soldiers" unique_id=1406071732 instance=ExtResource("11_tt35e")]
-position = Vector2(-41, -598)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers126" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers127" parent="Background/FinalRomanBattle/Soldiers" unique_id=1568526761 instance=ExtResource("11_tt35e")]
-position = Vector2(184, -453)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers127" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers128" parent="Background/FinalRomanBattle/Soldiers" unique_id=969985071 instance=ExtResource("11_tt35e")]
-position = Vector2(-195, -424)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers128" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers129" parent="Background/FinalRomanBattle/Soldiers" unique_id=1577729967 instance=ExtResource("11_tt35e")]
-position = Vector2(30, -279)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers129" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers50" parent="Background/FinalRomanBattle/Soldiers" unique_id=2040050126 instance=ExtResource("11_tt35e")]
-position = Vector2(2795, -2668)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers50" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers51" parent="Background/FinalRomanBattle/Soldiers" unique_id=1080243093 instance=ExtResource("11_tt35e")]
-position = Vector2(3020, -2523)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers51" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers52" parent="Background/FinalRomanBattle/Soldiers" unique_id=423403456 instance=ExtResource("11_tt35e")]
-position = Vector2(2598, -2493)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers52" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers53" parent="Background/FinalRomanBattle/Soldiers" unique_id=1496406607 instance=ExtResource("11_tt35e")]
-position = Vector2(2823, -2348)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers53" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers54" parent="Background/FinalRomanBattle/Soldiers" unique_id=713200483 instance=ExtResource("11_tt35e")]
-position = Vector2(2421, -2319)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers54" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers55" parent="Background/FinalRomanBattle/Soldiers" unique_id=1466043953 instance=ExtResource("11_tt35e")]
-position = Vector2(2646, -2174)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers55" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers56" parent="Background/FinalRomanBattle/Soldiers" unique_id=1092728040 instance=ExtResource("11_tt35e")]
-position = Vector2(2267, -2145)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers56" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers57" parent="Background/FinalRomanBattle/Soldiers" unique_id=2015104339 instance=ExtResource("11_tt35e")]
-position = Vector2(2492, -2000)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers57" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers58" parent="Background/FinalRomanBattle/Soldiers" unique_id=389823226 instance=ExtResource("11_tt35e")]
-position = Vector2(3225, -2366)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers58" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers59" parent="Background/FinalRomanBattle/Soldiers" unique_id=1778065872 instance=ExtResource("11_tt35e")]
-position = Vector2(3450, -2221)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers59" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers60" parent="Background/FinalRomanBattle/Soldiers" unique_id=1583764776 instance=ExtResource("11_tt35e")]
-position = Vector2(3028, -2191)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers60" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers61" parent="Background/FinalRomanBattle/Soldiers" unique_id=1869808559 instance=ExtResource("11_tt35e")]
-position = Vector2(3253, -2046)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers61" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers62" parent="Background/FinalRomanBattle/Soldiers" unique_id=388270830 instance=ExtResource("11_tt35e")]
-position = Vector2(2851, -2017)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers62" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers63" parent="Background/FinalRomanBattle/Soldiers" unique_id=1533882716 instance=ExtResource("11_tt35e")]
-position = Vector2(3076, -1872)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers63" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers64" parent="Background/FinalRomanBattle/Soldiers" unique_id=1715396546 instance=ExtResource("11_tt35e")]
-position = Vector2(2697, -1843)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers64" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers65" parent="Background/FinalRomanBattle/Soldiers" unique_id=1399079421 instance=ExtResource("11_tt35e")]
-position = Vector2(2922, -1698)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers65" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers3" parent="Background/FinalRomanBattle/Soldiers" unique_id=300727872 instance=ExtResource("11_tt35e")]
-position = Vector2(2105, -1970)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers3" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers2" parent="Background/FinalRomanBattle/Soldiers" unique_id=218683200 instance=ExtResource("11_tt35e")]
-position = Vector2(2330, -1825)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers2" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers4" parent="Background/FinalRomanBattle/Soldiers" unique_id=938177092 instance=ExtResource("11_tt35e")]
-position = Vector2(1908, -1795)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers4" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers5" parent="Background/FinalRomanBattle/Soldiers" unique_id=1518126860 instance=ExtResource("11_tt35e")]
-position = Vector2(2133, -1650)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers5" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers6" parent="Background/FinalRomanBattle/Soldiers" unique_id=1642271941 instance=ExtResource("11_tt35e")]
-position = Vector2(1731, -1621)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers6" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers7" parent="Background/FinalRomanBattle/Soldiers" unique_id=1629336813 instance=ExtResource("11_tt35e")]
-position = Vector2(1956, -1476)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers7" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers8" parent="Background/FinalRomanBattle/Soldiers" unique_id=1688523865 instance=ExtResource("11_tt35e")]
-position = Vector2(1577, -1447)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers8" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers9" parent="Background/FinalRomanBattle/Soldiers" unique_id=1430318196 instance=ExtResource("11_tt35e")]
-position = Vector2(1802, -1302)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers9" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers10" parent="Background/FinalRomanBattle/Soldiers" unique_id=1751561191 instance=ExtResource("11_tt35e")]
-position = Vector2(2535, -1668)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers10" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers11" parent="Background/FinalRomanBattle/Soldiers" unique_id=476891269 instance=ExtResource("11_tt35e")]
-position = Vector2(2760, -1523)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers11" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers12" parent="Background/FinalRomanBattle/Soldiers" unique_id=1430882221 instance=ExtResource("11_tt35e")]
-position = Vector2(2338, -1493)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers12" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers13" parent="Background/FinalRomanBattle/Soldiers" unique_id=1452839007 instance=ExtResource("11_tt35e")]
-position = Vector2(2563, -1348)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers13" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers14" parent="Background/FinalRomanBattle/Soldiers" unique_id=1090149333 instance=ExtResource("11_tt35e")]
-position = Vector2(2161, -1319)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers14" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers15" parent="Background/FinalRomanBattle/Soldiers" unique_id=1844157253 instance=ExtResource("11_tt35e")]
-position = Vector2(2386, -1174)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers15" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers16" parent="Background/FinalRomanBattle/Soldiers" unique_id=615647937 instance=ExtResource("11_tt35e")]
-position = Vector2(2007, -1145)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers16" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers17" parent="Background/FinalRomanBattle/Soldiers" unique_id=1789091781 instance=ExtResource("11_tt35e")]
-position = Vector2(2232, -1000)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers17" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers18" parent="Background/FinalRomanBattle/Soldiers" unique_id=1396665913 instance=ExtResource("11_tt35e")]
-position = Vector2(1425, -1315)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers18" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers19" parent="Background/FinalRomanBattle/Soldiers" unique_id=1786861659 instance=ExtResource("11_tt35e")]
-position = Vector2(1650, -1170)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers19" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers20" parent="Background/FinalRomanBattle/Soldiers" unique_id=1320491334 instance=ExtResource("11_tt35e")]
-position = Vector2(1228, -1140)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers20" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers21" parent="Background/FinalRomanBattle/Soldiers" unique_id=1968154237 instance=ExtResource("11_tt35e")]
-position = Vector2(1453, -995)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers21" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers22" parent="Background/FinalRomanBattle/Soldiers" unique_id=621691465 instance=ExtResource("11_tt35e")]
-position = Vector2(1051, -966)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers22" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers23" parent="Background/FinalRomanBattle/Soldiers" unique_id=485489259 instance=ExtResource("11_tt35e")]
-position = Vector2(1276, -821)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers23" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers24" parent="Background/FinalRomanBattle/Soldiers" unique_id=529890815 instance=ExtResource("11_tt35e")]
-position = Vector2(897, -792)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers24" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers25" parent="Background/FinalRomanBattle/Soldiers" unique_id=705070276 instance=ExtResource("11_tt35e")]
-position = Vector2(1122, -647)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers25" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers26" parent="Background/FinalRomanBattle/Soldiers" unique_id=6770994 instance=ExtResource("11_tt35e")]
-position = Vector2(1855, -1013)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers26" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers27" parent="Background/FinalRomanBattle/Soldiers" unique_id=902991541 instance=ExtResource("11_tt35e")]
-position = Vector2(2080, -868)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers27" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers28" parent="Background/FinalRomanBattle/Soldiers" unique_id=356709574 instance=ExtResource("11_tt35e")]
-position = Vector2(1658, -838)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers28" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers29" parent="Background/FinalRomanBattle/Soldiers" unique_id=92991772 instance=ExtResource("11_tt35e")]
-position = Vector2(1883, -693)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers29" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers30" parent="Background/FinalRomanBattle/Soldiers" unique_id=404034832 instance=ExtResource("11_tt35e")]
-position = Vector2(1481, -664)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers30" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers31" parent="Background/FinalRomanBattle/Soldiers" unique_id=2053881709 instance=ExtResource("11_tt35e")]
-position = Vector2(1706, -519)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers31" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers32" parent="Background/FinalRomanBattle/Soldiers" unique_id=1394953170 instance=ExtResource("11_tt35e")]
-position = Vector2(1327, -490)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers32" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers33" parent="Background/FinalRomanBattle/Soldiers" unique_id=1114370857 instance=ExtResource("11_tt35e")]
-position = Vector2(1552, -345)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers33" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers34" parent="Background/FinalRomanBattle/Soldiers" unique_id=1448267054 instance=ExtResource("11_tt35e")]
-position = Vector2(742, -625)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers34" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers35" parent="Background/FinalRomanBattle/Soldiers" unique_id=2050176557 instance=ExtResource("11_tt35e")]
-position = Vector2(967, -480)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers35" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers36" parent="Background/FinalRomanBattle/Soldiers" unique_id=886171026 instance=ExtResource("11_tt35e")]
-position = Vector2(545, -450)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers36" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers37" parent="Background/FinalRomanBattle/Soldiers" unique_id=1825575346 instance=ExtResource("11_tt35e")]
-position = Vector2(770, -305)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers37" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers38" parent="Background/FinalRomanBattle/Soldiers" unique_id=270483709 instance=ExtResource("11_tt35e")]
-position = Vector2(368, -276)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers38" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers39" parent="Background/FinalRomanBattle/Soldiers" unique_id=1104146057 instance=ExtResource("11_tt35e")]
-position = Vector2(593, -131)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers39" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers40" parent="Background/FinalRomanBattle/Soldiers" unique_id=745707618 instance=ExtResource("11_tt35e")]
-position = Vector2(214, -102)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers40" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers41" parent="Background/FinalRomanBattle/Soldiers" unique_id=1753344287 instance=ExtResource("11_tt35e")]
-position = Vector2(439, 43)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers41" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers42" parent="Background/FinalRomanBattle/Soldiers" unique_id=480071423 instance=ExtResource("11_tt35e")]
-position = Vector2(1172, -323)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers42" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers43" parent="Background/FinalRomanBattle/Soldiers" unique_id=191085591 instance=ExtResource("11_tt35e")]
-position = Vector2(1397, -178)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers43" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers44" parent="Background/FinalRomanBattle/Soldiers" unique_id=2097169853 instance=ExtResource("11_tt35e")]
-position = Vector2(975, -148)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers44" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers45" parent="Background/FinalRomanBattle/Soldiers" unique_id=932010291 instance=ExtResource("11_tt35e")]
-position = Vector2(1200, -3)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers45" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers46" parent="Background/FinalRomanBattle/Soldiers" unique_id=266005717 instance=ExtResource("11_tt35e")]
-position = Vector2(798, 26)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers46" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers47" parent="Background/FinalRomanBattle/Soldiers" unique_id=839825856 instance=ExtResource("11_tt35e")]
-position = Vector2(1023, 171)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers47" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers48" parent="Background/FinalRomanBattle/Soldiers" unique_id=1112730304 instance=ExtResource("11_tt35e")]
-position = Vector2(644, 200)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers48" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
-
-[node name="Soldiers49" parent="Background/FinalRomanBattle/Soldiers" unique_id=531086575 instance=ExtResource("11_tt35e")]
-position = Vector2(869, 345)
-default_texture = ExtResource("11_nyrub")
-stamped_texture = ExtResource("13_qb5eg")
-
-[node name="Sprite2D" parent="Background/FinalRomanBattle/Soldiers/Soldiers49" index="2" unique_id=419037605]
-texture = ExtResource("11_nyrub")
+position = Vector2(-142, 7918)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1265406013]
-position = Vector2(17499, -6666)
+position = Vector2(-298, 1782)
 script = ExtResource("4_bkyfo")
 speed = 400.0
 squash_amount = 0.05
@@ -2593,6 +2200,7 @@ tex_walk_f2 = ExtResource("10_2b4uk")
 tex_stand_back = ExtResource("11_83sk2")
 tex_walk_b1 = ExtResource("12_nyrub")
 tex_walk_b2 = ExtResource("13_l1c8q")
+stamp_sound = ExtResource("26_obb0e")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1866983795]
 texture = ExtResource("5_yheev")
@@ -2606,130 +2214,17 @@ zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [editable path="Background/Events/boulder/BlockingObject"]
+[editable path="Background/Events/boulder/BlockingObject/StampGoal"]
 [editable path="Background/Events/decisionElephant/DecisionGate"]
+[editable path="Background/Events/decisionElephant/DecisionGate/StampGoal"]
 [editable path="Background/Events/River/Bridge"]
 [editable path="Background/Events/eagle/Eagle"]
 [editable path="Background/Events/GaulFortress/BlockingObject"]
 [editable path="Background/Events/DecisionGauls/DecisionGate"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers71"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers72"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers73"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers75"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers76"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers77"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers78"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers79"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers80"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers81"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers82"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers83"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers84"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers85"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers86"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers87"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers88"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers89"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers90"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers91"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers92"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers93"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers94"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers95"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers96"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers97"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers98"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers99"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers100"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers101"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers102"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers103"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers104"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers105"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers106"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers107"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers108"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers109"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers110"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers111"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers112"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers113"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers114"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers115"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers116"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers117"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers118"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers119"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers120"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers121"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers122"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers123"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers124"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers125"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers126"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers127"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers128"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers129"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers50"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers51"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers52"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers53"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers54"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers55"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers56"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers57"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers58"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers59"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers60"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers61"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers62"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers63"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers64"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers65"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers3"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers2"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers4"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers5"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers6"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers7"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers8"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers9"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers10"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers11"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers12"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers13"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers14"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers15"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers16"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers17"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers18"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers19"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers20"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers21"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers22"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers23"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers24"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers25"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers26"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers27"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers28"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers29"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers30"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers31"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers32"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers33"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers34"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers35"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers36"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers37"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers38"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers39"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers40"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers41"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers42"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers43"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers44"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers45"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers46"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers47"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers48"]
-[editable path="Background/FinalRomanBattle/Soldiers/Soldiers49"]
+[editable path="Background/Events/GaulPursuit/Ambush"]
+[editable path="Background/Events/GaulPursuit/Ambush/StampGoal"]
+[editable path="Background/Events/GaulPursuit/wall/StampGoal"]
+[editable path="Background/Events/GaulPursuit/wall/StampGoal2"]
+[editable path="Background/Events/GaulPursuit/wall/StampGoal3"]
+[editable path="Background/Events/FinalRomanBattle/General"]
+[editable path="Background/Events/FinalRomanBattle/General/StampGoal"]

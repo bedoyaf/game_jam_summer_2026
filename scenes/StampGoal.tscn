@@ -12,9 +12,9 @@ script = ExtResource("1_dgtxa")
 scale = Vector2(8.0037985, 8.0037985)
 shape = SubResource("CircleShape2D_6cu48")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=419037605]
+
 [node name="Indicator" type="Sprite2D" parent="." unique_id=927250942]
 position = Vector2(38, -150)
 scale = Vector2(0.79999846, 0.79999846)
 texture = ExtResource("4_dgtxa")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=419037605]

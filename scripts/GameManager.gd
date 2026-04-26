@@ -80,7 +80,7 @@ var task_list: Array[Dictionary] = [
 		"id": "final_battle",
 		"desc": "Finální útok: Potlač odpor Římanů!",
 		"target_group": "battle",
-		"required_stamps": 3,
+		"required_stamps": 1,
 		"current_stamps": 0
 	}
 ]
@@ -165,7 +165,8 @@ func start_dream_tasks() -> void:
 
 func _update_current_task() -> void:
 	if current_task_index >= task_list.size():
-		print("Konec hry / Všechny úkoly splněny!")
+		print("Konec hry / Všechny úkoly splněny! Spouštím závěrečnou scénu...")
+		# UPDATE THIS PATH TO WHEREVER YOU SAVE YOUR ENDING SCENE!
 		return
 
 	var task = task_list[current_task_index]
