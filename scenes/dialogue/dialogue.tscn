@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjhuiqj41mcff" path="res://scripts/additionals/dialogue_manager.gd" id="1_3n47t"]
 [ext_resource type="Script" uid="uid://71tgcily832e" path="res://scripts/gui_scripts/dialogueui.gd" id="2_esu7l"]
+[ext_resource type="FontFile" uid="uid://b8jnx0nxk1tf0" path="res://assets/fonts/EBGaramond-VariableFont_wght.ttf" id="3_2qw3d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esu7l"]
 
@@ -32,5 +33,17 @@ offset_left = 15.0
 offset_top = 10.0
 offset_right = 1069.0
 offset_bottom = 115.0
-theme_override_font_sizes/normal_font_size = 22
+theme_override_fonts/normal_font = ExtResource("3_2qw3d")
+theme_override_font_sizes/normal_font_size = 26
 text = "AMOGUS AMOGUS AMOGUS"
+
+[node name="Label2" type="RichTextLabel" parent="DialogueUI/Panel" unique_id=47296701]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 83.0
+offset_right = 1190.0
+offset_bottom = 119.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.5137255)
+theme_override_fonts/normal_font = ExtResource("3_2qw3d")
+theme_override_font_sizes/normal_font_size = 22
+text = "Press E to continue..."

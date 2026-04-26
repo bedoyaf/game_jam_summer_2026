@@ -54,5 +54,8 @@
 	"Once the supplies and reinforcements from Carthage arrive...",
 	"We will descend from these mountains.",
     "And we will crush Rome itself!"
+  ],
+  "game_ending_shout": [
+    "THAT CAN'T BE TRUE!"
   ]
 }

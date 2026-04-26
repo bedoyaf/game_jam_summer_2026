@@ -18,7 +18,6 @@ var current_paper_index: int = 0
 func _ready() -> void:
 		
 	$FadeTransition/AnimationPlayer.play("fade_out")
-
 	if dream_controller:
 		dream_controller.dream_level = 0.0
 

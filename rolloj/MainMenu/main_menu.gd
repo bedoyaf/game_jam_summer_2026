@@ -23,6 +23,7 @@ func _on_quit_pressed() -> void:
 
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start":
+		GameManager.start_background_music()
 		get_tree().change_scene_to_file("res://scenes/IntroScene.tscn")
 	elif button_type == "options":
 		get_tree().change_scene_to_file("res://main_menu.tscn")
