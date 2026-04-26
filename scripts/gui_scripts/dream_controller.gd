@@ -67,8 +67,9 @@ func _process(delta):
 	set_shader_params()
 	change_dream_level()
 	
-	if Input.is_action_just_pressed("skip"):
-		perform_black_wipe_action()
+	# DEBUGOVÁNÍ (Vypnuto, aby klávesa E pro dialogy nespouštěla zatmívačku!)
+	# if Input.is_action_just_pressed("skip"):
+	# 	perform_black_wipe_action()
 	
 
 
