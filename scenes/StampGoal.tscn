@@ -59,3 +59,19 @@ stream = ExtResource("10_ejxvy")
 
 [node name="ElephantBurned" type="AudioStreamPlayer" parent="SoundManager" unique_id=319897286]
 stream = ExtResource("11_4fjmp")
+
+[node name="Template1" type="AudioStreamPlayer" parent="SoundManager" unique_id=1246577198]
+
+[node name="Template2" type="AudioStreamPlayer" parent="SoundManager" unique_id=833793965]
+
+[node name="Template3" type="AudioStreamPlayer" parent="SoundManager" unique_id=1082370972]
+
+[node name="Template4" type="AudioStreamPlayer" parent="SoundManager" unique_id=1539683113]
+
+[node name="Template5" type="AudioStreamPlayer" parent="SoundManager" unique_id=1971708408]
+
+[node name="Template6" type="AudioStreamPlayer" parent="SoundManager" unique_id=543165338]
+
+[node name="Template7" type="AudioStreamPlayer" parent="SoundManager" unique_id=1375980779]
+
+[node name="Template8" type="AudioStreamPlayer" parent="SoundManager" unique_id=464619894]

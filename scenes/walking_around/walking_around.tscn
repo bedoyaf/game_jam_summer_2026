@@ -1567,6 +1567,7 @@ target_id = "path_B_1"
 default_texture = ExtResource("12_hqppi")
 stamped_texture = ExtResource("13_khx1d")
 rejected_texture = ExtResource("12_hqppi")
+current_material = 3
 
 [node name="Sprite2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal2" index="1" unique_id=419037605]
 position = Vector2(0.36252284, 10.23804)
