@@ -15,6 +15,17 @@ var base_scale: Vector2 = Vector2.ONE
 @onready var sprite = $Sprite2D
 @onready var stamp_goal = $StampGoal
 
+@onready var eagle_cry: AudioStreamPlayer = $EagleCry
+@onready var eagle_swoosh_1: AudioStreamPlayer = $EagleSwoosh1
+@onready var eagle_swoosh_2: AudioStreamPlayer = $EagleSwoosh2
+
+var last_eagle_cry_sound: float = 0
+var eagle_cry_interval: float = 5
+
+var last_eagle_swoosh_sound: float = 0
+var eagle_swoosh_interval: float = 3.5
+var has_already_appeared: bool = false
+
 func _ready() -> void:
 	dodges_left = max_dodges
 	base_scale = scale
@@ -32,6 +43,9 @@ func _process(delta: float) -> void:
 	if dodges_left <= 0:
 		_update_orbit(delta * 0.4) 
 		return
+		
+	# sound
+	try_play_swoosh()
 
 	# If currently dodging, wait before checking distance again
 	if dodge_timer > 0.0:
@@ -95,6 +109,31 @@ func _trigger_dodge() -> void:
 		print("Eagle Exhausted! Ready for Stamping!")
 		# Make it turn slightly gray/sad so the player knows it gave up
 		modulate = Color(0.7, 0.7, 0.9) 
+
+
+func _on_appears_on_screen():
+	has_already_appeared = true
+	print("APPEARED ON SCREEN EAGLE.")
+	var current_time = Time.get_ticks_msec() / 1000.0
+	
+	if current_time - last_eagle_cry_sound > eagle_cry_interval:
+		last_eagle_cry_sound = current_time
+		eagle_cry.play()
+		
+func try_play_swoosh():
+	if not has_already_appeared:
+		return
+	var current_time = Time.get_ticks_msec() / 1000.0
+	#print("play eagle 1")
+	if current_time - last_eagle_swoosh_sound > eagle_swoosh_interval:
+		#print("play eagle 2")
+		last_eagle_swoosh_sound = current_time
+		var rnd_int = randi_range(0, 1)
+		if rnd_int == 1:
+			eagle_swoosh_1.play()
+		else:
+			eagle_swoosh_2.play()
+			
 
 func _on_eagle_defeated() -> void:
 	print("Eagle caught! Dropping Food!")

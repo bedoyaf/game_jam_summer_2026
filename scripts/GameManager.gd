@@ -26,6 +26,15 @@ signal hand_clicked()
 var dreamcontroller : Node
 var endscene : Node2D
 
+# Black cloud signals
+signal cloud_start
+signal cloud_covers_whole_screen
+signal cloud_is_gone
+
+# Battle signals
+signal battle_started
+signal battle_ended
+
 # SYSTÉM ÚKOLŮ (Tasks)
 
 
@@ -113,6 +122,10 @@ func is_stamp_allowed() -> bool:
 	if now - last_stamp_msec >= stamp_cooldown_msec:
 		return true
 	return false
+	
+#func _process(_delta):
+	#if Input.is_action_just_pressed("skip"):
+		#battle_started.emit()
 
 func record_stamp() -> void:
 	var now = Time.get_ticks_msec()

@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
 [ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
 [ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="27_emgir"]
+[ext_resource type="PackedScene" uid="uid://dvru6chkqf677" path="res://scenes/audio_scenes/battle_sounds.tscn" id="31_kphlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -2488,6 +2489,7 @@ default_texture = ExtResource("10_82ks6")
 stamped_texture = ExtResource("11_obb0e")
 rejected_texture = ExtResource("10_82ks6")
 stamped_scale_modifier = 4.0
+current_material = 4
 
 [node name="CollisionShape2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="0" unique_id=1051562106]
 position = Vector2(23.3713, 22.537731)
@@ -2510,6 +2512,7 @@ target_id = "path_B_1"
 default_texture = ExtResource("12_hqppi")
 stamped_texture = ExtResource("13_khx1d")
 rejected_texture = ExtResource("12_hqppi")
+current_material = 3
 
 [node name="Sprite2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal2" index="1" unique_id=419037605]
 position = Vector2(0.36252284, 10.23804)
@@ -2603,7 +2606,7 @@ scale = Vector2(10.78, 10.78)
 shape = SubResource("RectangleShape2D_pir18")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/River" unique_id=764864936]
-position = Vector2(289, 456)
+position = Vector2(289, 454)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D2" unique_id=976564092]
 position = Vector2(324, -277)
@@ -2708,6 +2711,7 @@ texture = ExtResource("11_nyrub")
 [node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" unique_id=1909309669 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
 target_id = "ambush_fight"
 linked_barricade = NodePath("../CollisionShape2D")
+current_material = 3
 
 [node name="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush/StampGoal" index="0" unique_id=1051562106]
 position = Vector2(-42.00008, -24.999962)
@@ -4005,8 +4009,12 @@ offset_right = 1240.0
 offset_bottom = 728.0
 color = Color(0, 0, 0, 1)
 
-[node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
+[node name="PlayerWalking" type="AudioStreamPlayer" parent="Player" unique_id=1467851668]
 stream = ExtResource("25_j3ed3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=176287767]
+
+[node name="BattleSounds" parent="." unique_id=1489955748 instance=ExtResource("31_kphlv")]
 
 [connection signal="completed" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_obstacle_destroyed"]
 [connection signal="stamped" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_rock_hit"]

@@ -6,11 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://dqb7oukgi30oj" path="res://assets/sound-effects/destroy-wood/destroy-6.wav" id="4_gopf1"]
 [ext_resource type="AudioStream" uid="uid://cio7uhpcq5uol" path="res://assets/sound-effects/destroy-wood/destroy-1.wav" id="5_0jdm6"]
 [ext_resource type="AudioStream" uid="uid://cnpnhc3ewbovl" path="res://assets/sound-effects/destroy-wood/destroy-2.wav" id="6_tponr"]
+[ext_resource type="AudioStream" uid="uid://bm1vowyahrd22" path="res://assets/sound-effects/iron-bang/iron-bang-3.wav" id="7_0jdm6"]
+[ext_resource type="AudioStream" uid="uid://bn66e8s4c8w3v" path="res://assets/sound-effects/iron-bang/iron-bang-5.wav" id="8_tponr"]
+[ext_resource type="AudioStream" uid="uid://ck1dk56yye1oc" path="res://assets/sound-effects/elephant-high-pitch.wav" id="9_tponr"]
+[ext_resource type="AudioStream" uid="uid://cmimf6gnn7vs5" path="res://assets/sound-effects/elephant_sound.wav" id="10_ejxvy"]
+[ext_resource type="AudioStream" uid="uid://cwhbhh0gqasy6" path="res://assets/sound-effects/fire-crackling-2.wav" id="11_4fjmp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cu48"]
 
 [node name="StampGoal" type="Area2D" unique_id=1065439230]
 script = ExtResource("1_dgtxa")
+elephant_wait_time_1 = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1051562106]
 scale = Vector2(8.0037985, 8.0037985)
@@ -25,14 +31,47 @@ texture = ExtResource("4_dgtxa")
 
 [node name="SoundManager" type="Node2D" parent="." unique_id=1416070049]
 
-[node name="Wood1Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=767600062]
+[node name="Wood1Sound" type="AudioStreamPlayer" parent="SoundManager" unique_id=1542444207]
 stream = ExtResource("3_h6s18")
 
-[node name="Wood2Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=126319308]
+[node name="Wood2Sound" type="AudioStreamPlayer" parent="SoundManager" unique_id=1056778904]
 stream = ExtResource("4_gopf1")
 
-[node name="Iron1Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=1603818788]
+[node name="Iron1Sound" type="AudioStreamPlayer" parent="SoundManager" unique_id=643898297]
 stream = ExtResource("5_0jdm6")
 
-[node name="Iron2Sound2" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=1947615164]
+[node name="Iron2Sound2" type="AudioStreamPlayer" parent="SoundManager" unique_id=331639683]
 stream = ExtResource("6_tponr")
+
+[node name="BigDestruction" type="AudioStreamPlayer" parent="SoundManager" unique_id=2066082473]
+
+[node name="IronCrush1" type="AudioStreamPlayer" parent="SoundManager" unique_id=1121074521]
+stream = ExtResource("7_0jdm6")
+
+[node name="IronCrush2" type="AudioStreamPlayer" parent="SoundManager" unique_id=1499484564]
+stream = ExtResource("8_tponr")
+
+[node name="ElephantTrumpet" type="AudioStreamPlayer" parent="SoundManager" unique_id=95904129]
+stream = ExtResource("9_tponr")
+
+[node name="ElephantSquashed" type="AudioStreamPlayer" parent="SoundManager" unique_id=804896915]
+stream = ExtResource("10_ejxvy")
+
+[node name="ElephantBurned" type="AudioStreamPlayer" parent="SoundManager" unique_id=319897286]
+stream = ExtResource("11_4fjmp")
+
+[node name="Template1" type="AudioStreamPlayer" parent="SoundManager" unique_id=1246577198]
+
+[node name="Template2" type="AudioStreamPlayer" parent="SoundManager" unique_id=833793965]
+
+[node name="Template3" type="AudioStreamPlayer" parent="SoundManager" unique_id=1082370972]
+
+[node name="Template4" type="AudioStreamPlayer" parent="SoundManager" unique_id=1539683113]
+
+[node name="Template5" type="AudioStreamPlayer" parent="SoundManager" unique_id=1971708408]
+
+[node name="Template6" type="AudioStreamPlayer" parent="SoundManager" unique_id=543165338]
+
+[node name="Template7" type="AudioStreamPlayer" parent="SoundManager" unique_id=1375980779]
+
+[node name="Template8" type="AudioStreamPlayer" parent="SoundManager" unique_id=464619894]

@@ -14,7 +14,7 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite2D # Ujisti se, že se tvůj Sprite jmenuje přesně takto
 
-@onready var player_walking: AudioStreamPlayer2D = $PlayerWalking
+@onready var player_walking: AudioStreamPlayer = $PlayerWalking
 
 
 var last_facing_up: bool = false
@@ -38,13 +38,22 @@ func _ready() -> void:
 	GameManager.hand_clicked.connect(_on_hand_clicked)
 
 func _physics_process(delta: float) -> void:
+	if GameManager.current_state != GameManager.GameState.DREAM_WORLD:
+		velocity = Vector2.ZERO
+		player_walking.stop()
+		move_and_slide()
+		if last_facing_up:
+			sprite.texture = tex_stand_back
+		else:
+			sprite.texture = tex_stand_forward
+		return
+		
 	GameManager.dream_character_position = position
 	#print(GameManager.dream_character_position)
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if direction != Vector2.ZERO:
 		if not player_walking.playing:
-			
 			player_walking.play()
 		velocity = direction * speed
 		time += delta * step_frequency

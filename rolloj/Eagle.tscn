@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://0v6yin53mdfk" path="res://scripts/eagle.gd" id="1_qgqr6"]
 [ext_resource type="Texture2D" uid="uid://kg88vrepg7lu" path="res://assets/sprites/icon2.svg" id="2_sa6sy"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_sa6sy"]
+[ext_resource type="AudioStream" uid="uid://bjaagim5x053i" path="res://assets/sound-effects/eagle-cry-1.wav" id="4_dl3s7"]
+[ext_resource type="AudioStream" uid="uid://ct1ti8sha75h7" path="res://assets/sound-effects/wind-whoosh/whoosh-1.wav" id="5_odsxa"]
+[ext_resource type="AudioStream" uid="uid://diigdv2fbc0al" path="res://assets/sound-effects/wind-whoosh/whoosh-2.wav" id="6_w8ljk"]
 
 [node name="Eagle" type="Node2D" unique_id=1197796079]
 script = ExtResource("1_qgqr6")
@@ -15,3 +18,18 @@ texture = ExtResource("2_sa6sy")
 scale = Vector2(0.50535625, 0.50535625)
 target_id = "obstacle3"
 current_material = 2
+
+[node name="EagleSwoosh1" type="AudioStreamPlayer" parent="." unique_id=659629932]
+stream = ExtResource("5_odsxa")
+volume_db = 2.0
+
+[node name="EagleSwoosh2" type="AudioStreamPlayer" parent="." unique_id=607575337]
+stream = ExtResource("6_w8ljk")
+volume_db = 2.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=245003274]
+
+[node name="EagleCry" type="AudioStreamPlayer" parent="." unique_id=532776191]
+stream = ExtResource("4_dl3s7")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_appears_on_screen"]
