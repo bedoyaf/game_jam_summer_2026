@@ -76,7 +76,7 @@ func create_visual_stamp(pos: Vector2):
 	stamp.position = stamp_container.to_local(get_global_mouse_position())
 	stamp.rotation = randf_range(-0.3, 0.3)
 
-	GameManager.camera_shake.emit(25.0) 
+	GameManager.camera_shake.emit(35.0) 
 
 	var tween = create_tween()
 

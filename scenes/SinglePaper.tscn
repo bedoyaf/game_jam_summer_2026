@@ -14,9 +14,11 @@ viewport_path = NodePath("MainText3Dscene")
 [sub_resource type="ViewportTexture" id="ViewportTexture_m2cdc"]
 viewport_path = NodePath("YesNo3DScene")
 
-[node name="SinglePaper" type="Node2D" unique_id=407088929]
+[node name="SinglePaper" type="Node2D" unique_id=407088929 node_paths=PackedStringArray("label3d_text", "label3d_yesno")]
 script = ExtResource("1_3rehf")
 content_text = "Ahojda"
+label3d_text = NodePath("MainText3Dscene/Node3D/Label3D")
+label3d_yesno = NodePath("YesNo3DScene/Node3D/Label3D")
 stamp_texture = ExtResource("2_noshv")
 
 [node name="PaperSprite" type="Sprite2D" parent="." unique_id=1342278904]

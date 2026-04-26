@@ -96,6 +96,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hand_clicked() -> void:
+	if GameManager.current_state == GameManager.GameState.PAPERWORK:
+		return
+		
 	var mouse_pos = get_global_mouse_position()
 	
 	# Převedeme myš do lokálních souřadnic samotného Spritu

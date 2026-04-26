@@ -37,6 +37,7 @@ func _drop_last_paper():
 		return
 	
 	var paper = final_paper
+	paper.show()
 
 	# start nahoře
 	paper.position.y -= 800

@@ -18,7 +18,9 @@ func _ready() -> void:
 			# Ensure it takes exactly 1 hit to build this specific piece
 			child.required_hits = 1
 			child.completed.connect(_on_plank_completed)
-			
+	
+	planks.reverse()
+
 	# SEKVENCE (SEQUENCE) LOGIC: Hide future planks so you must build from start to finish
 	for i in range(planks.size()):
 		var plank = planks[i]

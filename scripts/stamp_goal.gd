@@ -14,6 +14,8 @@ signal completed()
 @export var default_texture: Texture2D
 @export var stamped_texture: Texture2D 
 @export var rejected_texture: Texture2D
+@export var stamped_scale_modifier: float = 1.0
+@export var rejected_scale_modifier: float = 1.0
 @export var linked_barricade: CollisionShape2D
 @export var enables_barricade_instead: bool = false # Toggles if this STAMP builds a physical wall instead of breaking one!
 @export var dialogue_on_destroy: String = "" 
@@ -130,6 +132,7 @@ func _destroy_obstacle() -> void:
 	
 	if sprite and stamped_texture:
 		sprite.texture = stamped_texture
+		sprite.scale *= stamped_scale_modifier
 		
 	if collision_shape:
 		collision_shape.set_deferred("disabled", true)
@@ -151,6 +154,7 @@ func lock_as_rejected() -> void:
 	
 	if sprite and rejected_texture:
 		sprite.texture = rejected_texture
+		sprite.scale *= rejected_scale_modifier
 		
 	if collision_shape:
 		collision_shape.set_deferred("disabled", true)

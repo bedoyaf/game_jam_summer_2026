@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://xcljaj8u400o" path="res://assets/sprites/terrain/frontWall.png" id="4_yheev"]
 [ext_resource type="Texture2D" uid="uid://d1d0qj7lf51be" path="res://assets/sprites/terrain/onerock.png" id="5_ku1nk"]
 [ext_resource type="Texture2D" uid="uid://b2g55avyiut2p" path="res://scenes/icon.svg" id="5_yheev"]
-[ext_resource type="Script" uid="uid://cc3qew7f0nhaa" path="res://scripts/walking_around/path_block.gd" id="6_bkyfo"]
 [ext_resource type="PackedScene" uid="uid://b4j2fuf8kwou0" path="res://rolloj/blockingObject.tscn" id="6_q3go6"]
-[ext_resource type="PackedScene" uid="uid://bscf8ml23lsyl" path="res://rolloj/bridge.tscn" id="7_2b4uk"]
 [ext_resource type="Texture2D" uid="uid://dodadmgy4468n" path="res://assets/sprites/obstacles/tree_down.png" id="7_4mcjt"]
 [ext_resource type="PackedScene" uid="uid://corqp025kynn8" path="res://rolloj/Eagle.tscn" id="8_83sk2"]
 [ext_resource type="Texture2D" uid="uid://dpcbae3xqenq5" path="res://assets/sprites/characters/hannibal/standforward.png" id="8_aemco"]
@@ -18,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cmyhyhgyrbtul" path="res://assets/sprites/characters/hannibal/walkforward2.png" id="10_2b4uk"]
 [ext_resource type="Texture2D" uid="uid://bbqjocrmotmnn" path="res://assets/sprites/obstacles/elephant_alive.png" id="10_82ks6"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
+[ext_resource type="Texture2D" uid="uid://duso66ra4nm0" path="res://assets/sprites/characters/romans/romans_alive.png" id="11_nyrub"]
 [ext_resource type="Texture2D" uid="uid://cnrmsrm7oru0d" path="res://assets/sprites/obstacles/elephant_dead.png" id="11_obb0e"]
 [ext_resource type="Script" uid="uid://lo6vngrq5xai" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="11_tt35e"]
@@ -26,19 +25,25 @@
 [ext_resource type="Texture2D" uid="uid://cymxjyhabt441" path="res://assets/sprites/characters/hannibal/walkback.png" id="12_nyrub"]
 [ext_resource type="Texture2D" uid="uid://cnia874tvsmli" path="res://assets/sprites/obstacles/good_soldiers_dead.png" id="13_khx1d"]
 [ext_resource type="Texture2D" uid="uid://51io441b81wt" path="res://assets/sprites/characters/hannibal/walkback2.png" id="13_l1c8q"]
+[ext_resource type="Texture2D" uid="uid://crnwb21tv2f5v" path="res://assets/sprites/obstacles/hole.png" id="14_kphlv"]
 [ext_resource type="PackedScene" uid="uid://2m0rk0ce0olv" path="res://scenes/soldiers.tscn" id="15_obb0e"]
 [ext_resource type="Script" uid="uid://wjgmac53of0i" path="res://scripts/bridge.gd" id="16_2vg4x"]
-[ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="21_pir18"]
+[ext_resource type="Texture2D" uid="uid://unuufcmtyp1o" path="res://assets/sprites/obstacles/bridge.png" id="17_16ijy"]
+[ext_resource type="Texture2D" uid="uid://q8rccveopq13" path="res://assets/sprites/obstacles/indicator2.png" id="18_7eqcm"]
+[ext_resource type="Texture2D" uid="uid://bqf7elgk8k31a" path="res://assets/sprites/obstacles/hole_edge2.png" id="18_16ijy"]
+[ext_resource type="Script" uid="uid://cwjmd5c5o2iff" path="res://scenes/walking_around/gaul_pursuit.gd" id="21_pir18"]
+[ext_resource type="Texture2D" uid="uid://cvkl6enjjlsyw" path="res://assets/sprites/obstacles/wall.png" id="23_kn6nd"]
 [ext_resource type="Texture2D" uid="uid://ct2yo8g08ytrk" path="res://assets/sprites/characters/hannibal/walkforward.png" id="24_16ijy"]
 [ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
 [ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
+[ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="27_emgir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku1nk"]
-radius = 123.58093
-height = 510.02637
+radius = 147.21973
+height = 581.5576
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16ijy"]
 size = Vector2(2139, 147)
@@ -49,8 +54,18 @@ size = Vector2(500.1659, 163.98212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3ed3"]
 size = Vector2(27.699173, 51.949806)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obb0e"]
-height = 50.629227
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kphlv"]
+radius = 7.3139954
+height = 17.140198
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0alt6"]
+size = Vector2(201.14618, 52.770332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pir18"]
+size = Vector2(111.97515, 43.68004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kn6nd"]
+size = Vector2(104.532745, 36.34732)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khx1d"]
 size = Vector2(53.907898, 176.26251)
@@ -61,17 +76,18 @@ size = Vector2(16.265259, 28.240509)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2vg4x"]
 size = Vector2(18.516602, 30.506851)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppy7o"]
-size = Vector2(1254.0123, 178.09393)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmhoi"]
+size = Vector2(20, 160.25572)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_qwpuw"]
-a = Vector2(459.51392, 208.97815)
-b = Vector2(-844.45276, 222.27124)
+[sub_resource type="CircleShape2D" id="CircleShape2D_16ijy"]
+radius = 387.12918
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1c8q"]
 size = Vector2(1180, 455)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sihyj"]
+radius = 40.0
+height = 190.0
 
 [node name="WalkingAround" type="Node2D" unique_id=1958117219]
 
@@ -999,7 +1015,7 @@ scale = Vector2(0.99999946, 0.99999946)
 texture = ExtResource("3_bkyfo")
 
 [node name="Sprite2D12" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=485426254]
-position = Vector2(2829.9998, -2437.5002)
+position = Vector2(2916.4998, -2348.5)
 scale = Vector2(0.9999995, 0.9999995)
 texture = ExtResource("3_bkyfo")
 
@@ -1153,47 +1169,47 @@ scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D114" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=114508585]
-position = Vector2(13624.5, -6116.5)
+position = Vector2(13241.5, -6227.5)
 scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D115" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=735756207]
-position = Vector2(13262.5, -5734.5)
+position = Vector2(13111.5, -6084.5)
 scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D116" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1642037496]
-position = Vector2(12753.5, -5347.5)
+position = Vector2(12615.5, -5519.5)
 scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D117" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=622213206]
-position = Vector2(12753.5, -5347.5)
+position = Vector2(12507.5, -5801.5)
 scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D45" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=159479248]
-position = Vector2(12924.999, -6237.501)
+position = Vector2(12662.5, -6358.5005)
 scale = Vector2(0.99999934, 0.99999934)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D38" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1663936022]
-position = Vector2(12652.5, -5912.5)
+position = Vector2(12231.5, -5992.5)
 scale = Vector2(0.9999994, 0.9999994)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D39" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1836728245]
-position = Vector2(11672.5, -5270.0005)
+position = Vector2(11434.5, -5464.5)
 scale = Vector2(0.9999995, 0.9999995)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D40" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1832601459]
-position = Vector2(11546.5, -4743.5)
+position = Vector2(11425.5, -4834.5)
 scale = Vector2(0.9999995, 0.9999995)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D41" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1256169586]
-position = Vector2(12087.498, -5100.0005)
+position = Vector2(11899.5, -5325.5)
 scale = Vector2(0.9999997, 0.9999997)
 texture = ExtResource("4_yheev")
 
@@ -1203,7 +1219,7 @@ scale = Vector2(0.99999934, 0.99999934)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D31" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=141803563]
-position = Vector2(5290, -2700.0002)
+position = Vector2(5325.5, -2674.5)
 scale = Vector2(0.99999946, 0.99999946)
 texture = ExtResource("4_yheev")
 
@@ -1308,13 +1324,8 @@ scale = Vector2(0.99999934, 0.99999934)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D17" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=902175940]
-position = Vector2(4145, -1699.9998)
+position = Vector2(4063.5, -1823.5)
 scale = Vector2(0.9999997, 0.9999997)
-texture = ExtResource("4_yheev")
-
-[node name="Sprite2D15" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1171540194]
-position = Vector2(4277.4995, -1392.5)
-scale = Vector2(0.99999976, 0.99999976)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D21" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2029616410]
@@ -1343,12 +1354,12 @@ scale = Vector2(0.99999964, 0.99999964)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D23" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2120500626]
-position = Vector2(5069.9995, -1810.0002)
+position = Vector2(4950.4995, -1920.5)
 scale = Vector2(0.99999976, 0.99999976)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D16" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1538464465]
-position = Vector2(3499.9995, -1257.5)
+position = Vector2(3371.4998, -1356.5)
 scale = Vector2(0.99999976, 0.99999976)
 texture = ExtResource("4_yheev")
 
@@ -1380,6 +1391,11 @@ texture = ExtResource("4_yheev")
 [node name="Sprite2D96" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=267189068]
 position = Vector2(23313.5, -2486.5)
 scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1171540194]
+position = Vector2(4162.5, -1521.5)
+scale = Vector2(0.99999976, 0.99999976)
 texture = ExtResource("4_yheev")
 
 [node name="Sprite2D97" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1819154587]
@@ -2045,7 +2061,15 @@ position = Vector2(1577.5001, -1279.9999)
 texture = ExtResource("5_ku1nk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/Walls/Middle" unique_id=545190558]
-position = Vector2(8422.5, -4602.5)
+position = Vector2(8183, -4687.5)
+texture = ExtResource("5_ku1nk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background/Walls/Middle" unique_id=1738172637]
+position = Vector2(9033, -4565.5)
+texture = ExtResource("5_ku1nk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background/Walls/Middle" unique_id=1138441891]
+position = Vector2(9073, -5217.5)
 texture = ExtResource("5_ku1nk")
 
 [node name="Colliders" type="Node2D" parent="Background/Walls" unique_id=1620863593]
@@ -2064,16 +2088,16 @@ shape = SubResource("RectangleShape2D_yheev")
 position = Vector2(1520.5, -1515)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D19" unique_id=1505446985]
-position = Vector2(14.99994, -3.999998)
+position = Vector2(30.999943, -11.999999)
 rotation = 1.1560321
 scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("CapsuleShape2D_ku1nk")
 
 [node name="StaticBody2D20" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=2136212456]
-position = Vector2(1607.5, -1472.4999)
+position = Vector2(1286.5, -1590)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D20" unique_id=177273807]
-position = Vector2(6860, -3370)
+position = Vector2(6871, -3298.0002)
 rotation = 1.1560321
 scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("CapsuleShape2D_ku1nk")
@@ -2155,8 +2179,8 @@ position = Vector2(9815, -4822.5)
 rotation = -0.0027830154
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D7" unique_id=1665375748]
-position = Vector2(1236.8954, -679.0604)
-rotation = -0.55877364
+position = Vector2(466.7462, -447.20285)
+rotation = -0.68805546
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
@@ -2245,7 +2269,7 @@ position = Vector2(3500.0005, -3264.999)
 rotation = 3.3156176
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D15" unique_id=444988106]
-position = Vector2(1182.0524, -928.6962)
+position = Vector2(1157.7179, -966.0467)
 rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
@@ -2261,7 +2285,7 @@ scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D16" unique_id=1204855936]
-position = Vector2(-86.74133, -233.50745)
+position = Vector2(320.27997, -525.89856)
 rotation = 2.344202
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
@@ -2442,22 +2466,25 @@ shape = SubResource("RectangleShape2D_j3ed3")
 position = Vector2(479, 999)
 
 [node name="DecisionGate" parent="Background/Events/decisionElephant" unique_id=1795052714 instance=ExtResource("9_nyrub")]
+z_index = 1
 position = Vector2(-145, -34)
 rotation = -0.44549268
 scale = Vector2(8.151424, 8.151424)
 
 [node name="CollisionShape2D" parent="Background/Events/decisionElephant/DecisionGate" index="0" unique_id=1631215411]
-position = Vector2(8.803507, 43.62824)
+position = Vector2(9.832788, 42.89621)
 
 [node name="CollisionShape2D2" parent="Background/Events/decisionElephant/DecisionGate" index="1" unique_id=808481819]
 position = Vector2(-6.461859, -38.567627)
 
 [node name="StampGoal" parent="Background/Events/decisionElephant/DecisionGate" index="2" unique_id=1065439230]
-position = Vector2(-0.06970203, 35.44877)
+position = Vector2(7.978776, 40.5155)
+scale = Vector2(0.15482473, 0.15482473)
 target_id = "path_A_1"
 default_texture = ExtResource("10_82ks6")
 stamped_texture = ExtResource("11_obb0e")
 rejected_texture = ExtResource("10_82ks6")
+stamped_scale_modifier = 4.0
 
 [node name="CollisionShape2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="0" unique_id=1051562106]
 position = Vector2(23.3713, 22.537731)
@@ -2470,10 +2497,11 @@ texture = ExtResource("10_82ks6")
 
 [node name="Indicator" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="2" unique_id=927250942]
 modulate = Color(1, 1, 1, 0.5176471)
-position = Vector2(65.91889, -102.76605)
+position = Vector2(157.65297, -120.52843)
 scale = Vector2(0.599, 0.599)
 
 [node name="StampGoal2" parent="Background/Events/decisionElephant/DecisionGate" index="3" unique_id=961468286]
+z_index = -1
 position = Vector2(-6.461859, -38.567635)
 target_id = "path_B_1"
 default_texture = ExtResource("12_hqppi")
@@ -2486,34 +2514,128 @@ rotation = 0.39499682
 scale = Vector2(0.38220504, 0.38220504)
 texture = ExtResource("12_hqppi")
 
+[node name="Indicator" parent="Background/Events/decisionElephant/DecisionGate/StampGoal2" index="2" unique_id=927250942]
+position = Vector2(43.10623, -126.01436)
+scale = Vector2(0.48491004, 0.48491004)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/decisionElephant" unique_id=1365975679]
+position = Vector2(113, 467)
+scale = Vector2(2.3843026, 2.3843026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/decisionElephant/StaticBody2D" unique_id=1913146425]
+position = Vector2(-19.000006, -24.000004)
+rotation = 1.4597896
+scale = Vector2(8.0667095, 8.0667095)
+shape = SubResource("CapsuleShape2D_kphlv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/decisionElephant" unique_id=1582493761]
+position = Vector2(-381, -298)
+scale = Vector2(2.3843026, 2.3843026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/decisionElephant/StaticBody2D2" unique_id=85526514]
+position = Vector2(-19.000006, -24.000004)
+rotation = 1.4597896
+scale = Vector2(8.0667095, 8.0667095)
+shape = SubResource("CapsuleShape2D_kphlv")
+
 [node name="River" type="Node2D" parent="Background/Events" unique_id=916231898]
 position = Vector2(1555, 305)
 
-[node name="Bridge" parent="Background/Events/River" unique_id=1935920774 instance=ExtResource("7_2b4uk")]
-position = Vector2(210, -45)
+[node name="Hole" type="Sprite2D" parent="Background/Events/River" unique_id=263799634]
+position = Vector2(335, 3.9999905)
+rotation = 0.018981408
+scale = Vector2(0.790318, 0.8655313)
+texture = ExtResource("14_kphlv")
+
+[node name="Bridge" type="StaticBody2D" parent="Background/Events/River" unique_id=1935920774]
+position = Vector2(318.43994, -101.296875)
 rotation = -0.514694
-scale = Vector2(1.5705163, 1.5705163)
+scale = Vector2(1.8172874, 1.8172874)
+script = ExtResource("16_2vg4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/Bridge" unique_id=1778295773]
+position = Vector2(3.9370117, 43.06836)
+rotation = 0.100496694
+scale = Vector2(3.4275987, 3.4275987)
+shape = SubResource("RectangleShape2D_0alt6")
+
+[node name="StampGoal" parent="Background/Events/River/Bridge" unique_id=1530741937 instance=ExtResource("11_tt35e")]
+position = Vector2(225.65253, 82.28621)
+rotation = 0.5141232
+scale = Vector2(0.4676819, 0.4676819)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("17_16ijy")
+
+[node name="Indicator" parent="Background/Events/River/Bridge/StampGoal" index="2" unique_id=927250942]
+position = Vector2(-22.342743, -22.367973)
+scale = Vector2(1.5336063, 1.5336063)
+texture = ExtResource("18_7eqcm")
+
+[node name="StampGoal1" parent="Background/Events/River/Bridge" unique_id=786555554 instance=ExtResource("11_tt35e")]
+position = Vector2(73.570564, 63.92064)
+rotation = 0.5141232
+scale = Vector2(0.4676819, 0.4676819)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("17_16ijy")
+
+[node name="Indicator" parent="Background/Events/River/Bridge/StampGoal1" index="2" unique_id=927250942]
+position = Vector2(0.011154175, -20.00203)
+scale = Vector2(1.5337254, 1.5337254)
+texture = ExtResource("18_7eqcm")
+
+[node name="StampGoal2" parent="Background/Events/River/Bridge" unique_id=559376554 instance=ExtResource("11_tt35e")]
+position = Vector2(-72.11964, 55.491573)
+rotation = 0.5141232
+scale = Vector2(0.4676819, 0.4676819)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("17_16ijy")
+
+[node name="Indicator" parent="Background/Events/River/Bridge/StampGoal2" index="2" unique_id=927250942]
+position = Vector2(1.1796837, -5.882263)
+scale = Vector2(1.7418212, 1.7418212)
+texture = ExtResource("18_7eqcm")
+
+[node name="StampGoal3" parent="Background/Events/River/Bridge" unique_id=1282704653 instance=ExtResource("11_tt35e")]
+position = Vector2(-213.39339, 42.606285)
+rotation = 0.5141232
+scale = Vector2(0.46768194, 0.46768194)
+target_id = "bridge_stamps"
+stamped_texture = ExtResource("17_16ijy")
+
+[node name="Sprite2D" parent="Background/Events/River/Bridge/StampGoal3" index="1" unique_id=419037605]
+position = Vector2(-12.807103, -5.7296944)
+
+[node name="Indicator" parent="Background/Events/River/Bridge/StampGoal3" index="2" unique_id=927250942]
+position = Vector2(2.3529243, 0.0013580322)
+scale = Vector2(1.6656423, 1.6656423)
+texture = ExtResource("18_7eqcm")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/River" unique_id=1207126841]
 position = Vector2(-66, -151)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D" unique_id=1366499635]
-position = Vector2(87.99999, -203)
-rotation = -0.46683717
+position = Vector2(219, -185)
+rotation = -0.44351956
 scale = Vector2(10.78, 10.78)
-shape = SubResource("CapsuleShape2D_obb0e")
+shape = SubResource("RectangleShape2D_pir18")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/River" unique_id=764864936]
 position = Vector2(289, 456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D2" unique_id=976564092]
-position = Vector2(87.99999, -203)
+position = Vector2(290.2207, -315.74713)
 rotation = -0.46683717
 scale = Vector2(10.78, 10.78)
-shape = SubResource("CapsuleShape2D_obb0e")
+shape = SubResource("RectangleShape2D_kn6nd")
+
+[node name="HoleEdge2" type="Sprite2D" parent="Background/Events/River" unique_id=1873071583]
+position = Vector2(-23.999998, 260)
+rotation = 0.03370941
+scale = Vector2(0.81529933, 0.81529933)
+texture = ExtResource("18_16ijy")
 
 [node name="eagle" type="Node2D" parent="Background/Events" unique_id=107362967]
-position = Vector2(4530, -1183)
+position = Vector2(3956, -853)
 
 [node name="Eagle" parent="Background/Events/eagle" unique_id=1197796079 instance=ExtResource("8_83sk2")]
 position = Vector2(20, -6)
@@ -2552,6 +2674,7 @@ shape = SubResource("RectangleShape2D_khx1d")
 target_id = "obstacle2"
 
 [node name="DecisionGauls" type="Node2D" parent="Background/Events" unique_id=1848309217]
+visible = false
 position = Vector2(3090, -278)
 
 [node name="DecisionGate" parent="Background/Events/DecisionGauls" unique_id=1472148977 instance=ExtResource("9_nyrub")]
@@ -2562,32 +2685,49 @@ scale = Vector2(12.540083, 12.540083)
 [node name="CollisionShape2D" parent="Background/Events/DecisionGauls/DecisionGate" index="0" unique_id=1631215411]
 position = Vector2(-8.625265, -33.596676)
 scale = Vector2(2.9945903, 2.9945903)
+disabled = true
 
 [node name="CollisionShape2D2" parent="Background/Events/DecisionGauls/DecisionGate" index="1" unique_id=808481819]
 position = Vector2(-1.1068611, 37.78833)
 scale = Vector2(1.9086516, 1.9086516)
+disabled = true
 
 [node name="StampGoal" parent="Background/Events/DecisionGauls/DecisionGate" index="2" unique_id=1065439230]
 position = Vector2(-8.625265, -33.596676)
 scale = Vector2(0.35987085, 0.35987085)
 target_id = "path_A_2"
 
+[node name="CollisionShape2D" parent="Background/Events/DecisionGauls/DecisionGate/StampGoal" index="0" unique_id=1051562106]
+disabled = true
+
 [node name="StampGoal2" parent="Background/Events/DecisionGauls/DecisionGate" index="3" unique_id=961468286]
 position = Vector2(-1.1068611, 37.788326)
 scale = Vector2(0.23871458, 0.23871458)
 target_id = "path_B_2"
 
-[node name="GaulPursuit" type="Node2D" parent="Background/Events" unique_id=1198718798]
-position = Vector2(6373, -2000)
+[node name="CollisionShape2D" parent="Background/Events/DecisionGauls/DecisionGate/StampGoal2" index="0" unique_id=1051562106]
+disabled = true
+
+[node name="GaulPursuit" type="Node2D" parent="Background/Events" unique_id=1198718798 node_paths=PackedStringArray("wall", "ambush_guards")]
+position = Vector2(4809, -1320)
+script = ExtResource("21_pir18")
+wall = NodePath("wall")
+ambush_guards = NodePath("wall/StaticBody2D")
 
 [node name="Ambush" parent="Background/Events/GaulPursuit" unique_id=1445342002 instance=ExtResource("15_obb0e")]
-position = Vector2(5238, -2786)
+position = Vector2(5284, -2662)
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush" index="1" unique_id=2074462379]
+position = Vector2(51.254883, 5.3789063)
+rotation = 0.85677594
 
 [node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" index="2" unique_id=1065439230]
-target_id = "ambush"
+target_id = "ambush_fight"
+always_active = false
 
 [node name="wall" type="StaticBody2D" parent="Background/Events/GaulPursuit" unique_id=223845795]
-position = Vector2(4470, -2351)
+visible = false
+position = Vector2(4365, -2288)
 scale = Vector2(7.5370407, 7.5370407)
 script = ExtResource("16_2vg4x")
 
@@ -2606,41 +2746,12 @@ position = Vector2(22.289885, 43.518375)
 rotation = -1.1184279
 shape = SubResource("RectangleShape2D_hqppi")
 
-[node name="StampGoal" parent="Background/Events/GaulPursuit/wall" unique_id=1810459006 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
-position = Vector2(-32.24077, -2.7862394)
-rotation = -0.5824718
-scale = Vector2(0.11530368, 0.11530368)
-target_id = "ambush"
-linked_barricade = NodePath("../CollisionShape2D")
-enables_barricade_instead = true
-
-[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal" index="0" unique_id=1051562106]
-position = Vector2(5.935547, 25.678223)
-shape = SubResource("RectangleShape2D_2vg4x")
-
-[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal" index="2" unique_id=927250942]
-position = Vector2(38.26751, -120.849075)
-
-[node name="StampGoal2" parent="Background/Events/GaulPursuit/wall" unique_id=2137602048 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
-position = Vector2(-9.022107, 24.147408)
-rotation = -0.9279033
-scale = Vector2(0.11530368, 0.11530368)
-target_id = "ambush"
-linked_barricade = NodePath("../CollisionShape2D2")
-enables_barricade_instead = true
-
-[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="0" unique_id=1051562106]
-position = Vector2(5.935547, 25.678223)
-shape = SubResource("RectangleShape2D_2vg4x")
-
-[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="2" unique_id=927250942]
-position = Vector2(42.41699, -118.03437)
-
 [node name="StampGoal3" parent="Background/Events/GaulPursuit/wall" unique_id=1673483201 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
-position = Vector2(19.370998, 42.987694)
-rotation = -1.1302618
+position = Vector2(23.882019, 45.773907)
+rotation = 0.023873031
 scale = Vector2(0.11530368, 0.11530368)
-target_id = "ambush"
+target_id = "ambush_walls"
+stamped_texture = ExtResource("23_kn6nd")
 linked_barricade = NodePath("../CollisionShape2D3")
 enables_barricade_instead = true
 
@@ -2648,8 +2759,89 @@ enables_barricade_instead = true
 position = Vector2(5.935547, 25.678223)
 shape = SubResource("RectangleShape2D_2vg4x")
 
+[node name="Sprite2D" parent="Background/Events/GaulPursuit/wall/StampGoal3" index="1" unique_id=419037605]
+scale = Vector2(0.8657105, 0.8657105)
+
 [node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal3" index="2" unique_id=927250942]
 position = Vector2(42.41699, -118.03437)
+
+[node name="StampGoal" parent="Background/Events/GaulPursuit/wall" unique_id=1810459006 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+position = Vector2(-33.965538, -1.459478)
+rotation = 0.10438211
+scale = Vector2(0.11530369, 0.11530369)
+target_id = "ambush_walls"
+stamped_texture = ExtResource("23_kn6nd")
+linked_barricade = NodePath("../CollisionShape2D")
+enables_barricade_instead = true
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal" index="0" unique_id=1051562106]
+position = Vector2(5.935547, 25.678223)
+shape = SubResource("RectangleShape2D_2vg4x")
+
+[node name="Sprite2D" parent="Background/Events/GaulPursuit/wall/StampGoal" index="1" unique_id=419037605]
+scale = Vector2(0.78253955, 0.78253955)
+
+[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal" index="2" unique_id=927250942]
+position = Vector2(38.26751, -120.849075)
+
+[node name="StampGoal2" parent="Background/Events/GaulPursuit/wall" unique_id=2137602048 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+position = Vector2(-9.022095, 24.14746)
+rotation = 0.10214311
+scale = Vector2(0.11530369, 0.11530369)
+target_id = "ambush_walls"
+stamped_texture = ExtResource("23_kn6nd")
+linked_barricade = NodePath("../CollisionShape2D2")
+enables_barricade_instead = true
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="0" unique_id=1051562106]
+position = Vector2(5.935547, 25.678223)
+shape = SubResource("RectangleShape2D_2vg4x")
+
+[node name="Sprite2D" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="1" unique_id=419037605]
+position = Vector2(27.003092, -7.3952274)
+scale = Vector2(0.82073724, 0.82073724)
+
+[node name="Indicator" parent="Background/Events/GaulPursuit/wall/StampGoal2" index="2" unique_id=927250942]
+position = Vector2(42.41699, -118.03437)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/GaulPursuit/wall" unique_id=73175]
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Events/GaulPursuit/wall/StaticBody2D" unique_id=641208946]
+position = Vector2(-118.879555, 30.914)
+rotation = 3.1415927
+scale = Vector2(0.11300661, -0.11300661)
+texture = ExtResource("11_nyrub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/GaulPursuit/wall/StaticBody2D" unique_id=1272207731]
+position = Vector2(-83.32189, 65.67564)
+rotation = -0.51142734
+shape = SubResource("RectangleShape2D_qmhoi")
+disabled = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Events/GaulPursuit/wall/StaticBody2D" unique_id=1980191925]
+position = Vector2(-106.80585, 55.459442)
+rotation = 3.1415927
+scale = Vector2(0.11300661, -0.11300661)
+texture = ExtResource("11_nyrub")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background/Events/GaulPursuit/wall/StaticBody2D" unique_id=1933516784]
+position = Vector2(-94.46679, 80.137566)
+rotation = 3.1415927
+scale = Vector2(0.11300661, -0.11300661)
+texture = ExtResource("11_nyrub")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background/Events/GaulPursuit/wall/StaticBody2D" unique_id=2084267489]
+position = Vector2(-80.53559, 106.14246)
+rotation = 3.1415927
+scale = Vector2(0.11300661, -0.11300661)
+texture = ExtResource("11_nyrub")
+
+[node name="Area2D" type="Area2D" parent="Background/Events/GaulPursuit" unique_id=535765990]
+position = Vector2(4681, -2402)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/GaulPursuit/Area2D" unique_id=836124923]
+shape = SubResource("CircleShape2D_16ijy")
 
 [node name="FinalRomanBattle" type="Node2D" parent="Background/Events" unique_id=426251693]
 position = Vector2(16248, 1620)
@@ -3764,25 +3956,9 @@ always_active = false
 [node name="Blockers" type="Node2D" parent="Background" unique_id=978678743]
 position = Vector2(1112, -796)
 
-[node name="BlockTrigger" type="Area2D" parent="Background/Blockers" unique_id=579611049 node_paths=PackedStringArray("blocker")]
-position = Vector2(-691, -30)
-rotation = 0.78149325
-script = ExtResource("6_bkyfo")
-blocker = NodePath("Block")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Blockers/BlockTrigger" unique_id=1616564025]
-position = Vector2(-63.971, -277.43768)
-rotation = -0.013232408
-shape = SubResource("RectangleShape2D_ppy7o")
-
-[node name="Block" type="StaticBody2D" parent="Background/Blockers/BlockTrigger" unique_id=2094974805]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Blockers/BlockTrigger/Block" unique_id=1212327908]
-shape = SubResource("SegmentShape2D_qwpuw")
-
 [node name="FinalRomanBattle" type="Node2D" parent="Background" unique_id=742080215 node_paths=PackedStringArray("fade_rect")]
 position = Vector2(16728, -109)
-script = ExtResource("21_pir18")
+script = ExtResource("27_emgir")
 fade_rect = NodePath("../../Player/CanvasLayer/FadeTransition")
 
 [node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target", "finalBattle")]
@@ -3794,14 +3970,15 @@ camera_path = NodePath("../../../Player/Camera2D")
 finalBattle = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FinalRomanBattle/teleport" unique_id=1793730152]
-position = Vector2(-2827, 931)
+position = Vector2(-4606, 1777)
 shape = SubResource("RectangleShape2D_l1c8q")
+disabled = true
 
 [node name="target" type="Node2D" parent="Background/FinalRomanBattle/teleport" unique_id=1771497740]
 position = Vector2(-142, 7918)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1265406013]
-position = Vector2(-1034, 2105)
+position = Vector2(3586, 503)
 script = ExtResource("4_bkyfo")
 speed = 400.0
 squash_amount = 0.05
@@ -3836,19 +4013,26 @@ color = Color(0, 0, 0, 1)
 [node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
 stream = ExtResource("25_j3ed3")
 
+[connection signal="body_entered" from="Background/Events/GaulPursuit/Area2D" to="Background/Events/GaulPursuit" method="_on_area_2d_body_entered"]
+
 [editable path="Background/Events/boulder/BlockingObject"]
 [editable path="Background/Events/boulder/BlockingObject/StampGoal"]
 [editable path="Background/Events/decisionElephant/DecisionGate"]
 [editable path="Background/Events/decisionElephant/DecisionGate/StampGoal"]
 [editable path="Background/Events/decisionElephant/DecisionGate/StampGoal2"]
-[editable path="Background/Events/River/Bridge"]
+[editable path="Background/Events/River/Bridge/StampGoal"]
+[editable path="Background/Events/River/Bridge/StampGoal1"]
+[editable path="Background/Events/River/Bridge/StampGoal2"]
+[editable path="Background/Events/River/Bridge/StampGoal3"]
 [editable path="Background/Events/eagle/Eagle"]
 [editable path="Background/Events/GaulFortress/BlockingObject"]
 [editable path="Background/Events/DecisionGauls/DecisionGate"]
+[editable path="Background/Events/DecisionGauls/DecisionGate/StampGoal"]
+[editable path="Background/Events/DecisionGauls/DecisionGate/StampGoal2"]
 [editable path="Background/Events/GaulPursuit/Ambush"]
 [editable path="Background/Events/GaulPursuit/Ambush/StampGoal"]
+[editable path="Background/Events/GaulPursuit/wall/StampGoal3"]
 [editable path="Background/Events/GaulPursuit/wall/StampGoal"]
 [editable path="Background/Events/GaulPursuit/wall/StampGoal2"]
-[editable path="Background/Events/GaulPursuit/wall/StampGoal3"]
 [editable path="Background/Events/FinalRomanBattle/General"]
 [editable path="Background/Events/FinalRomanBattle/General/StampGoal"]

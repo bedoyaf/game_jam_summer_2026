@@ -1,7 +1,7 @@
 extends Camera2D
 
 var shake_intensity: float = 0.0
-@export var shake_decay: float = 15.0 # Jak rychle se kamera uklidní (větší číslo = rychlejší utlumení)
+@export var shake_decay: float = 18.0 # Jak rychle se kamera uklidní (větší číslo = rychlejší utlumení)
 
 func _ready():
 	# Napojíme kameru na globální signál
