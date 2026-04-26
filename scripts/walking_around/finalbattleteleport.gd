@@ -4,6 +4,8 @@ extends Area2D
 @export var player_path: NodePath
 @export var camera_path: NodePath
 
+@export var finalBattle : Node2D
+
 var player
 var camera
 
@@ -24,7 +26,7 @@ func _on_body_entered(body):
 	
 	# teleport
 	player.global_position = target.global_position
-	
+	finalBattle.start_end_dream()
 	# 💡 počkej frame (aby kamera stihla skočit)
 	await get_tree().process_frame
 	

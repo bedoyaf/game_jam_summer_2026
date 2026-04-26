@@ -35,6 +35,36 @@ func _on_paper_input(_viewport, event, _shape_idx):
 			var click_pos = get_local_mouse_position()
 			create_visual_stamp(click_pos)
 
+func spawn_random_stamps(count: int):
+	for i in count:
+		_place_random_stamp()
+
+
+func _place_random_stamp():
+	if not stamp_texture:
+		push_warning("Papír nemá stamp_texture!")
+		return
+
+	var stamp = Sprite2D.new()
+	stamp.texture = stamp_texture
+	stamp_container.add_child(stamp)
+
+	# 📏 náhodná pozice uvnitř papíru
+	var rect = _get_paper_rect()
+	var pos = Vector2(
+		randf_range(rect.position.x, rect.end.x),
+		randf_range(rect.position.y, rect.end.y)
+	)
+
+	stamp.position = pos
+	stamp.rotation = randf_range(-0.4, 0.4)
+func _get_paper_rect() -> Rect2:
+	var sprite = $PaperSprite
+	var size = sprite.texture.get_size() * sprite.scale
+
+	var top_left = -size / 2
+	return Rect2(top_left, size)
+	
 func create_visual_stamp(pos: Vector2):
 	if not stamp_texture:
 		push_warning("Papír nemá přiřazenou 'stamp_texture' v Inspectoru!")

@@ -54,6 +54,7 @@ func _ready():
 	my_material = sub_viewport_container.material
 	var noise_tex = my_material.get_shader_parameter("noise_texture") as NoiseTexture2D
 	noise = noise_tex.noise
+	GameManager.set_dreamcontroller(self)
 		
 
 func _process(delta):
@@ -66,7 +67,7 @@ func _process(delta):
 
 
 func change_dream_level_variable(new_dream_level: float):
-	dream_level = new_dream_level
+	#dream_level = new_dream_level
 	print(new_dream_level)
 
 func change_dream_level():

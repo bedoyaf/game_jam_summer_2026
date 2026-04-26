@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bt1lnnhum50u2"]
 
 [ext_resource type="Script" uid="uid://c1vrwa5jflgmj" path="res://rolloj/PaperWorkPhase.gd" id="1_u1u68"]
+[ext_resource type="Script" uid="uid://x4juj7kfk1q7" path="res://scripts/end_cut_scene.gd" id="2_0cxu4"]
 [ext_resource type="Texture2D" uid="uid://dkodjvsy65nmo" path="res://assets/sprites/table.png" id="2_x537r"]
 [ext_resource type="PackedScene" uid="uid://drlmt55gr6hqf" path="res://scenes/SinglePaper3.tscn" id="3_cfq0f"]
 [ext_resource type="PackedScene" uid="uid://dpid8klt8s0gb" path="res://scenes/SinglePaper_fake.tscn" id="4_kp0ql"]
@@ -31,63 +32,71 @@ vignette_rect = NodePath("CanvasLayerVignette/ColorRect")
 position = Vector2(144, 144)
 scale = Vector2(0.72, 0.72)
 
+[node name="EndScene" type="Node2D" parent="Papers" unique_id=2053116404 node_paths=PackedStringArray("final_paper")]
+z_index = 50
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("2_0cxu4")
+papers_parent = NodePath("../FakePapers")
+fade_rect_path = NodePath("../../FadeTransition")
+final_paper = NodePath("FinalPaper")
+stamps_per_paper = 50
+
+[node name="FinalPaper" parent="Papers/EndScene" unique_id=407088929 instance=ExtResource("4_kp0ql")]
+position = Vector2(591.66656, 286.11108)
+rotation = -0.0018176578
+scale = Vector2(0.6563926, 0.6563926)
+content_text = "Request for reinforcements
+refused"
+
 [node name="FakePapers" type="Node2D" parent="Papers" unique_id=925939395]
 rotation = -0.26343536
 scale = Vector2(1.0000001, 1.0000001)
 
-[node name="SinglePaper6" parent="Papers/FakePapers" unique_id=407088929 instance=ExtResource("4_kp0ql")]
+[node name="SinglePaper6" parent="Papers/FakePapers" unique_id=1874661280 instance=ExtResource("4_kp0ql")]
 position = Vector2(574.26544, 228.24564)
 rotation = 0.4010842
 scale = Vector2(0.5179838, 0.5179838)
-content_text = "Lorem ipsum
-dolorsit amet,
-consectetur
-adipiscing elit."
+content_text = "Envoy from carthage was caught by Gauls"
 
 [node name="SinglePaper" parent="Papers/FakePapers" unique_id=1106675276 instance=ExtResource("4_kp0ql")]
 position = Vector2(289.79578, 216.25642)
 scale = Vector2(0.6563925, 0.6563925)
-content_text = "Lorem ipsum
-dolorsit amet,
-consectetur
-adipiscing elit."
+content_text = "Romes is attacking Hispania"
 
 [node name="SinglePaper2" parent="Papers/FakePapers" unique_id=1089150571 instance=ExtResource("4_kp0ql")]
 position = Vector2(399.7227, 320.7069)
 rotation = 0.31459367
 scale = Vector2(0.6563925, 0.6563925)
-content_text = "Lorem ipsum
-dolorsit amet,
-consectetur
-adipiscing elit."
+content_text = "Ran out of sacrifical animals"
 
 [node name="SinglePaper3" parent="Papers/FakePapers" unique_id=141673648 instance=ExtResource("4_kp0ql")]
 position = Vector2(359.4439, 422.04782)
 rotation = 0.2616177
 scale = Vector2(0.6563925, 0.6563925)
-content_text = "Lorem ipsum
-dolorsit amet,
-consectetur
-adipiscing elit."
+content_text = "Fight between soldiers have broken out"
 
 [node name="SinglePaper4" parent="Papers/FakePapers" unique_id=1796198000 instance=ExtResource("5_kp0ql")]
 position = Vector2(472.8653, 556.2111)
 rotation = -2.6267045
 scale = Vector2(0.794859, -0.794859)
+content_text = "Enemy camps sighted nearby"
 
 [node name="SinglePaper5" parent="Papers/FakePapers" unique_id=1886838098 instance=ExtResource("5_kp0ql")]
 position = Vector2(435.81354, 592.25055)
 rotation = 0.4594534
 scale = Vector2(-0.85917485, 0.85917485)
+content_text = "One of the regiments has gone missing"
 
 [node name="SinglePaper7" parent="Papers/FakePapers" unique_id=1893971285 instance=ExtResource("5_08o8g")]
 position = Vector2(168.31404, 464.003)
 scale = Vector2(-0.639296, 0.639296)
+content_text = "Fleet sunk"
 
 [node name="SinglePaper8" parent="Papers/FakePapers" unique_id=1099846705 instance=ExtResource("5_kp0ql")]
 position = Vector2(549.9116, 361.21332)
 rotation = -2.9578338
 scale = Vector2(0.7839999, -0.7839999)
+content_text = "Running out of money"
 
 [node name="PaperWork5" type="Node2D" parent="Papers" unique_id=1996219562]
 
@@ -95,6 +104,7 @@ scale = Vector2(0.7839999, -0.7839999)
 position = Vector2(245.8333, 530.5555)
 rotation = 0.1912134
 scale = Vector2(0.7815126, 0.7815126)
+content_text = "Burn the scrolls."
 paper_index = 4
 
 [node name="PaperWork4" type="Node2D" parent="Papers" unique_id=116741996]
@@ -103,6 +113,7 @@ paper_index = 4
 position = Vector2(287.5, 187.5)
 rotation = -0.07251805
 scale = Vector2(0.7815126, 0.7815126)
+content_text = "Execute deserters"
 paper_index = 3
 
 [node name="PaperWork3" type="Node2D" parent="Papers" unique_id=1292973852]
@@ -112,8 +123,7 @@ position = Vector2(137.94478, -451.45563)
 position = Vector2(892.61066, 504.23343)
 rotation = -0.07437447
 scale = Vector2(0.67298394, 0.67298394)
-content_text = "Ojojojoj
-bude sex?"
+content_text = "Promote commanders"
 paper_index = 2
 
 [node name="PaperWork2" type="Node2D" parent="Papers" unique_id=1326795328]
@@ -123,9 +133,8 @@ scale = Vector2(0.6152129, 0.6152129)
 [node name="SinglePaper2" parent="Papers/PaperWork2" unique_id=236530852 instance=ExtResource("5_o3jky")]
 position = Vector2(403.47137, 575.08984)
 rotation = 0.25181222
-content_text = "Ja jsem
-hannibal
-swagger"
+content_text = "Another request for
+reinforcements"
 paper_index = 1
 
 [node name="PaperWork1" type="Node2D" parent="Papers" unique_id=1526460663]
@@ -135,13 +144,7 @@ scale = Vector2(0.6152129, 0.6152129)
 [node name="SinglePaper" parent="Papers/PaperWork1" unique_id=623173552 instance=ExtResource("5_o3jky")]
 position = Vector2(563.1447, 190.97359)
 rotation = -0.19300777
-content_text = "The soldiers are
-hungry, sir
-
-Should we
-sacrifice one 
-of our elephants
-?"
+content_text = "Send more scavengers"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850718065]
 layer = -1

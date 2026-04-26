@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bbqjocrmotmnn" path="res://assets/sprites/obstacles/elephant_alive.png" id="10_82ks6"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
 [ext_resource type="Texture2D" uid="uid://cnrmsrm7oru0d" path="res://assets/sprites/obstacles/elephant_dead.png" id="11_obb0e"]
-[ext_resource type="Script" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
+[ext_resource type="Script" uid="uid://lo6vngrq5xai" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="11_tt35e"]
 [ext_resource type="Texture2D" uid="uid://bdcrdsly80wkx" path="res://assets/sprites/obstacles/eagle.png" id="12_82ks6"]
 [ext_resource type="Texture2D" uid="uid://bj2plmx07qo0u" path="res://assets/sprites/obstacles/good_soldiers_alive.png" id="12_hqppi"]
@@ -28,9 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://51io441b81wt" path="res://assets/sprites/characters/hannibal/walkback2.png" id="13_l1c8q"]
 [ext_resource type="PackedScene" uid="uid://2m0rk0ce0olv" path="res://scenes/soldiers.tscn" id="15_obb0e"]
 [ext_resource type="Script" uid="uid://wjgmac53of0i" path="res://scripts/bridge.gd" id="16_2vg4x"]
-[ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
-[ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="13_qb5eg"]
+[ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="21_pir18"]
+[ext_resource type="Texture2D" uid="uid://ct2yo8g08ytrk" path="res://assets/sprites/characters/hannibal/walkforward.png" id="24_16ijy"]
 [ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
+[ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -38,6 +39,9 @@ size = Vector2(2769.8325, 163.05215)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ku1nk"]
 radius = 123.58093
 height = 510.02637
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ijy"]
+size = Vector2(2139, 147)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mcjt"]
 size = Vector2(500.1659, 163.98212)
@@ -267,6 +271,411 @@ texture = ExtResource("3_bkyfo")
 [node name="Sprite2D95" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1549758331]
 position = Vector2(13551.5, -1466.5)
 scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D111" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=280001411]
+position = Vector2(15819.493, -3390.5015)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D112" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1427962334]
+position = Vector2(16858.498, -3662.5005)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D113" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1810365683]
+position = Vector2(14783.499, -2822.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D114" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=454623353]
+position = Vector2(13652.499, -2337.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D115" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=282238445]
+position = Vector2(12564.499, -1863.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D116" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1695080809]
+position = Vector2(16386.492, -3338.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D117" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1209781115]
+position = Vector2(17425.498, -3610.501)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D118" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=209913110]
+position = Vector2(15350.499, -2770.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D119" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1043040490]
+position = Vector2(14219.499, -2285.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D120" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=564190930]
+position = Vector2(13131.499, -1811.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D121" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=507843639]
+position = Vector2(15774.493, -2797.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D122" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1856768239]
+position = Vector2(16813.498, -3069.501)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D123" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1116551167]
+position = Vector2(14738.499, -2229.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D124" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1016968160]
+position = Vector2(13607.499, -1744.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D125" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1985710817]
+position = Vector2(12519.499, -1270.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D126" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1119726672]
+position = Vector2(16720.492, -2970.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D127" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=862754773]
+position = Vector2(17759.498, -3242.501)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D128" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1812156896]
+position = Vector2(15684.499, -2402.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D129" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=70494035]
+position = Vector2(14553.499, -1917.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D130" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=916387503]
+position = Vector2(13465.499, -1443.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D131" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2000863046]
+position = Vector2(21469.492, -5604.501)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D133" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1533614889]
+position = Vector2(20433.5, -5036.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D134" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1331947351]
+position = Vector2(19302.5, -4551.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D135" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1451674410]
+position = Vector2(18214.5, -4077.501)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D136" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1197495636]
+position = Vector2(22036.492, -5552.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D138" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1552343835]
+position = Vector2(21000.5, -4984.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D139" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1281493724]
+position = Vector2(19869.5, -4499.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D140" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1382409406]
+position = Vector2(18781.5, -4025.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D141" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=846420713]
+position = Vector2(21424.492, -5011.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D142" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1525967266]
+position = Vector2(22463.498, -5283.501)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D143" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1977197419]
+position = Vector2(20388.5, -4443.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D144" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=59166163]
+position = Vector2(19257.5, -3958.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D145" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1595104417]
+position = Vector2(18169.5, -3484.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D146" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2101871072]
+position = Vector2(22370.492, -5184.502)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D148" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=915730260]
+position = Vector2(21334.5, -4616.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D149" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1558681763]
+position = Vector2(20203.5, -4131.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D150" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=509148076]
+position = Vector2(19115.5, -3657.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D154" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=722404610]
+position = Vector2(21818.498, -4954.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D155" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=105561402]
+position = Vector2(20730.498, -4480.5015)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D159" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=855438308]
+position = Vector2(22385.498, -4902.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D160" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1182388138]
+position = Vector2(21297.498, -4428.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D163" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2120853149]
+position = Vector2(22904.498, -4846.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D164" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1030732047]
+position = Vector2(21773.498, -4361.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D165" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=662493829]
+position = Vector2(20685.498, -3887.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D168" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2125246627]
+position = Vector2(23850.498, -5019.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D169" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=826616020]
+position = Vector2(22719.498, -4534.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D170" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1378791600]
+position = Vector2(21631.498, -4060.502)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D171" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1647577272]
+position = Vector2(10329.492, -1221.5015)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D172" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=309540899]
+position = Vector2(11368.498, -1493.5005)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D173" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1928872159]
+position = Vector2(9293.499, -653.5011)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D176" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=705223037]
+position = Vector2(10896.492, -1169.5024)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D177" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2138223990]
+position = Vector2(11935.498, -1441.5015)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D178" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1040777531]
+position = Vector2(9860.499, -601.5016)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D179" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1264571642]
+position = Vector2(10089.5, 656.5)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D181" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=971718734]
+position = Vector2(10284.492, -628.5025)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D182" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2092739128]
+position = Vector2(11323.498, -900.5015)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D183" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=793215792]
+position = Vector2(9248.499, -60.501587)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D186" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=632167925]
+position = Vector2(11230.492, -801.5025)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D187" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=99760386]
+position = Vector2(12269.498, -1073.5015)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D188" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=881160418]
+position = Vector2(10194.499, -233.50159)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D189" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=70628286]
+position = Vector2(9063.499, 251.49841)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D191" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1903755347]
+position = Vector2(9530.492, -191.50171)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D192" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1354174581]
+position = Vector2(10569.498, -463.50073)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D196" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2098973052]
+position = Vector2(10097.492, -139.50269)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D197" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=700499818]
+position = Vector2(11136.498, -411.5017)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D198" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1695129739]
+position = Vector2(9061.499, 428.4983)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D201" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2039541697]
+position = Vector2(9485.492, 401.49725)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D202" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1774752916]
+position = Vector2(10524.498, 129.49823)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D206" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=714219782]
+position = Vector2(10431.492, 228.49725)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D207" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=596318805]
+position = Vector2(11470.498, -43.50171)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D208" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=116643214]
+position = Vector2(9395.499, 796.4983)
+scale = Vector2(0.9999989, 0.9999989)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D212" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=301557132]
+position = Vector2(9179.498, 1030.4993)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D217" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2114376604]
+position = Vector2(9746.498, 1082.4983)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D222" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1478667249]
+position = Vector2(9134.498, 1623.4983)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D226" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=829178255]
+position = Vector2(9041.492, 1722.4973)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D227" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=442510418]
+position = Vector2(10080.498, 1450.4983)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D232" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1276630608]
+position = Vector2(9172.498, 1832.4993)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D237" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=405593067]
+position = Vector2(9739.498, 1884.4983)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D242" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=988170963]
+position = Vector2(9127.498, 2425.4983)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D246" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1427106208]
+position = Vector2(9034.492, 2524.4973)
+scale = Vector2(0.99999887, 0.99999887)
+texture = ExtResource("3_bkyfo")
+
+[node name="Sprite2D247" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=2006600345]
+position = Vector2(10073.498, 2252.4983)
+scale = Vector2(0.99999887, 0.99999887)
 texture = ExtResource("3_bkyfo")
 
 [node name="Sprite2D96" type="Sprite2D" parent="Background/Walls/Backwall" unique_id=1164876235]
@@ -1268,6 +1677,366 @@ position = Vector2(-80, 767.4999)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_yheev")
 
+[node name="Sprite2D127" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1338176922]
+position = Vector2(21194, -250.50018)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D128" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=524908024]
+position = Vector2(19987.998, 104.49982)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D129" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1420833391]
+position = Vector2(18000, 1062.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D130" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1874282116]
+position = Vector2(19101, 456.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D131" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1296651301]
+position = Vector2(17146.5, 1542.9998)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D132" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=178304520]
+position = Vector2(25230, -2293.5)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D133" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2062101432]
+position = Vector2(24023.998, -1938.5)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D134" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1333411972]
+position = Vector2(22036, -980.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D135" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1096701469]
+position = Vector2(23137, -1586.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D136" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1323886312]
+position = Vector2(21182.5, -500.00024)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D137" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1370761558]
+position = Vector2(26154, -3074.5)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D138" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=992846288]
+position = Vector2(24947.998, -2719.5)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D139" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=138656319]
+position = Vector2(22960, -1761.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D140" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=919053638]
+position = Vector2(24061, -2367.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D141" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1350565532]
+position = Vector2(22106.5, -1281.0005)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D142" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1472976501]
+position = Vector2(20734, 88.49951)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D143" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1884649146]
+position = Vector2(19527.998, 443.4995)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D144" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2007637942]
+position = Vector2(17540, 1401.4995)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D145" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=456522582]
+position = Vector2(18641, 795.4995)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D146" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=679672381]
+position = Vector2(16686.5, 1881.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D147" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=763354096]
+position = Vector2(20851, 420.49973)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D148" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1051068661]
+position = Vector2(19644.998, 775.49976)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D149" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1517473387]
+position = Vector2(17657, 1733.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D150" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2118133788]
+position = Vector2(18758, 1127.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D151" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=283996913]
+position = Vector2(16803.5, 2213.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D157" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=35223368]
+position = Vector2(15470.5, 2091.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D158" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1775417518]
+position = Vector2(16441, 1943.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D159" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2080083580]
+position = Vector2(15587.5, 2423.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D160" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=150081029]
+position = Vector2(14496.5, 2139.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D161" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=776168141]
+position = Vector2(15467, 1991.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D162" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1593305684]
+position = Vector2(14613.5, 2471.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D163" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=412131365]
+position = Vector2(13350.5, 2217.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D164" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=70500870]
+position = Vector2(14321, 2069.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D165" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=75704399]
+position = Vector2(13467.5, 2549.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D166" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1614458414]
+position = Vector2(12093.5, 2217.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D167" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=280089288]
+position = Vector2(13064, 2069.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D168" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1923935724]
+position = Vector2(12210.5, 2549.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D169" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=965102488]
+position = Vector2(10647.5, 2243.9993)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D170" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1672767055]
+position = Vector2(11618, 2095.4998)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D171" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=607338223]
+position = Vector2(10764.5, 2575.9995)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D172" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1985755297]
+position = Vector2(24302.5, -3068.0007)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D173" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=718140768]
+position = Vector2(25273, -3216.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D174" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=276501616]
+position = Vector2(24419.5, -2736.0005)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D175" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=817388611]
+position = Vector2(24603.5, -3714.0007)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D176" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1566697726]
+position = Vector2(25574, -3862.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D177" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1612139812]
+position = Vector2(24720.5, -3382.0005)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D178" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=444493203]
+position = Vector2(24404.5, -4349.001)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D179" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=156529723]
+position = Vector2(25375, -4497.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D180" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=647252171]
+position = Vector2(24521.5, -4017.0005)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D181" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1760861054]
+position = Vector2(23788.5, -4838.001)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D182" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1848623630]
+position = Vector2(24759, -4986.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D183" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=440603549]
+position = Vector2(23905.5, -4506.001)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D184" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=2002373365]
+position = Vector2(23579.5, -3904.0012)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D185" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=671532238]
+position = Vector2(24550, -4052.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D186" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1809157556]
+position = Vector2(23696.5, -3572.0012)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D152" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=535344113]
+position = Vector2(25459, -2103.5002)
+scale = Vector2(0.9999997, 0.9999997)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D153" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=277565744]
+position = Vector2(24252.998, -1748.5001)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D154" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1771691383]
+position = Vector2(22265, -790.5003)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D155" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1229318235]
+position = Vector2(23366, -1396.5002)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D187" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=665365573]
+position = Vector2(19043.498, -9510.5)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D188" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=970522930]
+position = Vector2(17055.5, -8552.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D189" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1551158802]
+position = Vector2(18156.5, -9158.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D190" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1049156331]
+position = Vector2(19474.498, -9442.5)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D191" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1411448683]
+position = Vector2(17486.5, -8484.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D192" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=757531920]
+position = Vector2(18587.5, -9090.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D193" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1404590073]
+position = Vector2(19753.498, -9290.501)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D194" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=713512023]
+position = Vector2(17765.5, -8332.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D195" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1485045985]
+position = Vector2(18866.5, -8938.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D196" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1392847741]
+position = Vector2(20237.498, -9261.501)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D197" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=784743192]
+position = Vector2(18249.5, -8303.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D198" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=1094678970]
+position = Vector2(19350.5, -8909.5)
+scale = Vector2(0.9999995, 0.9999995)
+texture = ExtResource("4_yheev")
+
+[node name="Sprite2D156" type="Sprite2D" parent="Background/Walls/FrontWall" unique_id=614648345]
+position = Vector2(21411.5, -310.00055)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("4_yheev")
+
 [node name="Middle" type="Node2D" parent="Background/Walls" unique_id=1956456703]
 position = Vector2(50.0003, 147.49998)
 
@@ -1451,6 +2220,16 @@ rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
+[node name="StaticBody2D34" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=202036065]
+position = Vector2(13512.5, 1356)
+rotation = 3.629646
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D34" unique_id=1594252118]
+position = Vector2(1119.9004, -892.3872)
+rotation = -0.55877364
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_yheev")
+
 [node name="StaticBody2D14" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=2024695039]
 position = Vector2(6082.4985, -4307.5)
 rotation = 3.3156176
@@ -1496,6 +2275,140 @@ position = Vector2(968.6567, -1261.7781)
 rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=597558693]
+position = Vector2(11983.5, -1292)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D21" unique_id=2138176927]
+position = Vector2(1409, -322)
+rotation = -0.36955142
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1810056759]
+position = Vector2(11983.5, -1292)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D22" unique_id=339661287]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=583437889]
+position = Vector2(8819.5, 1720)
+rotation = -0.33916873
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D24" unique_id=1601475486]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D25" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1602107454]
+position = Vector2(9028.5, 4534)
+rotation = -0.7922865
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D25" unique_id=1738732339]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D26" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=640280176]
+position = Vector2(7748.5, 1276)
+rotation = 0.45755565
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D26" unique_id=198608093]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D27" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=323659561]
+position = Vector2(10013.5, 1094)
+rotation = 0.45755565
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D27" unique_id=738294606]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D28" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1146106158]
+position = Vector2(11943.501, 1271.9998)
+rotation = 0.3594779
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D28" unique_id=1845208104]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D29" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=2092742868]
+position = Vector2(14223.5, 1903.0005)
+rotation = 0.3594779
+scale = Vector2(0.6459674, 1.8350952)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D29" unique_id=1879428804]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D30" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1546314494]
+position = Vector2(-1514.3027, -1887.5975)
+rotation = 0.6401483
+scale = Vector2(0.6459674, 1.8350952)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D30" unique_id=1700366862]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D31" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1849406444]
+position = Vector2(15905.5, 176.99963)
+rotation = 0.6401483
+scale = Vector2(0.6459674, 1.8350952)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D31" unique_id=1137497110]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D32" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1908522284]
+position = Vector2(17437.5, -183.99911)
+rotation = 0.50914305
+scale = Vector2(0.6459674, 1.8350952)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D32" unique_id=1842555546]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D33" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1557791305]
+position = Vector2(18027.502, -19.999817)
+rotation = 0.015750825
+scale = Vector2(0.9904691, 1.4787612)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D33" unique_id=1709473036]
+position = Vector2(3351, -1173)
+rotation = -0.4596104
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1065269449]
+position = Vector2(11983.5, -1292)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D23" unique_id=654959397]
+position = Vector2(5283, -2051)
+rotation = -0.30383828
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D23" unique_id=2140799230]
+position = Vector2(7335, -2533.0002)
+rotation = -0.08342686
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D23" unique_id=123065268]
+position = Vector2(9464, -2595.0002)
+rotation = 0.014329232
+shape = SubResource("RectangleShape2D_16ijy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D23" unique_id=543079422]
+position = Vector2(10104, -1621)
+rotation = 1.5662363
+shape = SubResource("RectangleShape2D_16ijy")
 
 [node name="Events" type="Node2D" parent="Background" unique_id=376170305]
 position = Vector2(-403, -1718)
@@ -1832,6 +2745,669 @@ position = Vector2(1324, 33)
 position = Vector2(1528, 188)
 
 [node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad8" unique_id=578199843 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad10" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=896015478]
+position = Vector2(-2922, -842)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=958911671 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=526183131 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=587236383 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=2008237142 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=1423932706 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=239445145 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=1350362239 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=207478413 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=565933695 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=970521449 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=2050173797 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=1949826836 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=1266844751 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=1790291427 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=281306865 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad10" unique_id=474461405 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad11" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=525229045]
+position = Vector2(-1313, 343)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1903689516 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1607043943 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1475649111 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=2005836168 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1854165964 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1262095877 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1582146437 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=753182229 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=2111402425 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1946353932 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=737866334 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=682053397 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1191430211 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=2071251409 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1139215927 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad11" unique_id=1751569491 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad12" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=778783382]
+position = Vector2(-4146, -419)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1152203663 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=491164392 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=2062922361 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=541719665 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=914137161 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=285042779 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=860735023 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1781370272 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=713577618 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1792397513 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=362793389 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=931397727 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1608217751 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1996776431 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1368074894 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad12" unique_id=1991919869 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad13" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1396593996]
+position = Vector2(-3221, 245)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=643137467 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=307540626 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=962636024 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1483991387 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=137246635 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=399892578 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1012832920 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1485279051 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1464867745 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=950966636 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=2027394856 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1107064159 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=77598736 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1540961264 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=787712178 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad13" unique_id=1609703507 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad14" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1463552360]
+position = Vector2(-2283, 961)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1714612391 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1687121461 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1368468654 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=2132863441 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=254846375 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1967686869 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=778498139 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=487560323 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1059633991 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=2020424794 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1985087306 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1526785557 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=2047753166 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=508155160 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=1699999029 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad14" unique_id=848217248 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad15" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=768489519]
+position = Vector2(-5259, 82)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1554273816 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1897391549 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=619353301 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=538781067 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1575148452 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1588406817 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1249169854 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=596739240 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1840385696 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1933297629 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1537574003 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=1012758470 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=915995972 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=9681888 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=393295059 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad15" unique_id=2126683203 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad16" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1212623591]
+position = Vector2(-4337, 728)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=492224924 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1001514147 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=2127996456 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=356557233 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1947454432 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=74075955 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=77112649 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1146824608 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1801966650 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1820937534 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1798355591 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1367894512 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=940315236 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1838466438 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=878706508 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad16" unique_id=1860497938 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad17" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1957784619]
+position = Vector2(-3470, 1461)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1226994625 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=111713384 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1038096059 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=111321348 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=846560381 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=988896080 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1117549868 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=65837060 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=504601586 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=2063658822 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=2093125844 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1144807593 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1860936575 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=1957753550 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=482649691 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad17" unique_id=593579381 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad18" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=656366693]
+position = Vector2(-6425, 508)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1651151581 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1406305506 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=296530818 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=374739953 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1686188921 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=17188646 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1890209051 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=627650779 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=268975949 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=2120606027 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1248742989 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=932485897 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1235152969 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=1782943958 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=610880487 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad18" unique_id=972285206 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad19" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=231825166]
+position = Vector2(-5537, 1154)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1112511139 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=2141376171 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=477079329 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=2135961768 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1647271659 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=685626416 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=770514397 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1530581547 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=831780496 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1941167340 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1058192172 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1415019704 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=243844504 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1751592546 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=500011847 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad19" unique_id=1884770050 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad20" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1351359462]
+position = Vector2(-4618, 1805)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=900300593 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1759691748 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=400139881 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1919007596 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1856691394 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=827062891 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1107157584 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=738436522 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=839229975 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1713592933 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=2135332658 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=2030488421 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1769338444 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=962202410 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=1568243212 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad20" unique_id=2003349211 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad21" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=233739165]
+position = Vector2(-7033, 1329)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=13333392 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=518706025 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1765729047 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=204201515 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=868325484 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1319045762 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=322479526 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1367037786 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=127337821 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=49940314 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1432795899 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1700396140 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=2088187907 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=1858684192 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=922354260 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad21" unique_id=690888535 instance=ExtResource("15_obb0e")]
+position = Vector2(1755, 338)
+
+[node name="OneSquad22" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=1957076532]
+position = Vector2(-6120, 1915)
+
+[node name="Soldiers16" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1115857028 instance=ExtResource("15_obb0e")]
+position = Vector2(1586, -597)
+
+[node name="Soldiers15" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1015440517 instance=ExtResource("15_obb0e")]
+position = Vector2(1816, -466)
+
+[node name="Soldiers14" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1930421098 instance=ExtResource("15_obb0e")]
+position = Vector2(2020, -312)
+
+[node name="Soldiers13" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=198376064 instance=ExtResource("15_obb0e")]
+position = Vector2(2244, -164)
+
+[node name="Soldiers12" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1989404047 instance=ExtResource("15_obb0e")]
+position = Vector2(1419, -445)
+
+[node name="Soldiers11" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=944596713 instance=ExtResource("15_obb0e")]
+position = Vector2(1654, -315)
+
+[node name="Soldiers10" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=133392450 instance=ExtResource("15_obb0e")]
+position = Vector2(1858, -157)
+
+[node name="Soldiers9" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=346404079 instance=ExtResource("15_obb0e")]
+position = Vector2(2080, -14)
+
+[node name="Soldiers8" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=523964397 instance=ExtResource("15_obb0e")]
+position = Vector2(1251, -286)
+
+[node name="Soldiers7" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=937614411 instance=ExtResource("15_obb0e")]
+position = Vector2(1475, -143)
+
+[node name="Soldiers6" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=56172986 instance=ExtResource("15_obb0e")]
+position = Vector2(1681, 14)
+
+[node name="Soldiers5" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=384611295 instance=ExtResource("15_obb0e")]
+position = Vector2(1907, 166)
+
+[node name="Soldiers4" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=353984372 instance=ExtResource("15_obb0e")]
+position = Vector2(1096, -115)
+
+[node name="Soldiers3" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=822423355 instance=ExtResource("15_obb0e")]
+position = Vector2(1324, 33)
+
+[node name="Soldiers2" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1300568323 instance=ExtResource("15_obb0e")]
+position = Vector2(1528, 188)
+
+[node name="Soldiers" parent="Background/Events/FinalRomanBattle/OneSquad22" unique_id=1424446291 instance=ExtResource("15_obb0e")]
 position = Vector2(1755, 338)
 
 [node name="OneSquad9" type="Node2D" parent="Background/Events/FinalRomanBattle" unique_id=915422944]
@@ -2204,15 +3780,18 @@ shape = SubResource("RectangleShape2D_ppy7o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Blockers/BlockTrigger/Block" unique_id=1212327908]
 shape = SubResource("SegmentShape2D_qwpuw")
 
-[node name="FinalRomanBattle" type="Node2D" parent="Background" unique_id=742080215]
+[node name="FinalRomanBattle" type="Node2D" parent="Background" unique_id=742080215 node_paths=PackedStringArray("fade_rect")]
 position = Vector2(16728, -109)
+script = ExtResource("21_pir18")
+fade_rect = NodePath("../../Player/CanvasLayer/FadeTransition")
 
-[node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target")]
+[node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target", "finalBattle")]
 position = Vector2(-976, -8087)
 script = ExtResource("11_qb5eg")
 target = NodePath("target")
 player_path = NodePath("../../../Player")
 camera_path = NodePath("../../../Player/Camera2D")
+finalBattle = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FinalRomanBattle/teleport" unique_id=1793730152]
 position = Vector2(-2827, 931)
@@ -2222,12 +3801,12 @@ shape = SubResource("RectangleShape2D_l1c8q")
 position = Vector2(-142, 7918)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1265406013]
-position = Vector2(-298, 1782)
+position = Vector2(-1034, 2105)
 script = ExtResource("4_bkyfo")
 speed = 400.0
 squash_amount = 0.05
 tex_stand_forward = ExtResource("8_aemco")
-tex_walk_f1 = ExtResource("8_aemco")
+tex_walk_f1 = ExtResource("24_16ijy")
 tex_walk_f2 = ExtResource("10_2b4uk")
 tex_stand_back = ExtResource("11_83sk2")
 tex_walk_b1 = ExtResource("12_nyrub")
@@ -2244,6 +3823,15 @@ shape = SubResource("CapsuleShape2D_sihyj")
 scale = Vector2(1.7547166, 1.7547166)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=22987636]
+
+[node name="FadeTransition" type="ColorRect" parent="Player/CanvasLayer" unique_id=1883376167]
+top_level = true
+z_index = 24
+offset_right = 1240.0
+offset_bottom = 728.0
+color = Color(0, 0, 0, 1)
 
 [node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
 stream = ExtResource("25_j3ed3")

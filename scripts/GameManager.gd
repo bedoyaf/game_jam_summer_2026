@@ -22,7 +22,11 @@ signal stamp_placed(target_id: String)
 signal camera_shake(intensity: float)
 signal hand_clicked()
 
+var dreamcontroller : Node
+var endscene : Node2D
+
 # SYSTÉM ÚKOLŮ (Tasks)
+
 
 var dream_character_position: Vector2 = Vector2(0, 0)
 var current_task_index: int = 0
@@ -206,3 +210,20 @@ func complete_current_task() -> void:
 func trigger_dialogue(dialogue_id: String) -> void:
 	dialogue_triggered.emit(dialogue_id)
 	print("Přehrávám dialog: ", dialogue_id)
+
+func start_end_dream_transition():
+	
+	change_state(GameState.TRANSITION)
+
+func finish_end_dream():
+	change_state(GameState.PAPERWORK)
+	reset_tasks()
+func reset_tasks():
+	current_task_index = 0
+func set_dreamcontroller(dreamcontrollerNew : Node):
+	print("dreamController set amogus")
+	dreamcontroller = dreamcontrollerNew
+func set_end_cutscene(endscenenew):
+	endscene = endscenenew
+func play_end_cutscene():
+	endscene._start_sequence()
