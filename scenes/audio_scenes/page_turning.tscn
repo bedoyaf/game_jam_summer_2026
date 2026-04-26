@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnuhx4d6f7ik2"]
+
+[ext_resource type="AudioStream" uid="uid://doaylvffd52oh" path="res://assets/sound-effects/page-turn.wav" id="1_1sjd6"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=689318225]
+stream = ExtResource("1_1sjd6")

@@ -24,6 +24,16 @@ var is_active: bool = false
 var current_hits: int = 0
 var is_destroyed: bool = false
 
+# --- MARTIN A AUDIO ---
+@export_group("Audio")
+enum MaterialType { WOOD, IRON, NO_SOUND }
+@export var current_material: MaterialType = MaterialType.WOOD
+@onready var wood_1_sound: AudioStreamPlayer2D = $SoundManager/Wood1Sound
+@onready var wood_2_sound: AudioStreamPlayer2D = $SoundManager/Wood2Sound
+@onready var iron_1_sound: AudioStreamPlayer2D = $SoundManager/Iron1Sound
+@onready var iron_2_sound_2: AudioStreamPlayer2D = $SoundManager/Iron2Sound2
+
+
 func _ready() -> void:
 	if indicator: 
 		indicator.hide()
@@ -38,6 +48,7 @@ func _ready() -> void:
 func _on_target_activated(activated_ids: String) -> void:
 	if is_destroyed:
 		return
+
 		
 	if target_id in activated_ids.split(","):
 		is_active = true
@@ -96,6 +107,9 @@ func _process_stamp() -> void:
 func _destroy_obstacle() -> void:
 	is_destroyed = true
 	is_active = false
+	
+	play_destruction_sound()
+
 	if indicator: 
 		indicator.hide() 
 	
@@ -127,3 +141,11 @@ func _play_hit_animation() -> void:
 	var tween = create_tween()
 	scale = Vector2(0.8, 0.8)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+	
+func play_destruction_sound() -> void:
+	#var rnd_sound = randi_range(0, 1)
+	
+	if current_material == MaterialType.WOOD:
+		wood_1_sound.play()
+	if current_material == MaterialType.IRON:
+		iron_1_sound.play()

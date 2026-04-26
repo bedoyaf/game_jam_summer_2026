@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dmcpcrtcwmkw7"]
 
 [ext_resource type="Script" uid="uid://sifl3vt4m87q" path="res://scripts/stamp_goal.gd" id="1_dgtxa"]
+[ext_resource type="AudioStream" uid="uid://cdqy71yhbw44y" path="res://assets/sound-effects/destroy-wood/destroy-5.wav" id="3_h6s18"]
 [ext_resource type="Texture2D" uid="uid://carwh6aleq4ek" path="res://assets/sprites/indicator.png" id="4_dgtxa"]
+[ext_resource type="AudioStream" uid="uid://dqb7oukgi30oj" path="res://assets/sound-effects/destroy-wood/destroy-6.wav" id="4_gopf1"]
+[ext_resource type="AudioStream" uid="uid://cio7uhpcq5uol" path="res://assets/sound-effects/destroy-wood/destroy-1.wav" id="5_0jdm6"]
+[ext_resource type="AudioStream" uid="uid://cnpnhc3ewbovl" path="res://assets/sound-effects/destroy-wood/destroy-2.wav" id="6_tponr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cu48"]
 
@@ -18,3 +22,17 @@ scale = Vector2(0.79999846, 0.79999846)
 texture = ExtResource("4_dgtxa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=419037605]
+
+[node name="SoundManager" type="Node2D" parent="." unique_id=1416070049]
+
+[node name="Wood1Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=767600062]
+stream = ExtResource("3_h6s18")
+
+[node name="Wood2Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=126319308]
+stream = ExtResource("4_gopf1")
+
+[node name="Iron1Sound" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=1603818788]
+stream = ExtResource("5_0jdm6")
+
+[node name="Iron2Sound2" type="AudioStreamPlayer2D" parent="SoundManager" unique_id=1947615164]
+stream = ExtResource("6_tponr")

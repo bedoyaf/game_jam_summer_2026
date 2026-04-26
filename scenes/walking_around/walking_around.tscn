@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cymxjyhabt441" path="res://assets/sprites/characters/hannibal/walkback.png" id="12_nyrub"]
 [ext_resource type="Texture2D" uid="uid://51io441b81wt" path="res://assets/sprites/characters/hannibal/walkback2.png" id="13_l1c8q"]
 [ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="13_qb5eg"]
+[ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -2604,6 +2605,9 @@ shape = SubResource("CapsuleShape2D_sihyj")
 scale = Vector2(1.7547166, 1.7547166)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
+stream = ExtResource("25_j3ed3")
 
 [editable path="Background/Events/boulder/BlockingObject"]
 [editable path="Background/Events/decisionElephant/DecisionGate"]

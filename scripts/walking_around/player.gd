@@ -14,6 +14,9 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite2D # Ujisti se, že se tvůj Sprite jmenuje přesně takto
 
+@onready var player_walking: AudioStreamPlayer2D = $PlayerWalking
+
+
 var last_facing_up: bool = false
 
 var time: float = 0.0
@@ -31,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if direction != Vector2.ZERO:
+		if not player_walking.playing:
+			
+			player_walking.play()
 		velocity = direction * speed
 		time += delta * step_frequency
 		
@@ -65,6 +71,7 @@ func _physics_process(delta: float) -> void:
 		sprite.position.y = -(squash_factor * 5.0) 
 		
 	else:
+		player_walking.stop()
 		velocity = velocity.move_toward(Vector2.ZERO, speed)
 		
 		# IDLE STAV - Používáme správné IDLE textury
