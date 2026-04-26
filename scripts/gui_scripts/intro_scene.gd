@@ -2,6 +2,7 @@ extends Control
 
 @export_group("Animation Setup")
 @export var target_texture_rect: TextureRect
+@export var sprite_0: Texture2D
 @export var sprite_1: Texture2D
 @export var sprite_2: Texture2D
 @export var sprite_3: Texture2D
@@ -10,7 +11,11 @@ extends Control
 var anim_sequence: Array[int] = [1, 2, 1, 2, 1, 3]
 var current_anim_index: int = 0
 
+@export var intro_frames : int = 6
+var cur_intro_frames : int =0
+
 var black_rect: ColorRect
+
 
 func _ready() -> void:
 	# Výpočtem vytvoříme černo-černou plachtu, která překryje absolutně všechno na obrazovce
@@ -68,6 +73,12 @@ func _on_anim_timer_timeout() -> void:
 
 func _update_animation_frame() -> void:
 	if not target_texture_rect:
+		return
+	
+	if cur_intro_frames<intro_frames:
+		if sprite_0:
+			target_texture_rect.texture = sprite_0
+		cur_intro_frames+=1
 		return
 		
 	var frame_id = anim_sequence[current_anim_index]

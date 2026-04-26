@@ -3979,6 +3979,7 @@ position = Vector2(1112, -796)
 [node name="FinalRomanBattle" type="Node2D" parent="Background" unique_id=742080215 node_paths=PackedStringArray("fade_rect")]
 position = Vector2(16728, -109)
 script = ExtResource("27_emgir")
+time = 14.0
 fade_rect = NodePath("../../Player/CanvasLayer/FadeTransition")
 
 [node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target", "fade_rect", "finalBattle")]

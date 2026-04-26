@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjhepbqfp0roa" path="res://scripts/gui_scripts/intro_scene.gd" id="1_g6t57"]
 [ext_resource type="Texture2D" uid="uid://c1sp24qmb0rcd" path="res://assets/sprites/IntroScene1.png" id="2_ngq6t"]
+[ext_resource type="Texture2D" uid="uid://bi7g0ynpjuutl" path="res://assets/sprites/intro0.png" id="2_nifp7"]
 [ext_resource type="Texture2D" uid="uid://yld63v8tn0us" path="res://assets/sprites/intro1.png" id="2_yr2gr"]
 [ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="3_3uwhn"]
 [ext_resource type="Shader" uid="uid://c10lflvc1x5tc" path="res://rolloj/Vignette.gdshader" id="3_6tor5"]
@@ -23,9 +24,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6t57")
 target_texture_rect = NodePath("CanvasLayer/TextureRect")
+sprite_0 = ExtResource("2_nifp7")
 sprite_1 = ExtResource("2_yr2gr")
 sprite_2 = ExtResource("3_nifp7")
 sprite_3 = ExtResource("4_0vfxv")
+intro_frames = 12
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474695507]
 layer = -1
