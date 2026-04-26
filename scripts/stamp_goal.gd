@@ -29,12 +29,21 @@ var base_scale: Vector2 = Vector2.ONE
 
 # --- MARTIN A AUDIO ---
 @export_group("Audio")
-enum MaterialType { WOOD, IRON, NO_SOUND }
+enum MaterialType { WOOD, IRON, NO_SOUND, ROMAN, ELEPHANT, TREE, BRIDGE }
 @export var current_material: MaterialType = MaterialType.WOOD
-@onready var wood_1_sound: AudioStreamPlayer2D = $SoundManager/Wood1Sound
-@onready var wood_2_sound: AudioStreamPlayer2D = $SoundManager/Wood2Sound
-@onready var iron_1_sound: AudioStreamPlayer2D = $SoundManager/Iron1Sound
-@onready var iron_2_sound_2: AudioStreamPlayer2D = $SoundManager/Iron2Sound2
+@onready var wood_1_sound: AudioStreamPlayer = $SoundManager/Wood1Sound
+@onready var wood_2_sound: AudioStreamPlayer = $SoundManager/Wood2Sound
+@onready var iron_1_sound: AudioStreamPlayer = $SoundManager/Iron1Sound
+@onready var iron_2_sound_2: AudioStreamPlayer = $SoundManager/Iron2Sound2
+@onready var big_destruction: AudioStreamPlayer = $SoundManager/BigDestruction
+@onready var iron_crush_1: AudioStreamPlayer = $SoundManager/IronCrush1
+@onready var iron_crush_2: AudioStreamPlayer = $SoundManager/IronCrush2
+@export var roman_shouting_sounds: Array[AudioStreamPlayer]
+@onready var elephant_trumpet: AudioStreamPlayer = $SoundManager/ElephantTrumpet
+@onready var elephant_squashed: AudioStreamPlayer = $SoundManager/ElephantSquashed
+@onready var elephant_burned: AudioStreamPlayer = $SoundManager/ElephantBurned
+@export var elephant_wait_time_1: float = 1.0
+@export var elephant_wait_time_2: float = 1.0
 
 
 func _ready() -> void:
@@ -167,3 +176,38 @@ func play_destruction_sound() -> void:
 		wood_1_sound.play()
 	if current_material == MaterialType.IRON:
 		iron_1_sound.play()
+	if current_material == MaterialType.ROMAN:
+		iron_crush_2.play()
+		play_two_random_shouts()
+	if current_material == MaterialType.ELEPHANT:
+		play_elephant_death_sequence()
+		
+
+func play_elephant_death_sequence():
+	#print("ELEPHANT DEATH SEQUENCE")
+
+	#await get_tree().create_timer(0.5).timeout
+	#elephant_squashed.play()
+	#await get_tree().create_timer(0.2).timeout
+	#elephant_trumpet.stop()
+	#print("elephant_trumpet")
+	#await get_tree().create_timer(0.2).timeout
+	#print("elephant_burning1")
+	##elephant_burned.play()
+	#print("elephant_burning2")
+	elephant_trumpet.play()
+	await get_tree().create_timer(0.6).timeout
+	elephant_burned.play()
+	print("elephant_burning1")
+	
+	
+
+func play_two_random_shouts():
+	if roman_shouting_sounds.size() < 2:
+		return
+
+	var shuffled_list = roman_shouting_sounds.duplicate()
+	shuffled_list.shuffle()
+
+	shuffled_list[0].play()
+	shuffled_list[1].play()

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dvru6chkqf677"]
+
+[ext_resource type="AudioStream" uid="uid://d0lqtw4syqn3l" path="res://assets/sound-effects/people-sounds/combat-ambience.wav" id="1_syla8"]
+[ext_resource type="Script" uid="uid://b20asv61pux38" path="res://scripts/sound-scripts/battle_sounds.gd" id="2_2qh1n"]
+
+[sub_resource type="Gradient" id="Gradient_l1cjo"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_syla8"]
+gradient = SubResource("Gradient_l1cjo")
+
+[node name="BattleSounds" type="AudioStreamPlayer" unique_id=2002254270]
+stream = ExtResource("1_syla8")
+script = ExtResource("2_2qh1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=519584120]
+visible = false
+position = Vector2(2, 7.4999995)
+scale = Vector2(0.14062499, 29)
+texture = SubResource("GradientTexture1D_syla8")

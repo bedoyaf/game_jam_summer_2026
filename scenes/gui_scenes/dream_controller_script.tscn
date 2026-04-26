@@ -6,7 +6,6 @@
 script = ExtResource("1_hbnva")
 noise_offset_speed_x = 0.3410000000000002
 noise_offset_speed_y = 0.0
-add_alpha_shader = -5.0
 alpha_threshold_shader = 0.152
 speed_shader = 2.668
 frequency_shader = 0.0

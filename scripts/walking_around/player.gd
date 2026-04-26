@@ -14,7 +14,7 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite2D # Ujisti se, že se tvůj Sprite jmenuje přesně takto
 
-@onready var player_walking: AudioStreamPlayer2D = $PlayerWalking
+@onready var player_walking: AudioStreamPlayer = $PlayerWalking
 
 
 var last_facing_up: bool = false
@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != Vector2.ZERO:
 		if not player_walking.playing:
-			
 			player_walking.play()
 		velocity = direction * speed
 		time += delta * step_frequency

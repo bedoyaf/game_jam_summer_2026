@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bbqjocrmotmnn" path="res://assets/sprites/obstacles/elephant_alive.png" id="10_82ks6"]
 [ext_resource type="Texture2D" uid="uid://52iq0iby814r" path="res://assets/sprites/characters/hannibal/standback.png" id="11_83sk2"]
 [ext_resource type="Texture2D" uid="uid://cnrmsrm7oru0d" path="res://assets/sprites/obstacles/elephant_dead.png" id="11_obb0e"]
-[ext_resource type="Script" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
+[ext_resource type="Script" uid="uid://lo6vngrq5xai" path="res://scripts/walking_around/finalbattleteleport.gd" id="11_qb5eg"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="11_tt35e"]
 [ext_resource type="Texture2D" uid="uid://bdcrdsly80wkx" path="res://assets/sprites/obstacles/eagle.png" id="12_82ks6"]
 [ext_resource type="Texture2D" uid="uid://bj2plmx07qo0u" path="res://assets/sprites/obstacles/good_soldiers_alive.png" id="12_hqppi"]
@@ -28,9 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://51io441b81wt" path="res://assets/sprites/characters/hannibal/walkback2.png" id="13_l1c8q"]
 [ext_resource type="PackedScene" uid="uid://2m0rk0ce0olv" path="res://scenes/soldiers.tscn" id="15_obb0e"]
 [ext_resource type="Script" uid="uid://wjgmac53of0i" path="res://scripts/bridge.gd" id="16_2vg4x"]
-[ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
-[ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="13_qb5eg"]
 [ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
+[ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
+[ext_resource type="PackedScene" uid="uid://dvru6chkqf677" path="res://scenes/audio_scenes/battle_sounds.tscn" id="31_kphlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -1545,6 +1545,7 @@ target_id = "path_A_1"
 default_texture = ExtResource("10_82ks6")
 stamped_texture = ExtResource("11_obb0e")
 rejected_texture = ExtResource("10_82ks6")
+current_material = 4
 
 [node name="CollisionShape2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal" index="0" unique_id=1051562106]
 position = Vector2(23.3713, 22.537731)
@@ -1591,7 +1592,7 @@ scale = Vector2(10.78, 10.78)
 shape = SubResource("CapsuleShape2D_obb0e")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/River" unique_id=764864936]
-position = Vector2(289, 456)
+position = Vector2(289, 454)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D2" unique_id=976564092]
 position = Vector2(87.99999, -203)
@@ -2245,8 +2246,12 @@ scale = Vector2(1.7547166, 1.7547166)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
-[node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
+[node name="PlayerWalking" type="AudioStreamPlayer" parent="Player" unique_id=1467851668]
 stream = ExtResource("25_j3ed3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=176287767]
+
+[node name="BattleSounds" parent="." unique_id=1489955748 instance=ExtResource("31_kphlv")]
 
 [editable path="Background/Events/boulder/BlockingObject"]
 [editable path="Background/Events/boulder/BlockingObject/StampGoal"]
