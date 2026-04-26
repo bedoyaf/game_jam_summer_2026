@@ -1,58 +1,62 @@
 {
   "intro_scene_beginning": [
-	"Carthage, 218 BC.",
+    "Carthage, 218 BC.",
     "Each day, Hannibal prepares for the impossible. A crossing through the nightmare of the Alps..."
   ],
   "beginning_beginning": [
-	"Supplies ran out two days ago.",
+    "Supplies ran out two days ago.",
     "The men started eating our horses."
   ],
   "stamped_just_table_beginning": [
-	"More and more orders and requests from the men.",
-	"I can't stand these decisions anymore.",
+    "More and more orders and requests from the men.",
+    "I can't stand these decisions anymore.",
     "But supplies from Carthage will come any day now."
   ],
   "stamped_just_table_completed": [
-	"Orders, orders, orders.",
+    "Orders, orders, orders.",
     "They can't think for themselves."
   ],
   "last_real_stamp_beginning": [
     "More and more orders and decisions."
   ],
   "last_real_stamp_completed": [
-	"We have been weeks in these mountains,",
+    "We have been weeks in these mountains,",
     "Trying to surmount these peaks."
   ],
   "dream_fade_beginning": [
-	"The heavy thud of the stamp...",
+    "The heavy thud of the stamp...",
     "It sounds like marching boots in the snow."
   ],
   "dream_fade_completed": [
-	"This is no Carthage...",
+    "This is no Carthage...",
     "The cold biting at our heels... the endless march."
   ],
   "tree_blocking_completed": [
     "There is no force capable of stopping my revenge upon Rome itself."
   ],
   "elephant_decisions_beginning": [
-	"We were hungry.",
+    "We were hungry.",
     "Tough decisions had to be made."
   ],
   "food_eagle_beginning": [
-	"The enemy taunts us on the way.",
+    "The enemy taunts us on the way.",
     "They will tremble when reinforcements arrive."
   ],
   "ambush_walls_beginning": [
-	"I still remember the coward's strike from the rear.",
+    "I will either find a way or make one.",
+    "I still remember the coward's strike from the rear.",
     "We had to build barricades from whatever we could find."
   ],
   "ambush_fight_beginning": [
-	"The barricades held the line.",
+    "The barricades held the line.",
     "And those fools paid for their treachery in blood."
   ],
   "final_battle_beginning": [
-	"Once the supplies and reinforcements from Carthage arrive...",
-	"We will descend from these mountains.",
+    "Once the supplies and reinforcements from Carthage arrive...",
+    "We will descend from these mountains.",
     "And we will crush Rome itself!"
+  ],
+  "game_ending_shout": [
+    "THAT CAN'T BE TRUE!"
   ]
 }

@@ -117,6 +117,10 @@ var current_stamp_rotation: float = 0.0 # NOVÉ: Sem si uložíme rotaci pro dan
 var stamp_sounds: Array[AudioStream] = []
 var stamp_audio_player: AudioStreamPlayer
 
+# --- AMBIENT/HUDBA ---
+var bg_music_player: AudioStreamPlayer
+var bg_music_timer: Timer
+
 func is_stamp_allowed() -> bool:
 	var now = Time.get_ticks_msec()
 	if now - last_stamp_msec <= 50:
@@ -154,7 +158,34 @@ func _ready() -> void:
 	for i in range(1, 7):
 		stamp_sounds.append(load("res://assets/sounds/Stamps/stamp%d.wav" % i))
 
+	# Nativní smyčkovací manažer pro hudbu na pozadí 
+	bg_music_player = AudioStreamPlayer.new()
+	# TODO: Sem zkopíruj absolutní 'res://...' cestu přímo k tvému hudebnímu souboru! 
+	# Nezapomeň odkomentovat řádek níže, jakmile to doplníš:
+	bg_music_player.stream = load("res://assets/sounds/music_background.mp3") 
+	bg_music_player.volume_db = -10.0 # Snížení hlasitosti, aby hudba nepřehlušovala zvuk razítek
+	
+	bg_music_player.finished.connect(_on_bg_music_finished)
+	add_child(bg_music_player)
+	
+	bg_music_timer = Timer.new()
+	bg_music_timer.wait_time = 60.0
+	bg_music_timer.one_shot = true
+	bg_music_timer.timeout.connect(_on_bg_music_timer_timeout)
+	add_child(bg_music_timer)
+
 	change_state(GameState.PAPERWORK)
+
+func start_background_music() -> void:
+	if not bg_music_player.playing and bg_music_player.stream != null:
+		bg_music_player.play()
+
+func _on_bg_music_finished() -> void:
+	bg_music_timer.start()
+
+func _on_bg_music_timer_timeout() -> void:
+	if bg_music_player.stream != null:
+		bg_music_player.play()
 
 func _input(event):
 	if event.is_action_pressed("debug_action"):

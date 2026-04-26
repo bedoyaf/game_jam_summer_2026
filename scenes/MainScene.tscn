@@ -17,10 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="12_o3jky"]
 [ext_resource type="PackedScene" uid="uid://83l3bjlh1upp" path="res://rolloj/MainMenu/fade_transition.tscn" id="13_kp0ql"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0ehpd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xnxdc"]
 viewport_path = NodePath("MainText3Dscene")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8wjpf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ehpd"]
 viewport_path = NodePath("YesNo3DScene")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0cxu4"]
@@ -39,7 +39,7 @@ vignette_rect = NodePath("CanvasLayerVignette/ColorRect")
 position = Vector2(144, 144)
 scale = Vector2(0.72, 0.72)
 
-[node name="EndScene" type="Node2D" parent="Papers" unique_id=2053116404 node_paths=PackedStringArray("final_paper")]
+[node name="EndScene" type="Node2D" parent="Papers" unique_id=2053116404 node_paths=PackedStringArray("final_paper", "fade_animation_player")]
 z_index = 19
 scale = Vector2(1.0000001, 1.0000001)
 script = ExtResource("2_0cxu4")
@@ -47,15 +47,16 @@ papers_parent = NodePath("../FakePapers")
 fade_rect_path = NodePath("../../FadeTransition")
 final_paper = NodePath("FinalPaper")
 stamps_per_paper = 50
+fade_animation_player = NodePath("../../FadeTransition/AnimationPlayer")
 
 [node name="FinalPaper" parent="Papers/EndScene" unique_id=1857162022 instance=ExtResource("3_xnxdc")]
 position = Vector2(591.66656, 286.11108)
 
 [node name="MainText" parent="Papers/EndScene/FinalPaper/PaperSprite" parent_id_path=PackedInt32Array(1857162022, 1872639583) index="0" unique_id=1050184075]
-texture = SubResource("ViewportTexture_0ehpd")
+texture = SubResource("ViewportTexture_xnxdc")
 
 [node name="YesNoText" parent="Papers/EndScene/FinalPaper/PaperSprite" parent_id_path=PackedInt32Array(1857162022, 1872639583) index="1" unique_id=1597754085]
-texture = SubResource("ViewportTexture_8wjpf")
+texture = SubResource("ViewportTexture_0ehpd")
 
 [node name="FakePapers" type="Node2D" parent="Papers" unique_id=925939395]
 rotation = -0.26343536
@@ -261,7 +262,7 @@ mouse_filter = 2
 
 [node name="FadeTransition" parent="." unique_id=1883376167 instance=ExtResource("13_kp0ql")]
 top_level = true
-z_index = 6
+z_index = 100
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 1240.0
@@ -273,3 +274,4 @@ mouse_filter = 2
 [editable path="Papers/EndScene/FinalPaper"]
 [editable path="DreamCore"]
 [editable path="Dialogue"]
+[editable path="FadeTransition"]
