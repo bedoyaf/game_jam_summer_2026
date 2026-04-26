@@ -4,6 +4,7 @@ extends Node
 @export var fade_rect_path: NodePath
 @export var final_paper: Node2D
 @export var stamps_per_paper := 30
+@export var fade_animation_player: AnimationPlayer
 
 var papers: Array = []
 var fade_rect: ColorRect
@@ -22,10 +23,18 @@ func _ready():
 func _start_sequence():
 	await _drop_last_paper()
 	
+	GameManager.trigger_dialogue("game_ending_shout")
+	
 	# Scéna bezpečně odemkne kurzor a dovolí poslední interakce!
 	GameManager.change_state(GameManager.GameState.PAPERWORK)
 	
+	# Počkáme 5 sekund, aby si hráč mohl prohlédnout poslední papír a přečíst výkřik
+	await get_tree().create_timer(5.0).timeout
+	
 	await _fade_to_black()
+	
+	# Konec hry - vypnutí aplikace (pro exportovanou hru)
+	get_tree().quit()
 
 
 # 🧾 1) razítkování všech papírů
@@ -55,11 +64,14 @@ func _drop_last_paper():
 	await tween.finished
 
 func _fade_to_black():
-	fade_rect.modulate.a = 0.0
-	
-	var tween = create_tween()
-	tween.tween_property(fade_rect, "modulate:a", 1.0, 2.0)
-
-	await tween.finished
+	if fade_animation_player:
+		fade_animation_player.play("fade_in")
+		await fade_animation_player.animation_finished
+	else:
+		# Fallback if not assigned
+		fade_rect.modulate.a = 0.0
+		var tween = create_tween()
+		tween.tween_property(fade_rect, "modulate:a", 1.0, 2.0)
+		await tween.finished
 
 	print("END")

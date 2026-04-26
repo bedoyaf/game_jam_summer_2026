@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b8v6cl4e43327"]
+
+[ext_resource type="Script" uid="uid://cf6ebp4vcjq6q" path="res://scripts/snowflake_spawner.gd" id="1_3r1lm"]
+
+[node name="SnowflakeSpawner" type="Node2D" unique_id=1975327268]
+script = ExtResource("1_3r1lm")
+min_x_speed = 150.0
+max_x_speed = 200.0
+y_multiplier_speed = 1.5
+
+[node name="Limit1" type="Node2D" parent="." unique_id=965344723]
+position = Vector2(-965, -10)
+
+[node name="Limit2" type="Node2D" parent="." unique_id=605211536]
+position = Vector2(1242, -729)
