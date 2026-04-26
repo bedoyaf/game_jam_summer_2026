@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cjhepbqfp0roa" path="res://scripts/gui_scripts/intro_scene.gd" id="1_g6t57"]
 [ext_resource type="Texture2D" uid="uid://c1sp24qmb0rcd" path="res://assets/sprites/IntroScene1.png" id="2_ngq6t"]
+[ext_resource type="Texture2D" uid="uid://yld63v8tn0us" path="res://assets/sprites/intro1.png" id="2_yr2gr"]
 [ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="3_3uwhn"]
 [ext_resource type="Shader" uid="uid://c10lflvc1x5tc" path="res://rolloj/Vignette.gdshader" id="3_6tor5"]
+[ext_resource type="Texture2D" uid="uid://o32xgrarc118" path="res://assets/sprites/intro2.png" id="3_nifp7"]
+[ext_resource type="Texture2D" uid="uid://c8enbaotnd2da" path="res://assets/sprites/intro3.png" id="4_0vfxv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nx802"]
 shader = ExtResource("3_6tor5")
@@ -11,7 +14,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 shader_parameter/vignette_multiplier = 0.0
 shader_parameter/vignette_softness = 0.78
 
-[node name="IntroScene" type="Control" unique_id=108870732]
+[node name="IntroScene" type="Control" unique_id=108870732 node_paths=PackedStringArray("target_texture_rect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g6t57")
+target_texture_rect = NodePath("CanvasLayer/TextureRect")
+sprite_1 = ExtResource("2_yr2gr")
+sprite_2 = ExtResource("3_nifp7")
+sprite_3 = ExtResource("4_0vfxv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474695507]
 layer = -1

@@ -21,6 +21,10 @@ func _ready():
 
 func _start_sequence():
 	await _drop_last_paper()
+	
+	# Scéna bezpečně odemkne kurzor a dovolí poslední interakce!
+	GameManager.change_state(GameManager.GameState.PAPERWORK)
+	
 	await _fade_to_black()
 
 

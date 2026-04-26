@@ -15,7 +15,9 @@ func start_end_dream():
 	
 	active = true
 	
-	GameManager.start_end_dream_transition()
+	# Zrušili jsme přepnutí do stavu TRANSITION, protože to tvrdě blokovalo pohyb a boj s bossem!
+	# GameManager.start_end_dream_transition()
+	
 	print("Fading")
 	
 	# reset
