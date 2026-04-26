@@ -15,6 +15,8 @@ extends Node2D
 @onready var paper_area = $WholePaperArea
 @onready var goal_yes = $Yes
 @onready var goal_no = $No
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 func _ready() -> void:
 
@@ -82,6 +84,7 @@ func is_mouse_over_area(area: Area2D) -> bool:
 
 func fly_away():
 	var tween = create_tween()
+
 	tween.tween_interval(1.0) 
 
 	tween.set_trans(Tween.TRANS_BACK)
@@ -92,3 +95,10 @@ func fly_away():
 	tween.parallel().tween_property(self, "rotation", rotation + randf_range(-0.4, 0.4), 0.7)
 
 	tween.tween_callback(queue_free)
+	
+	#await get_tree().create_timer(2.0).timeout
+	if audio_stream_player_2d != null:
+		print("SOUND 1")
+		await get_tree().create_timer(1.0).timeout
+		audio_stream_player_2d.play()
+		print("SOUND 2")

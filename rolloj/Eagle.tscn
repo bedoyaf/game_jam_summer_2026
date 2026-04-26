@@ -14,3 +14,4 @@ texture = ExtResource("2_sa6sy")
 [node name="StampGoal" parent="." unique_id=1065439230 instance=ExtResource("3_sa6sy")]
 scale = Vector2(0.50535625, 0.50535625)
 target_id = "obstacle3"
+current_material = 2

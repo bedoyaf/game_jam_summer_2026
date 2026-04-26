@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cmefkm7wcnrpq"]
+
+[ext_resource type="Script" uid="uid://iix426o5mmo" path="res://scripts/sound-scripts/soldier_death.gd" id="1_5ttv1"]
+[ext_resource type="AudioStream" uid="uid://bm1vowyahrd22" path="res://assets/sound-effects/iron-bang/iron-bang-3.wav" id="2_wqka8"]
+[ext_resource type="AudioStream" uid="uid://bsbwhafyaf4bh" path="res://assets/sound-effects/iron-bang/iron-bang-4.wav" id="3_kat5c"]
+
+[node name="SoldierDeath" type="Node2D" unique_id=1112342642]
+script = ExtResource("1_5ttv1")
+
+[node name="Bang1" type="AudioStreamPlayer2D" parent="." unique_id=721012042]
+stream = ExtResource("2_wqka8")
+
+[node name="Bang2" type="AudioStreamPlayer2D" parent="." unique_id=1247563883]
+stream = ExtResource("3_kat5c")

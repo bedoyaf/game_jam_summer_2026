@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_s0w1f"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="4_s0w1f"]
 [ext_resource type="FontFile" uid="uid://shcov8h7agto" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="6_ncu1h"]
+[ext_resource type="PackedScene" uid="uid://bnuhx4d6f7ik2" path="res://scenes/audio_scenes/page_turning.tscn" id="7_17oox"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
 viewport_path = NodePath("MainText3Dscene")
@@ -47,12 +48,14 @@ position = Vector2(-29, 202)
 rotation = 0.41830614
 skew = 0.10471976
 target_id = "paper_0_yes"
+current_material = 2
 
 [node name="No" parent="." unique_id=1759699427 instance=ExtResource("3_s0w1f")]
 position = Vector2(201, 300)
 rotation = 0.45911503
 skew = 0.04712389
 target_id = "paper_0_no"
+current_material = 2
 
 [node name="MainText3Dscene" type="SubViewport" parent="." unique_id=1234049101]
 own_world_3d = true
@@ -99,3 +102,5 @@ autowrap_trim_flags = 64
 
 [node name="Camera3D" type="Camera3D" parent="YesNo3DScene/Node3D" unique_id=823826681]
 transform = Transform3D(0.98828983, 0.06078071, 0.13996051, -0.033341624, 0.98109585, -0.19062886, -0.14890122, 0.18373005, 0.97163355, 0.18952048, -0.12576038, 0.72714365)
+
+[node name="AudioStreamPlayer2D" parent="." unique_id=689318225 instance=ExtResource("7_17oox")]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="3_qc2sd"]
 [ext_resource type="Texture2D" uid="uid://y85cend3xmfw" path="res://rolloj/paperPlaceholder.jpeg" id="4_qc2sd"]
 [ext_resource type="FontFile" uid="uid://shcov8h7agto" path="res://assets/fonts/Cinzel-VariableFont_wght.ttf" id="6_qlmj2"]
+[ext_resource type="PackedScene" uid="uid://bnuhx4d6f7ik2" path="res://scenes/audio_scenes/page_turning.tscn" id="7_fdwtm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_da8e4"]
 viewport_path = NodePath("MainText3Dscene")
@@ -49,6 +50,7 @@ rotation = -0.47650924
 scale = Vector2(0.81579316, 0.81579316)
 skew = 0.057595864
 target_id = "paper_0_yes"
+current_material = 2
 
 [node name="No" parent="." unique_id=1759699427 instance=ExtResource("3_qc2sd")]
 position = Vector2(-72, 16.000004)
@@ -56,6 +58,7 @@ rotation = -0.4803987
 scale = Vector2(0.8286643, 0.8286643)
 skew = -0.09250245
 target_id = "paper_0_no"
+current_material = 2
 
 [node name="MainText3Dscene" type="SubViewport" parent="." unique_id=1234049101]
 own_world_3d = true
@@ -103,3 +106,5 @@ text = "Yes                                           No"
 font = ExtResource("6_qlmj2")
 outline_size = 0
 autowrap_trim_flags = 64
+
+[node name="AudioStreamPlayer2D" parent="." unique_id=689318225 instance=ExtResource("7_fdwtm")]
