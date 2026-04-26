@@ -31,7 +31,7 @@ var task_list: Array[Dictionary] = [
 		"id": "tree_blocking",
 		"desc": "Cestu blokuje strom. Zbav se ho razítkem.",
 		"target_group": "obstacle1",
-		"required_stamps": 3,
+		"required_stamps": 1,
 		"current_stamps": 0
 	},
 	{

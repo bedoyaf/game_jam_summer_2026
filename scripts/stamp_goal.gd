@@ -25,8 +25,11 @@ signal completed()
 var is_active: bool = false
 var current_hits: int = 0
 var is_destroyed: bool = false
+var base_scale: Vector2 = Vector2.ONE
 
 func _ready() -> void:
+	base_scale = scale
+	
 	if always_active:
 		is_active = true
 		
@@ -140,5 +143,5 @@ func lock_as_rejected() -> void:
 
 func _play_hit_animation() -> void:
 	var tween = create_tween()
-	scale = Vector2(0.8, 0.8)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_BOUNCE)
+	scale = base_scale * 0.7
+	tween.tween_property(self, "scale", base_scale, 0.15).set_trans(Tween.TRANS_BOUNCE)

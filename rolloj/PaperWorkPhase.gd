@@ -4,6 +4,7 @@ extends Node2D
 var current_paper_index: int = 0
 
 @export var dream_controller: Node 
+@export var vignette_rect: ColorRect # ZDE PŘETÁHNI TVŮJ VIGNETTE COLOR RECT!
 
 @export var dream_progression: Dictionary = {
 	3: 0.1, 
@@ -52,6 +53,13 @@ func activate_current_paper() -> void:
 		print("Všechny papíry orazítkovány! Přechod do snu...")
 		
 		GameManager.trigger_dialogue("dream_fade_beginning")
+		
+		# --- EFEKT: ROZPLYNOUT VIGNETTE ---
+		if vignette_rect and vignette_rect.material:
+			var vig_tween = create_tween()
+			# Tweenujeme 'vignette_multiplier' ze shaderu směrem vzhůru, což temnotu fyzicky vytlačí z rohů pryč!
+			vig_tween.tween_property(vignette_rect.material, "shader_parameter/vignette_multiplier", 0.75, 4.0)
+			
 		await get_tree().create_timer(2.0).timeout
 		
 		# 1. Přepneme do přechodu (shadery už ti jedou z předchozího Tweenu)

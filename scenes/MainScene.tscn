@@ -11,13 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://h1fwxmdtgxu0" path="res://scenes/gui_scenes/main.tscn" id="6_kp0ql"]
 [ext_resource type="PackedScene" uid="uid://dbhqo1mai432k" path="res://scenes/stamp/hanibal_hand.tscn" id="7_08o8g"]
 [ext_resource type="Script" uid="uid://brv4llrirs1q2" path="res://scripts/camera_2d_paperWork.gd" id="8_0cxu4"]
+[ext_resource type="Shader" uid="uid://c10lflvc1x5tc" path="res://rolloj/Vignette.gdshader" id="9_08o8g"]
 [ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="12_o3jky"]
 [ext_resource type="PackedScene" uid="uid://83l3bjlh1upp" path="res://rolloj/MainMenu/fade_transition.tscn" id="13_kp0ql"]
 
-[node name="MainScene" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups", "dream_controller")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cxu4"]
+shader = ExtResource("9_08o8g")
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/vignette_multiplier = 0.0
+shader_parameter/vignette_softness = 0.78
+
+[node name="MainScene" type="Node2D" unique_id=1970157443 node_paths=PackedStringArray("paper_groups", "dream_controller", "vignette_rect")]
 script = ExtResource("1_u1u68")
 paper_groups = [NodePath("Papers/PaperWork1/SinglePaper"), NodePath("Papers/PaperWork2/SinglePaper2"), NodePath("Papers/PaperWork3/SinglePaper"), NodePath("Papers/PaperWork4/SinglePaper"), NodePath("Papers/PaperWork5/SinglePaper")]
 dream_controller = NodePath("DreamCore/DreamController")
+vignette_rect = NodePath("CanvasLayerVignette/ColorRect")
 
 [node name="Papers" type="Node2D" parent="." unique_id=2145772059]
 position = Vector2(144, 144)
@@ -150,6 +158,20 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="CanvasLayerVignette" type="CanvasLayer" parent="." unique_id=1912773675]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayerVignette" unique_id=2096116011]
+z_index = 1
+material = SubResource("ShaderMaterial_0cxu4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="DreamCore" parent="." unique_id=870238760 instance=ExtResource("6_kp0ql")]
 
 [node name="DreamController" parent="DreamCore" index="0" unique_id=1024621172 node_paths=PackedStringArray("dream_darkness_rect")]
@@ -167,7 +189,7 @@ max_x_threshold = 0.99
 dream_darkness_rect = NodePath("../DarknessRect")
 
 [node name="SubViewportContainer" parent="DreamCore" index="1" unique_id=1211497977]
-z_index = 1
+z_index = 2
 offset_right = 1152.0
 offset_bottom = 649.0
 
@@ -196,7 +218,10 @@ position = Vector2(1121, 642)
 z_index = 40
 mouse_filter = 2
 
-[node name="Panel" parent="Dialogue/DialogueUI" parent_id_path=PackedInt32Array(401222758, 207914384) index="0" unique_id=1016471520]
+[node name="DialogueUI" parent="Dialogue" index="0" unique_id=207914384]
+layer = 2
+
+[node name="Panel" parent="Dialogue/DialogueUI" index="0" unique_id=1016471520]
 mouse_filter = 2
 
 [node name="ColorRect" parent="Dialogue/DialogueUI/Panel" index="0" unique_id=1967320970]

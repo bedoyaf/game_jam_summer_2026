@@ -11,20 +11,28 @@ var is_typing := false
 var skip_requested := false
 
 var dialogue_run_id := 0
+var last_append_time := 0
 
 func _ready():
 	panel.hide()
 
 func show_dialogue(text: Array[String]):
-	if panel.visible:
-		# Pokud už zrovna mluvíme, jednoduše ty texty přidáme do fronty za sebe!
+	var now = Time.get_ticks_msec()
+	
+	if panel.visible and (now - last_append_time) < 100:
+		# Pokud dialogy přijdou na frejmu ZÁROVEŇ (např. 'dokončení úkolu' + hned vzápětí 'nový úkol')
+		# zařadíme je přirozeně do fronty
 		lines.append_array(text)
 	else:
+		# Jde o NOVOU událost mnohem později! Hráč zřejmě celou dobu zapomněl mačkat 'E'.
+		# Všechny staré nevyzvednuté texty tvrdě vyhodíme a přepíšeme obrazovku tímto aktuálním!
 		dialogue_run_id += 1
 		lines = text
 		current_line_index = 0
 		panel.show()
 		_show_next_line()
+		
+	last_append_time = now
 
 func _show_next_line():
 	if current_line_index >= lines.size():
