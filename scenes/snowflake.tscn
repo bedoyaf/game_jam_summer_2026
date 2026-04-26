@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dk0lweb4hacd5"]
+
+[ext_resource type="Texture2D" uid="uid://c01ae23u8dh7h" path="res://martin/icon2.svg" id="1_4dymq"]
+[ext_resource type="Script" uid="uid://br1m0vjeaxnga" path="res://scenes/snowflake.gd" id="1_7dclt"]
+
+[node name="Snowflake" type="Node2D" unique_id=1942581136]
+z_index = 50
+position = Vector2(2761.651, 15587.514)
+script = ExtResource("1_7dclt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1550615805]
+z_index = 50
+scale = Vector2(0.31568256, 0.31568256)
+texture = ExtResource("1_4dymq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1702394477]
+z_index = 150
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_exit_screen"]

@@ -4,10 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="2_05hqx"]
 [ext_resource type="Texture2D" uid="uid://duso66ra4nm0" path="res://assets/sprites/characters/romans/romans_alive.png" id="3_q0ipr"]
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="4_ndc0p"]
-[ext_resource type="AudioStream" uid="uid://cqxo0hnmrifm5" path="res://assets/sound-effects/people-sounds/screaming-1.wav" id="5_biokr"]
-[ext_resource type="AudioStream" uid="uid://cyqnv3ub5vjtc" path="res://assets/sound-effects/people-sounds/screaming-2.wav" id="6_j0xmf"]
-[ext_resource type="AudioStream" uid="uid://s5vjnn6ahjo5" path="res://assets/sound-effects/people-sounds/screaming-3.wav" id="7_0dday"]
-[ext_resource type="AudioStream" uid="uid://hf0ejr1t6t0s" path="res://assets/sound-effects/people-sounds/screaming-4.wav" id="8_dm46s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lcce"]
 size = Vector2(291.21317, 326.36127)
@@ -31,27 +27,13 @@ shape = SubResource("RectangleShape2D_3lcce")
 target_id = "battle"
 always_active = true
 current_material = 3
-roman_shouting_sounds = [NodePath("SoundManager/RomanShouts/RomanShout1"), NodePath("SoundManager/RomanShouts/RomanShout2"), NodePath("SoundManager/RomanShouts/RomanShout3"), NodePath("SoundManager/RomanShouts/RomanShout4")]
+roman_shouting_sounds = [NodePath("SoundManager/RomanShouts2/RomanShout1"), NodePath("SoundManager/RomanShouts2/RomanShout2"), NodePath("SoundManager/RomanShouts2/RomanShout3"), NodePath("SoundManager/RomanShouts2/RomanShout4")]
 
 [node name="CollisionShape2D" parent="StampGoal" index="0" unique_id=1051562106]
 position = Vector2(-14.740317, -21.692345)
 rotation = 0.61749935
 scale = Vector2(12.3102455, 12.3102455)
 shape = SubResource("RectangleShape2D_05hqx")
-
-[node name="RomanShouts" type="Node" parent="StampGoal/SoundManager" parent_id_path=PackedInt32Array(1065439230, 1416070049) index="7" unique_id=255490831]
-
-[node name="RomanShout1" type="AudioStreamPlayer" parent="StampGoal/SoundManager/RomanShouts" unique_id=909137320]
-stream = ExtResource("5_biokr")
-
-[node name="RomanShout2" type="AudioStreamPlayer" parent="StampGoal/SoundManager/RomanShouts" unique_id=420652350]
-stream = ExtResource("6_j0xmf")
-
-[node name="RomanShout3" type="AudioStreamPlayer" parent="StampGoal/SoundManager/RomanShouts" unique_id=1407088340]
-stream = ExtResource("7_0dday")
-
-[node name="RomanShout4" type="AudioStreamPlayer" parent="StampGoal/SoundManager/RomanShouts" unique_id=1782368780]
-stream = ExtResource("8_dm46s")
 
 [connection signal="completed" from="StampGoal" to="." method="_on_obstacle_destroyed"]
 [connection signal="stamped" from="StampGoal" to="." method="_on_rock_hit"]

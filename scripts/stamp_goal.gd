@@ -174,6 +174,8 @@ func _play_hit_animation() -> void:
 	tween.tween_property(self, "scale", base_scale, 0.15).set_trans(Tween.TRANS_BOUNCE)
 	
 func play_destruction_sound() -> void:
+	if not GameManager.should_play_dream_sounds:
+		return
 	#var rnd_sound = randi_range(0, 1)
 	
 	if current_material == MaterialType.WOOD:
@@ -207,6 +209,8 @@ func play_elephant_death_sequence():
 	
 
 func play_two_random_shouts():
+	if not GameManager.should_play_dream_sounds:
+		return
 	if roman_shouting_sounds.size() < 2:
 		return
 

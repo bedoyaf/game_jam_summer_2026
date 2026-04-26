@@ -67,8 +67,8 @@ func _process(delta):
 	set_shader_params()
 	change_dream_level()
 	
-	if Input.is_action_just_pressed("skip"):
-		perform_black_wipe_action()
+	#if Input.is_action_just_pressed("skip"):
+		#perform_black_wipe_action()
 	
 
 
