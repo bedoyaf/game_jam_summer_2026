@@ -40,6 +40,7 @@ func _on_body_entered(body):
 	
 func teleport():
 	# teleport
+	GameManager.battle_started.emit()
 	player.global_position = target.global_position
 	finalBattle.start_end_dream()
 	# 💡 počkej frame (aby kamera stihla skočit)

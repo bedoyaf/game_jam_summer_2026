@@ -70,6 +70,8 @@ func _process(delta):
 	# DEBUGOVÁNÍ (Vypnuto, aby klávesa E pro dialogy nespouštěla zatmívačku!)
 	# if Input.is_action_just_pressed("skip"):
 	# 	perform_black_wipe_action()
+	#if Input.is_action_just_pressed("skip"):
+		#perform_black_wipe_action()
 	
 
 

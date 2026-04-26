@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
 [ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="27_emgir"]
 [ext_resource type="PackedScene" uid="uid://dvru6chkqf677" path="res://scenes/audio_scenes/battle_sounds.tscn" id="31_kphlv"]
+[ext_resource type="PackedScene" uid="uid://b8v6cl4e43327" path="res://scenes/snowflake_spawner.tscn" id="38_q6pyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yheev"]
 size = Vector2(2769.8325, 163.05215)
@@ -2505,7 +2506,7 @@ modulate = Color(1, 1, 1, 0.5176471)
 position = Vector2(157.65297, -120.52843)
 scale = Vector2(0.599, 0.599)
 
-[node name="StampGoal2" parent="Background/Events/decisionElephant/DecisionGate" index="3" unique_id=961468286]
+[node name="StampGoal2" parent="Background/Events/decisionElephant/DecisionGate" index="3" unique_id=961468286 node_paths=PackedStringArray("roman_shouting_sounds")]
 z_index = -1
 position = Vector2(-6.461859, -38.567635)
 target_id = "path_B_1"
@@ -2513,6 +2514,7 @@ default_texture = ExtResource("12_hqppi")
 stamped_texture = ExtResource("13_khx1d")
 rejected_texture = ExtResource("12_hqppi")
 current_material = 3
+roman_shouting_sounds = [NodePath("SoundManager/RomanShouts2/RomanShout3"), NodePath("SoundManager/RomanShouts2/RomanShout4")]
 
 [node name="Sprite2D" parent="Background/Events/decisionElephant/DecisionGate/StampGoal2" index="1" unique_id=419037605]
 position = Vector2(0.36252284, 10.23804)
@@ -2721,10 +2723,11 @@ destroyed_texture = ExtResource("24_lh357")
 [node name="Sprite2D" type="Sprite2D" parent="Background/Events/GaulPursuit/Ambush" unique_id=135074650]
 texture = ExtResource("11_nyrub")
 
-[node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" unique_id=1909309669 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
+[node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" unique_id=1909309669 node_paths=PackedStringArray("linked_barricade", "roman_shouting_sounds") instance=ExtResource("11_tt35e")]
 target_id = "ambush_fight"
 linked_barricade = NodePath("../CollisionShape2D")
 current_material = 3
+roman_shouting_sounds = [NodePath("SoundManager/RomanShouts2/RomanShout3"), NodePath("SoundManager/RomanShouts2/RomanShout4")]
 
 [node name="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush/StampGoal" index="0" unique_id=1051562106]
 position = Vector2(-42.00008, -24.999962)
@@ -4007,6 +4010,12 @@ tex_walk_b1 = ExtResource("12_nyrub")
 tex_walk_b2 = ExtResource("13_l1c8q")
 stamp_sound = ExtResource("26_obb0e")
 
+[node name="SnowflakeSpawner" parent="Player" unique_id=1975327268 node_paths=PackedStringArray("limit_1", "limit_2", "snowflake_storage") instance=ExtResource("38_q6pyk")]
+snowflakes_per_interval = 15
+limit_1 = NodePath("../Limit1")
+limit_2 = NodePath("../Limit2")
+snowflake_storage = NodePath("../../Snowflakes")
+
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1866983795]
 texture = ExtResource("5_yheev")
 
@@ -4032,7 +4041,16 @@ stream = ExtResource("25_j3ed3")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=176287767]
 
+[node name="Limit1" type="Node2D" parent="Player" unique_id=1737632044]
+position = Vector2(-2055, -317)
+
+[node name="Limit2" type="Node2D" parent="Player" unique_id=1570504719]
+position = Vector2(1147, -1124)
+
 [node name="BattleSounds" parent="." unique_id=1489955748 instance=ExtResource("31_kphlv")]
+
+[node name="Snowflakes" type="Node2D" parent="." unique_id=1130668186]
+z_index = 50
 
 [connection signal="completed" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_obstacle_destroyed"]
 [connection signal="stamped" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_rock_hit"]

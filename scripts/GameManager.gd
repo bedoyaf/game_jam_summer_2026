@@ -11,6 +11,8 @@ enum GameState {
 
 var current_state: GameState = GameState.PAPERWORK
 
+var should_play_dream_sounds: bool = true
+
 # SIGNÁLY (Události, na které mohou reaovat jiné scény - UI, Hráč, Shadery)
 
 signal state_changed(new_state: GameState)

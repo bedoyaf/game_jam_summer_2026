@@ -43,6 +43,8 @@ func _on_fade_complete():
 	.set_ease(Tween.EASE_IN)
 	
 	set_dream_level_smooth(0.0)
+	GameManager.should_play_dream_sounds = false
+	GameManager.battle_ended.emit()
 	
 var dream_controller = null
 var dream_tween: Tween
