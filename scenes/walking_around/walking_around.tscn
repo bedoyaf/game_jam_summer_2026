@@ -32,8 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://q8rccveopq13" path="res://assets/sprites/obstacles/indicator2.png" id="18_7eqcm"]
 [ext_resource type="Texture2D" uid="uid://bqf7elgk8k31a" path="res://assets/sprites/obstacles/hole_edge2.png" id="18_16ijy"]
 [ext_resource type="Script" uid="uid://cwjmd5c5o2iff" path="res://scenes/walking_around/gaul_pursuit.gd" id="21_pir18"]
+[ext_resource type="Script" uid="uid://ccgqjngbu00g4" path="res://rolloj/blocking_object.gd" id="23_4u1bx"]
 [ext_resource type="Texture2D" uid="uid://cvkl6enjjlsyw" path="res://assets/sprites/obstacles/wall.png" id="23_kn6nd"]
 [ext_resource type="Texture2D" uid="uid://ct2yo8g08ytrk" path="res://assets/sprites/characters/hannibal/walkforward.png" id="24_16ijy"]
+[ext_resource type="Texture2D" uid="uid://clodf07hbrmk3" path="res://assets/sprites/characters/romans/romans_dead.png" id="24_lh357"]
 [ext_resource type="AudioStream" uid="uid://c0op8qd6wfoi6" path="res://assets/sound-effects/walking-3.wav" id="25_j3ed3"]
 [ext_resource type="AudioStream" uid="uid://chkh41uu670cr" path="res://assets/sounds/ouch.mp3" id="26_obb0e"]
 [ext_resource type="Script" uid="uid://38k617jboc46" path="res://scripts/walking_around/finalbattle.gd" id="27_emgir"]
@@ -54,10 +56,6 @@ size = Vector2(500.1659, 163.98212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3ed3"]
 size = Vector2(27.699173, 51.949806)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kphlv"]
-radius = 7.3139954
-height = 17.140198
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0alt6"]
 size = Vector2(201.14618, 52.770332)
 
@@ -69,6 +67,12 @@ size = Vector2(104.532745, 36.34732)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khx1d"]
 size = Vector2(53.907898, 176.26251)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05hqx"]
+size = Vector2(23.993103, 26.51088)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6pyk"]
+size = Vector2(605, 1124.2041)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqppi"]
 size = Vector2(16.265259, 28.240509)
@@ -103,7 +107,6 @@ texture = ExtResource("2_yheev")
 stretch_mode = 1
 
 [node name="BigBackground" type="Sprite2D" parent="Background" unique_id=1539307575]
-visible = false
 position = Vector2(-2434, 592)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_y51g4")
@@ -2229,9 +2232,9 @@ position = Vector2(11832.5, -7350.0005)
 rotation = 3.3156176
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D12" unique_id=1724342702]
-position = Vector2(1184.2164, -916.3865)
+position = Vector2(1184.2148, -916.3862)
 rotation = -0.55877364
-scale = Vector2(0.9999996, 0.9999996)
+scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_yheev")
 
 [node name="StaticBody2D13" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=252797941]
@@ -2274,19 +2277,33 @@ rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
-[node name="StaticBody2D16" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1908526442]
-position = Vector2(925.00037, -2207.4995)
+[node name="StaticBody2D16" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=886840590]
+position = Vector2(938.5005, -2248.0002)
 rotation = 3.3156176
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D16" unique_id=1660759311]
-position = Vector2(1975.7219, -1900.8015)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D16" unique_id=693098612]
+position = Vector2(1157.7179, -966.0467)
 rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D16" unique_id=1204855936]
-position = Vector2(320.27997, -525.89856)
-rotation = 2.344202
+[node name="StaticBody2D33" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1967717]
+position = Vector2(1788.4998, -3100)
+rotation = 3.0240707
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D33" unique_id=1036434336]
+position = Vector2(1157.7179, -966.0467)
+rotation = -0.55877364
+scale = Vector2(0.9999996, 0.9999996)
+shape = SubResource("RectangleShape2D_yheev")
+
+[node name="StaticBody2D35" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=26873237]
+position = Vector2(75.49988, -1603.0002)
+rotation = 3.2985244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D35" unique_id=1397272946]
+position = Vector2(1157.7179, -966.0467)
+rotation = -0.55877364
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_yheev")
 
@@ -2361,52 +2378,38 @@ position = Vector2(3351, -1173)
 rotation = -0.4596104
 shape = SubResource("RectangleShape2D_16ijy")
 
-[node name="StaticBody2D29" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=2092742868]
-position = Vector2(14223.5, 1903.0005)
-rotation = 0.3594779
-scale = Vector2(0.6459674, 1.8350952)
+[node name="StaticBody2D29" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=721683440]
+position = Vector2(14179.501, 2252)
+rotation = -0.06792389
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D29" unique_id=1879428804]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D29" unique_id=529628230]
 position = Vector2(3351, -1173)
 rotation = -0.4596104
 shape = SubResource("RectangleShape2D_16ijy")
 
-[node name="StaticBody2D30" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1546314494]
-position = Vector2(-1514.3027, -1887.5975)
-rotation = 0.6401483
-scale = Vector2(0.6459674, 1.8350952)
+[node name="StaticBody2D30" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1890733605]
+position = Vector2(16025.5, 1663)
+rotation = -0.2210547
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D30" unique_id=1700366862]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D30" unique_id=483522885]
 position = Vector2(3351, -1173)
 rotation = -0.4596104
 shape = SubResource("RectangleShape2D_16ijy")
 
-[node name="StaticBody2D31" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1849406444]
-position = Vector2(15905.5, 176.99963)
-rotation = 0.6401483
-scale = Vector2(0.6459674, 1.8350952)
+[node name="StaticBody2D31" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1144677919]
+position = Vector2(17724.502, 398.00024)
+rotation = -0.2210547
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D31" unique_id=1137497110]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D31" unique_id=1743875642]
 position = Vector2(3351, -1173)
 rotation = -0.4596104
 shape = SubResource("RectangleShape2D_16ijy")
 
-[node name="StaticBody2D32" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1908522284]
-position = Vector2(17437.5, -183.99911)
-rotation = 0.50914305
-scale = Vector2(0.6459674, 1.8350952)
+[node name="StaticBody2D32" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=2077066150]
+position = Vector2(19024.5, -598.99976)
+rotation = -0.2210547
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D32" unique_id=1842555546]
-position = Vector2(3351, -1173)
-rotation = -0.4596104
-shape = SubResource("RectangleShape2D_16ijy")
-
-[node name="StaticBody2D33" type="StaticBody2D" parent="Background/Walls/Colliders" unique_id=1557791305]
-position = Vector2(18027.502, -19.999817)
-rotation = 0.015750825
-scale = Vector2(0.9904691, 1.4787612)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D33" unique_id=1709473036]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/Colliders/StaticBody2D32" unique_id=22544769]
 position = Vector2(3351, -1173)
 rotation = -0.4596104
 shape = SubResource("RectangleShape2D_16ijy")
@@ -2518,26 +2521,6 @@ texture = ExtResource("12_hqppi")
 position = Vector2(43.10623, -126.01436)
 scale = Vector2(0.48491004, 0.48491004)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Background/Events/decisionElephant" unique_id=1365975679]
-position = Vector2(113, 467)
-scale = Vector2(2.3843026, 2.3843026)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/decisionElephant/StaticBody2D" unique_id=1913146425]
-position = Vector2(-19.000006, -24.000004)
-rotation = 1.4597896
-scale = Vector2(8.0667095, 8.0667095)
-shape = SubResource("CapsuleShape2D_kphlv")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Background/Events/decisionElephant" unique_id=1582493761]
-position = Vector2(-381, -298)
-scale = Vector2(2.3843026, 2.3843026)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/decisionElephant/StaticBody2D2" unique_id=85526514]
-position = Vector2(-19.000006, -24.000004)
-rotation = 1.4597896
-scale = Vector2(8.0667095, 8.0667095)
-shape = SubResource("CapsuleShape2D_kphlv")
-
 [node name="River" type="Node2D" parent="Background/Events" unique_id=916231898]
 position = Vector2(1555, 305)
 
@@ -2554,7 +2537,7 @@ scale = Vector2(1.8172874, 1.8172874)
 script = ExtResource("16_2vg4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/Bridge" unique_id=1778295773]
-position = Vector2(3.9370117, 43.06836)
+position = Vector2(67.51941, 23.200302)
 rotation = 0.100496694
 scale = Vector2(3.4275987, 3.4275987)
 shape = SubResource("RectangleShape2D_0alt6")
@@ -2614,7 +2597,7 @@ texture = ExtResource("18_7eqcm")
 position = Vector2(-66, -151)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D" unique_id=1366499635]
-position = Vector2(219, -185)
+position = Vector2(154, -262)
 rotation = -0.44351956
 scale = Vector2(10.78, 10.78)
 shape = SubResource("RectangleShape2D_pir18")
@@ -2623,7 +2606,7 @@ shape = SubResource("RectangleShape2D_pir18")
 position = Vector2(289, 456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/River/StaticBody2D2" unique_id=976564092]
-position = Vector2(290.2207, -315.74713)
+position = Vector2(324, -277)
 rotation = -0.46683717
 scale = Vector2(10.78, 10.78)
 shape = SubResource("RectangleShape2D_kn6nd")
@@ -2714,16 +2697,28 @@ script = ExtResource("21_pir18")
 wall = NodePath("wall")
 ambush_guards = NodePath("wall/StaticBody2D")
 
-[node name="Ambush" parent="Background/Events/GaulPursuit" unique_id=1445342002 instance=ExtResource("15_obb0e")]
+[node name="Ambush" type="StaticBody2D" parent="Background/Events/GaulPursuit" unique_id=1445342002]
 position = Vector2(5284, -2662)
+script = ExtResource("23_4u1bx")
+destroyed_texture = ExtResource("24_lh357")
 
-[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush" index="1" unique_id=2074462379]
-position = Vector2(51.254883, 5.3789063)
-rotation = 0.85677594
+[node name="Sprite2D" type="Sprite2D" parent="Background/Events/GaulPursuit/Ambush" unique_id=135074650]
+texture = ExtResource("11_nyrub")
 
-[node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" index="2" unique_id=1065439230]
+[node name="StampGoal" parent="Background/Events/GaulPursuit/Ambush" unique_id=1909309669 node_paths=PackedStringArray("linked_barricade") instance=ExtResource("11_tt35e")]
 target_id = "ambush_fight"
-always_active = false
+linked_barricade = NodePath("../CollisionShape2D")
+
+[node name="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush/StampGoal" index="0" unique_id=1051562106]
+position = Vector2(-42.00008, -24.999962)
+rotation = 0.61749935
+scale = Vector2(12.3102455, 12.3102455)
+shape = SubResource("RectangleShape2D_05hqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Events/GaulPursuit/Ambush" unique_id=1307679854]
+position = Vector2(27.963867, -101.51416)
+rotation = -0.73547184
+shape = SubResource("RectangleShape2D_q6pyk")
 
 [node name="wall" type="StaticBody2D" parent="Background/Events/GaulPursuit" unique_id=223845795]
 visible = false
@@ -3961,24 +3956,24 @@ position = Vector2(16728, -109)
 script = ExtResource("27_emgir")
 fade_rect = NodePath("../../Player/CanvasLayer/FadeTransition")
 
-[node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target", "finalBattle")]
+[node name="teleport" type="Area2D" parent="Background/FinalRomanBattle" unique_id=393593702 node_paths=PackedStringArray("target", "fade_rect", "finalBattle")]
 position = Vector2(-976, -8087)
 script = ExtResource("11_qb5eg")
 target = NodePath("target")
 player_path = NodePath("../../../Player")
 camera_path = NodePath("../../../Player/Camera2D")
+fade_rect = NodePath("../../../Player/CanvasLayer/FadeTransition")
 finalBattle = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/FinalRomanBattle/teleport" unique_id=1793730152]
 position = Vector2(-4606, 1777)
 shape = SubResource("RectangleShape2D_l1c8q")
-disabled = true
 
 [node name="target" type="Node2D" parent="Background/FinalRomanBattle/teleport" unique_id=1771497740]
 position = Vector2(-142, 7918)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1265406013]
-position = Vector2(3586, 503)
+position = Vector2(-1280, 2213)
 script = ExtResource("4_bkyfo")
 speed = 400.0
 squash_amount = 0.05
@@ -4013,6 +4008,8 @@ color = Color(0, 0, 0, 1)
 [node name="PlayerWalking" type="AudioStreamPlayer2D" parent="Player" unique_id=1889323100]
 stream = ExtResource("25_j3ed3")
 
+[connection signal="completed" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_obstacle_destroyed"]
+[connection signal="stamped" from="Background/Events/GaulPursuit/Ambush/StampGoal" to="Background/Events/GaulPursuit/Ambush" method="_on_rock_hit"]
 [connection signal="body_entered" from="Background/Events/GaulPursuit/Area2D" to="Background/Events/GaulPursuit" method="_on_area_2d_body_entered"]
 
 [editable path="Background/Events/boulder/BlockingObject"]
@@ -4029,7 +4026,6 @@ stream = ExtResource("25_j3ed3")
 [editable path="Background/Events/DecisionGauls/DecisionGate"]
 [editable path="Background/Events/DecisionGauls/DecisionGate/StampGoal"]
 [editable path="Background/Events/DecisionGauls/DecisionGate/StampGoal2"]
-[editable path="Background/Events/GaulPursuit/Ambush"]
 [editable path="Background/Events/GaulPursuit/Ambush/StampGoal"]
 [editable path="Background/Events/GaulPursuit/wall/StampGoal3"]
 [editable path="Background/Events/GaulPursuit/wall/StampGoal"]

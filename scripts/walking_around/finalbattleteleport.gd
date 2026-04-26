@@ -3,8 +3,10 @@ extends Area2D
 @export var target: Node2D
 @export var player_path: NodePath
 @export var camera_path: NodePath
+@export var fade_rect: ColorRect
 
 @export var finalBattle : Node2D
+var tween: Tween
 
 var player
 var camera
@@ -23,7 +25,20 @@ func _on_body_entered(body):
 	# 🔥 vypni smoothing
 	if camera and camera.has_method("set_position_smoothing_enabled"):
 		camera.position_smoothing_enabled = false
+		fade_rect.modulate.a = 0.0
 	
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 2) \
+	.set_trans(Tween.TRANS_SINE) \
+	.set_ease(Tween.EASE_IN)
+	
+	tween.tween_callback(teleport)
+	
+	
+func teleport():
 	# teleport
 	player.global_position = target.global_position
 	finalBattle.start_end_dream()

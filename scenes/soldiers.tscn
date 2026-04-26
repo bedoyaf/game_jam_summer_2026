@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcpcrtcwmkw7" path="res://scenes/StampGoal.tscn" id="4_ndc0p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lcce"]
-size = Vector2(1008.68854, 439.02335)
+size = Vector2(291.21317, 326.36127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_05hqx"]
 size = Vector2(23.993103, 26.51088)
@@ -19,7 +19,7 @@ destroyed_texture = ExtResource("2_05hqx")
 texture = ExtResource("3_q0ipr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2074462379]
-position = Vector2(-14.980999, -38.962467)
+position = Vector2(-21.16101, -31.34259)
 rotation = 0.62870026
 shape = SubResource("RectangleShape2D_3lcce")
 

@@ -50,7 +50,6 @@ var container_maximum_y: int = 800
 
 
 func _ready():
-	DreamLevelControl.connect("change_dream_level", change_dream_level_variable)
 	my_material = sub_viewport_container.material
 	var noise_tex = my_material.get_shader_parameter("noise_texture") as NoiseTexture2D
 	noise = noise_tex.noise
