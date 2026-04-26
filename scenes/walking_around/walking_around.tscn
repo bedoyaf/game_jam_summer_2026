@@ -4011,7 +4011,7 @@ tex_walk_b2 = ExtResource("13_l1c8q")
 stamp_sound = ExtResource("26_obb0e")
 
 [node name="SnowflakeSpawner" parent="Player" unique_id=1975327268 node_paths=PackedStringArray("limit_1", "limit_2", "snowflake_storage") instance=ExtResource("38_q6pyk")]
-snowflakes_per_interval = 15
+snowflakes_per_interval = 25
 limit_1 = NodePath("../Limit1")
 limit_2 = NodePath("../Limit2")
 snowflake_storage = NodePath("../../Snowflakes")

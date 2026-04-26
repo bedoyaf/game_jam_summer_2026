@@ -4,11 +4,11 @@
 
 [node name="DreamController" type="Node" unique_id=1024621172]
 script = ExtResource("1_hbnva")
-noise_offset_speed_x = 0.3410000000000002
+noise_offset_speed_x = 2.0
 noise_offset_speed_y = 0.0
 alpha_threshold_shader = 0.152
-speed_shader = 2.668
-frequency_shader = 0.0
+speed_shader = 0.779
+frequency_shader = 6.416
 amplitude_shader = 0.001
 edge_softness_shader = 0.05
 x_threshold_shader = 0.891
