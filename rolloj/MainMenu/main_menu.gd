@@ -23,7 +23,7 @@ func _on_quit_pressed() -> void:
 
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start":
-		get_tree().change_scene_to_file("res://scenes/MainScene.tscn")
+		get_tree().change_scene_to_file("res://scenes/IntroScene.tscn")
 	elif button_type == "options":
 		get_tree().change_scene_to_file("res://main_menu.tscn")
 
@@ -48,7 +48,7 @@ func create_visual_stamp(pos: Vector2):
 	# FORCE the stamp to draw on top of everything!
 	stamp.z_index = 19
 
-	GameManager.camera_shake.emit(25.0) 
+	GameManager.camera_shake.emit(45.0) 
 
 	var tween = create_tween()
 

@@ -37,6 +37,7 @@ func show_dialogue(text: Array[String]):
 func _show_next_line():
 	if current_line_index >= lines.size():
 		panel.hide()
+		GameManager.dialogue_finished.emit()
 		return
 	
 	var line = lines[current_line_index]

@@ -212,7 +212,7 @@ limit_bottom = 648
 script = ExtResource("8_0cxu4")
 
 [node name="HanibalHand" parent="." unique_id=1568772530 instance=ExtResource("7_08o8g")]
-position = Vector2(1121, 642)
+position = Vector2(908, 1155)
 
 [node name="Dialogue" parent="." unique_id=401222758 instance=ExtResource("12_o3jky")]
 z_index = 40
@@ -232,6 +232,7 @@ mouse_filter = 2
 
 [node name="FadeTransition" parent="." unique_id=1883376167 instance=ExtResource("13_kp0ql")]
 top_level = true
+z_index = 6
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 1240.0

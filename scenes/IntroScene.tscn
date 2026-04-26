@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://vh18vpnm5hn1"]
+
+[ext_resource type="Script" uid="uid://cjhepbqfp0roa" path="res://scripts/gui_scripts/intro_scene.gd" id="1_g6t57"]
+[ext_resource type="Texture2D" uid="uid://c1sp24qmb0rcd" path="res://assets/sprites/IntroScene1.png" id="2_ngq6t"]
+[ext_resource type="PackedScene" uid="uid://b66rkd16k8cap" path="res://scenes/dialogue/dialogue.tscn" id="3_3uwhn"]
+[ext_resource type="Shader" uid="uid://c10lflvc1x5tc" path="res://rolloj/Vignette.gdshader" id="3_6tor5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx802"]
+shader = ExtResource("3_6tor5")
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/vignette_multiplier = 0.0
+shader_parameter/vignette_softness = 0.78
+
+[node name="IntroScene" type="Control" unique_id=108870732]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g6t57")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474695507]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1981499598]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ngq6t")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayerVignette" type="CanvasLayer" parent="." unique_id=1330026131]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayerVignette" unique_id=1712270031]
+z_index = 1
+material = SubResource("ShaderMaterial_nx802")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialogue" parent="." unique_id=401222758 instance=ExtResource("3_3uwhn")]
+z_index = 40
+layout_mode = 0
+mouse_filter = 2
+
+[node name="DialogueUI" parent="Dialogue" index="0" unique_id=207914384]
+layer = 2
+
+[node name="Panel" parent="Dialogue/DialogueUI" index="0" unique_id=1016471520]
+mouse_filter = 2
+
+[node name="ColorRect" parent="Dialogue/DialogueUI/Panel" index="0" unique_id=1967320970]
+mouse_filter = 2
+
+[node name="Label" parent="Dialogue/DialogueUI/Panel" index="1" unique_id=2056385154]
+mouse_filter = 2
+
+[editable path="Dialogue"]

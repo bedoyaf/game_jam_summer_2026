@@ -16,6 +16,7 @@ var current_state: GameState = GameState.PAPERWORK
 signal state_changed(new_state: GameState)
 signal task_updated(task_id: String, description: String)
 signal dialogue_triggered(dialogue_id: String)
+signal dialogue_finished()
 signal stamp_target_activated(target_group: String) 
 
 signal stamp_placed(target_id: String)
@@ -62,17 +63,24 @@ var task_list: Array[Dictionary] = [
 		"required_stamps": 3,
 		"current_stamps": 0
 	},
+	#{
+	#	"id": "gauls_decision",
+	#	"desc": "Křižovatka před Galy. Zvol postup.",
+	#	"target_group": "path_A_2,path_B_2",
+	#	"required_stamps": 1,
+	#	"current_stamps": 0
+	#},
 	{
-		"id": "gauls_decision",
-		"desc": "Křižovatka před Galy. Zvol postup.",
-		"target_group": "path_A_2,path_B_2",
-		"required_stamps": 1,
+		"id": "ambush_walls",
+		"desc": "Léčka zezadu! Ubraň se postavením palisády.",
+		"target_group": "ambush_walls",
+		"required_stamps": 3,
 		"current_stamps": 0
 	},
 	{
-		"id": "ambush_from_behind",
-		"desc": "Léčka zezadu! Zbav se útočníků.",
-		"target_group": "ambush",
+		"id": "ambush_fight",
+		"desc": "Palisáda stojí! Zlikviduj odříznutého šmejda.",
+		"target_group": "ambush_fight",
 		"required_stamps": 1,
 		"current_stamps": 0
 	},
@@ -110,7 +118,7 @@ func record_stamp() -> void:
 	if now - last_stamp_msec > 50:
 		# Vygenerujeme rotaci a zatřeseme kamerou POUZE JEDNOU!
 		current_stamp_rotation = randf_range(-0.3, 0.3)
-		camera_shake.emit(25.0)
+		camera_shake.emit(35.0)
 		
 		if stamp_sounds.size() > 0:
 			stamp_audio_player.stream = stamp_sounds.pick_random()

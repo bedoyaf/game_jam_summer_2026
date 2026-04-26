@@ -6,7 +6,8 @@ extends Node2D
 		if is_node_ready():
 			_update_label()
 
-@onready var label_3d = $MainText3Dscene/Node3D/Label3D
+@export var label3d_text: Label3D
+@export var label3d_yesno: Label3D
 
 @export var paper_index: int = 0
 @export var stamp_texture: Texture2D 
@@ -26,10 +27,34 @@ func _ready() -> void:
 	_update_label()
 
 	paper_area.input_event.connect(_on_paper_input)
+	GameManager.stamp_target_activated.connect(_on_target_activated)
+	
+	# Všechny papíry vyblednou při startu scény (jen ten první zapne manažer do plna)
+	_set_labels_faded(true)
+
+func _on_target_activated(activated_ids: String) -> void:
+	var expected_yes = "paper_" + str(paper_index) + "_yes"
+	var expected_no = "paper_" + str(paper_index) + "_no"
+	var ids = activated_ids.split(",")
+	
+	if expected_yes in ids or expected_no in ids:
+		_set_labels_faded(false)
+	else:
+		_set_labels_faded(true)
+
+func _set_labels_faded(faded: bool) -> void:
+	var target_color = Color("40250252") if faded else Color("402502")
+	
+	if label3d_text:
+		label3d_text.modulate = target_color
+	if label3d_yesno:
+		label3d_yesno.modulate = target_color
 
 func _update_label() -> void:
-	if label_3d:
-		label_3d.text = content_text
+	if label3d_text:
+		label3d_text.text = content_text
+	elif get_node_or_null("MainText3Dscene/Node3D/Label3D"):
+		get_node("MainText3Dscene/Node3D/Label3D").text = content_text
 
 func _on_paper_input(_viewport, event, _shape_idx):
 	# NOVÉ: Pokud už nejsme ve fázi papírování (např. jsme ve snu), ignoruj kliknutí!

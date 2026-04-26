@@ -85,7 +85,7 @@ func _trigger_dodge() -> void:
 	
 	# "Juice": Smooth, fast flight to the new position
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", new_pos, 0.35).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "global_position", new_pos, 0.45).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	
 	# "Juice": Stretch the eagle dynamically based on its original size!
 	scale = Vector2(base_scale.x * 1.5, base_scale.y * 0.5)
@@ -101,7 +101,7 @@ func _on_eagle_defeated() -> void:
 	
 	var tween = create_tween()
 	# Fall out of the sky and spin
-	tween.tween_property(self, "position:y", position.y + 400, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "global_position", global_position + Vector2(0, 400), 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(self, "rotation", rotation + PI*3, 1.0)
 	tween.tween_callback(self.queue_free)
 	
